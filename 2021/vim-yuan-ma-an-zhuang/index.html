@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vim 插件介绍, 点点滴滴">
+    <meta name="keywords" content="vim win10 源码安装, 点点滴滴">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vim 插件介绍 | 点点滴滴</title>
+    <title>vim win10 源码安装 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -427,12 +427,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vim 插件介绍</h1>
+                    <h1 class="description center-align post-title">vim win10 源码安装</h1>
                 </div>
             </div>
         </div>
@@ -548,8 +548,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vim%E6%8F%92%E4%BB%B6/">
-                                <span class="chip bg-color">vim插件</span>
+                            <a href="/tags/vim/">
+                                <span class="chip bg-color">vim</span>
                             </a>
                         
                     </div>
@@ -574,7 +574,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-10
+                    2021-01-11
                 </div>
                 
 
@@ -588,7 +588,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    512
                 </div>
                 
 
@@ -608,185 +608,89 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>介绍一些 vim 实用的插件，本文所介绍插件均以 vim-plug 安装。</p>
-<h1 id="vim-plug-插件管理"><a class="markdownIt-Anchor" href="#vim-plug-插件管理"></a> vim-plug 插件管理</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug</a> 是一个 vim 插件管理器，利用异步<br>
-并行可以快速地安装、更新和卸载插件。</p>
-<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+                <p>win10 msys2 vim 源码安装。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yianwillis/vimcdoc/releases">参考手册</a>。</p>
+<h1 id="msys2"><a class="markdownIt-Anchor" href="#msys2"></a> MSYS2</h1>
 <ol>
 <li>
-<p>下载<br>
-<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim</a><br>
-文件，根据不同操作系统，放置在相应的 autoload 目录中。</p>
-<ul>
-<li>
-<p><strong>Linux</strong></p>
-<p>用户配置： <em>~/.vim/autoload</em></p>
-<p>全局配置： <em>安装位置/autolaod</em></p>
+<p>在 <a target="_blank" rel="noopener" href="https://www.msys2.org/">官网</a> 下载 MSYS2 并安装安装到合适位置。</p>
 </li>
 <li>
-<p><strong>Windows</strong></p>
-<p>用户配置： <em>~\vimfiles\autoload</em></p>
-<p>全局配置： <em>安装位置\autoload</em></p>
-</li>
-</ul>
+<p>添加 mingw64/bin 到环境变量。</p>
 </li>
 <li>
-<p>结构目录如下，之后安装的插件将存放在 plugged 目录中。</p>
+<p>修改软件源。</p>
+<p>软件源文件 <code>/etc/pacman.d/mirrorlist.mingw32</code></p>
+<p>注释掉所有源，添加</p>
+<p><code>Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686</code></p>
+<p>软件源文件 <code>/etc/pacman.d/mirrorlist.mingw64</code></p>
+<p>注释掉所有源，添加</p>
+<p><code>Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64</code></p>
+<p>软件源文件 <code>/etc/pacman.d/mirrorlist.msys</code></p>
+<p>注释掉所有源，添加</p>
+<p><code>Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch</code></p>
+</li>
+<li>
+<p>更新软件源</p>
 </li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">~&#x2F;.vim
-+----- autoload
-|      +-- plug.vim
-+----- plugged
-       +-- drawit
-       +-- ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>注</strong>： plugged 目录是由 vimrc 中 <code>call plug#begin()</code> 中定义，可修改。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -Syu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="5">
+<li>安装编译环境</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-make <span class="token function">git</span> diffutils<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="6">
+<li>验证安装</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="python-27"><a class="markdownIt-Anchor" href="#python-27"></a> Python 2.7</h1>
+<p>下载 Python 并安装到合适位置，添加环境变量。</p>
+<h1 id="编译-vim"><a class="markdownIt-Anchor" href="#编译-vim"></a> 编译 vim</h1>
+<ol>
+<li>下载 vim 源码到合适位置</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/vim/vim.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li>修改编译配置 <code>custom.mak</code></li>
+</ol>
+<p>跳转至 vim 源码 src 目录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> Make_cyg_ming.mak custom.mak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-make" data-language="make"><code class="language-make">GUI&#x3D;yes         #vim 带图形界面
+ARCH&#x3D;x86-64     #指定为 64 位系统编译<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>找到 Python 选项，本次编译使用 27 版本。</p>
 <ol start="3">
-<li>在 vimrc 文件中的配置。</li>
+<li>编译安装</li>
 </ol>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">call plug#begin(&#39;~&#x2F;.vim&#x2F;plugged&#39;)
-
-&quot; Shorthand notation for plugin
-Plug &#39;vim-scripts&#x2F;DrawIt&#39;
-
-call plug#end()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="插件管理"><a class="markdownIt-Anchor" href="#插件管理"></a> 插件管理</h2>
-<p>以 vim 画图插件 DrawIt 为例。</p>
-<p><strong>安装插件</strong></p>
-<p>vim 可以在 GitHub 上面找到几乎所有的插件。</p>
-<p>vim 官网的所有插件都在 <em><a target="_blank" rel="noopener" href="https://github.com/vim-scripts/">https://github.com/vim-scripts/</a></em> 中。</p>
-<p><a target="_blank" rel="noopener" href="https://vimawesome.com/">vim Awesome</a> 几乎网罗了网络上所有的插件，并提供各种管<br>
-理工具的下载方式。</p>
-<p>若安装新插件，只需在 <code>call plug#begin()</code> 和 <code>call plug#end()</code> 之间添加插件<br>
-github 缩写地址 <code>Plug 'vim-scripts/DrawIt'</code>，然后执行命令:</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugInstall<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>即可安装所有添加插件。</p>
-<p>若要安装指定的插件，可执行:</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugInstall DrawIt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>更新插件</strong></p>
-<p>批量更新所有已安装插件：</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugUpdate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>更新 vim-plug 插件自身：</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugUpgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>插件卸载</strong></p>
-<p>若要卸载插件，需要在 vimrc 中注释掉或删除相应的插件，然后执行：</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugClean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>插件状态</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugStatus<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="fzf-模糊搜索"><a class="markdownIt-Anchor" href="#fzf-模糊搜索"></a> fzf 模糊搜索</h1>
-<p>fzf 全称 Fuzzy finder，由 golang 编写的，用于模糊搜索的工具。结合其他工具可以完<br>
-成非常多得工作，如 ag、fasd、ripgrep。</p>
-<p>类似工具有 CtrlP、LeaderF。</p>
-<h2 id="安装-2"><a class="markdownIt-Anchor" href="#安装-2"></a> 安装</h2>
-<p>有很多方式可以安装 <a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf">fzf</a>，由于 fzf 是独立于 vim<br>
-可以运行在各个平台的工具，所以可以独立于 vim 安装。</p>
-<p><strong>使用 git 安装</strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone --depth <span class="token number">1</span> https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>使用 vim-plug 安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;junegunn&#x2F;fzf&#39;, &#123; &#39;do&#39;: &#123; -&gt; fzf#install() &#125; &#125;
-Plug &#39;junegunn&#x2F;fzf.vim&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>我们使用 vim-plug 安装，同时安装插件 fzf.vim。使用 vim-plug 安装方式，我们就可以<br>
-通过 <code>:PlugUpdate fzf</code> 指令更新。</p>
-<h2 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h2>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 在当前目录搜索文件
-nnoremap &lt;silent&gt; &lt;Leader&gt;f :Files&lt;CR&gt;
-
-&quot;切换Buffer中的文件
-nnoremap &lt;silent&gt; &lt;Leader&gt;b :Buffers&lt;CR&gt;
-
-&quot;在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
-nnoremap &lt;silent&gt; &lt;Leader&gt;p :Lines&lt;CR&gt;
-
-&quot;在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
-nnoremap &lt;silent&gt; &lt;Leader&gt;h :History&lt;CR&gt;
-
-&quot; 调用 Rg 进行搜索，包含隐藏文件。需要安装 ripgrep 工具，
-&quot; https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep
-command! -bang -nargs&#x3D;* Rg
-  \ call fzf#vim#grep(
-  \   &#39;rg --column --line-number --no-heading --color&#x3D;always --smart-case --hidden &#39;.shellescape(&lt;q-args&gt;), 1,
-  \   &lt;bang&gt;0 ? fzf#vim#with_preview(&#39;up:60%&#39;)
-  \           : fzf#vim#with_preview(&#39;right:50%:hidden&#39;, &#39;?&#39;),
-  \   &lt;bang&gt;0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="主题美化"><a class="markdownIt-Anchor" href="#主题美化"></a> 主题美化</h1>
-<h2 id="spaceline-状态栏"><a class="markdownIt-Anchor" href="#spaceline-状态栏"></a> spaceline 状态栏</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;glepnir&#x2F;spaceline.vim&#39;
-Plug &#39;ryanoasis&#x2F;vim-devicons&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<p>配置说明可参考 <a target="_blank" rel="noopener" href="https://github.com/glepnir/spaceline.vim">spaceline</a>。</p>
-<p>使用 vim-devicons 需要先 <a target="_blank" rel="noopener" href="https://www.nerdfonts.com/">安装字体</a> 并设置 guifont。</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">set guifont&#x3D;DaddyTimeMono_Nerd_Font_Mono:h11:cANSI:qDRAFT
-
-let g:spaceline_colorscheme &#x3D; &#39;space&#39;
-let g:spaceline_seperate_style &#x3D; &#39;curve&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="airline"><a class="markdownIt-Anchor" href="#airline"></a> airline</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;vim-airline&#x2F;vim-airline&#39;
-Plug &#39;vim-airline&#x2F;vim-airline-themes&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<p>配置说明参考 <a target="_blank" rel="noopener" href="https://github.com/vim-airline/vim-airline">airline</a>。</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; vim-airline
-let g:airline_powerline_fonts &#x3D; 1
-
-let g:airline#extensions#tabline#enabled &#x3D; 1
-let g:airline#extensions#tabline#buffer_nr_show &#x3D; 1
-
-&quot; vim-airline-themes 使用 solarized 主题
-let g:airline_theme&#x3D;&quot;solarized&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="vim-colorschemes-配色"><a class="markdownIt-Anchor" href="#vim-colorschemes-配色"></a> vim-colorschemes 配色</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;flazz&#x2F;vim-colorschemes&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">set background&#x3D;light
-colorscheme solarized<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="markdown"><a class="markdownIt-Anchor" href="#markdown"></a> Markdown</h1>
-<h2 id="vim-markdown"><a class="markdownIt-Anchor" href="#vim-markdown"></a> vim-markdown</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;godlygeek&#x2F;tabular&#39;
-Plug &#39;plasticboy&#x2F;vim-markdown&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<p>配置说明可参考 <a target="_blank" rel="noopener" href="https://github.com/plasticboy/vim-markdown">vim-markdown</a>。</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 支持 LaTeX 数学语法
-let g:vim_markdown_math &#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="vim-markdown-toc-目录"><a class="markdownIt-Anchor" href="#vim-markdown-toc-目录"></a> vim-markdown-toc 目录</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;mzlogin&#x2F;vim-markdown-toc&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<p>配置说明可参考 <a target="_blank" rel="noopener" href="https://github.com/mzlogin/vim-markdown-toc">vim-markdown-toc</a>。</p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 存储时取消自动更新
-let g:vmt_auto_update_on_save &#x3D; 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="markdown-preview-预览"><a class="markdownIt-Anchor" href="#markdown-preview-预览"></a> markdown-preview 预览</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 需要安装 nodejs 和 yarn
-Plug &#39;iamcco&#x2F;markdown-preview.nvim&#39;, &#123; &#39;do&#39;: &#39;cd app &amp;&amp; yarn install&#39;  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<p>同类型的还有 vim-instant-markdown，体验较差。本插件配置说明可参考<br>
-<a target="_blank" rel="noopener" href="https://github.com/iamcco/markdown-preview.nvim">markdown-preview</a>。</p>
-<h2 id="pangu-排版"><a class="markdownIt-Anchor" href="#pangu-排版"></a> pangu 排版</h2>
-<p><strong>安装</strong></p>
-<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;hotoo&#x2F;pangu.vim&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>配置</strong></p>
-<p>配置说明可参考 <a target="_blank" rel="noopener" href="https://github.com/hotoo/pangu.vim">pangu</a>。</p>
-<p>有一些问题：</p>
-<ul>
-<li>引用图片时，地址不能包含中文。引用时的方括号一定要在同一行。</li>
-</ul>
+<p>在 src 目录下编译。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mingw32-make.exe -f custom.mak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>若编译失败，想重新编译，可先 <code>clean</code> 重新执行以上命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mingw32-make.exe -f custom.mak clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>编译成功后打包</li>
+</ol>
+<p>在 <code>src</code> 父目录创建打包文件 <code>pkg.sh</code> 内容为：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> -p vim-x64/vim81
+<span class="token function">cp</span> -a runtime/* vim-x64/vim81
+<span class="token function">cp</span> -a src/*.exe vim-x64/vim81
+<span class="token function">cp</span> -a src/GvimExt/gvimext.dll vim-x64/vim81
+<span class="token function">cp</span> -a src/xxd/xxd.exe vim-x64/vim81
+<span class="token function">cp</span> -a vimtutor.bat vim-x64/vim81<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li>vim-x64/vim81 即为编译好的 vim 版本</li>
+</ol>
+<p>将 vim81 移到合适的位置，以管理员的权限执行 <code>install.exe</code> 文件。</p>
+<p>根据提示选择编号，选择 d 进行安装。</p>
+<h1 id="添加右键-用-vim-打开"><a class="markdownIt-Anchor" href="#添加右键-用-vim-打开"></a> 添加右键 <code>用 vim 打开</code></h1>
+<ol>
+<li>打开注册表：计算机 <code>\HKEY_CLASSES_ROOT\*\shell\</code>。</li>
+<li>新建项，命名为 <code>用 VIM 编辑</code>。</li>
+<li>在该项右键新建字符串值 <code>Icon</code>，内容为 <code>&quot;/path/to/gvim.exe,0&quot;</code>。</li>
+<li>继续在该项右键新建项 <code>Command</code>，修改默认值为 <code>/path/to/gvim.exe -p --remote-tab-silent &quot;%1&quot;</code>。</li>
+</ol>
 <h1 id="修订记录"><a class="markdownIt-Anchor" href="#修订记录"></a> 修订记录</h1>
 <ul>
 <li>
-<p>2021-01-08</p>
-<p>创建，增加 vim-plug、fzf。</p>
-</li>
-<li>
-<p>2021-01-09</p>
-<p>增加 spceline， vim-markdown，vim-markdown-toc，markdown-preview，pangu，<br>
-vim-airline，vim-airline-theme，vim-colorschemes。</p>
-</li>
-<li>
-<p>2021-01-10</p>
+<p>2021-01-11</p>
 <p>从其它网站迁移。</p>
 </li>
 </ul>
@@ -816,7 +720,7 @@ vim-airline，vim-airline-theme，vim-colorschemes。</p>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.top/2021/vim-cha-jian-jie-shao/">https://coco-hkk.top/2021/vim-cha-jian-jie-shao/</a>
+                    <a href="https://coco-hkk.top/2021/vim-yuan-ma-an-zhuang/">https://coco-hkk.top/2021/vim-yuan-ma-an-zhuang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -854,8 +758,8 @@ vim-airline，vim-airline-theme，vim-colorschemes。</p>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vim%E6%8F%92%E4%BB%B6/">
-                                    <span class="chip bg-color">vim插件</span>
+                                <a href="/tags/vim/">
+                                    <span class="chip bg-color">vim</span>
                                 </a>
                             
                         </div>
@@ -1025,66 +929,18 @@ vim-airline，vim-airline-theme，vim-colorschemes。</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/zhou-yi-bi-ji/">
+                <a href="/2021/vim-yuan-ma-an-zhuang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="周易">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="vim win10 源码安装">
                         
-                        <span class="card-title">周易</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-10
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%91%A8%E6%98%93/" class="post-category">
-                                    周易
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%91%A8%E6%98%93/">
-                        <span class="chip bg-color">周易</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/vim-cha-jian-jie-shao/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="vim 插件介绍">
-                        
-                        <span class="card-title">vim 插件介绍</span>
+                        <span class="card-title">vim win10 源码安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1095,7 +951,7 @@ vim-airline，vim-airline-theme，vim-colorschemes。</p>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-11
                             </span>
                         <span class="publish-author">
                             
@@ -1113,8 +969,65 @@ vim-airline，vim-airline-theme，vim-colorschemes。</p>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vim%E6%8F%92%E4%BB%B6/">
-                        <span class="chip bg-color">vim插件</span>
+                    <a href="/tags/vim/">
+                        <span class="chip bg-color">vim</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/websocket-pei-cdn-de-vpn-da-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="websocket + tls + web + cdn VPN 搭建">
+                        
+                        <span class="card-title">websocket + tls + web + cdn VPN 搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/VPN/" class="post-category">
+                                    VPN
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/caddy/">
+                        <span class="chip bg-color">caddy</span>
+                    </a>
+                    
+                    <a href="/tags/vpn/">
+                        <span class="chip bg-color">vpn</span>
+                    </a>
+                    
+                    <a href="/tags/cdn/">
+                        <span class="chip bg-color">cdn</span>
                     </a>
                     
                 </div>
