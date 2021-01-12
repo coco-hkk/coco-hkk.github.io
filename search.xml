@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>neovim 安装配置</title>
+      <link href="2021/neovim-an-zhuang-pei-zhi/"/>
+      <url>2021/neovim-an-zhuang-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<p>Win10 neovim 安装和配置。</p><h1>安装</h1><p>neovim 官网托管在 github 上，从<a href="https://github.com/neovim/neovim/releases">这里</a> 下载各平台最新版本。</p><ol><li>下载最新版本，例如 <code>0.4.4 nvim-win64.zip</code>。</li><li>将压缩文件解压到适当的位置，例如 <code>D:\neovim</code>，运行 <code>nv-qt.exe</code> 即可。</li><li>添加环境变量 Path <code>D:\neovim\bin</code>。</li><li>为了方便，可将 <code>nv-qt.exe</code> 快捷方式发送到桌面。</li></ol><p><strong>添加右键 “使用 nvim 打开”</strong></p><ol><li>打开注册表 <code>HKEY_CLASSES_ROOT -&gt; * -&gt; shell</code>。</li><li>右键新建项，输入 <code>使用 nvim 打开</code>。</li><li>在新项中新建 <code>command</code> 项，修改其默认值为 <code>&quot;D:\neovim\bin\nvim-qt.exe&quot; &quot;--maximized&quot; &quot;%1&quot;</code></li></ol><h1>配置</h1><p>win10 中 vim <strong>用户配置</strong>。</p><table><thead><tr><th style="text-align:center">编辑器</th><th style="text-align:center">配置文件</th><th style="text-align:center">配置文件路径</th><th style="text-align:center">插件路径</th></tr></thead><tbody><tr><td style="text-align:center">vim</td><td style="text-align:center">_vimrc 或 _gvimrc</td><td style="text-align:center">~/_vimrc 或 _gvimrc</td><td style="text-align:center">~/.vim 或 ~/vimfiles，可修改</td></tr><tr><td style="text-align:center">neovim</td><td style="text-align:center">init.vim</td><td style="text-align:center">~/AppData/Local/nvim</td><td style="text-align:center">由用户指定</td></tr></tbody></table><p>win10 中 vim <strong>全局配置</strong>。</p><table><thead><tr><th style="text-align:center">编辑器</th><th style="text-align:center">配置文件</th><th style="text-align:center">$VIM</th><th style="text-align:center">配置文件路径</th><th style="text-align:center">插件路径</th></tr></thead><tbody><tr><td style="text-align:center">vim</td><td style="text-align:center">_vimrc 或 _gvimrc</td><td style="text-align:center">安装位置</td><td style="text-align:center">$VIM/_vimrc 或 _gvimrc</td><td style="text-align:center">$VIM/vimfiles</td></tr><tr><td style="text-align:center">neovim</td><td style="text-align:center">sysinit.vim</td><td style="text-align:center">安装位置 /share/nvim</td><td style="text-align:center">$VIM/sysinit.vim</td><td style="text-align:center">由用户指定</td></tr></tbody></table><p><strong>PS：</strong> 不理解 nvim 为啥要把 init.vim 放在 C 盘隐藏文件中，不方便且乱。</p><h1>配置文件</h1><p>可以直接使用 vimrc 的配置。冲突的地方用 <code>if has('nvim')</code> 来适配 nvim。</p><h1>修订记录</h1><ul><li><p>2021-01-12</p><p>从其它网站迁移。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> vim </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vim </tag>
+            
+            <tag> neovim </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>win10 android studio 安装配置</title>
       <link href="2021/win10-android-studio-pei-zhi/"/>
       <url>2021/win10-android-studio-pei-zhi/</url>
