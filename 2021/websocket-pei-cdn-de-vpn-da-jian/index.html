@@ -589,7 +589,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-11
+                    2021-01-12
                 </div>
                 
 
@@ -601,8 +601,18 @@
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    3 分
+                </div>
+                
 
                 
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -617,12 +627,12 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>为进一步增强安全性，VPN 采用 websocket + tls + web + cdn 的策略。</p>
-<h1 id="域名"><a class="markdownIt-Anchor" href="#域名"></a> 域名</h1>
+<h1>域名</h1>
 <p>登录 <a target="_blank" rel="noopener" href="http://www.freenom.com/zh/index.html">freenom</a> 网站申请一个免费域名。</p>
 <p>若没账号可先申请域名，会要求邮箱验证，验证后会要求注册，就是先上车后补票。</p>
-<p>在 <em>view cart</em> 中完成购买（我重复了好多次，每次购买完成就自动退出账号，购买失败<br>
+<p>在 <em>view cart</em> 中完成购买（我重复了好多次，每次购买完成就自动退出账号，购买失败
 。最后在手机上重复了 N 次终于成功）。</p>
-<h1 id="安装-caddy-v2"><a class="markdownIt-Anchor" href="#安装-caddy-v2"></a> 安装 caddy v2</h1>
+<h1>安装 caddy v2</h1>
 <p>登录服务器，运行命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"deb [trusted=yes] https://apt.fury.io/caddy/ /"</span> <span class="token punctuation">\</span>
     <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> -a /etc/apt/sources.list.d/caddy-fury.list
@@ -632,8 +642,8 @@
 <p>配置文件位置 <em>/etc/caddy/Caddyfile</em>。</p>
 <p>https/ssl 证书位置 <em>/var/lib/caddy</em>。</p>
 <p><strong>Caddy v1 和 v2 的语法不同</strong>。</p>
-<h1 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h1>
-<h2 id="cloudflare-配置"><a class="markdownIt-Anchor" href="#cloudflare-配置"></a> cloudflare 配置</h2>
+<h1>配置</h1>
+<h2 id="cloudflare-配置">cloudflare 配置</h2>
 <p><em>添加站点</em> -&gt; 选择 <em>Free</em> 计划 -&gt; <em>添加记录</em></p>
 <table>
 <thead>
@@ -655,13 +665,14 @@
 </tr>
 </tbody>
 </table>
-<p>继续，cloudflare 要求 <em>更改您的名称服务器</em>，将两个 nameserver 添加到 freenom 自定义 nameserver 完成。</p>
+<p>继续，cloudflare 要求 <em>更改您的名称服务器</em>，将两个 nameserver 添加到 freenom 自
+定义 nameserver 完成。</p>
 <p>稍等片刻新申请的域名即可使用，在 <em>SSL/TLS</em> 将模式设置为 <em>完全</em>。</p>
-<h2 id="freenom-域名配置"><a class="markdownIt-Anchor" href="#freenom-域名配置"></a> freenom 域名配置</h2>
+<h2 id="freenom-域名配置">freenom 域名配置</h2>
 <p><em>gServices</em> -&gt; <em>My Domains</em> -&gt; <em>Manage Domain</em> -&gt; <em>Management Tools</em> -&gt; <em>Nameservers</em></p>
 <p>选择 <em>Use custom nameservers (enter below)</em>。</p>
 <p>添加从 cloudflare 新申请的域名获取的名称服务器（在 <em>DNS</em> 选项）。</p>
-<h2 id="caddy-配置"><a class="markdownIt-Anchor" href="#caddy-配置"></a> caddy 配置</h2>
+<h2 id="caddy-配置">caddy 配置</h2>
 <pre class="line-numbers language-caddy" data-language="caddy"><code class="language-caddy">&#123;
     email your@email
 &#125;
@@ -682,7 +693,7 @@ your.domain &#123;
     &#125;
     reverse_proxy @v2ray_websocket localhost:10250      &#x2F;&#x2F; 端口和 v2ray 服务端 inbound 保持一致&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重启 caddy 服务 <code>systemctl restart caddy</code>。</p>
-<h2 id="v2fly-服务端配置"><a class="markdownIt-Anchor" href="#v2fly-服务端配置"></a> v2fly 服务端配置</h2>
+<h2 id="v2fly-服务端配置">v2fly 服务端配置</h2>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
     <span class="token property">"log"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
         <span class="token property">"loglevel"</span><span class="token operator">:</span> <span class="token string">"warning"</span>
@@ -730,7 +741,7 @@ your.domain &#123;
     <span class="token punctuation">]</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重启 v2ray 服务 <code>systemctl restart v2ray</code>。</p>
-<h2 id="v2fly-客户端配置"><a class="markdownIt-Anchor" href="#v2fly-客户端配置"></a> v2fly 客户端配置</h2>
+<h2 id="v2fly-客户端配置">v2fly 客户端配置</h2>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
   <span class="token property">"log"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
     <span class="token property">"loglevel"</span><span class="token operator">:</span> <span class="token string">"warning"</span>
@@ -813,8 +824,9 @@ your.domain &#123;
     <span class="token punctuation">]</span>
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>配置并重启 caddy 和 v2fly，登录 cloudflare，配置新域名 DNS 记录，将代理状态由 <em>仅限DNS</em> 切换为 <em>已代理</em>。</p>
-<h1 id="修订记录"><a class="markdownIt-Anchor" href="#修订记录"></a> 修订记录</h1>
+<p>配置并重启 caddy 和 v2fly，登录 cloudflare，配置新域名 DNS 记录，将代理状态由 *
+仅限DNS* 切换为 <em>已代理</em>。</p>
+<h1>修订记录</h1>
 <ul>
 <li>
 <p>2021-01-11</p>
@@ -1396,7 +1408,7 @@ your.domain &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.5k</span>&nbsp;字
+                class="white-color">6.2k</span>&nbsp;字
             
             
             
@@ -1643,6 +1655,7 @@ $(function () {
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
 
     

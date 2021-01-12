@@ -581,7 +581,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-11
+                    2021-01-12
                 </div>
                 
 
@@ -593,8 +593,18 @@
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
 
                 
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -609,14 +619,14 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>介绍一些 vim 实用的插件，本文所介绍插件均以 vim-plug 安装。</p>
-<h1 id="vim-plug-插件管理"><a class="markdownIt-Anchor" href="#vim-plug-插件管理"></a> vim-plug 插件管理</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug</a> 是一个 vim 插件管理器，利用异步<br>
+<h1>vim-plug 插件管理</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">vim-plug</a> 是一个 vim 插件管理器，利用异步
 并行可以快速地安装、更新和卸载插件。</p>
-<h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2>
+<h2 id="安装">安装</h2>
 <ol>
 <li>
-<p>下载<br>
-<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim</a><br>
+<p>下载
+<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim">plug.vim</a>
 文件，根据不同操作系统，放置在相应的 autoload 目录中。</p>
 <ul>
 <li>
@@ -651,14 +661,14 @@
 Plug &#39;vim-scripts&#x2F;DrawIt&#39;
 
 call plug#end()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="插件管理"><a class="markdownIt-Anchor" href="#插件管理"></a> 插件管理</h2>
+<h2 id="插件管理">插件管理</h2>
 <p>以 vim 画图插件 DrawIt 为例。</p>
 <p><strong>安装插件</strong></p>
 <p>vim 可以在 GitHub 上面找到几乎所有的插件。</p>
 <p>vim 官网的所有插件都在 <em><a target="_blank" rel="noopener" href="https://github.com/vim-scripts/">https://github.com/vim-scripts/</a></em> 中。</p>
-<p><a target="_blank" rel="noopener" href="https://vimawesome.com/">vim Awesome</a> 几乎网罗了网络上所有的插件，并提供各种管<br>
+<p><a target="_blank" rel="noopener" href="https://vimawesome.com/">vim Awesome</a> 几乎网罗了网络上所有的插件，并提供各种管
 理工具的下载方式。</p>
-<p>若安装新插件，只需在 <code>call plug#begin()</code> 和 <code>call plug#end()</code> 之间添加插件<br>
+<p>若安装新插件，只需在 <code>call plug#begin()</code> 和 <code>call plug#end()</code> 之间添加插件
 github 缩写地址 <code>Plug 'vim-scripts/DrawIt'</code>，然后执行命令:</p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugInstall<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即可安装所有添加插件。</p>
@@ -674,12 +684,12 @@ github 缩写地址 <code>Plug 'vim-scripts/DrawIt'</code>，然后执行命令:
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugClean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>插件状态</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">:PlugStatus<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="fzf-模糊搜索"><a class="markdownIt-Anchor" href="#fzf-模糊搜索"></a> fzf 模糊搜索</h1>
-<p>fzf 全称 Fuzzy finder，由 golang 编写的，用于模糊搜索的工具。结合其他工具可以完<br>
+<h1>fzf 模糊搜索</h1>
+<p>fzf 全称 Fuzzy finder，由 golang 编写的，用于模糊搜索的工具。结合其他工具可以完
 成非常多得工作，如 ag、fasd、ripgrep。</p>
 <p>类似工具有 CtrlP、LeaderF。</p>
-<h2 id="安装-2"><a class="markdownIt-Anchor" href="#安装-2"></a> 安装</h2>
-<p>有很多方式可以安装 <a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf">fzf</a>，由于 fzf 是独立于 vim<br>
+<h2 id="安装-2">安装</h2>
+<p>有很多方式可以安装 <a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf">fzf</a>，由于 fzf 是独立于 vim
 可以运行在各个平台的工具，所以可以独立于 vim 安装。</p>
 <p><strong>使用 git 安装</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone --depth <span class="token number">1</span> https://github.com/junegunn/fzf.git ~/.fzf
@@ -687,9 +697,9 @@ github 缩写地址 <code>Plug 'vim-scripts/DrawIt'</code>，然后执行命令:
 <p><strong>使用 vim-plug 安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;junegunn&#x2F;fzf&#39;, &#123; &#39;do&#39;: &#123; -&gt; fzf#install() &#125; &#125;
 Plug &#39;junegunn&#x2F;fzf.vim&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>我们使用 vim-plug 安装，同时安装插件 fzf.vim。使用 vim-plug 安装方式，我们就可以<br>
+<p>我们使用 vim-plug 安装，同时安装插件 fzf.vim。使用 vim-plug 安装方式，我们就可以
 通过 <code>:PlugUpdate fzf</code> 指令更新。</p>
-<h2 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h2>
+<h2 id="配置">配置</h2>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 在当前目录搜索文件
 nnoremap &lt;silent&gt; &lt;Leader&gt;f :Files&lt;CR&gt;
 
@@ -710,8 +720,8 @@ command! -bang -nargs&#x3D;* Rg
   \   &lt;bang&gt;0 ? fzf#vim#with_preview(&#39;up:60%&#39;)
   \           : fzf#vim#with_preview(&#39;right:50%:hidden&#39;, &#39;?&#39;),
   \   &lt;bang&gt;0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="主题美化"><a class="markdownIt-Anchor" href="#主题美化"></a> 主题美化</h1>
-<h2 id="spaceline-状态栏"><a class="markdownIt-Anchor" href="#spaceline-状态栏"></a> spaceline 状态栏</h2>
+<h1>主题美化</h1>
+<h2 id="spaceline-状态栏">spaceline 状态栏</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;glepnir&#x2F;spaceline.vim&#39;
 Plug &#39;ryanoasis&#x2F;vim-devicons&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -722,7 +732,7 @@ Plug &#39;ryanoasis&#x2F;vim-devicons&#39;<span aria-hidden="true" class="line-n
 
 let g:spaceline_colorscheme &#x3D; &#39;space&#39;
 let g:spaceline_seperate_style &#x3D; &#39;curve&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="airline"><a class="markdownIt-Anchor" href="#airline"></a> airline</h2>
+<h2 id="airline">airline</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;vim-airline&#x2F;vim-airline&#39;
 Plug &#39;vim-airline&#x2F;vim-airline-themes&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -736,14 +746,14 @@ let g:airline#extensions#tabline#buffer_nr_show &#x3D; 1
 
 &quot; vim-airline-themes 使用 solarized 主题
 let g:airline_theme&#x3D;&quot;solarized&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="vim-colorschemes-配色"><a class="markdownIt-Anchor" href="#vim-colorschemes-配色"></a> vim-colorschemes 配色</h2>
+<h2 id="vim-colorschemes-配色">vim-colorschemes 配色</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;flazz&#x2F;vim-colorschemes&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>配置</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">set background&#x3D;light
 colorscheme solarized<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="markdown"><a class="markdownIt-Anchor" href="#markdown"></a> Markdown</h1>
-<h2 id="vim-markdown"><a class="markdownIt-Anchor" href="#vim-markdown"></a> vim-markdown</h2>
+<h1>Markdown</h1>
+<h2 id="vim-markdown">vim-markdown</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;godlygeek&#x2F;tabular&#39;
 Plug &#39;plasticboy&#x2F;vim-markdown&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -751,21 +761,21 @@ Plug &#39;plasticboy&#x2F;vim-markdown&#39;<span aria-hidden="true" class="line-
 <p>配置说明可参考 <a target="_blank" rel="noopener" href="https://github.com/plasticboy/vim-markdown">vim-markdown</a>。</p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 支持 LaTeX 数学语法
 let g:vim_markdown_math &#x3D; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="vim-markdown-toc-目录"><a class="markdownIt-Anchor" href="#vim-markdown-toc-目录"></a> vim-markdown-toc 目录</h2>
+<h2 id="vim-markdown-toc-目录">vim-markdown-toc 目录</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;mzlogin&#x2F;vim-markdown-toc&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>配置</strong></p>
 <p>配置说明可参考 <a target="_blank" rel="noopener" href="https://github.com/mzlogin/vim-markdown-toc">vim-markdown-toc</a>。</p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 存储时取消自动更新
 let g:vmt_auto_update_on_save &#x3D; 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="markdown-preview-预览"><a class="markdownIt-Anchor" href="#markdown-preview-预览"></a> markdown-preview 预览</h2>
+<h2 id="markdown-preview-预览">markdown-preview 预览</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 需要安装 nodejs 和 yarn
 Plug &#39;iamcco&#x2F;markdown-preview.nvim&#39;, &#123; &#39;do&#39;: &#39;cd app &amp;&amp; yarn install&#39;  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>配置</strong></p>
-<p>同类型的还有 vim-instant-markdown，体验较差。本插件配置说明可参考<br>
+<p>同类型的还有 vim-instant-markdown，体验较差。本插件配置说明可参考
 <a target="_blank" rel="noopener" href="https://github.com/iamcco/markdown-preview.nvim">markdown-preview</a>。</p>
-<h2 id="pangu-排版"><a class="markdownIt-Anchor" href="#pangu-排版"></a> pangu 排版</h2>
+<h2 id="pangu-排版">pangu 排版</h2>
 <p><strong>安装</strong></p>
 <pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">Plug &#39;hotoo&#x2F;pangu.vim&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>配置</strong></p>
@@ -774,7 +784,7 @@ Plug &#39;iamcco&#x2F;markdown-preview.nvim&#39;, &#123; &#39;do&#39;: &#39;cd a
 <ul>
 <li>引用图片时，地址不能包含中文。引用时的方括号一定要在同一行。</li>
 </ul>
-<h1 id="修订记录"><a class="markdownIt-Anchor" href="#修订记录"></a> 修订记录</h1>
+<h1>修订记录</h1>
 <ul>
 <li>
 <p>2021-01-08</p>
@@ -782,7 +792,7 @@ Plug &#39;iamcco&#x2F;markdown-preview.nvim&#39;, &#123; &#39;do&#39;: &#39;cd a
 </li>
 <li>
 <p>2021-01-09</p>
-<p>增加 spceline， vim-markdown，vim-markdown-toc，markdown-preview，pangu，<br>
+<p>增加 spceline， vim-markdown，vim-markdown-toc，markdown-preview，pangu，
 vim-airline，vim-airline-theme，vim-colorschemes。</p>
 </li>
 <li>
@@ -1354,7 +1364,7 @@ vim-airline，vim-airline-theme，vim-colorschemes。</p>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.5k</span>&nbsp;字
+                class="white-color">6.2k</span>&nbsp;字
             
             
             
@@ -1601,6 +1611,7 @@ $(function () {
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
 
     
