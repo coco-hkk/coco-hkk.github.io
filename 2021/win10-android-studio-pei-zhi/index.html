@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="简单模型 VPN 搭建, Vim,VPN,Linux,周易,天文">
+    <meta name="keywords" content="win10 android studio 安装配置, Vim,VPN,Linux,周易,天文">
     <meta name="description" content="修仙才是正路。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>简单模型 VPN 搭建 | 点点滴滴</title>
+    <title>win10 android studio 安装配置 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -427,12 +427,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">简单模型 VPN 搭建</h1>
+                    <h1 class="description center-align post-title">win10 android studio 安装配置</h1>
                 </div>
             </div>
         </div>
@@ -548,12 +548,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vpn/">
-                                <span class="chip bg-color">vpn</span>
+                            <a href="/tags/android/">
+                                <span class="chip bg-color">android</span>
                             </a>
                         
-                            <a href="/tags/v2fly/">
-                                <span class="chip bg-color">v2fly</span>
+                            <a href="/tags/android-studio/">
+                                <span class="chip bg-color">android studio</span>
                             </a>
                         
                     </div>
@@ -564,8 +564,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/VPN/" class="post-category">
-                                VPN
+                            <a href="/categories/android/" class="post-category">
+                                android
                             </a>
                         
                     </div>
@@ -578,7 +578,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-10
+                    2021-01-12
                 </div>
                 
 
@@ -592,14 +592,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    990
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -622,387 +622,102 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>采用 <em>v2ray/v2fly</em> 工具搭建 VPN 服务器。</p>
-<h1>VPS 主机购买</h1>
-<p>逢年过节各大 VPS 供应商会有各种优惠活动，可参考 <a target="_blank" rel="noopener" href="https://www.zhujiceping.com/">国外主机测评
-</a> 了解详细信息。</p>
-<p>购买主机选择 OS 时，至少选择 <strong>Ubuntu 16.04 64 位</strong> 操作系统。（<font color="red">v2ray 运行在 init 系统为 <em>systemd</em> 的操作系统上</font>）。</p>
-<h2 id="virmach">virmach</h2>
-<ol>
-<li>
-<p>注册 <a target="_blank" rel="noopener" href="https://virmach.com/">virmach</a> 账号。</p>
-</li>
-<li>
-<p>在 <em>Order New Services</em> 中选择适合主机，网上查找优惠码，使用支付宝支付。</p>
-</li>
-<li>
-<p>付款成功后会收到一封邮件，包括主机 IP、OS 登录账户和密码。</p>
-</li>
-<li>
-<p>可使用 putty 远程 ssh 登录。也可使用 virmach 控制面板 <em>VNC/Desktop</em> 工具登录
-。</p>
-</li>
-<li>
-<p>修改 Ubuntu 登录密码</p>
+                <p>本文另外介绍一种搭建 android SDK 的方法，通过安装和配置 Android studio 4.1 实现
+。AS内部集成了 JDK 和 JRE。</p>
+<h1>Android Studio 安装</h1>
+<p>网速差且没 VPN，基本上杜绝了 AS 的下载。以下是下载地址：</p>
 <ul>
-<li>
-<p>按照官方说明，首先尝试在 <em>control panel</em> 中修改 <em>root/Admin</em> Password。若
-不成功则关闭主机重新修改，若还不成只能求助技术支持了。</p>
-</li>
-<li>
-<p>若无法在 <em>control panel</em> 修改密码，可以在 VNC 中使用指令 <em>passwd</em> 修改
-root 密码。此时虽然 root 密码已被修改，但是控制面板显示的密码并没有改变。</p>
-</li>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio">https://developer.android.google.cn/studio</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.androiddevtools.cn/">https://www.androiddevtools.cn/</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.android-studio.org/">http://www.android-studio.org/</a></li>
 </ul>
-</li>
-</ol>
-<h2 id="racknerd">racknerd</h2>
-<p>和 virmach 流程基本一样。</p>
-<ol>
-<li>
-<p>注册 <a target="_blank" rel="noopener" href="https://www.racknerd.com/">racknerd</a> 账号。</p>
-</li>
-<li>
-<p>购机后会收到一封邮件，包括主机 IP、OS 登录账号和密码、<em>control panel</em> 账号和
-密码。</p>
-</li>
-<li>
-<p>可以所使用的 putty 远程 ssh 登录，使用 <em>passwd</em> 指令直接修改 <em>root</em> 登录密码。</p>
-</li>
-</ol>
-<h1>v2ray 安装及配置</h1>
-<h2 id="服务端">服务端</h2>
-<ol>
-<li>安装 <a target="_blank" rel="noopener" href="https://github.com/v2fly/fhs-install-v2ray">v2ray/v2fly</a></li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装必备工具</span>
-<span class="token function">apt</span> <span class="token function">install</span> <span class="token function">curl</span>
+<p>还可以在 <a target="_blank" rel="noopener" href="https://d.serctl.com/">https://d.serctl.com/</a> 搜索合适的 AS 并下载。</p>
+<p>安装 AS 时使用 <code>Custom</code> 可自定义 JRE 和 SDK 的安装位置。</p>
+<p>若第一次运行时报错 <code>Unable to access Android SDK add-on list</code>，修改 host 文件
+<code>C:\Windows\System32\drivers\etc\hosts</code>。</p>
+<p>在末尾增加 <code>180.163.151.33 dl.google.com</code></p>
+<pre class="line-numbers language-none"><code class="language-none">IP 获取
+用 http:&#x2F;&#x2F;ping.chinaz.com&#x2F;dl.google.com，输入 dl.google.com
+然后，点 ping 检测，选最快的那个 IP 即可<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>重启，按照指示选择安装 SDK 位置即可。</p>
+<h2 id="安装-Android-SDK">安装 Android SDK</h2>
+<p>在安装 Android Studio 时已经安装好了，但也可以通过 <code>Settings-&gt;Apperance &amp; Behavior-&gt;System Settings-&gt;Android SDK</code> 安装。</p>
+<p>点击 <code>Android SDK Location Edit</code> 选择安装 SDK 的位置，若无法选择则必须解决第一次
+运行时的错误。</p>
+<h2 id="安装-SDK-PlatForms">安装 SDK PlatForms</h2>
+<p><code>Android SDK -&gt; SDK Platforms</code> 点击需要安装的平台。</p>
+<h2 id="安装-SDK-Tools">安装 SDK Tools</h2>
+<p><code>Android SDK -&gt; SDK Tools</code> 选择 <code>Android SDK Build-Tools</code>，<code>Android Emulator</code>，
+<code>Android SDK Platform-Tools</code></p>
+<h2 id="Andorid-SDK">Andorid SDK</h2>
+<p>全部下载完成后，打开 Android SDK 的安装目录，隐藏文件夹可以暂时忽略，主要看一下
+几个文件夹 <code>build-tools</code>、<code>emulator</code>、<code>platforms</code>、<code>platforms-tools</code></p>
+<pre class="line-numbers language-none"><code class="language-none">build-tools     主要是 Android 开发中所需要的工具
+emulator        主要是用于管理模拟器
+platforms       存放下载的所有的 sdk platforms 包
+platforms-tools 主要用我们常用的 adb.exe 等<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Android studio 配置</h1>
+<h2 id="系统变量配置">系统变量配置</h2>
+<p>通过配置系统变量，以便直接在命令行操作 Android SDK 包中的各种工具。</p>
+<pre class="line-numbers language-none"><code class="language-none">1. 新增变量 ANDROID_HOME&#x3D;D:\Android\sdk
+2. 更新 PATH 变量，新增
+   %ANDROID_HOME%\build-tools\30.0.2
+   %ANDROID_HOME%\emulator
+   %ANDROID_HOME%\platform-tools<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="配置文件">配置文件</h2>
+<p>AS4.1 的配置文件路径 <code>C:\Users\yourname\AppData\Roaming\Google\AndroidStudio4.1</code>。</p>
+<p>由于配置文件在 C 盘，防止占用太多 C 盘空间，需要将配置文件移到合适位置。</p>
+<p>打开 AS 安装目录，在 <code>bin</code> 目录下找到文件 <code>idea.properties</code>，修改
+<code>idea.config.path</code> 和 <code>idea.system.path</code> 变量</p>
+<pre class="line-numbers language-none"><code class="language-none"># Uncomment this option if you want to customize path to IDE config folder. Make sure you&#39;re using forward slashes.
+#---------------------------------------------------------------------
+idea.config.path&#x3D;E:&#x2F;AS-Proj&#x2F;.AndroidStudio4.1&#x2F;config    # 我的配置
 
-<span class="token comment"># 下载 v2ray/v2fly</span>
-<span class="token function">curl</span> -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
-
-<span class="token comment"># 安装</span>
-<span class="token function">bash</span> install-release.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
-<li>配置文件</li>
-</ol>
-<pre class="line-numbers language-template" data-language="template"><code class="language-template">&#x2F;usr&#x2F;local&#x2F;etc&#x2F;v2ray&#x2F;config.json<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-examples">配置模板</a></li>
-</ol>
-<pre class="line-numbers language-template" data-language="template"><code class="language-template">https:&#x2F;&#x2F;github.com&#x2F;v2fly&#x2F;v2ray-examples<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li>配置内容</li>
-</ol>
-<p>注意 json 格式。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"log"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        <span class="token property">"loglevel"</span><span class="token operator">:</span> <span class="token string">"warning"</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token property">"routing"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-        <span class="token property">"domainStrategy"</span><span class="token operator">:</span><span class="token string">"AsIs"</span><span class="token punctuation">,</span>
-        <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token punctuation">&#123;</span>
-                <span class="token property">"ip"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-                    <span class="token string">"geoip:private"</span>
-                <span class="token punctuation">]</span><span class="token punctuation">,</span>
-                <span class="token property">"outboundTag"</span><span class="token operator">:</span> <span class="token string">"blocked"</span><span class="token punctuation">,</span>
-                <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"field"</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    <span class="token property">"inbounds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">1234</span><span class="token punctuation">,</span>
-            <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"vmess"</span><span class="token punctuation">,</span>
-            <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                <span class="token property">"udp"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-                <span class="token property">"clients"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-                    <span class="token punctuation">&#123;</span>
-                        <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"92be9285-52eb-4666-bb92-eae0e608ca8a"</span><span class="token punctuation">,</span>
-                        <span class="token property">"alterId"</span><span class="token operator">:</span> <span class="token number">4</span>
-                    <span class="token punctuation">&#125;</span>
-                <span class="token punctuation">]</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token property">"streamSettings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                <span class="token property">"network"</span><span class="token operator">:</span> <span class="token string">"mkcp"</span><span class="token punctuation">,</span>
-                <span class="token property">"kcpSettings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                    <span class="token property">"uplinkCapacity"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
-                    <span class="token property">"downlinkCapacity"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
-                    <span class="token property">"congestion"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-                    <span class="token property">"header"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"none"</span>
-                    <span class="token punctuation">&#125;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token property">"outbounds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"freedom"</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"blackhole"</span><span class="token punctuation">,</span>
-            <span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"blocked"</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="5">
-<li>启动 v2ray/v2fly</li>
-</ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl <span class="token builtin class-name">enable</span> v2ray
-systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="客户端">客户端</h2>
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE system folder. Make sure you&#39;re using forward slashes.
+#---------------------------------------------------------------------
+idea.system.path&#x3D;E:&#x2F;AS-Proj&#x2F;.AndroidStudio4.1&#x2F;system<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="AVD-管理">AVD 管理</h2>
+<p>默认 android 模拟器在 C 盘，防止占用太多 C 盘空间，需要将其移到合适位置。</p>
+<p>AVD 默认路径 <code>C:\Users\naruto\.android\avd</code></p>
+<h3 id="方案一">方案一</h3>
 <ol>
-<li>客户端地址</li>
+<li>将 C 盘 avd 目录内容移动到自定义目录 D:\Android\AndroidAVD\avd，打开并修改相
+应的 ini 配置文件，如 Pixel_4_XL_Edited_API_29.ini。</li>
+<li>修改 path 变量为 path=D:\Android\AndroidAVD\avd\Pixel_4_XL_Edited_API_29.avd
+，仅仅将原来的路径修改为我们自定义路径。</li>
+<li>防止 AS 无法定位到新路径，将 ini 配置文件拷贝一份至 C 盘 avd。</li>
 </ol>
+<h3 id="方案二">方案二</h3>
+<ol>
+<li>增加环境变量 ANDROID_SDK_HOME</li>
+<li>值为 D:\Android\AndroidAVD</li>
+<li>则.android 配置文件夹在 AndroidAVD 目录下创建。</li>
+</ol>
+<h2 id="Gradle-安装">Gradle 安装</h2>
+<p>类似于 make 工具，需要 jdk8 支持。AS 已安装故无需再安装。</p>
+<p><code>gradle 地址</code> <a target="_blank" rel="noopener" href="https://services.gradle.org/distributions/">https://services.gradle.org/distributions/</a></p>
+<p>安装 gradle 到自定义目录，配置环境变量</p>
+<ol>
+<li>新增变量 GRADLE_HOME=D:\Android\gradle\gradle-6.5</li>
+<li>更新 PATH 变量，新增 %GRADLE_HOME%\bin</li>
+</ol>
+<p>防止每次启动 AS 时从网络下载 Gradle，可以指定使用自己安装的 gradle。
+<code>Settings-&gt;构建、执行、部署 -&gt;Gradle-&gt;使用来自此位置的 Gradle</code> 选择指定位置。</p>
+<h3 id="gradle-全局配置">gradle 全局配置</h3>
+<p>gradle 全局配置默认路径 <code>C:\Users\yourname\.gradle</code></p>
+<p>可以在 <code>Settings-&gt;构建、执行、部署 -&gt;Gradle-&gt;常规设置 -&gt;Gradle 用户主目录</code> 设置。
+例如 <code>E:/AS-Proj/.gradle</code></p>
+<h1>插件</h1>
+<ol>
+<li><code>Chinese (Simplified) Language Pack EAP</code>   汉化</li>
+<li><code>IdeaVim</code>  VIM 模式</li>
+</ol>
+<h1>修订记录</h1>
 <ul>
 <li>
-<p><a target="_blank" rel="noopener" href="https://github.com/v2fly/v2ray-core/releases"> <code>v2ray-core</code> </a> 各个 PC 平台不
-带图形界面，通过配置文件 <code>config.json</code> 使用。</p>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayNG/releases"> <code>v2rayNG</code> </a> Android 平台可使用。</p>
-</li>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases"> <code>v2rayN</code> </a> Windows 平台带图形界面。</p>
-</li>
-</ul>
-<ol start="2">
-<li>配置内容</li>
-</ol>
-<p>注意 json 格式，双斜杠注释内容在 config 配置文件中包括双斜杠在内都要去除。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-  <span class="token property">"log"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token property">"loglevel"</span><span class="token operator">:</span> <span class="token string">"warning"</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  <span class="token property">"inbounds"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span>
-    <span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">2080</span><span class="token punctuation">,</span>                       <span class="token comment">// 须和浏览器代理保持一致</span>
-
-    <span class="token property">"listen"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>              <span class="token comment">// 同上</span>
-
-    <span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"proxy"</span><span class="token punctuation">,</span>
-
-    <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"socks"</span><span class="token punctuation">,</span>                <span class="token comment">// 同上 socks v5</span>
-
-    <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      <span class="token property">"auth"</span><span class="token operator">:</span> <span class="token string">"noauth"</span><span class="token punctuation">,</span>
-      <span class="token property">"udp"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      <span class="token property">"ip"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-
-    <span class="token property">"sniffing"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      <span class="token property">"destOverride"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"http"</span><span class="token punctuation">,</span> <span class="token string">"tls"</span><span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"outbounds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"vmess"</span><span class="token punctuation">,</span>
-            <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                <span class="token property">"vnext"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-                    <span class="token punctuation">&#123;</span>
-                        <span class="token property">"users"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-                            <span class="token punctuation">&#123;</span>
-                                <span class="token property">"alterId"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
-                                <span class="token property">"security"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
-                                <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"92be9285-52eb-4666-bb92-eae0e608ca8a"</span> <span class="token comment">// 需要和服务器端 inbounds 的 id 保持一致</span>
-                            <span class="token punctuation">&#125;</span>
-                        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-                        <span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">1234</span><span class="token punctuation">,</span>                                       <span class="token comment">// 同上</span>
-                        <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"xxx.xxx.xx.xxx"</span>                         <span class="token comment">// 服务器地址</span>
-                    <span class="token punctuation">&#125;</span>
-                <span class="token punctuation">]</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token property">"streamSettings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                <span class="token property">"network"</span><span class="token operator">:</span> <span class="token string">"mkcp"</span><span class="token punctuation">,</span>                                          <span class="token comment">// 最简单方式直接设置为 tcp，需要和服务端 inbounds 保持一致</span>
-                <span class="token property">"kcpSettings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                    <span class="token property">"uplinkCapacity"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
-                    <span class="token property">"downlinkCapacity"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
-                    <span class="token property">"congestion"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-                    <span class="token property">"header"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-                        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"none"</span>
-                    <span class="token punctuation">&#125;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"blackhole"</span><span class="token punctuation">,</span>
-            <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"adblock"</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"freedom"</span><span class="token punctuation">,</span>
-            <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"direct"</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"routing"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>                                                          <span class="token comment">// 路由</span>
-    <span class="token property">"domainStrategy"</span><span class="token operator">:</span> <span class="token string">"IPOnDemand"</span><span class="token punctuation">,</span>
-    <span class="token property">"rules"</span><span class="token operator">:</span><span class="token punctuation">[</span>
-      <span class="token punctuation">&#123;</span>
-        <span class="token property">"domain"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token string">"tanx.com"</span><span class="token punctuation">,</span>
-          <span class="token string">"googeadsserving.cn"</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"field"</span><span class="token punctuation">,</span>
-        <span class="token property">"outboundTag"</span><span class="token operator">:</span> <span class="token string">"adblock"</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token punctuation">&#123;</span>
-        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"field"</span><span class="token punctuation">,</span>
-        <span class="token property">"ip"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token string">"geoip:private"</span><span class="token punctuation">,</span>
-          <span class="token string">"geoip:cn"</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">"outboundTag"</span><span class="token operator">:</span> <span class="token string">"direct"</span>
-      <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-      <span class="token punctuation">&#123;</span>
-        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"field"</span><span class="token punctuation">,</span>
-        <span class="token property">"domain"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"geosite:cn"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">"outboundTag"</span><span class="token operator">:</span> <span class="token string">"direct"</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="v2rayNG-设置">v2rayNG 设置</h3>
-<p>在右上角 <em>+</em> 选择 <em>手动输入 [Vmess]</em></p>
-<ul>
-<li>
-<p>别名 <strong>v2ray</strong></p>
-</li>
-<li>
-<p>地址 <strong>服务器 IP</strong></p>
-</li>
-<li>
-<p>端口 <strong>和服务器保持一致</strong></p>
-</li>
-<li>
-<p>用户 ID <strong>和服务器的用户 ID 保持一致</strong></p>
-</li>
-<li>
-<p>额外 ID(alterID) <strong>和服务器保持一致</strong></p>
-</li>
-<li>
-<p>加密方式 <strong>none</strong></p>
-</li>
-<li>
-<p>底层传输方式 <strong>tcp</strong></p>
-</li>
-<li>
-<p>伪装类型 <strong>none</strong></p>
-</li>
-<li>
-<p>跳过证书验证 <strong>true</strong></p>
-</li>
-</ul>
-<h1>chrome 代理</h1>
-<p>Chrome 推荐代理插件
-<a target="_blank" rel="noopener" href="https://github.com/FelisCatus/SwitchyOmega/releases">SwitchyOmega</a>。</p>
-<ul>
-<li>
-<p>插件网 <em><a target="_blank" rel="noopener" href="http://www.cnplugins.com/">http://www.cnplugins.com/</a></em> 上面把代理相关的全禁了，真闲的蛋疼。</p>
-</li>
-<li>
-<p>新版 Chrome 不能直接安装 crx 文件，把 crx 尾缀修改为 zip 拖到 Chrome 的拓展程
-序即可。此离线安装方法重启 Chrome 后失效，需要重新操作一遍。</p>
-</li>
-<li>
-<p>最好的方法是通过 Chrome 商店安装，但需要翻墙（开启 v2ray 的 HTTP 代理全局模式）。</p>
-</li>
-</ul>
-<h2 id="SwitchOmega-设置">SwitchOmega 设置</h2>
-<p>在左侧的情景模式中，默认有 <em>proxy</em>、<em>auto switch</em> 和 <em>新建情景模式…</em>。可以通过
-<em>新建情景模式…</em> 来创建新的 <em>代理服务器</em> 和 <em>自动切换模式</em>。使用默认的两种模式
-已经满足需求了。</p>
-<ol>
-<li><em>代理服务器 proxy</em></li>
-</ol>
-<p>proxy 配置需要和 v2ray 客户端 inbounds 参数保持一致。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">网址协议</th>
-<th style="text-align:center">代理协议</th>
-<th style="text-align:center">代理服务器</th>
-<th style="text-align:center">代理端口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">（默认）</td>
-<td style="text-align:center">SOCKS5</td>
-<td style="text-align:center">127.0.0.1</td>
-<td style="text-align:center">2080</td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li><em>自动切换模式 auto switch</em></li>
-</ol>
-<p>主要作用是将特定情景模式（代理）应用到具有某种模式的网址，实现自动根据网站适配不
-同代理。</p>
-<ul>
-<li>
-<p>切换规则</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">条件类型</th>
-<th style="text-align:center">条件设置</th>
-<th style="text-align:center">情景模式</th>
-<th style="text-align:center">操作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">域名通配符</td>
-<td style="text-align:center">*<a target="_blank" rel="noopener" href="http://youtube.com">youtube.com</a>*</td>
-<td style="text-align:center">proxy</td>
-<td style="text-align:center">-</td>
-</tr>
-</tbody>
-</table>
-<p>当我浏览 YouTube 时，自动会切换到 proxy 代理。</p>
-</li>
-<li>
-<p>规则列表设置</p>
-<p>规则列表网址：<em><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</a></em></p>
-<p>点击 <em>立即更新情景模式</em>。</p>
-</li>
-</ul>
-<h1>问题</h1>
-<ol>
-<li>
-<p>failed to process outbound traffic</p>
-<pre class="line-numbers language-template" data-language="template"><code class="language-template">感觉造成这个问题的原因很多，烦不胜烦。
-1. 网络差。
-2. Ubuntu 服务器 MTU 包莫名丢失，调整 MTU 值为 1280 以下。
-   # vi &#x2F;etc&#x2F;network&#x2F;interfaces
-   #增加如下值
-   mtu 9000
-   #保存后，重启网络生效
-   # &#x2F;etc&#x2F;init.d&#x2F;networking restart
-3. 服务器和本地时间不同步，同步二者时间。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h1>修改记录</h1>
-<ul>
-<li>
-<p>2020-09-19</p>
-<p>virmach VPN 搭建。</p>
-</li>
-<li>
-<p>2021-01-01</p>
-<p>增加 racknerd 部分；修改服务端配置文件语法错误；增加 v2ray 各个平台下载地址；
-增加 SwitchyOmega 规则列表设置；增加问题模块。</p>
-</li>
-<li>
-<p>2021-01-02</p>
-<p>SwitchOmega Chrome 重启失效修复。</p>
-</li>
-<li>
-<p>2021-01-10</p>
-<p>从旧网站迁移。</p>
+<p>2021-01-12</p>
+<p>从其它网站迁移。</p>
 </li>
 </ul>
 
@@ -1031,7 +746,7 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.top/2021/jian-dan-mo-xing-de-vpn-da-jian/">https://coco-hkk.top/2021/jian-dan-mo-xing-de-vpn-da-jian/</a>
+                    <a href="https://coco-hkk.top/2021/win10-android-studio-pei-zhi/">https://coco-hkk.top/2021/win10-android-studio-pei-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1069,12 +784,12 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vpn/">
-                                    <span class="chip bg-color">vpn</span>
+                                <a href="/tags/android/">
+                                    <span class="chip bg-color">android</span>
                                 </a>
                             
-                                <a href="/tags/v2fly/">
-                                    <span class="chip bg-color">v2fly</span>
+                                <a href="/tags/android-studio/">
+                                    <span class="chip bg-color">android studio</span>
                                 </a>
                             
                         </div>
@@ -1244,17 +959,18 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/websocket-pei-cdn-de-vpn-da-jian/">
+                <a href="/2021/win10-android-studio-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="websocket + tls + web + cdn VPN 搭建">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="win10 android studio 安装配置">
                         
-                        <span class="card-title">websocket + tls + web + cdn VPN 搭建</span>
+                        <span class="card-title">win10 android studio 安装配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1264,34 +980,31 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/VPN/" class="post-category">
-                                    VPN
+                            <a href="/categories/android/" class="post-category">
+                                    android
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/caddy/">
-                        <span class="chip bg-color">caddy</span>
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
                     </a>
                     
-                    <a href="/tags/vpn/">
-                        <span class="chip bg-color">vpn</span>
-                    </a>
-                    
-                    <a href="/tags/cdn/">
-                        <span class="chip bg-color">cdn</span>
+                    <a href="/tags/android-studio/">
+                        <span class="chip bg-color">android studio</span>
                     </a>
                     
                 </div>
@@ -1305,13 +1018,13 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/zhou-yi-bi-ji/">
+                <a href="/2021/freebsd-an-zhuang-texlive/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="周易">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="FreeBSD texlive 安装">
                         
-                        <span class="card-title">周易</span>
+                        <span class="card-title">FreeBSD texlive 安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1322,14 +1035,14 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%91%A8%E6%98%93/" class="post-category">
-                                    周易
+                            <a href="/categories/texlive/" class="post-category">
+                                    texlive
                                 </a>
                             
                             
@@ -1339,8 +1052,8 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%91%A8%E6%98%93/">
-                        <span class="chip bg-color">周易</span>
+                    <a href="/tags/texlive/">
+                        <span class="chip bg-color">texlive</span>
                     </a>
                     
                 </div>
