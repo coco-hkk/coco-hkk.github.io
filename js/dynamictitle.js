@@ -2,12 +2,10 @@ var OriginTitle = document.title;
 var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
-        $('[rel="icon"]').attr('href', "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png");
         document.title = '渡劫失败！！！';
         clearTimeout(titleTime);
     }
     else {
-        $('[rel="icon"]').attr('href', "https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png");
         document.title = '一起来修仙 （‐＾▽＾‐）' + OriginTitle;
         titleTime = setTimeout(function () {
             document.title = OriginTitle;
