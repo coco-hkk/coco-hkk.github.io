@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>FreeBSD 基本操作</title>
+      <link href="2021/freebsd-ji-ben-cao-zuo/"/>
+      <url>2021/freebsd-ji-ben-cao-zuo/</url>
+      
+        <content type="html"><![CDATA[<p>主要记录一些使用 FreeBSD 过程中遇到的不熟悉的操作。</p><h1>文件操作</h1><ol><li>文件属性修改</li></ol><pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 修改文件所有者chown owner file# 修改文件所有者组chgrp group file# 同时修改所有者和所有者组chown owner:group file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1>本地化设置</h1><ol><li><p>在用户的 <code>~/.login_conf</code> 或用户 shell 的启动文件 <code>~/.profile</code>，<code>~/.bashrc</code>，<code>~/.cshrc</code> 中，设置如下两个变量：</p><ul><li><code>LANG</code> 为 POSIX 设置本地化语言功能。格式： <code>语言代码_国家代码.编码</code>。</li><li><code>MM_CHARSET</code> 应用程序的 MIME 字符集。</li></ul><p>这包括用户的 shell 配置，特定的应用配置和 X11 配置。</p></li><li><p>locale 查看当前本地化设置。</p> <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 查看支持本地化的类型locale -a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>配置中文</p> <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">localeLANG&#x3D;zh_CN.UTF-8LC_CTYPE&#x3D;&quot;zh_CN.UTF-8&quot;LC_COLLATE&#x3D;&quot;zh_CN.UTF-8&quot;LC_TIME&#x3D;&quot;zh_CN.UTF-8&quot;LC_NUMERIC&#x3D;&quot;zh_CN.UTF-8&quot;LC_MONETARY&#x3D;&quot;zh_CN.UTF-8&quot;LC_MESSAGES&#x3D;&quot;zh_CN.UTF-8&quot;LC_ALL&#x3D;zh_CN.UTF-8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ol><h1>系统升级</h1><pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">freebsd-update -r 12.0-RELEASE upgradefreebsd-update installfreebsd-version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h1>安装软件</h1><p>两种安装方式分别为 FreeBSD Ports 套件（源码安装）和 packages（二进制安装）。</p><h2 id="ports-安装">ports 安装</h2><ol><li><p>更新 ports</p> <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 自动查找 mirrors，下载并解压 ports 包到 &#x2F;usr&#x2F;portsportsnap fetch extract# 后续更新 ports tree，无需 extractportsnap fetch update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>寻找程序包</p><ul><li><p>若知道 port 的准确名字，但需要知道在哪个类别找到，使用指令 <code>whereis</code>。</p><pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">whereis git   # &#x2F;usr&#x2F;ports&#x2F;devel&#x2F;git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>使用 <code>ports collection</code> 内嵌搜索机制。首先到 <code>/usr/ports</code>，运行<code>make search name=program-name</code>。</p><pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 寻找 lsof 程序cd &#x2F;usr&#x2F;portsmake search name&#x3D;lsof<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul></li><li><p>安装</p> <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 假设安装 vimcd &#x2F;usr&#x2F;ports&#x2F;editors&#x2F;vimmake install clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ol><h2 id="packages-安装">packages 安装</h2><ol><li><p>安装 pkg</p><p>在 shell 中执行 <code>pkg</code>，然后选择 <code>y</code> 即可。</p></li><li><p>软件安装</p> <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 假设安装 vimpkg install vim<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>软件卸载</p> <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">pkg delete vim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>软件更新</p> <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">pkg updatepkg upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li></ol><h1>问题解决</h1><ol><li><p>系统升级后 sshd 无法正常启动。且报错 <code>Bad SSH2 cipher spec 'aes192-ctr,aes256-ctr,aes128-cbc,aes192-cbc,aes256-cbc ...'</code></p><ul><li>查看 ssh 使用了哪些 ciphers。</li></ul> <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">ssh -Q cipher<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>打开 <code>/etc/ssh/sshd_config</code>，替换 Ciphers 那一行即可。</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> FreeBSD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> FreeBSD </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电子书网址</title>
       <link href="2021/dian-zi-shu-wang-zhi/"/>
       <url>2021/dian-zi-shu-wang-zhi/</url>
