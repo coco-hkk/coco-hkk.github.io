@@ -585,14 +585,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-15
+                    2021-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    326
+                    459
                 </div>
                 
 
@@ -633,10 +633,32 @@
 <li>为了方便，可将 <code>nv-qt.exe</code> 快捷方式发送到桌面。</li>
 </ol>
 <p><strong>添加右键 “使用 nvim 打开”</strong></p>
+<p>方法一：</p>
 <ol>
 <li>打开注册表 <code>HKEY_CLASSES_ROOT -&gt; * -&gt; shell</code>。</li>
-<li>右键新建项，输入 <code>使用 nvim 打开</code>。</li>
-<li>在新项中新建 <code>command</code> 项，修改其默认值为 <code>&quot;D:\neovim\bin\nvim-qt.exe&quot; &quot;--maximized&quot; &quot;%1&quot;</code></li>
+<li>右键新建项，输入 <code>用 Nvim 编辑</code>。</li>
+<li>在新项中新建 <code>command</code> 项，修改其默认值为 <code>&quot;D:\neovim\bin\nvim-qt.exe&quot; &quot;--fullscreen&quot; &quot;%1&quot;</code></li>
+</ol>
+<p>方法二：</p>
+<ol>
+<li>
+<p>新建注册表脚本 menu.reg。</p>
+<pre class="line-numbers language-register" data-language="register"><code class="language-register">Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\Edit with nvim]
+&quot;Icon&quot;&#x3D;&quot;D:\\Neovim\\bin\\nvim-qt.exe,0&quot;
+@&#x3D;&quot;用 Nvim 编辑&quot;
+
+[HKEY_CLASSES_ROOT\*\shell\Edit with nvim\command]
+@&#x3D;&quot;D:\\Neovim\\bin\\nvim-qt.exe  --fullscreen --no-ext-tabline \&quot;%1\&quot;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>双击 menu.reg 导入到注册表中。</p>
+<ul>
+<li>Icon 所指向的路径是 nvim 程序文件 (exe 程序本身就是一个打包格式，里边包含图标信息）。</li>
+<li>command 指向的是路径是右键菜单要执行的程序。</li>
+</ul>
+</li>
 </ol>
 <h1>配置</h1>
 <p>win10 中 vim <strong>用户配置</strong>。</p>
@@ -658,7 +680,7 @@
 </tr>
 <tr>
 <td style="text-align:center">neovim</td>
-<td style="text-align:center">init.vim</td>
+<td style="text-align:center">init.vim 或 ginit.vim</td>
 <td style="text-align:center">~/AppData/Local/nvim</td>
 <td style="text-align:center">由用户指定</td>
 </tr>
@@ -1285,7 +1307,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26k</span>&nbsp;字
+                class="white-color">27.1k</span>&nbsp;字
             
             
             
