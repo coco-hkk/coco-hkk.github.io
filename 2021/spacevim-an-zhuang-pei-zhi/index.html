@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="天文概念, Vim,VPN,Linux,周易,天文">
+    <meta name="keywords" content="SpaceVim 安装配置, Vim,VPN,Linux,周易,天文">
     <meta name="description" content="修仙才是正路。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>天文概念 | 点点滴滴</title>
+    <title>SpaceVim 安装配置 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/libs/awesome/css/all.css">
@@ -427,12 +427,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">天文概念</h1>
+                    <h1 class="description center-align post-title">SpaceVim 安装配置</h1>
                 </div>
             </div>
         </div>
@@ -548,8 +548,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%A4%A9%E6%96%87%E6%A6%82%E5%BF%B5/">
-                                <span class="chip bg-color">天文概念</span>
+                            <a href="/tags/SpaceVim/">
+                                <span class="chip bg-color">SpaceVim</span>
+                            </a>
+                        
+                            <a href="/tags/neovim/">
+                                <span class="chip bg-color">neovim</span>
                             </a>
                         
                     </div>
@@ -560,8 +564,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A9%E6%96%87/" class="post-category">
-                                天文
+                            <a href="/categories/vim/" class="post-category">
+                                vim
                             </a>
                         
                     </div>
@@ -574,7 +578,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-13
+                    2021-01-18
                 </div>
                 
 
@@ -588,14 +592,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    567
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    2 分
                 </div>
                 
 
@@ -618,220 +622,102 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>学习工具 <code>Stellarium</code>、<code>Celestia</code>、<code>SpaceEngine</code> 以及 <code> Universe Sandbox</code>。</p>
-<h1>星等</h1>
-<p>星等（magnitude）是衡量天体光度的量。在不明确说明的情况下，星等一般指目视星等。</p>
-<p>天文学上规定，星的明暗一律用星等来表示，星等数越小，说明星越亮，星等数每相差 1星
-的亮度大约相差 2.512 倍。1 等星的亮度恰好是 6 等星的 100 倍。每相差 0.1 星等的亮
-度大约相差 1.0965 倍。</p>
+                <p>SpaceVim 是 vim/neovim 的配置和插件超集，以模块的方式组织管理插件和相关配置，模
+块由社区维护。SpaceVim 相当于在 vim/neovim 基础上提供了一层封装，为用户提供了全
+新的配置文件和语法，用户无法像 vimrc 那样配置。若想以 vimrc 方式配置，必须通过
+SpaceVim 提供的接口实现。</p>
+<p>官方推荐 SpaceVim 和 neovim 组合，但在 windows 下推荐 Vim 8.0 以上。</p>
+<p>参考 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/">中文官方网站</a>。</p>
+<p><strong>快捷键</strong> 参考 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/documentation/">这里</a>。
+<strong>模块</strong> 参考 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/layers/">这里</a>。</p>
+<h1>SapceVim neovim 安装</h1>
+<p>在 win10 安装 SpaceVim 有两种方式。</p>
 <ol>
-<li>视星等</li>
+<li>
+<p>下载并运行官方 windows 安装脚本 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/install.cmd">install.cmd</a>。</p>
+</li>
+<li>
+<p>下载 Spacevim 到 neovim 配置文件目录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/SpaceVim/SpaceVim.git ~/AppData/Local/nvim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
 </ol>
-<p>天体光度测量直接得到的星等同天体的距离有关，称为视星等，它反映天体的视亮度。一颗
-很亮的星可以由于距离远而显得很暗（星等数值大）；而一颗实际上很暗的星可能由于距离
-近而显得很亮（星等数值小）。对于点光源，则代表天体在地球上的照度。星等常用 m 表
-示。</p>
-<p>天空中有一等星 21 颗，二等星有 46 颗，三等星 134 颗，四等星共 458 颗，五等星有
-1476 颗，六等星共 4840 颗，共计 6974 颗。更亮的为 0 等以至负的星等。例如，太阳是
--26.7 等，满月的亮度是 -12.6 等，金星最亮时可达 -4.9 等。</p>
-<p>我们把肉眼能够看到的最暗的星设定是 6 等星（6m 星）。</p>
-<ol start="2">
-<li>绝对星等</li>
-</ol>
-<p>绝对星等（M）是假定把恒星放在距地球 10 秒差距（32.6 光年）的地方测得的恒星的亮度
-，用以区别于视星等（m）。</p>
-<h1>色指数</h1>
-<p>色指数是天文学中利用颜色来显示恒星表面温度的一个纯量。</p>
-<h1>赫罗图</h1>
-<p>恒星光谱型和光度关系的坐标图。该图以横坐标表示光谱型，由左到右为 O、B、A、F、G、
-K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +15、+10、0、-5、-10 绝对
-星等。</p>
-<p>结果发现，有 90% 以上的恒星分布在坐标图的左上方到右下方的对角线的狭长带区内。这
-个狭长带区称为 <strong>主星序</strong>; 其中的恒星称为 <strong>主序星</strong>。在主星序右上角，有呈水平走
-向<strong>巨星序</strong>，其中的恒星称为 <strong>巨星</strong>，数量较少。在图上部，有一些分散的 **超巨星
-**组成 <strong>超巨星序</strong>。在图左下角，是由为数较少的 <strong>白矮星</strong> 组成的 <strong>白矮星序</strong>。
-赫罗图能显示恒星的类别和演化程序，是天体物理学和天体演化学的有力研究工具。</p>
-<p><img src="/2021/tian-wen-gai-nian/0_%E8%B5%AB%E7%BD%97%E5%9B%BE.png" alt="赫罗图"></p>
-<p>恒星类型参照表：</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>温度</th>
-<th>约定颜色</th>
-<th>看见颜色</th>
-<th>质量（太阳质量）</th>
-<th>半径（太阳半径）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O</td>
-<td>30,000-60,000K</td>
-<td>蓝色</td>
-<td>蓝色</td>
-<td>64M⊙</td>
-<td>16R⊙</td>
-</tr>
-<tr>
-<td>B</td>
-<td>10,000-30,000K</td>
-<td>蓝到白色</td>
-<td>蓝白色</td>
-<td>18M⊙</td>
-<td>7R⊙</td>
-</tr>
-<tr>
-<td>A</td>
-<td>7,500-10,000K</td>
-<td>白色</td>
-<td>白色</td>
-<td>3.1M⊙</td>
-<td>2.1R⊙</td>
-</tr>
-<tr>
-<td>F</td>
-<td>6000-7500K</td>
-<td>淡黄白色</td>
-<td>白色</td>
-<td>1.7M⊙</td>
-<td>1.4R⊙</td>
-</tr>
-<tr>
-<td>G</td>
-<td>5000-6000K</td>
-<td>黄色</td>
-<td>淡黄白色</td>
-<td>1.1M⊙</td>
-<td>1.1R⊙</td>
-</tr>
-<tr>
-<td>K</td>
-<td>3500-5000K</td>
-<td>橙色</td>
-<td>黄橙色</td>
-<td>0.8M⊙</td>
-<td>0.9R⊙</td>
-</tr>
-<tr>
-<td>M</td>
-<td>2000-3500K</td>
-<td>红色</td>
-<td>橙红色</td>
-<td>0.4M⊙</td>
-<td>0.5R⊙</td>
-</tr>
-</tbody>
-</table>
-<h1>距离单位</h1>
-<ol>
-<li>天文单位</li>
-</ol>
-<p>天文单位是天文学中计量天体之间距离的一种单位。以 <code>A.U.</code> 表示，其数值取地球和太阳
-之间的平均距离，约 1.5 亿公里。</p>
-<pre class="line-numbers language-none"><code class="language-none">月球距离地球 0.0026 天文单位。
-地球距离太阳 1 天文单位。
-木星距离太阳 5.2 天文单位。
-冥王星距离太阳 39.5 天文单位。
+<p><strong>注：</strong> 不管是哪种方法，必须确保目录 <code>~/AppData/Local/nvim</code> 存在。</p>
+<p>安装结束后，初次打开 neovim，选择配色方案。必须重启才会安装插件。</p>
+<h1>配置文件</h1>
+<p>win10 SpaceVim 各种文件位置。</p>
+<ul>
+<li>SpaceVim 的默认配置文件为 <code>~/.SpaceVim.d/init.toml</code>。</li>
+<li>SpaceVim 安装位置为 <code>~/AppData/Local/nvim/</code>。</li>
+<li>SpaceVim 自定义插件 <code>custom_plugins</code> 安装位置 <code>~/.cache/vimfiles/repos/github.com/</code>。</li>
+<li>SpaceVim 产生的临时文件位置 <code>~/.cache/SpaceVim/</code>。如：swap 文件、undo 文件、备
+份文件、init.toml 中间文件 init.json  等。</li>
+</ul>
+<pre class="line-numbers language-toml" data-language="toml"><code class="language-toml"><span class="token comment"># ~/.SpaceVim.d/init.toml</span>
+<span class="token comment"># 所有的 SpaceVim 选项都列在 [options] 之下</span>
+<span class="token punctuation">[</span><span class="token table class-name">options</span><span class="token punctuation">]</span>
+    <span class="token key property">colorscheme</span> <span class="token punctuation">=</span> <span class="token string">"gruvbox"</span>
+    <span class="token key property">colorscheme_bg</span> <span class="token punctuation">=</span> <span class="token string">"light"</span>
+    <span class="token key property">enable_guicolors</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+    <span class="token key property">statusline_separator</span> <span class="token punctuation">=</span> <span class="token string">"curve"</span>
+    <span class="token key property">statusline_iseparator</span> <span class="token punctuation">=</span> <span class="token string">"curve"</span>
+    <span class="token key property">buffer_index_type</span> <span class="token punctuation">=</span> <span class="token number">0</span>
+    <span class="token key property">enable_tabline_filetype_icon</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+    <span class="token key property">enable_statusline_mode</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
 
-1 天文单位 &#x3D; 149597870700 米 &#x3D; 1.495978707 x 10^11 米<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
-<li>光年</li>
-</ol>
-<p>光年一般被用于衡量天体间的距离。字面意思指：光在宇宙真空中沿直线经过一年时间的距
-离，以 <code>ly</code> 表示，为 <code>9,460'7304'7258'0800</code> 米。</p>
-<pre class="line-numbers language-none"><code class="language-none">一光年约等于 63240 天文单位。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li>秒差距</li>
-</ol>
-<p>秒差距是天文学上的一种长度单位。秒差距是最标准的测量恒星距离的方法，以 <code>pc</code> 表示。</p>
-<p>主要用于量度太阳系外天体的距离。</p>
-<p>1 秒差距定义为天体的半年视差为 <code>2&quot;</code> 时，天体到地球（太阳）的距离，也就是地球轨道
-半径对应视角为 <code>1&quot;</code> 时的距离。</p>
-<p>秒差距是视角的倒数，当天体的视角为 <code>0.1&quot;</code> 时，它的距离为 10 秒差距，当天体的视角
-为<code>0.01&quot;</code>时，它的距离便为 100 秒差距，依次类推。</p>
-<pre class="line-numbers language-none"><code class="language-none">1 秒差距约 3.261 光年<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="视差">视差</h2>
-<p>视差就是从有一定距离的两个点上观察同一个目标所产生的方向差异。从目标看两个点之间
-的夹角，叫做这两个点的视差，两点之间的距离称作基线。只要知道视差角度和基线长度，
-就可以计算出目标和观测者之间的距离。</p>
-<h1>天文坐标系</h1>
-<h1>天体</h1>
-<h2 id="卫星">卫星</h2>
-<p>卫星是指在围绕一颗行星轨道并按闭合轨道做周期性运行的天然天体，人造卫星一般亦可称
-为卫星。</p>
-<ol>
-<li>不会发光。</li>
-<li>围绕行星运转。</li>
-<li>随行星围绕恒星运转。</li>
-</ol>
-<h2 id="小行星">小行星</h2>
-<p>小行星是指太阳系内类似行星环绕太阳运动，但体积和质量比行星小得多的天体，绝大多数
-的小行星都集中在火星与木星轨道之间的小行星带。</p>
-<h2 id="行星">行星</h2>
-<p>行星，通常指自身不发光，环绕着恒星的天体。</p>
-<p>新定义：</p>
-<ol>
-<li>必须是围绕恒星运转的天体。</li>
-<li>质量必须足够大，来克服固体引力以达到流体静力平衡的形状（近于球体）。</li>
-<li>必须清除轨道附近区域，公转轨道范围内不能有比它更大的天体。</li>
-</ol>
-<h3 id="行星环">行星环</h3>
-<p>行星环引指围绕行星旋转的物质构成的环状带，是因质量巨大的行星的引力而形成。</p>
-<p>太阳系中拥有行星环的行星有木星、土星、天王星和海王星。</p>
-<h2 id="恒星">恒星</h2>
-<p>恒星是由 <code>发光等离子体</code>，主要是 <code>氢</code>、 <code>氦</code> 和 <code>微量的较重元素</code> 构成的巨型球体。</p>
-<p>在夜晚能看到的恒星，几乎都处于银河系内。而银河系统共约 3000 亿颗恒星中，人类只能
-观测到一小部分。</p>
-<h2 id="矮行星">矮行星</h2>
-<p>矮行星或称“侏儒行星”，体积介于行星和小行星之间，围绕恒星运转，质量足以克服固体
-引力以达到流体静力平衡（近于圆球）形状，没有清空所在轨道上的其他天体，同时不是行
-星。</p>
-<h2 id="彗星">彗星</h2>
-<p>彗星，是指进入太阳系内亮度和形状会随日距变化而变化的绕日运动的天体，呈云雾状的独
-特外貌。</p>
-<p>彗星分为彗核、彗发、彗尾三部分。彗核由冰物质构成，当彗星接近恒星时，彗星物质升华
-，在冰核周围形成朦胧的彗发和一条稀薄物质流构成的彗尾。</p>
-<p>彗星的质量、密度很小，当远离太阳时只是一个由水、氨、甲烷等冻结的冰块和夹杂许多固
-体尘埃粒子的“脏雪球”。当接近太阳时，彗星在太阳辐射作用下分解成彗头和彗尾，状如
-扫帚。</p>
-<h2 id="白矮星">白矮星</h2>
-<p>白矮星是一种低光度、高密度、高温度的恒星。因为它的颜色呈白色、体积比较矮小，因此
-被命名为白矮星。</p>
-<p>白矮星是演化到末期的恒星，主要由碳构成，外部覆盖一层氢气与氦气。</p>
-<p>表面温度 8000K，发出白光，可有几十亿年寿命。</p>
-<h2 id="中子星">中子星</h2>
-<p>中子星是除黑洞外密度最大的星体。</p>
-<p>恒星演化到末期，经由重力崩溃发生超新星爆炸之后，可能成为的少数终点之一。</p>
-<p>质量没有达到可以形成黑洞的恒星在寿命终结时塌缩形成的一种介于白矮星和黑洞之间的星
-体，其密度比地球上任何物质密度大相当多倍。</p>
-<h3 id="脉冲星">脉冲星</h3>
-<p>中子星的一种，能够周期性发射脉冲信号，直径大多为 10 千米左右，自转极快。</p>
-<h2 id="黑洞">黑洞</h2>
-<p>黑洞是现代广义相对论中，存在于宇宙空间中的一种天体。黑洞的引力极其强大，使得视界
-内的逃逸速度大于光速。</p>
-<p>故而，“黑洞是时空曲率大到光都无法从其事件视界逃脱的天体”。</p>
-<h2 id="虫洞">虫洞</h2>
-<p>时空洞（Wormhole）又称 <code>爱因斯坦－罗森桥</code>，也译作 <code>蛀孔</code>。是宇宙中可能存在的连接
-两个不同时空的狭窄隧道。</p>
-<h2 id="星系">星系</h2>
-<p>星系，别称宇宙岛，指数量巨大的恒星系及星际尘埃组成的运行系统。</p>
-<p><code>星系是构成宇宙的基本单位</code>。参考银河系，它是一个包含恒星、气体、宇宙尘埃和暗物质，
-并且受到重力束缚的大星系。</p>
-<h2 id="星云">星云</h2>
-<p>星云是稀薄的气体或尘埃构成的天体之一。包含了除行星和彗星外的几乎所有延展型天体。</p>
-<p>它们的主要成份是 <code>氢</code>，其次是 <code>氦</code>，还含有一定比例的金属元素和非金属元素。</p>
-<h2 id="星团">星团</h2>
-<p>星团是指恒星数目超过 10 颗以上，并且相互之间存在物理联系（引力作用）的星群。</p>
-<h2 id="类星体">类星体</h2>
-<p><code>类星体</code> 是类似恒星天体的简称，又称为 <code>似星体</code>、 <code>魁霎</code> 或 <code>类星射电源</code>。</p>
-<h2 id="吸积盘">吸积盘</h2>
-<p>吸积盘是一种由弥散物质组成的、围绕中心体转动的结构，它是包围黑洞或中子星的气体盘。</p>
+    <span class="token key property">guifont</span> <span class="token punctuation">=</span> <span class="token string">"DaddyTimeMono Nerd Font Mono:h11"</span>
+    <span class="token key property">vimcompatible</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+    <span class="token key property">snippet_engine</span> <span class="token punctuation">=</span> <span class="token string">'ultisnips'</span>
+
+<span class="token comment"># SpaceVim 模块设置，主要包括启用 / 禁用模块。各个模块的选项，参考各个模块的文档。</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">layers</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">'autocomplete'</span>
+    <span class="token key property">auto_completion_return_key_behavior</span> <span class="token punctuation">=</span> <span class="token string">"complete"</span>
+    <span class="token key property">auto_completion_tab_key_behavior</span> <span class="token punctuation">=</span> <span class="token string">"smart"</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">layers</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">'shell'</span>
+    <span class="token key property">default_position</span> <span class="token punctuation">=</span> <span class="token string">'top'</span>
+    <span class="token key property">default_height</span> <span class="token punctuation">=</span> <span class="token number">30</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">layers</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"lang#python"</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">layers</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"incsearch"</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">layers</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">name</span> <span class="token punctuation">=</span> <span class="token string">"lang#markdown"</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">custom_plugins</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">repo</span> <span class="token punctuation">=</span> <span class="token string">"hotoo/pangu.vim"</span>
+    <span class="token key property">on_cmd</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"Pangu"</span><span class="token punctuation">]</span>
+    <span class="token key property">merged</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token table class-name">custom_plugins</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token key property">repo</span> <span class="token punctuation">=</span> <span class="token string">"jiangmiao/auto-pairs"</span>
+    <span class="token key property">merged</span> <span class="token punctuation">=</span> <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上配置参考 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/quick-start-guide/">基本配置</a>。</p>
+<h1>vim 方式配置</h1>
+<p>使用 toml 作为默认配置文件，无法直接在配置文件中添加 vim 设置。SpaceVim 支持指定
+载入配置时需要调用的函数，可以在函数中实现需要的配置。</p>
+<p>修改 <code>~/.SpaceVim.d/init.toml</code>，加入 <code>bootstrap_before</code> 选项。</p>
+<pre class="line-numbers language-toml" data-language="toml"><code class="language-toml"><span class="token punctuation">[</span><span class="token table class-name">options</span><span class="token punctuation">]</span>
+  <span class="token key property">bootstrap_before</span> <span class="token punctuation">=</span> <span class="token string">"myspacevim#init"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>添加文件 <code>~/.SpaceVim.d/autoload/myspacevim.vim</code>, 并加入如下内容：</p>
+<pre class="line-numbers language-toml" data-language="toml"><code class="language-toml">function! myspacevim<span class="token comment">#init() abort</span>
+  set nobackup
+  set colorcolumn<span class="token punctuation">=</span><span class="token number">80</span>
+  set textwidth<span class="token punctuation">=</span><span class="token number">80</span>
+  set fo+<span class="token punctuation">=</span>Mm
+  set wrap
+  set noimdisable
+  set autochdir set noimdisable
+endfunction<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>修订记录</h1>
 <ul>
 <li>
-<p>2021-01-13</p>
-<p>从其它网站迁移。</p>
+<p>2021-01-18</p>
+<p>创建。</p>
 </li>
 </ul>
 
@@ -860,7 +746,7 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.top/2021/tian-wen-gai-nian/">https://coco-hkk.top/2021/tian-wen-gai-nian/</a>
+                    <a href="https://coco-hkk.top/2021/spacevim-an-zhuang-pei-zhi/">https://coco-hkk.top/2021/spacevim-an-zhuang-pei-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -898,8 +784,12 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%A4%A9%E6%96%87%E6%A6%82%E5%BF%B5/">
-                                    <span class="chip bg-color">天文概念</span>
+                                <a href="/tags/SpaceVim/">
+                                    <span class="chip bg-color">SpaceVim</span>
+                                </a>
+                            
+                                <a href="/tags/neovim/">
+                                    <span class="chip bg-color">neovim</span>
                                 </a>
                             
                         </div>
@@ -1073,13 +963,13 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/tai-yang-xi/">
+                <a href="/2021/wen-ti-yu-jie-jue-jiu-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/2.jpg" class="responsive-img" alt="太阳系">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/14.jpg" class="responsive-img" alt="windows 遇到的问题（旧笔记）">
                         
-                        <span class="card-title">太阳系</span>
+                        <span class="card-title">windows 遇到的问题（旧笔记）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1090,14 +980,14 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-13
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-18
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%A4%A9%E6%96%87/" class="post-category">
-                                    天文
+                            <a href="/categories/Others/" class="post-category">
+                                    Others
                                 </a>
                             
                             
@@ -1107,12 +997,8 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%A4%A9%E6%96%87/">
-                        <span class="chip bg-color">天文</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%AA%E9%98%B3%E7%B3%BB/">
-                        <span class="chip bg-color">太阳系</span>
+                    <a href="/tags/%E6%97%A7%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">旧笔记</span>
                     </a>
                     
                 </div>
@@ -1126,13 +1012,13 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/heng-xing-de-yan-hua/">
+                <a href="/2021/git-shi-yong-cao-zuo/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/9.jpg" class="responsive-img" alt="恒星的演化">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/15.jpg" class="responsive-img" alt="Git 实用操作">
                         
-                        <span class="card-title">恒星的演化</span>
+                        <span class="card-title">Git 实用操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1143,14 +1029,14 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%A4%A9%E6%96%87/" class="post-category">
-                                    天文
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
                                 </a>
                             
                             
@@ -1160,12 +1046,8 @@ K、M 光谱型。以纵坐标表示光度（绝对星等），由下到上为 +
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%A4%A9%E6%96%87/">
-                        <span class="chip bg-color">天文</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%81%92%E6%98%9F%E6%BC%94%E5%8C%96/">
-                        <span class="chip bg-color">恒星演化</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>

@@ -597,21 +597,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-17
+                    2021-01-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    681
+                    810
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -751,11 +751,39 @@ nrm <span class="token builtin class-name">test</span> <span class="token functi
 
 <span class="token comment"># 安装项目的全部依赖</span>
 <span class="token function">yarn</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="配置">配置</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看版本</span>
+<span class="token function">yarn</span> -v
+
+<span class="token comment"># 查看 yarn 配置</span>
+<span class="token function">yarn</span> config list
+
+<span class="token comment"># 修改 yarn 的源为淘宝源</span>
+<span class="token function">yarn</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org/
+
+<span class="token comment"># 修改全局安装目录</span>
+<span class="token function">yarn</span> config <span class="token builtin class-name">set</span> global-folder <span class="token string">"E:\Yarn\global"</span>
+
+<span class="token comment"># 修改全局安装目录 bin 的位置，并把 bin 加到系统环境变量中。</span>
+<span class="token function">yarn</span> config <span class="token builtin class-name">set</span> prefix <span class="token string">"E:\Yarn\global<span class="token entity" title="\&quot;">\"</span>
+
+# 修改全局缓存目录
+yarn config set cache-folder "</span>E:<span class="token punctuation">\</span>Yarn<span class="token punctuation">\</span>cache"
+
+<span class="token comment"># 查看当前 yarn 的 bin 位置</span>
+<span class="token function">yarn</span> global bin
+
+<span class="token comment"># 查看当前 yarn 全局安装位置</span>
+<span class="token function">yarn</span> global <span class="token function">dir</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>修订记录</h1>
 <ul>
 <li>
 <p>2021-01-15</p>
 <p>从其它网站迁移。</p>
+</li>
+<li>
+<p>2021-01-18</p>
+<p>更新 yarn。</p>
 </li>
 </ul>
 
@@ -1085,8 +1113,8 @@ nrm <span class="token builtin class-name">test</span> <span class="token functi
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category">
-                                    git
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
                                 </a>
                             
                             
@@ -1102,6 +1130,10 @@ nrm <span class="token builtin class-name">test</span> <span class="token functi
                     
                     <a href="/tags/gitconfig/">
                         <span class="chip bg-color">gitconfig</span>
+                    </a>
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -1341,7 +1373,7 @@ nrm <span class="token builtin class-name">test</span> <span class="token functi
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.1k</span>&nbsp;字
+                class="white-color">30.1k</span>&nbsp;字
             
             
             
