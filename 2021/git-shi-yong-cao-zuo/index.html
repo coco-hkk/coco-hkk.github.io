@@ -581,14 +581,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-18
+                    2021-01-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    954
+                    971
                 </div>
                 
 
@@ -619,6 +619,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Git 仓库分为工作区、暂存区 / 缓存区、本地仓库和远程仓库组成。</p>
+<p><img src="/2021/git-shi-yong-cao-zuo/git-cmd.png" alt="git 操作图"></p>
 <h1>基础操作</h1>
 <ol>
 <li>创建仓库</li>
@@ -626,8 +627,11 @@
 <ul>
 <li>
 <p>克隆仓库</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 从远程仓库拷贝一份到本地</span>
-<span class="token function">git</span> clone <span class="token string">'url'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 从远程仓库拷贝一份到本地，使用 URL</span>
+<span class="token function">git</span> clone https://remote.server.repo.git
+
+<span class="token comment"># 使用 ssh</span>
+<span class="token function">git</span> clone ssh://remoteUserName@remoteIp:portNum/repoPath<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>初始化仓库</p>
@@ -1046,6 +1050,10 @@
                         <span class="chip bg-color">neovim</span>
                     </a>
                     
+                    <a href="/tags/vim/">
+                        <span class="chip bg-color">vim</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1091,8 +1099,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Nodejs/">
-                        <span class="chip bg-color">Nodejs</span>
+                    <a href="/tags/nodejs/">
+                        <span class="chip bg-color">nodejs</span>
                     </a>
                     
                     <a href="/tags/node/">
@@ -1348,7 +1356,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.1k</span>&nbsp;字
+                class="white-color">31.6k</span>&nbsp;字
             
             
             
