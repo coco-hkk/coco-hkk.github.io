@@ -581,21 +581,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-20
+                    2021-01-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    737
+                    893
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -720,11 +720,37 @@ zo（zO）<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <p>通过命令 <code>:set laststatus=2</code> 将状态行显示在窗口底部倒数第二行。</p>
 <p>也可以通过命令 <code>:set laststatus=0</code> 移除状态行。</p>
 <p>以上所有命令去掉冒号，写入配置文件即可永久生效。</p>
+<h1>编码设置</h1>
+<ul>
+<li>显示文件编码格式 <code>:set fileencoding</code>。</li>
+<li>转换文件编码格式 <code>:set fileencoding=utf-8</code>。</li>
+<li>查看文件格式 <code>:set fileformat?</code>。</li>
+<li>设置文件格式 <code>:set fileformat=unix</code>。</li>
+</ul>
+<ol>
+<li>
+<p>以指定的编码格式打开文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> file.txt -c <span class="token string">"e ++enc=gbk"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>解决乱码问题</p>
+<pre class="line-numbers language-vimscript" data-language="vimscript"><code class="language-vimscript">&quot; 在 .vimrc 中配置如下内容，可以让 vim 按照 fileencodings 提供的编码列表自动
+&quot; 识别文件编码。若找不到合适的编码，则用 latin-1(ASCII) 编码打开。
+set encoding&#x3D;utf-8
+set termencoding&#x3D;utf-8
+set fileencoding&#x3D;utf-8
+set fileencodings&#x3D;utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
 <h1>修订记录</h1>
 <ul>
 <li>
 <p>2021-01-12</p>
 <p>从其它网站迁移。</p>
+</li>
+<li>
+<p>2021-01-20</p>
+<p>增加编码设置。</p>
 </li>
 </ul>
 
@@ -1294,7 +1320,7 @@ zo（zO）<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">41k</span>&nbsp;字
+                class="white-color">44.1k</span>&nbsp;字
             
             
             
