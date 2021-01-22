@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Emacs Server 配置, Vim,VPN,Linux,周易,天文">
+    <meta name="keywords" content="制作 U 盘启动盘, Vim,VPN,Linux,周易,天文">
     <meta name="description" content="修仙才是正路。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Emacs Server 配置 | 点点滴滴</title>
+    <title>制作 U 盘启动盘 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/libs/awesome/css/all.css">
@@ -427,12 +427,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Emacs Server 配置</h1>
+                    <h1 class="description center-align post-title">制作 U 盘启动盘</h1>
                 </div>
             </div>
         </div>
@@ -548,8 +548,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/eamcs/">
-                                <span class="chip bg-color">eamcs</span>
+                            <a href="/tags/U-%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/">
+                                <span class="chip bg-color">U 盘启动盘</span>
                             </a>
                         
                     </div>
@@ -560,8 +560,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Emacs/" class="post-category">
-                                Emacs
+                            <a href="/categories/Others/" class="post-category">
+                                Others
                             </a>
                         
                     </div>
@@ -588,14 +588,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    667
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -618,148 +618,94 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>阅览 C 代码的神器非 souce insight 莫属，但是写代码就略显不足了。之前我使用 SI 看
-代码，VIM 写代码的组合，效果非常好。但现在切换到 emacs 之后就没有做过类似组合。</p>
-<h1>SI 搭配 emacs</h1>
+                <p>以制作 win10 U 盘启动盘为例。</p>
+<ol>
+<li>获取 win10 镜像
+<ul>
+<li>从 <a target="_blank" rel="noopener" href="http://www.msdn1.cn/index.html">MSDN 我告诉你</a> 使用 ed2k 下载 ISO 镜像。</li>
+<li>从 <a target="_blank" rel="noopener" href="https://msdn.sjjzm.com/">这里</a> 使用百度网盘下载 ISO 镜像。</li>
+</ul>
+</li>
+<li>在 Windows 中可以使用工具软碟通 <code>Ultraiso</code>、<code>rufus</code> 等制作 U 盘启动盘。</li>
+<li>在 Linux 中可以使用 dd 指令制作 U 盘启动盘。</li>
+</ol>
+<h1>Windows 制作 U 盘启动盘</h1>
+<p>网上多以 <code>Ultraiso</code> 为制作启动盘工具。比较烦的一点就是要下载 <code>Ultraiso</code>，用完后
+就长期吃灰了，且软碟通不是开源工具。</p>
+<p>网上资料很多，不赘述。</p>
+<h1>Linux 制作 U 盘启动盘</h1>
+<p>使用 Linux 指令 <code>dd</code> 实现。</p>
+<h2 id="镜像是-Linux">镜像是 Linux</h2>
+<p>基本流程是：确定 U 盘设备号、umount U 盘、格式化 U 盘、使用 <code>dd</code> 指令烧录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1. 确定 U 盘的设备号，假设为 sdc</span>
+<span class="token function">sudo</span> <span class="token function">fdisk</span> -l
+
+<span class="token comment"># 2. 若 U 盘被自动挂载，则先 umount</span>
+<span class="token function">sudo</span> <span class="token function">umount</span> /dev/sdc*
+
+<span class="token comment"># 3. 格式化 U 盘</span>
+<span class="token function">sudo</span> mkfs.vfat /dev/sdc
+
+<span class="token comment"># 4. 准备好 Linux ISO 文件</span>
+<span class="token comment">#    if= 后面要跟刻录到 U 盘的 ISO 文件路径</span>
+<span class="token comment">#    of= 后面是 U 盘设备号（不需要带分区号，直接用 sdc）</span>
+<span class="token comment">#    写入过程是没有任何显示</span>
+<span class="token function">sudo</span> <span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>~/fedora.iso <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/sdc <span class="token assign-left variable">bs</span><span class="token operator">=</span>4M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>dd 命令直接将 iso 文件数据写入 U 盘，所以 U 盘不包含一个标准的分区表，导致系统无
+法正常的识别其大小，也无法正常使用。</p>
+<h2 id="镜像是-Windows">镜像是 Windows</h2>
+<p>Linux 命令 <code>dd</code> 可直接将 Linux 的 iso 写入 U 盘就能开机引导，是因为 Linux 的 iso
+自带了引导文件。但 Windows 的 iso 不行，<code>dd</code> 指令失效。</p>
+<p>制作一个 grub 多功能启动 U 盘，Widows 和 Linux 流程基本差不多。
+到 Grub2 官网下载 <a href="ftp://ftp.gnu.org/gnu/grub/">grub-2.xx-for-windows</a>。</p>
+<p>可以将 U 盘分为两个分区，一个装 grub，一个装 ISO。本文不分区，且以 BIOS 方式为旧
+主板安装。</p>
+<p>参考 <a target="_blank" rel="noopener" href="https://www.aioboot.com/en/install-grub2-from-windows/">这里</a> 和
+<a target="_blank" rel="noopener" href="http://www.jinbuguo.com/linux/grub.cfg.html">这里</a>。</p>
 <ol>
 <li>
-<p>SI 搭配 VIM</p>
+<p>以管理员权限查看磁盘情况</p>
 <ul>
-<li>
-<p>SI -&gt; Tools -&gt; Custom Commands -&gt; Run。</p>
+<li>windows<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">wmic diskdrive list brief<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li>
-<p>在 Run 输入框写入指令：</p>
-<pre class="line-numbers language-none"><code class="language-none"># 假设你的 vim 在 D 盘的位置
-# %l 表示行号，%f 表示当前 SI 的打开的文件完整路径
-D:\vim82\gvim.exe&quot; --remote-silent +%l %f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>点击右上角的 “Add”，然后输入新添加指令的名字 “Eidt with VIM”。</p>
-</li>
-<li>
-<p>然后点击右下角 “Keys… -&gt; Assign New Key…”，在键盘输入确认的快捷键，完成
-配置。</p>
+<li>linux<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">fdisk</span> -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ul>
 </li>
 <li>
-<p>SI 搭配 emacs</p>
+<p>安装 grub2</p>
 <ul>
 <li>
-<p>和添加 VIM 一样，不过要在 Run 输入框写入如下指令：</p>
-<pre class="line-numbers language-none"><code class="language-none"># 1. 需要启动一个 emacs daemon。
-# 2. 使用 emacs 的 client 图形界面启动的，速度快。
-# 3. 以 client 模式打开当前光标所在 SI 文件且定位到光标所在的行。
-# 4. -n 表示不等待 server 响应，若不加会导致 SI 卡一会体验不好。
-D:\emacs-27.1\bin\emacsclientw.exe -n +%l %f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>windows</p>
+<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">cd F:\grub-2.xx-for-windows
+grub-install.exe --target&#x3D;i386-pc --boot-directory&#x3D;G: --recheck \\.\PHYSICALDRIVE2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li><code>G:</code> U 盘盘符。</li>
+<li><code>\\.\PHYSICALDRIVE2</code> U 盘 DeviceID。</li>
+<li><code>target</code> 有许多选项：
+<ul>
+<li><code>i386-pc</code> 用于传统 BIOS 启动 grub2。</li>
+<li><code>x86_64-efi</code> 用于 UEFI 启动。</li>
+<li><code>i386-efi</code> 用于 UEFI 32 位启动。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>linux</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mount</span> /dev/sdc /mnt
+grub-install --target<span class="token operator">=</span>i386-pc --boot-directory<span class="token operator">=</span>/mnt --recheck /dev/sdc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ul>
 </li>
 </ol>
-<h1>emacs server</h1>
-<p>既然使用到了 emacs client 那必须得有一个 emacs server。</p>
-<h2 id="方法一">方法一</h2>
+<h1>安装操作系统</h1>
 <ol>
-<li>
-<p>在桌面创建 runemacs.exe 的快捷方式，每次运行都会打开一个 emacs 框架，而且启动
-速度都很慢。若以 emacsclientw.exe 方式打开文件会直接报错：connect:句柄无效。</p>
-</li>
-<li>
-<p>若在 emacs 中输入 <code>M-x server-start</code>，emacsclientw.exe 便不会报错了。</p>
-</li>
-<li>
-<p>所以在配置文件 init.el 中添加代码便可</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">server-start</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>作为 server 的 emacs 不是以服务方式运行。当 emacsclientw 打开文件，server 的
-框架就会跳到屏幕最前面。通过 <code>C-x #</code> 虽然可以退出 emacsclientw，但是 server 的框
-架还是留在了前面，只能手动缩小，不小心关了 emacs 就得重启，很麻烦。</p>
-</li>
+<li>开机进入 BIOS 中（一般是 F2），设置以 U 盘启动。</li>
+<li>按步骤安装操作系统。注意选择合适的硬盘作为系统盘，确保系统盘空间要大，且无重
+要数据。win10 的 boot 区至少保留 600M。</li>
+<li>重启电脑，恢复硬盘启动。</li>
 </ol>
-<h2 id="方法二">方法二</h2>
-<ol>
-<li>
-<p>在桌面创建 runemacs.exe 快捷方式，右键 -&gt; 属性 -&gt; 目标 (T)，添加如下内容</p>
-<pre class="line-numbers language-none"><code class="language-none">D:\emacs-27.1\bin\runemacs.exe --daemon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>不需要在 init.el 中添加 <code>(server-start)</code> 代码。</p>
-</li>
-<li>
-<p>由于启动的 emacs server 是以服务的方式运行，没有框架窗口，所以加载字体配置时
-失败（因为它没法设置），导致后续的初始化失败。我的字体初始化在开始位置，所以只有
-配色初始化了。解决方法：</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">set-font</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">english</span> <span class="token argument variable">chinese</span> <span class="token argument variable">english-size</span> <span class="token argument variable">chinese-size</span></span><span class="token punctuation">)</span></span>
-<span class="token punctuation">(</span><span class="token car">set-face-attribute</span> <span class="token quoted-symbol variable symbol">'default</span> <span class="token boolean">nil</span> <span class="token lisp-property property">:font</span>
-                   <span class="token punctuation">(</span><span class="token car">format</span>   <span class="token string">"%s:pixelsize=%d"</span>  english english-size<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                   <span class="token punctuation">(</span><span class="token car">dolist</span> <span class="token punctuation">(</span><span class="token car">charset</span> <span class="token punctuation">'(</span><span class="token car">kana</span> han symbol cjk-misc bopomofo<span class="token punctuation">)</span><span class="token punctuation">)</span>
-                   <span class="token punctuation">(</span><span class="token car">set-fontset-font</span> <span class="token punctuation">(</span><span class="token car">frame-parameter</span> <span class="token boolean">nil</span> <span class="token quoted-symbol variable symbol">'font</span><span class="token punctuation">)</span> charset
-                   <span class="token punctuation">(</span><span class="token car">font-spec</span> <span class="token lisp-property property">:family</span> chinese <span class="token lisp-property property">:size</span> chinese-size<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
- <span class="token comment">;; 注释掉下面这行</span>
- <span class="token comment">;;(set-font   "Dejavu Sans Mono" "WenQuanYi Zen Hei Mono" 20 20)</span>
-
- <span class="token comment">;; 下面的代码为新增加的解决该问题的代码</span>
- <span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'after-make-frame-functions</span>
-          <span class="token punctuation">(</span><span class="token lambda"><span class="token keyword">lambda</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">new-frame</span></span><span class="token punctuation">)</span></span>
-            <span class="token punctuation">(</span><span class="token car">select-frame</span> new-frame<span class="token punctuation">)</span>
-            <span class="token punctuation">(</span><span class="token keyword">if</span> window-system
-                <span class="token punctuation">(</span><span class="token car">set-font</span>   <span class="token string">"Dejavu Sans Mono"</span> <span class="token string">"WenQuanYi Zen Hei Mono"</span> <span class="token number">20</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token keyword">if</span> window-system
-       <span class="token punctuation">(</span><span class="token car">set-font</span>   <span class="token string">"Dejavu Sans Mono"</span> <span class="token string">"WenQuanYi Zen Hei Mono"</span> <span class="token number">20</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token punctuation">(</span><span class="token keyword">provide</span> <span class="token quoted-symbol variable symbol">'init-fonts</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>由于编码设置问题，在使用 emacsclientw 打开中文文件名的文件时，它会创建一个乱
-码文件名文件，内容为空。毕竟乱码文件名文件并不存在，相当于新创建一个文件，也就是
-说并没有打开想要打开的文件。解决方法：</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 新增编码设置</span>
-<span class="token punctuation">(</span><span class="token car">prefer-coding-system</span> <span class="token quoted-symbol variable symbol">'gb18030</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">prefer-coding-system</span> <span class="token quoted-symbol variable symbol">'utf-8</span><span class="token punctuation">)</span>
-
-<span class="token comment">;; 之前的设置</span>
-<span class="token punctuation">(</span><span class="token car">set-language-environment</span> <span class="token quoted-symbol variable symbol">'UTF-8</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">set-locale-environment</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span>
-<span class="token comment">;; 必须注释的设置</span>
-<span class="token comment">;;(set-default-coding-systems 'utf-8)</span>
-
-<span class="token comment">;; 总之编码这块乱的很</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h1>右键 Eidt with Emacs</h1>
-<ol>
-<li>
-<p>在 <code>HKEY_CLASSES_ROOT\*\shell</code> 新建 <code>Edit with Emacs</code> 项，在该项下继续新建
-<code>Command</code> 项，即 <code>HKEY_CLASSES_ROOT\*\shell\Edit with Emacs\command</code>。</p>
-</li>
-<li>
-<p>修改 command 项默认字符串值为</p>
-<pre class="line-numbers language-none"><code class="language-none"># 一定要加上双引号，否则文件名有空格就打不开了，到时有的哭了
-&quot;D:\emacs-27.1\bin\emacsclientw.exe&quot; -n &quot;%1&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>即右键是以 emacsclientw 方式打开文件。也可修改为</p>
-<pre class="line-numbers language-none"><code class="language-none"># 不建议这样
-&quot;D:\emacs-27.1\bin\emacsclientw.exe&quot; --no-wait --alternate-editor&#x3D;&quot;D:\emacs-27.1\bin\runemacs.exe&quot; &quot;%1&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>为 Edit with Emacs 添加图标</p>
-<ul>
-<li>
-<p>在 <code>HKEY_CLASSES_ROOT\*\shell\Edit with Emacs</code> 新建字符串值 <code>Icon</code>。</p>
-</li>
-<li>
-<p>Icon 内容为图标地址</p>
-<pre class="line-numbers language-none"><code class="language-none">D:\emacs-27.1\emacs.ico<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<h1>总结</h1>
-<p>目前我是手动启动 emacs server 的，也可以随开机自启，把 server 的图标放入启动文件
-夹即可。</p>
 <h1>修订记录</h1>
 <ul>
 <li>
@@ -793,7 +739,7 @@ D:\emacs-27.1\bin\emacsclientw.exe -n +%l %f<span aria-hidden="true" class="line
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.top/2021/emacs-server-pei-zhi/">https://coco-hkk.top/2021/emacs-server-pei-zhi/</a>
+                    <a href="https://coco-hkk.top/2021/zhi-zuo-u-pan-qi-dong-pan/">https://coco-hkk.top/2021/zhi-zuo-u-pan-qi-dong-pan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -831,8 +777,8 @@ D:\emacs-27.1\bin\emacsclientw.exe -n +%l %f<span aria-hidden="true" class="line
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/eamcs/">
-                                    <span class="chip bg-color">eamcs</span>
+                                <a href="/tags/U-%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/">
+                                    <span class="chip bg-color">U 盘启动盘</span>
                                 </a>
                             
                         </div>
@@ -1002,66 +948,18 @@ D:\emacs-27.1\bin\emacsclientw.exe -n +%l %f<span aria-hidden="true" class="line
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/emacs-ji-ben-cao-zuo/">
+                <a href="/2021/zhi-zuo-u-pan-qi-dong-pan/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/8.jpg" class="responsive-img" alt="Emacs 基本操作">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/4.jpg" class="responsive-img" alt="制作 U 盘启动盘">
                         
-                        <span class="card-title">Emacs 基本操作</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Emacs/" class="post-category">
-                                    Emacs
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/emacs/">
-                        <span class="chip bg-color">emacs</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/elisp-yu-fa/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/23.jpg" class="responsive-img" alt="Emacs Lisp">
-                        
-                        <span class="card-title">Emacs Lisp</span>
+                        <span class="card-title">制作 U 盘启动盘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1078,8 +976,58 @@ D:\emacs-27.1\bin\emacsclientw.exe -n +%l %f<span aria-hidden="true" class="line
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Emacs/" class="post-category">
-                                    Emacs
+                            <a href="/categories/Others/" class="post-category">
+                                    Others
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/U-%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/">
+                        <span class="chip bg-color">U 盘启动盘</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/hexo-shi-yong-cao-zuo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/hexo-blog/medias/featureimages/19.jpg" class="responsive-img" alt="hexo 实用操作">
+                        
+                        <span class="card-title">hexo 实用操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hexo/" class="post-category">
+                                    Hexo
                                 </a>
                             
                             
@@ -1089,12 +1037,8 @@ D:\emacs-27.1\bin\emacsclientw.exe -n +%l %f<span aria-hidden="true" class="line
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/emacs/">
-                        <span class="chip bg-color">emacs</span>
-                    </a>
-                    
-                    <a href="/tags/elisp/">
-                        <span class="chip bg-color">elisp</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
