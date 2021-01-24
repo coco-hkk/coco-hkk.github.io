@@ -201,7 +201,7 @@
       
         <tags>
             
-            <tag> eamcs </tag>
+            <tag> emacs </tag>
             
         </tags>
       
@@ -326,7 +326,7 @@
       <link href="2021/shi-yong-wang-zhan-he-ruan-jian/"/>
       <url>2021/shi-yong-wang-zhan-he-ruan-jian/</url>
       
-        <content type="html"><![CDATA[<p>收集日常实用的软件和网站。</p><h1>浏览器</h1><h2 id="chrome">chrome</h2><p>不多说，<a href="https://www.google.cn/chrome/">这里</a> 下载。</p><h2 id="qutebrowser">qutebrowser</h2><p>一款使用 Vim 风格的键盘操作的浏览器。<a href="https://www.qutebrowser.org/">这里</a> 下载。</p><p><img src="/2021/shi-yong-wang-zhan-he-ruan-jian/qutebrowser-cheatsheet.png" alt="cheatsheet"></p><h1>浏览器插件</h1><h2 id="SwitchyOmega">SwitchyOmega</h2><p>一款代理插件，适用 chrome，firefox 等浏览器。<a href="https://github.com/FelisCatus/SwitchyOmega/releases">这里</a> 下载。</p><p>不过这个仓库很久没更新了。Chrome 可在 google 网上应用店安装最新版本。</p><h2 id="Tampermonkey">Tampermonkey</h2><p>一款免费的浏览器脚本管理器，适用于很多浏览器。如 Chrome。</p><p><a href="https://www.tampermonkey.net/">这里</a> 获取。Chrome 可通过 Google 网上应用店安装。</p><h2 id="脚本网站">脚本网站</h2><ul><li><a href="https://www.userscript.zone/">userscript</a></li><li><a href="https://greasyfork.org/zh-CN">GreasyFork</a></li><li><a href="https://openuserjs.org/">OpenUserJS</a></li><li><a href="https://gist.github.com/search?l=JavaScript&amp;o=desc&amp;q=%22%3D%3DUserScript%3D%3D%22&amp;s=updated">github/gist</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>收集日常实用的软件和网站。</p><h1>浏览器</h1><h2 id="chrome">chrome</h2><p>不多说，<a href="https://www.google.cn/chrome/">这里</a> 下载。</p><h2 id="qutebrowser">qutebrowser</h2><p>一款使用 Vim 风格的键盘操作的浏览器。<a href="https://www.qutebrowser.org/">这里</a> 下载。</p><p><img src="/2021/shi-yong-wang-zhan-he-ruan-jian/qutebrowser-cheatsheet.png" alt="cheatsheet"></p><h1>浏览器插件</h1><h2 id="SwitchyOmega">SwitchyOmega</h2><p>一款代理插件，适用 chrome，firefox 等浏览器。<a href="https://github.com/FelisCatus/SwitchyOmega/releases">这里</a> 下载。</p><p>不过这个仓库很久没更新了。Chrome 可在 google 网上应用店安装最新版本。</p><h2 id="Tampermonkey">Tampermonkey</h2><p>一款免费的浏览器脚本管理器，适用于很多浏览器。如 Chrome。</p><p><a href="https://www.tampermonkey.net/">这里</a> 获取。Chrome 可通过 Google 网上应用店安装。</p><h2 id="脚本网站">脚本网站</h2><ul><li><a href="https://www.userscript.zone/">userscript</a></li><li><a href="https://greasyfork.org/zh-CN">GreasyFork</a></li><li><a href="https://openuserjs.org/">OpenUserJS</a></li><li><a href="https://gist.github.com/search?l=JavaScript&amp;o=desc&amp;q=%22%3D%3DUserScript%3D%3D%22&amp;s=updated">github/gist</a></li></ul><h1>阅读器</h1><h2 id="阅读-Legado">阅读 Legado</h2><p>一款开源的 Android 阅读器，通过自定义来源可看很多网络小说，支持规则替换和在线朗读。</p><p><a href="https://github.com/gedoor/legado/releases">这里</a> 获取。</p><h2 id="tachiyomi">tachiyomi</h2><p>一款开源的 Android 漫画阅读器，有很多源可以选择，唯一不足需要 VPN。</p><p><a href="https://github.com/tachiyomiorg/tachiyomi/releases">这里</a> 获取。</p><h1>远程工具</h1><h2 id="putty">putty</h2><p>免费的 SSH 和 Telnet 客户端工具。</p><p><a href="http://www.putty.be/latest.html">这里</a> 获取。</p>]]></content>
       
       
       <categories>
