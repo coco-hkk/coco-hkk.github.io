@@ -589,14 +589,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-24
+                    2021-02-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    567
+                    690
                 </div>
                 
 
@@ -635,6 +635,7 @@ SpaceVim 提供的接口实现。</p>
 <p><strong>快捷键</strong> 参考 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/documentation/">这里</a>。</p>
 <p><strong>模块</strong> 参考 <a target="_blank" rel="noopener" href="https://spacevim.org/cn/layers/">这里</a>。</p>
 <h1>SapceVim neovim 安装</h1>
+<h2 id="win10-安装">win10 安装</h2>
 <p>在 win10 安装 SpaceVim 有两种方式。</p>
 <ol>
 <li>
@@ -647,7 +648,11 @@ SpaceVim 提供的接口实现。</p>
 </ol>
 <p><strong>注：</strong> 不管是哪种方法，必须确保目录 <code>~/AppData/Local/nvim</code> 存在。</p>
 <p>安装结束后，初次打开 neovim，选择配色方案。必须重启才会安装插件。</p>
+<h2 id="FreeBSD-安装">FreeBSD 安装</h2>
+<p>和 Linux 安装一样，可能需要 VPN。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -sLf https://spacevim.org/cn/install.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h1>配置文件</h1>
+<h2 id="win10-配置文件">win10 配置文件</h2>
 <p>win10 SpaceVim 各种文件位置。</p>
 <ul>
 <li>SpaceVim 的默认配置文件为 <code>~/.SpaceVim.d/init.toml</code>。</li>
@@ -656,6 +661,16 @@ SpaceVim 提供的接口实现。</p>
 <li>SpaceVim 产生的临时文件位置 <code>~/.cache/SpaceVim/</code>。如：swap 文件、undo 文件、备
 份文件、init.toml 中间文件 init.json  等。</li>
 </ul>
+<h2 id="FreeBSD-配置文件">FreeBSD 配置文件</h2>
+<p>FreeBSD 各种文件位置。</p>
+<ul>
+<li>SpaceVim 的默认配置文件为 <code>~/.SpaceVim.d/init.toml</code>。</li>
+<li>SpaceVim 安装位置为 <code>~/.SpaceVim</code>。</li>
+<li>SpaceVim 自定义插件 <code>custom_plugins</code> 安装位置 <code>~/.cache/vimfiles/repos/github.com/</code>。</li>
+<li>SpaceVim 产生的临时文件位置 <code>~/.cache/SpaceVim/</code>。如：swap 文件、undo 文件、备
+份文件、init.toml 中间文件 init.json  等。</li>
+</ul>
+<h2 id="配置">配置</h2>
 <pre class="line-numbers language-toml" data-language="toml"><code class="language-toml"><span class="token comment"># ~/.SpaceVim.d/init.toml</span>
 <span class="token comment"># 所有的 SpaceVim 选项都列在 [options] 之下</span>
 <span class="token punctuation">[</span><span class="token table class-name">options</span><span class="token punctuation">]</span>
@@ -722,6 +737,10 @@ endfunction<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li>
 <p>2021-01-18</p>
 <p>创建。</p>
+</li>
+<li>
+<p>2021-02-02</p>
+<p>新增 FreeBSD 安装配置。</p>
 </li>
 </ul>
 
@@ -1287,7 +1306,7 @@ endfunction<span aria-hidden="true" class="line-numbers-rows"><span></span><span
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">56k</span>&nbsp;字
+                class="white-color">57.8k</span>&nbsp;字
             
             
             
