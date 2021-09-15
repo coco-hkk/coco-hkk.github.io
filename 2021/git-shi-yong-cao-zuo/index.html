@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    971
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -574,43 +574,48 @@
 <span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<h1>子模块操作</h1>
+<h1>子项目操作</h1>
 <ol>
 <li>
-<p>添加子模块</p>
-<p>添加子模块后会在项目根目录下生成配置文件 <code>.gitmodules</code>。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># url 为子模块地址，path 是该子模块存储的目录路径。</span>
+<p>添加子项目</p>
+<p>添加子项目后会在父项目根目录下生成配置文件 <code>.gitmodules</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># url 为子项目地址，path 是该子项目在父项目中存储的路径。</span>
 <span class="token function">git</span> submodule <span class="token function">add</span> <span class="token string">'url'</span> <span class="token string">'path'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p>子模块下载</p>
-<p>克隆项目后，默认子模块目录下无任何内容。下载子模块。</p>
+<p>子项目下载</p>
+<p>默认子项目目录为空。在父项目中下载子项目。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> submodule update --init --recursive<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>或者，在克隆的同时下载子模块。</p>
+<p>或者，在克隆父项目的同时下载子项目。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone --recursive <span class="token string">'url'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li>
-<p>子模块更新</p>
-<p>子模块所有操作和正常仓库没区别，但必须在子模块目录中操作。</p>
-<p>进入子模块目录，执行 <code>git pull</code> 更新子模块。</p>
+<p>子项目更新</p>
+<p>子项目仓库和父项目仓库没区别，子项目的所有操作必须在子项目中。进入
+子项目目录，执行 <code>git pull</code> 更新子项目。</p>
+<p>还可以在父项目中更新子项目 <code>git submodule update --remote</code>。</p>
+<p>子项目更新后，需要在父项目中提交子项目的更新到远程仓库。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 父项目中子项目初始化版本</span>
+<span class="token function">git</span> submodule update --init
+
+<span class="token comment"># 更新子项目到最新版本</span>
+<span class="token function">git</span> submodule update --remote
+
+<span class="token comment"># 提交子项目最新信息到远程仓库。这一步和普通提交内容没区别。</span>
+<span class="token function">git</span> <span class="token function">add</span> <span class="token string">"子项目所在文件夹"</span>
+<span class="token function">git</span> commit -m <span class="token string">"提交日志"</span>
+<span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p>删除子模块</p>
+<p>删除子项目</p>
 </li>
 </ol>
 <ul>
-<li>删除子模块目录及源码。</li>
-<li>删除项目目录下 <code>.gitmodules</code> 中子模块相关条目。</li>
-<li>删除配置项 <code>.git/config</code> 中子模块相关条目。</li>
-<li>删除目录 <code>.git/module/</code> 下的相应的子模块目录，每个子模块对应一个目录。</li>
-<li>最后执行 <code>git rm --cached '子模块名称'</code>，完成后提交到仓库。</li>
-</ul>
-<h1>修订记录</h1>
-<ul>
-<li>
-<p>2021-01-17</p>
-<p>从其它网站迁移。</p>
-</li>
+<li>删除子项目目录及源码。</li>
+<li>删除项目目录下 <code>.gitmodules</code> 中子项目相关条目。</li>
+<li>删除配置项 <code>.git/config</code> 中子项目相关条目。</li>
+<li>删除目录 <code>.git/module/</code> 下的相应的子项目目录，每个子项目对应一个目录。</li>
+<li>最后执行 <code>git rm --cached '子项目名称'</code>，完成后提交到仓库。</li>
 </ul>
 
                 
@@ -1166,7 +1171,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60k</span>
+                        class="white-color">73.2k</span>
             
             
             

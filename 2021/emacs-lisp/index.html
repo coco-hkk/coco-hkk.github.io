@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.4k
+                    6.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    31 分
                 </div>
                 
 
@@ -594,6 +594,17 @@
 <span class="token punctuation">(</span><span class="token car">char-equal</span> ?A ?A<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="序列-Sequences">序列/Sequences</h2>
 <p>在 Emacs Lisp 中，字符串、列表和数组都被看做 sequences。</p>
+<p>Sequence 和 Array 实际上不是 elisp 数据类型。</p>
+<ul>
+<li>函数文档中的 sequence 类型，表示它可能是 list、vector 或 string。</li>
+<li>函数文档中的 array 类型，表示它可能是 vector 或 string。</li>
+<li>list 和 vector 都是有序值序列，每个元素可以是任何类型。</li>
+</ul>
+<p>list 和 vector 是有区别的。</p>
+<ol>
+<li>vector 所有元素访问时间相同。list 元素访问时间和位置成比例，类似 C 中链表。</li>
+<li>vector 的长度不能改变。list 的长度可以改变，通过增删 list 第一个元素实现。</li>
+</ol>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">sequencep</span> <span class="token string">"Sequence"</span><span class="token punctuation">)</span>    <span class="token comment">;; t</span>
 <span class="token punctuation">(</span><span class="token car">sequencep</span> <span class="token string">""</span><span class="token punctuation">)</span>            <span class="token comment">;; t</span>
 
@@ -756,9 +767,148 @@
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">plist-get</span> <span class="token punctuation">'(</span><span class="token car">one</span> <span class="token number">1</span> two <span class="token number">2</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'one</span><span class="token punctuation">)</span>     <span class="token comment">;; 1</span>
 
 <span class="token punctuation">(</span><span class="token car">plist-put</span> <span class="token punctuation">'(</span><span class="token car">one</span> <span class="token number">1</span> two <span class="token number">2</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'three</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment">;; (one 1 two 2 three 3)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="列表操作">列表操作</h3>
+<ol>
+<li>创建 list</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">list</span> a b ...<span class="token punctuation">)</span>
+
+<span class="token comment">;; 若不想元素被执行，可写作：</span>
+<span class="token punctuation">'(</span><span class="token car">a</span> b ...<span class="token punctuation">)</span>
+
+<span class="token comment">;; 等价于</span>
+<span class="token punctuation">(</span><span class="token car">quote</span> <span class="token punctuation">(</span><span class="token car">list</span> a b ...<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token keyword">setq</span> mylist <span class="token punctuation">'(</span><span class="token car">a</span> b c<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"%S"</span> mylist<span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">make-list</span> LENGTH INIT<span class="token punctuation">)</span> <span class="token comment">;; 创建长度为 LENGTH 的 list，所有元素初始化为 INIT</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>空 list</li>
+</ol>
+<p>在 elisp 中，空 list 等价于 nil。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 三者等价，均为空列表</span>
+<span class="token punctuation">'(</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">list</span><span class="token punctuation">)</span>
+
+nil<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>list of number</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">number-sequence</span> n m step<span class="token punctuation">)</span> <span class="token comment">;; 返回从 n 到 m，步长为 step 的 list</span>
+<span class="token punctuation">(</span><span class="token car">number-sequence</span> n m<span class="token punctuation">)</span>      <span class="token comment">;; 默认 step 为 1</span>
+<span class="token punctuation">(</span><span class="token car">number-sequence</span> n<span class="token punctuation">)</span>        <span class="token comment">;; 返回只有一个元素 n 的 list</span>
+
+<span class="token punctuation">(</span><span class="token car">number-sequence</span> <span class="token number">0</span> <span class="token number">9</span> <span class="token number">3</span><span class="token punctuation">)</span>    <span class="token comment">;; (0 3 6 9)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>length</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">length</span> list<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="5">
+<li>获取一个元素</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; list 索引（下标）从 0 开始</span>
+<span class="token punctuation">(</span><span class="token car">car</span> list<span class="token punctuation">)</span>        <span class="token comment">;; 获取第一个元素</span>
+<span class="token punctuation">(</span><span class="token car">nth</span> n list<span class="token punctuation">)</span>      <span class="token comment">;; 获取第 n 个元素</span>
+<span class="token punctuation">(</span><span class="token car">cdr</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">;; 获取最后一个元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>获取子 list</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">cdr</span> list<span class="token punctuation">)</span>       <span class="token comment">;; 获取第二个元素到最后一个元素</span>
+<span class="token punctuation">(</span><span class="token car">nthcdr</span> n list<span class="token punctuation">)</span>  <span class="token comment">;; 获取第 n 个元素到最后一个元素</span>
+<span class="token punctuation">(</span><span class="token car">butlast</span> list n<span class="token punctuation">)</span> <span class="token comment">;; 获取除最后 n 个元素的元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li>前置连接 list(prepend to list)</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">cons</span> x list<span class="token punctuation">)</span>     <span class="token comment">;; 将 x 加到 list 前面，返回一个新 list</span>
+
+<span class="token punctuation">(</span><span class="token keyword">cons</span> <span class="token string">"a"</span> <span class="token punctuation">(</span><span class="token car">list</span> <span class="token string">"c"</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; ("a" "c" "d")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="8">
+<li>连接 list</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">append</span> sequence1 sequence2 ...<span class="token punctuation">)</span> <span class="token comment">;; 连接任何类型 sequence，返回 list</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="9">
+<li>修改元素</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">push</span> list<span class="token punctuation">)</span>       <span class="token comment">;; 在变量前加一个元素，返回新 list</span>
+<span class="token punctuation">(</span><span class="token car">pop</span> list<span class="token punctuation">)</span>        <span class="token comment">;; 移除变量第一个元素，返回移除元素</span>
+<span class="token punctuation">(</span><span class="token car">nbutlast</span> list n<span class="token punctuation">)</span> <span class="token comment">;; 移除变量最后 n 个元素，返回变量新值</span>
+<span class="token punctuation">(</span><span class="token car">setcar</span> list x<span class="token punctuation">)</span>   <span class="token comment">;; 用 x 替换 list 的第一个元素，返回 x</span>
+<span class="token punctuation">(</span><span class="token car">setcdr</span> list x<span class="token punctuation">)</span>   <span class="token comment">;; 用 x 替换 list 除第一个元素外剩余元素，返回 x</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="10">
+<li>list 转换为 string</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">mapconcat</span> <span class="token quoted-symbol variable symbol">'number-to-string</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">","</span><span class="token punctuation">)</span> <span class="token comment">;; "1,2,3"</span>
+
+<span class="token punctuation">(</span><span class="token car">format</span> <span class="token string">"%s"</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token string">"two"</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; "(1 two 3)</span>
+
+<span class="token punctuation">(</span><span class="token car">substring</span> <span class="token punctuation">(</span><span class="token car">format</span> <span class="token string">"%s"</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token string">"two"</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">1</span> <span class="token number">-1</span><span class="token punctuation">)</span> <span class="token comment">;; "1 two 3"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Vector">Vector</h2>
+<ul>
+<li>Vector 是有序值序列。</li>
+<li>每个元素可以是任何类型。</li>
+<li>元素值可修改。</li>
+<li>元素个数不能改变。</li>
+<li>读写元素随机访问时间相同。</li>
+</ul>
+<ol>
+<li>创建 Vector</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; make-vector</span>
+<span class="token punctuation">(</span><span class="token car">make-vector</span> <span class="token number">5</span> <span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment">;; [0 0 0 0 0]，创建一个长度为 5 个元素的向量，且每个元素初始化为 0</span>
+
+<span class="token comment">;; vector</span>
+<span class="token punctuation">(</span><span class="token car">vector</span> a b ...<span class="token punctuation">)</span>   <span class="token comment">;; 创建一个包含元素 a,b,... 的向量</span>
+
+<span class="token comment">;; 该方式创建的向量元素不会在创建时被执行</span>
+<span class="token punctuation">[</span>a b ...<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>填充 Vector</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">fillarray</span> array val<span class="token punctuation">)</span> <span class="token comment">;; 使 array 中的所有值为 val，类似重新赋值</span>
+
+<span class="token punctuation">(</span><span class="token keyword">setq</span> aa <span class="token punctuation">[</span><span class="token number">3</span> <span class="token number">4</span> 5<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">fillarray</span> aa <span class="token boolean">nil</span><span class="token punctuation">)</span>    <span class="token comment">;; [nil nil nil]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>获取 Vector 长度</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">length</span> <span class="token punctuation">(</span><span class="token car">Vector</span> <span class="token number">7</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>获取元素</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 若已知是 vector，则使用 aref</span>
+<span class="token punctuation">(</span><span class="token car">aref</span> array n<span class="token punctuation">)</span>   <span class="token comment">;; 返回 array 索引为 n 的元素</span>
+
+<span class="token punctuation">(</span><span class="token car">elt</span> sequence n<span class="token punctuation">)</span> <span class="token comment">;; 返回 sequence 索引为 n 的元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li>修改元素</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 将 ARRAY 索引为 IDX 的元素值替换为 NEWELT，返回 NEWELT</span>
+<span class="token punctuation">(</span><span class="token car">aset</span> ARRAY IDX NEWELT<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>嵌套 Vector</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; Vector 可以以任何方式嵌套</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span> 2<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">3</span> 4<span class="token punctuation">]</span><span class="token punctuation">]</span>     <span class="token comment">;; 2 by 2 matrix</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="7">
+<li>连接 Vectors，转换 list 为 Vector</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 连接任何 sequence 类型，返回一个 vector</span>
+<span class="token punctuation">(</span><span class="token car">vconcat</span> sequence1 sequence2 ...<span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">vconcat</span> <span class="token punctuation">[</span><span class="token number">3</span> 4<span class="token punctuation">]</span> <span class="token punctuation">'(</span><span class="token string">"a"</span> <span class="token string">"b"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; [3 4 "a" "b"]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="8">
+<li>转换 Vector 为 list</li>
+</ol>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 连接任何 sequence 类型，返回一个 list</span>
+<span class="token punctuation">(</span><span class="token keyword">append</span> sequence1 sequence2 ...<span class="token punctuation">)</span>
+
+<span class="token comment">;; 若想返回一个 proper list，最后一个元素必须是 list 或 nil.</span>
+<span class="token punctuation">(</span><span class="token keyword">append</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> 3<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">4</span> 5<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment">;; (1 2 3 . [4 5])，improper list</span>
+<span class="token punctuation">(</span><span class="token keyword">append</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> 3<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">4</span> 5<span class="token punctuation">]</span> <span class="token boolean">nil</span><span class="token punctuation">)</span> <span class="token comment">;; (1 2 3 4 5)，proper list</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="数组-Arrays">数组/Arrays</h2>
-<p><code>vector</code> 是一种数组，由方括号括起来的列表。</p>
-<p>字符串也是一种数组。</p>
+<p>数组可能是 vector 或 string。</p>
 <p>可使用 <code>aset</code> 设置数组元素。</p>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; vector</span>
 <span class="token punctuation">(</span><span class="token keyword">setq</span> some-array <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> 4<span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -984,7 +1134,10 @@ list，若没有给出，则是 nil</p>
 
 <span class="token punctuation">(</span><span class="token car">funcall</span> <span class="token quoted-symbol variable symbol">'+</span> <span class="token number">2</span> <span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="定义交互函数">定义交互函数</h2>
-<p>可使用 <code>M-x</code> 调用的函数。</p>
+<ul>
+<li>指令就是一个函数，用户可以通过调用 <code>execute-extended-command</code>（即 <code>M-x</code>) 执行。</li>
+<li>若使一个函数可交互，在函数的 doc string 后面增加代码 <code>(interactive)</code>。</li>
+</ul>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">do-some-math</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">x</span> <span class="token argument variable">y</span></span><span class="token punctuation">)</span></span>
   <span class="token string">"My first interactive function, accept <span class="token argument">X</span> and <span class="token argument">Y</span> return sum"</span>
   <span class="token punctuation">(</span><span class="token interactive keyword">interactive</span> <span class="token string">"Nx: \nNy: "</span><span class="token punctuation">)</span>
@@ -1062,20 +1215,320 @@ packages 加载前设置这些变量，不用担心 packages 加载后覆盖掉�
   <span class="token punctuation">(</span><span class="token car">tab-width</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>判断变量是否是自定义变量。</p>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">custom-variable-p</span> <span class="token quoted-symbol variable symbol">'tab-width</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>打印消息</h1>
-<h2 id="insert">insert</h2>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">insert</span> &amp;rest ARGS<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在当前 buffer 的光标位置插入字符串。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">insert</span> <span class="token string">"xyz"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>Buffer</h1>
+<h2 id="buffer-创建">buffer 创建</h2>
+<ul>
+<li>创建临时 buffer，使用 <code>with-temp-buffer</code>。大多数时候应该使用该函数创建新 buffer，
+可以节省创建 buffer 的代码、切换到它做些事，或关闭它，然后恢复当前缓冲区。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">with-temp-buffer</span>
+    <span class="token comment">;; manipulate the string here</span>
+    <span class="token comment">;; print whole buffer content</span>
+    <span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>创建新 buffer 并返回，使用 <code>generate-new-buffer</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 设置新 buffer 名字，如果名字以空格开始，则撤销会被禁止</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> newBufName <span class="token string">" xyz"</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 创建一个新 buffer 并保存在一个变量中，以便后续切换或关闭</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> newBuf <span class="token punctuation">(</span><span class="token car">generate-new-buffer</span> newBufName<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 把新 buffer 设置为当前 buffer 且不可见，所有的插入等操作都适用于它</span>
+<span class="token punctuation">(</span><span class="token car">set-buffer</span> newBuf<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="buffer-获取和切换">buffer 获取和切换</h2>
+<ul>
+<li>获取当前 buffer，使用 <code>current-buffer</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 获取当前 buffer，"current" buffer</span>
+<span class="token punctuation">(</span><span class="token car">current-buffer</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>通过名称获取 buffer，使用 <code>get-buffer</code> 或 <code>get-buffer-create</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 通过 buffer 名获取 buffer</span>
+<span class="token punctuation">(</span><span class="token car">get-buffer</span> <span class="token string">"scratch"</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 通过名称获取 buffer，若不存在则创建 buffer，在 buffer list 中查看创建的 buffer</span>
+<span class="token comment">;; 返回新 buffer 但是不会切换到它</span>
+<span class="token punctuation">(</span><span class="token car">get-buffer-create</span> <span class="token string">"buffer test"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<ul>
+<li>改变（切换）当前 buffer，使用 <code>set-buffer</code>，切换到指定 buffer，但 buffer 不可见。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 改变 current buffer</span>
+<span class="token punctuation">(</span><span class="token car">progn</span>
+  <span class="token punctuation">(</span><span class="token car">set-buffer</span> <span class="token punctuation">(</span><span class="token car">get-buffer</span> <span class="token string">"*scratch*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">current-buffer</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 直接通过名称获取 buffer</span>
+<span class="token punctuation">(</span><span class="token car">progn</span>
+  <span class="token punctuation">(</span><span class="token car">set-buffer</span> <span class="token string">"*scratch*"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">current-buffer</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>安全的改变（切换）当前 buffer，使用 <code>save-current-buffer</code> 或 <code>with-current-buffer</code>，buffer 不可见。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; save-current-buffer</span>
+<span class="token punctuation">(</span><span class="token car">progn</span>
+  <span class="token punctuation">(</span><span class="token car">save-current-buffer</span>
+   <span class="token punctuation">(</span><span class="token car">set-buffer</span> <span class="token string">"*scratch*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">current-buffer</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; with-current-buffer 创建临时 buffer，在函数执行完后会自动返回原 buffer。</span>
+<span class="token punctuation">(</span><span class="token car">progn</span>
+  <span class="token punctuation">(</span><span class="token car">with-current-buffer</span> <span class="token string">"*scratch*"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">current-buffer</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>切换到指定 buffer，buffer 可见，使用 <code>switch-to-buffer</code>，不用在 lisp 代码中。</li>
+</ul>
+<hr>
+<ul>
+<li>通过文件或文件路径获取 buffer，使用 <code>get-file-buffer</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 若不存在指定 buffer，返回 nil</span>
+<span class="token punctuation">(</span><span class="token car">get-file-buffer</span> <span class="token string">"Emacs_Lisp.md"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>加载文件到 buffer 但 buffer 不可见，使用 <code>find-file-noselect</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">find-file-noselect</span> <span class="token string">"Emacs_Lisp.md"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<hr>
+<ul>
+<li>获取当前 buffer 名称，使用 <code>buffer-name</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">buffer-name</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>获取 buffer 所显示文件的完整路径，使用 <code>buffer-file-name</code>。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 若 buffer 无关联文件，则返回 nil</span>
+<span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="buffer-点位-point">buffer 点位/point</h2>
+<p>point 就是光标在 buffer 中的位置。它是一个整型，从 1 开始增加。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">point</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 检查 buffer 点位的范围</span>
+<span class="token punctuation">(</span><span class="token car">point-min</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">point-max</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>移动点位。</p>
+<ul>
+<li><code>goto-char</code> - 移动点位到指定位置（整数）</li>
+<li><code>forward-char</code> - 向前移动指定整数位置（默认为 1）</li>
+<li><code>backward-char</code> - 向后移动指定整数位置（默认为 1）</li>
+<li><code>beginning-of-buffer</code> - 移到 buffer 开始位置</li>
+<li><code>end-of-buffer</code> - 移动到 buffer 末位置</li>
+<li><code>forward-word</code> - 向前移动一个最大文本单元</li>
+<li><code>backward-word</code> - 向后移动一个最大文本单元</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">goto-char</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">beginning-of-buffer</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 对于英文就是一个单词，对于中文是以标点符号和空格为单词边界为准</span>
+<span class="token punctuation">(</span><span class="token car">forward-word</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>保存点位。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">save-excursion</span>
+  <span class="token punctuation">(</span><span class="token car">goto-char</span> <span class="token punctuation">(</span><span class="token car">point-max</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">point</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="buffer-文本查看">buffer 文本查看</h2>
+<p>查看文本字符。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 查看光标所在文本字符</span>
+<span class="token punctuation">(</span><span class="token car">char-after</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">char-after</span> <span class="token punctuation">(</span><span class="token car">point</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>查看两个位置之间的文本字符串。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 包含文本属性</span>
+<span class="token punctuation">(</span><span class="token car">buffer-substring</span> <span class="token number">1</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 仅仅是文本</span>
+<span class="token punctuation">(</span><span class="token car">buffer-substring-no-properties</span> <span class="token number">1</span> <span class="token number">4</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查看点位符合 “thing” 的文本，使用 <code>thing-at-point</code>，“things” 包括：</p>
+<ul>
+<li>word,sentence,line</li>
+<li>sexp,list,defun - Lisp expressions</li>
+<li>url,email</li>
+<li>filename</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">thing-at-point</span> <span class="token quoted-symbol variable symbol">'word</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">thing-at-point</span> <span class="token quoted-symbol variable symbol">'sentence</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">thing-at-point</span> <span class="token quoted-symbol variable symbol">'sexp</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="buffer-文本查找">buffer 文本查找</h2>
+<p>文本查找，使用 <code>search-forward</code> 和 <code>search-backward</code>。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; search-forward 会把点位置于匹配的文本后面</span>
+<span class="token punctuation">(</span><span class="token car">search-forward</span> <span class="token string">"point"</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; search-backward 会把点位置于匹配的文本前面</span>
+<span class="token punctuation">(</span><span class="token car">search-backward</span> <span class="token string">"sentence"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="buffer-文本插入">buffer 文本插入</h2>
+<ul>
+<li><code>insert</code> 在位点插入字符串列表或字符。</li>
+<li><code>insert-char</code> 在位点插入字符及可选参数字符重复次数。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">insert</span> <span class="token string">"\n"</span> <span class="token string">"This is"</span> ?\n <span class="token string">"insert"</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 插入字符及字符重复次数</span>
+<span class="token punctuation">(</span><span class="token car">insert-char</span> ?\- <span class="token number">20</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="buffer-文本删除">buffer 文本删除</h2>
+<p>使用 <code>delete-region</code> 删除文本。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; delete-region 第一个参数为起始位点，第二个参数为结束位点。</span>
+<span class="token punctuation">(</span><span class="token car">with-current-buffer</span> <span class="token string">"test"</span>
+  <span class="token punctuation">(</span><span class="token car">delete-region</span> <span class="token punctuation">(</span><span class="token car">point</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token car">point-max</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="buffer-文本保存">buffer 文本保存</h2>
+<p>使用 <code>save-buffer</code> 保存文本。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">save-buffer</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="buffer-关闭">buffer 关闭</h2>
+<p>使用 <code>kill-buffer</code> 关闭 buffer。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">kill-buffer</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 关闭指定 buffer</span>
+<span class="token punctuation">(</span><span class="token car">kill-buffer</span> <span class="token string">"*Help*"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>文件和目录</h1>
+<p><code>default-directory</code> 是一个 buffer 局部变量，它表示 buffer 的当前目录，每个不同的 buffer 都不同。</p>
+<h2 id="文件路径操作">文件路径操作</h2>
+<p>在 Emacs 中，文件路径分为两部分：</p>
+<ul>
+<li>目录部分</li>
+<li>非目录部分，如文件名及其扩展</li>
+</ul>
+<p>所有操作文件的函数，都有前缀 <code>file-name</code>！</p>
+<ul>
+<li><code>file-name-directory</code> 获取文件路径的目录部分</li>
+<li><code>file-name-nodirectory</code> 获取文件路径中的文件名（非目录部分）</li>
+<li><code>file-name-extension</code> 获取文件扩展（不包括 <code>.</code>）</li>
+<li><code>file-name-sans-extension</code> 获取文件路径，不包括扩展</li>
+<li><code>file-name-base</code> 获取文件名（不包括路径和扩展）</li>
+<li><code>file-name-as-directory</code> 将文件名转为目录名</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">file-name-directory</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">file-name-nondirectory</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">file-name-extension</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">file-name-sans-extension</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">file-name-base</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">file-name-as-directory</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">file-name-as-directory</span>
+ <span class="token punctuation">(</span><span class="token car">file-name-sans-extension</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="文件路径解析">文件路径解析</h2>
+<ul>
+<li><code>file-name-absolute-p</code> 判断文件路径是否是绝对路径</li>
+<li><code>file-relative-name</code> 返回相对某个路径的相对路径</li>
+<li><code>expand-file-name</code> 返回指定目录下文件的绝对路径</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">file-name-absolute-p</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span class="token punctuation">)</span>      <span class="token comment">;; t</span>
+<span class="token punctuation">(</span><span class="token car">file-name-absolute-p</span> <span class="token string">"Emacs_Lisp.md"</span><span class="token punctuation">)</span>         <span class="token comment">;; nil</span>
+<span class="token punctuation">(</span><span class="token car">file-name-absolute-p</span> <span class="token string">"dir/Emacs_Lisp.md"</span><span class="token punctuation">)</span>     <span class="token comment">;; nil</span>
+
+<span class="token comment">;; 返回相对父目录的相对路径</span>
+<span class="token punctuation">(</span><span class="token car">file-relative-name</span> <span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span> <span class="token string">".."</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">expand-file-name</span> <span class="token string">"Emacs_Lisp.md"</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 返回 D:/emacs/dir/Emacs_Lisp.md</span>
+<span class="token punctuation">(</span><span class="token car">expand-file-name</span> <span class="token string">"Emacs_Lisp.md"</span> <span class="token string">"~/dir"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解析包含环境变量的路径。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 不会解析环境变量</span>
+<span class="token punctuation">(</span><span class="token car">expand-file-name</span> <span class="token string">"$HOME/.emacs.d"</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 解析环境变量</span>
+<span class="token punctuation">(</span><span class="token car">substitute-in-file-name</span> <span class="token string">"$HOME/.emacs.d"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="文件和目录测试">文件和目录测试</h2>
+<ul>
+<li><code>file-exists-p</code> 若文件或目录存在则返回 t 否则返回 nil。</li>
+<li><code>file-readable-p</code> 判断文件是否可读</li>
+<li><code>file-executable-p</code> 判断文件是否可执行</li>
+<li><code>file-writable-p</code> 判断文件是否可写</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">file-exists-p</span> <span class="token string">"Emacs_Lisp.md"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="创建目录">创建目录</h2>
+<ul>
+<li><code>make-directory</code> 创建目录，第一个参数为目录路径，第二个参数为(t 或 nil) ,当第二个参数设置为 t 时，
+该函数会自动创建路径中不存在的目录（相当于递归创建），或创建的目录已存在时不会抛出错误。</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">make-directory</span> <span class="token string">"./test"</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">make-directory</span> <span class="token string">"./test"</span><span class="token punctuation">)</span>   <span class="token comment">;; test 目录已创建抛出错误</span>
+<span class="token punctuation">(</span><span class="token car">make-directory</span> <span class="token string">"./test"</span> <span class="token boolean">t</span><span class="token punctuation">)</span> <span class="token comment">;; no error!</span>
+
+<span class="token punctuation">(</span><span class="token car">make-directory</span> <span class="token string">"./dir/dir1"</span><span class="token punctuation">)</span>   <span class="token comment">;; 不存在 dir，所以不能创建 dir1，抛出 error</span>
+<span class="token punctuation">(</span><span class="token car">make-directory</span> <span class="token string">"./dir/dir1"</span> <span class="token boolean">t</span><span class="token punctuation">)</span> <span class="token comment">;; 递归创建目录 success!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="显示目录文件">显示目录文件</h2>
+<p>使用 <code>directory-files</code> 和 <code>directory-files-recursively</code> 查看目录中的文件。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">
+<span class="token punctuation">(</span><span class="token car">directory-files</span> <span class="token string">"./"</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">directory-files</span> <span class="token string">"./"</span> <span class="token boolean">t</span><span class="token punctuation">)</span>          <span class="token comment">;; Return full file paths</span>
+<span class="token punctuation">(</span><span class="token car">directory-files</span> <span class="token string">"./"</span> <span class="token boolean">t</span> <span class="token string">".md"</span><span class="token punctuation">)</span>    <span class="token comment">;; Get all file containing ".org"</span>
+<span class="token punctuation">(</span><span class="token car">directory-files</span> <span class="token string">"./"</span> <span class="token boolean">t</span> <span class="token string">""</span> <span class="token boolean">t</span><span class="token punctuation">)</span>     <span class="token comment">;; Don't sort results</span>
+<span class="token punctuation">(</span><span class="token car">directory-files</span> <span class="token string">"./"</span> <span class="token boolean">t</span> <span class="token string">""</span> <span class="token boolean">nil</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">;; Maximum 3 results</span>
+
+<span class="token punctuation">(</span><span class="token car">directory-files-recursively</span> <span class="token string">"../"</span> <span class="token string">"\\.png$"</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">directory-files-recursively</span> <span class="token string">"../"</span> <span class="token string">""</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">directory-files-recursively</span> <span class="token string">"../"</span> <span class="token string">""</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; The fourth parameter can be a function that determines whether</span>
+<span class="token comment">;; a path can be traversed using any logic!</span>
+<span class="token punctuation">(</span><span class="token car">directory-files-recursively</span> <span class="token string">"~/.emacs.d"</span> <span class="token string">""</span> <span class="token boolean">nil</span>
+                             <span class="token punctuation">(</span><span class="token lambda"><span class="token keyword">lambda</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">dir</span></span><span class="token punctuation">)</span></span>
+                               <span class="token punctuation">(</span><span class="token car">string-equal</span> dir <span class="token string">"~/.emacs.d/lisp"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">directory-files-recursively</span> <span class="token string">"../"</span> <span class="token string">"\\.md"</span> <span class="token boolean">t</span> <span class="token boolean">nil</span> <span class="token boolean">nil</span><span class="token punctuation">)</span> <span class="token comment">;; Doesn't follow symlinks</span>
+<span class="token punctuation">(</span><span class="token car">directory-files-recursively</span> <span class="token string">"../"</span> <span class="token string">"\\.md"</span> <span class="token boolean">t</span> <span class="token boolean">nil</span> <span class="token boolean">t</span><span class="token punctuation">)</span>   <span class="token comment">;; Follows symlinks!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="文件操作">文件操作</h2>
+<ul>
+<li><code>copy-file</code> 复制文件</li>
+<li><code>copy_directory</code> 复制目录，包括子目录</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">copy-file</span> <span class="token string">"~/.emacs.d/init.el"</span> <span class="token string">"/tmp"</span><span class="token punctuation">)</span>  <span class="token comment">;; Must end in a slash!</span>
+<span class="token punctuation">(</span><span class="token car">copy-file</span> <span class="token string">"~/.emacs.d/init.el"</span> <span class="token string">"/tmp/"</span><span class="token punctuation">)</span>   <span class="token comment">;; Copied to /tmp</span>
+<span class="token punctuation">(</span><span class="token car">copy-file</span> <span class="token string">"~/.emacs.d/init.el"</span> <span class="token string">"/tmp/"</span><span class="token punctuation">)</span>   <span class="token comment">;; Error, already exists!</span>
+<span class="token punctuation">(</span><span class="token car">copy-file</span> <span class="token string">"~/.emacs.d/init.el"</span> <span class="token string">"/tmp/"</span> <span class="token boolean">t</span><span class="token punctuation">)</span> <span class="token comment">;; No error!</span>
+<span class="token comment">;; The remaining parameters are all about preserving file metadata</span>
+
+<span class="token punctuation">(</span><span class="token car">copy-directory</span> <span class="token string">"~/.emacs.d/lisp"</span> <span class="token string">"/tmp"</span><span class="token punctuation">)</span>  <span class="token comment">;; Must end in a slash!</span>
+<span class="token punctuation">(</span><span class="token car">copy-directory</span> <span class="token string">"~/.emacs.d/lisp"</span> <span class="token string">"/tmp/"</span><span class="token punctuation">)</span> <span class="token comment">;; Copied to /tmp/lisp</span>
+
+<span class="token comment">;; To copy the contents of the directory without the enclosing directory:</span>
+<span class="token punctuation">(</span><span class="token car">copy-directory</span> <span class="token string">"~/.emacs.d/eshell"</span> <span class="token string">"/tmp/lisp"</span> <span class="token boolean">t</span> <span class="token boolean">t</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">copy-directory</span> <span class="token string">"~/.emacs.d/eshell"</span> <span class="token string">"/tmp/lisp"</span> <span class="token boolean">t</span> <span class="token boolean">t</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>rename-file</code> 重命名（移动）文件或目录</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">rename-file</span> <span class="token string">"/tmp/init.el"</span> <span class="token string">"/tmp/init-new.el"</span><span class="token punctuation">)</span> <span class="token comment">;; Rename file in same folder</span>
+<span class="token punctuation">(</span><span class="token car">rename-file</span> <span class="token string">"/tmp/init-new.el"</span> <span class="token string">"~/.emacs.d/"</span><span class="token punctuation">)</span>  <span class="token comment">;; Move file to different folder</span>
+<span class="token punctuation">(</span><span class="token car">rename-file</span> <span class="token string">"~/.emacs.d/init-new.el"</span> <span class="token string">"~/.emacs.d/init.el"</span><span class="token punctuation">)</span>   <span class="token comment">;; Error!</span>
+<span class="token punctuation">(</span><span class="token car">rename-file</span> <span class="token string">"~/.emacs.d/init-new.el"</span> <span class="token string">"~/.emacs.d/init.el"</span> <span class="token boolean">t</span><span class="token punctuation">)</span> <span class="token comment">;; OK</span>
+
+<span class="token comment">;; It can also rename or move directories!</span>
+<span class="token punctuation">(</span><span class="token car">rename-file</span> <span class="token string">"/tmp/lisp"</span> <span class="token string">"/tmp/lisp-two"</span><span class="token punctuation">)</span> <span class="token comment">;; OK</span>
+<span class="token punctuation">(</span><span class="token car">rename-file</span> <span class="token string">"/tmp/lisp-two"</span> <span class="token string">"/tmp/lisp"</span><span class="token punctuation">)</span> <span class="token comment">;; OK</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>delete-file</code> 删除文件，可选择删除到回收站</li>
+<li><code>delete-directory</code> 删除目录，可选择删除文件</li>
+</ul>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">delete-file</span> <span class="token string">"/tmp/lisp/dw-desktop.el"</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">delete-file</span> <span class="token string">"~/.npmrc"</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">delete-directory</span> <span class="token string">"/tmp/lisp"</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">delete-directory</span> <span class="token string">"/tmp/lisp"</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="创建符号链接">创建符号链接</h2>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 创建符号链接，Windows 上需要调试</span>
+<span class="token punctuation">(</span><span class="token car">make-symbolic-link</span> <span class="token string">"~/.dotfiles/.config/guix"</span> <span class="token string">"~/.config/guix"</span><span class="token punctuation">)</span>   <span class="token comment">;; Error if exists</span>
+<span class="token punctuation">(</span><span class="token car">make-symbolic-link</span> <span class="token string">"~/.dotfiles/.config/guix"</span> <span class="token string">"~/.config/guix"</span> <span class="token boolean">t</span><span class="token punctuation">)</span> <span class="token comment">;; No error!</span>
+
+<span class="token comment">;; 测试一个文件或目录是否是符号链接</span>
+<span class="token punctuation">(</span><span class="token car">file-symlink-p</span> <span class="token string">"~/.emacs.d"</span><span class="token punctuation">)</span>         <span class="token comment">;; .dotfiles/.emacs.d</span>
+<span class="token punctuation">(</span><span class="token car">file-symlink-p</span> <span class="token string">"~/.emacs.d/init.el"</span><span class="token punctuation">)</span> <span class="token comment">;; nil</span>
+
+<span class="token comment">;; 获取文件路径（若是链接文件则返回链接指向的文件路径）</span>
+<span class="token punctuation">(</span><span class="token car">file-truename</span> <span class="token string">"~/.emacs.d/init.el"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>print</h1>
 <h2 id="print">print</h2>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">print</span> OBJECT &amp;optional PRINTCHARFUN<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>打印 lisp OBJECT（整数、浮点、字符、字符串、列表、符号等），输出可以被 read 函数
 读回，Optional 参数可以是一个 buffer 或函数。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">setq xbuff <span class="token punctuation">(</span><span class="token car">generate-new-buffer</span> <span class="token string">"*my output*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">setq</span> xbuff <span class="token punctuation">(</span><span class="token car">generate-new-buffer</span> <span class="token string">"*my output*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token punctuation">(</span><span class="token car">print</span> <span class="token string">"something"</span> xbuff<span class="token punctuation">)</span>
 
-<span class="token punctuation">(</span><span class="token car">switch-to-buffer</span> xbuff <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">(</span><span class="token car">switch-to-buffer</span> xbuff<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>with-output-to-temp-buffer</strong></p>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">with-output-to-temp-buffer</span> BUFNAME &amp;rest BODY<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>将标准输出绑定到缓冲区 BUFNAME，执行 BODY, 则首先会清空 BUFNAME，然后在 BUFNAME
@@ -1098,330 +1551,52 @@ packages 加载前设置这些变量，不用担心 packages 加载后覆盖掉�
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">princ</span> OBJECT &amp;optional PRINTCHARFUN<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>既不换行也不打印字符串中的分隔符。</p>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">princ</span> <span class="token punctuation">'(</span><span class="token string">"x"</span> <span class="token string">"y"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; (x y)，未打印”引号“分割符</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>缓冲和文件操作</h1>
-<h2 id="创建-buffer">创建 buffer</h2>
-<ol>
-<li>
-<p>with-temp-buffer</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">with-temp-buffer</span> &amp;rest BODY<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>创建临时 buffer 并像 progn（后面介绍）执行 BODY。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">setq</span> myStr <span class="token string">"big text"</span><span class="token punctuation">)</span>
-
-<span class="token punctuation">(</span><span class="token car">with-temp-buffer</span>
-    <span class="token punctuation">(</span><span class="token car">insert</span> myStr<span class="token punctuation">)</span>
-    <span class="token comment">;; manipulate the string here</span>
-    <span class="token comment">;; print whole buffer content</span>
-    <span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"%s"</span> <span class="token punctuation">(</span><span class="token car">buffer-string</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>注</strong>： 大多数时候应该使用该函数创建新 buffer，可以节省创建 buffer 的代码、
-切换到它做些事，或关闭它，然后恢复当前缓冲区。</p>
-</li>
-<li>
-<p>generate-new-buffer</p>
-<p>创建新 buffer 并返回。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 设置新 buffer 名字，如果名字以空格开始，则撤销会被禁止</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> newBufName <span class="token string">" xyz"</span><span class="token punctuation">)</span>
-
-<span class="token comment">;; 创建一个新 buffer 并保存在一个变量中，以便后续切换或关闭</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> newBuf <span class="token punctuation">(</span><span class="token car">generate-new-buffer</span> newBufName<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment">;; 把新 buffer 设置为当前 buffer 且不可见，所有的插入等操作都适用于它</span>
-<span class="token punctuation">(</span><span class="token car">set-buffer</span> newBuf<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>get-buffer-create</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">get-buffer-create</span> BUFFER-OR-NAME<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>
-<p>返回新 buffer 但是不会切换到它，需使用 set-buffer（后面介绍）切换。</p>
-</li>
-<li>
-<p>BUFFER-OR-NAME 可以是字符串或 buffer。</p>
-</li>
-<li>
-<p>如果 BUFFER-OR-NAME 存在，则仅仅返回；若不存在则新建。</p>
-</li>
-<li>
-<p>如果字符串以空格开头，则撤销操作被禁止。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 确保字符串是唯一的且以空格开头</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> newBuf <span class="token punctuation">(</span><span class="token car">get-buffer-create</span> <span class="token string">" xyz"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">set-buffer</span> newBuf<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="获取-buffer-名字">获取 buffer 名字</h2>
-<ol>
-<li>
-<p>buffer-name</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 获取当前 buffer 名字</span>
-<span class="token punctuation">(</span><span class="token car">buffer-name</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>buffer-file-name</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 获取 buffer 文件的完整路径，若无文件返回 nil</span>
-<span class="token punctuation">(</span><span class="token car">buffer-file-name</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="切换-buffer">切换 buffer</h2>
-<ol>
-<li>
-<p>with-current-buffer</p>
-<p>创建临时 buffer，在函数执行完后会自动返回原 buffer。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">witch-curent-buffer</span> myBuf
-   <span class="token comment">;; insert or delete text here</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>set-buffer</p>
-<p>切换到指定 buffer，但缓冲区不可见。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">save-current-buffer</span>
-  <span class="token comment">;; switch to myBuf</span>
-  <span class="token punctuation">(</span><span class="token car">set-buffer</span> myBuf<span class="token punctuation">)</span>
-  <span class="token comment">;; do stuff, such as insert/delete text</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>switch-to-buffer</p>
-<p>切换到指定 buffer，但不用在 Lisp 代码中，一般用于切换到可见缓冲区。</p>
-</li>
-</ol>
-<h2 id="关闭-buffer">关闭 buffer</h2>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">kill-buffer
-
-<span class="token comment">;; 关闭指定 buffer</span>
-<span class="token punctuation">(</span><span class="token car">kill-buffer</span> myBuffer<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="文件操作">文件操作</h2>
-<ol>
-<li>
-<p>find-file</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 打开文件，返回一个 buffer</span>
-<span class="token punctuation">(</span><span class="token car">find-file</span> <span class="token string">"~/test.txt"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>save-buffer</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 保存当前 buffer，保存 buffer 关联文件</span>
-<span class="token punctuation">(</span><span class="token car">save-buffer</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>write-file</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 相当于“另存为”</span>
-<span class="token punctuation">(</span><span class="token car">write-file</span> <span class="token string">"~/new.txt"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>append-to-file</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 在指定位置追加文本</span>
-<span class="token punctuation">(</span><span class="token car">append-to-file</span> <span class="token number">100</span> <span class="token number">200</span> <span class="token string">"~/test.txt"</span><span class="token punctuation">)</span>   <span class="token comment">;; 在位置 100~200 追加内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h1>catch/throw error/user-error</h1>
-<p>退出函数： map,loop。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">catch</span> <span class="token quoted-symbol variable symbol">'tagname</span> body<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>异常和错误</h1>
+<h2 id="异常捕获-catch-throw">异常捕获 catch/throw</h2>
 <p>catch 执行 body，返回 body 最后一个表达式的返回值。若 body 中包含 (throw …)，
 且被调用，则返回 throw 传递的值。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">throw</span> <span class="token quoted-symbol variable symbol">'tagname</span> value<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>退出函数或跳出相应 tagname 的 map 或 loop。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">test-exit-f</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">catch</span> <span class="token quoted-symbol variable symbol">'tagname</span> body<span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">throw</span> <span class="token quoted-symbol variable symbol">'tagname</span> value<span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">test-exit-f</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span>
   <span class="token string">"example. using catch/throw to exit function"</span>
   <span class="token punctuation">(</span><span class="token interactive keyword">interactive</span><span class="token punctuation">)</span>
-  <span class="token punctuation">(</span><span class="token car">catch</span> <span class="token quoted-symbol variable symbol">'aaa</span>
+  <span class="token punctuation">(</span><span class="token car">catch</span> <span class="token quoted-symbol variable symbol">'tag</span>
     <span class="token punctuation">(</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token car">y-or-n-p</span> <span class="token string">"exit?"</span><span class="token punctuation">)</span>
        <span class="token punctuation">(</span><span class="token car">progn</span>
          <span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"existing"</span><span class="token punctuation">)</span>
-         <span class="token punctuation">(</span><span class="token car">throw</span> <span class="token quoted-symbol variable symbol">'aaa</span> <span class="token number">3</span><span class="token punctuation">)</span>        <span class="token comment">;; 如果 yes, 立刻退出，并返回 3</span>
+         <span class="token punctuation">(</span><span class="token car">throw</span> <span class="token quoted-symbol variable symbol">'tag</span> <span class="token number">3</span><span class="token punctuation">)</span>        <span class="token comment">;; 如果 yes, 立刻退出，并返回 3</span>
          <span class="token punctuation">)</span>
        <span class="token punctuation">(</span><span class="token car">progn</span>
          <span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"went on"</span><span class="token punctuation">)</span>
          <span class="token number">4</span> <span class="token comment">;; return 4</span>
-         <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="错误退出">错误退出</h2>
-<p>可调用 error 或 user-error。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">defun</span> test-exit-f
+         <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="错误退出-error-user-error">错误退出 error/user-error</h2>
+<p>调用 error 或 user-error。</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">test-exit-f</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span>
   <span class="token string">"example"</span>
   <span class="token punctuation">(</span><span class="token interactive keyword">interactive</span><span class="token punctuation">)</span>
   <span class="token punctuation">(</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token car">y-or-n-p</span> <span class="token string">"invoke user-error to exit?"</span><span class="token punctuation">)</span>
-     <span class="token punctuation">(</span><span class="token car">user-error</span> <span class="token string">"Error, because: %s"</span> <span class="token string">"you said so!"</span><span class="token punctuation">)</span>
-        <span class="token punctuation">(</span><span class="token car">progn</span>
-         <span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"went on"</span><span class="token punctuation">)</span>
-         <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>Sequence,list,Vector</h1>
-<h2 id="Sequence">Sequence</h2>
-<p>sequence 和 Array 实际上不是 elisp 数据类型。</p>
+        <span class="token punctuation">(</span><span class="token car">user-error</span> <span class="token string">"Error, because: %s"</span> <span class="token string">"you said so!"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"went on"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>Minor Mode</h1>
 <ul>
-<li>函数文档中的 sequence 类型，表示它可能是 list、vector 或 string。</li>
-<li>函数文档中的 array 类型，表示它可能是 vector 或 string。</li>
-<li>list 和 vector 都是有序值序列，每个元素可以是任何类型。</li>
+<li>major mode 是一个 buffer 的主要模式，任何时候只能有一个。</li>
+<li>minor mode 是可为特定 buffer 或 emacs 全局提供支持功能。</li>
 </ul>
-<p>list 和 vector 区别：</p>
+<p>major mode 和 minor mode 在激活后可提供某些特定类型的功能。</p>
 <ul>
-<li>vector：所有元素访问时间相同。</li>
-<li>vector 的长度不能改变。</li>
+<li>模式激活时，有效的键盘映射激活。</li>
+<li>模式激活时，模式行显示 mode 激活状态。</li>
+<li>模式激活时，执行 hook，同时激活其它功能或模式。</li>
+<li>模式激活或停用时，可执行任意代码。</li>
 </ul>
-<ul>
-<li>List：元素访问时间和位置成比例，类似 C 中链表。</li>
-<li>list 的长度可以改变，通过增删 list 第一个元素实现。</li>
-</ul>
-<h2 id="Vector">Vector</h2>
-<p>类似 Java 中的数组对象。</p>
-<ul>
-<li>Vector 是有序值序列</li>
-<li>每个元素可以是任何类型</li>
-<li>元素值可修改</li>
-<li>元素个数不能改变</li>
-<li>读写元素随机访问时间相同</li>
-</ul>
-<ol>
-<li>
-<p>创建 Vector</p>
-<ul>
-<li>make-vector<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">make-vector</span> <span class="token number">5</span> <span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment">;; [0 0 0 0 0]，创建一个长度为 5 个元素的向量，且每个元素初始化为 0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>vector<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">vector</span> a b ...<span class="token punctuation">)</span>  <span class="token comment">;; 创建一个包含元素 a,b,... 的向量</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>[a b …]
-以该方式创建的向量元素不会在创建时被执行</li>
-</ul>
-</li>
-<li>
-<p>填充 Vector</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">fillarray</span> array val<span class="token punctuation">)</span> <span class="token comment">;; 使 array 中的所有值为 val，类似重新赋值</span>
-
-<span class="token punctuation">(</span><span class="token keyword">setq</span> aa <span class="token punctuation">[</span><span class="token number">3</span> <span class="token number">4</span> 5<span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">fillarray</span> aa <span class="token boolean">nil</span><span class="token punctuation">)</span>    <span class="token comment">;; [nil nil nil]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>获取 Vector 长度</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">length</span> <span class="token punctuation">(</span><span class="token car">Vector</span> <span class="token number">7</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>获取元素</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">aref</span> array n<span class="token punctuation">)</span>   <span class="token comment">;; 返回 array 索引为 n 的元素</span>
-<span class="token punctuation">(</span><span class="token car">elt</span> sequence n<span class="token punctuation">)</span> <span class="token comment">;; 返回 sequence 索引为 n 的元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>强调</strong>： emacs 文档提及 “array”，可以认为是 “vector” 或 “string” 提及
-“sequence”，可以认为是 “list” 或 “array”，若已知是 vector，则使用 aref 更好更
-快。</p>
-</li>
-<li>
-<p>修改元素</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 将 ARRAY 索引为 IDX 的元素值替换为 NEWELT，返回 NEWELT</span>
-<span class="token punctuation">(</span><span class="token car">aset</span> ARRAY IDX NEWELT<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>嵌套 Vector</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; Vector 可以以任何方式嵌套</span>
-<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span> 2<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">3</span> 4<span class="token punctuation">]</span><span class="token punctuation">]</span>     <span class="token comment">;; 2 by 2 matrix</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>连接 Vectors，转换 list 为 Vector</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 连接任何 sequence 类型，返回一个 vector</span>
-<span class="token punctuation">(</span><span class="token car">vconcat</span> sequence1 sequence2 ...<span class="token punctuation">)</span>
-
-<span class="token punctuation">(</span><span class="token car">vconcat</span> <span class="token punctuation">[</span><span class="token number">3</span> 4<span class="token punctuation">]</span> <span class="token punctuation">'(</span><span class="token string">"a"</span> <span class="token string">"b"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; [3 4 "a" "b"]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>转换 Vector 为 list</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 连接任何 sequence 类型，返回一个 list</span>
-<span class="token punctuation">(</span><span class="token keyword">append</span> sequence1 sequence2 ...<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><strong>注</strong>： 若想返回一个 proper list，最后一个元素必须是 list 或 nil.</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">append</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> 3<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">4</span> 5<span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment">;; (1 2 3 . [4 5])，improper list</span>
-<span class="token punctuation">(</span><span class="token keyword">append</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> 3<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">4</span> 5<span class="token punctuation">]</span> <span class="token boolean">nil</span><span class="token punctuation">)</span> <span class="token comment">;; (1 2 3 4 5)，proper list</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="list">list</h2>
-<ol>
-<li>
-<p>创建 list</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">list</span> a b ...<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>若不想元素被执行，可写作：</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">'(</span><span class="token car">a</span> b ...<span class="token punctuation">)</span>
-<span class="token comment">;; 等价于</span>
-<span class="token punctuation">(</span><span class="token car">quote</span> <span class="token punctuation">(</span><span class="token car">list</span> a b ...<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">setq</span> mylist <span class="token punctuation">'(</span><span class="token car">a</span> b c<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token keyword">message</span> <span class="token string">"%S"</span> mylist<span class="token punctuation">)</span>
-
-<span class="token punctuation">(</span><span class="token car">make-list</span> LENGTH INIT<span class="token punctuation">)</span> <span class="token comment">;; 创建长度为 LENGTH 的 list，所有元素初始化为 INIT</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>空 list
-在 elisp 中，空 list 等价于 nil。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">'(</span><span class="token punctuation">)</span>
-≡
-<span class="token punctuation">(</span><span class="token car">list</span><span class="token punctuation">)</span>
-≡
-nil<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>list of number</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">number-sequence</span> n m step<span class="token punctuation">)</span> <span class="token comment">;; 返回从 n 到 m，步长为 step 的 list</span>
-<span class="token punctuation">(</span><span class="token car">number-sequence</span> n m<span class="token punctuation">)</span>      <span class="token comment">;; 默认 step 为 1</span>
-<span class="token punctuation">(</span><span class="token car">number-sequence</span> n<span class="token punctuation">)</span>        <span class="token comment">;; 返回只有一个元素 n 的 list</span>
-
-<span class="token punctuation">(</span><span class="token car">number-sequence</span> <span class="token number">0</span> <span class="token number">9</span> <span class="token number">3</span><span class="token punctuation">)</span>    <span class="token comment">;; (0 3 6 9)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>length</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">length</span> list<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>获取一个元素</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">car</span> list<span class="token punctuation">)</span>        <span class="token comment">;; 获取第一个元素</span>
-<span class="token punctuation">(</span><span class="token car">nth</span> n list<span class="token punctuation">)</span>      <span class="token comment">;; 获取第 n 个元素</span>
-<span class="token punctuation">(</span><span class="token car">car</span> <span class="token punctuation">(</span><span class="token car">last</span> list<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; 获取最后一个元素</span>
-<span class="token comment">;;list 索引（下标）从 0 开始</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>获取子 list</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">cdr</span> list<span class="token punctuation">)</span>       <span class="token comment">;; 获取第二个元素到最后一个元素</span>
-<span class="token punctuation">(</span><span class="token car">nthcdr</span> n list<span class="token punctuation">)</span>  <span class="token comment">;; 获取第 n 个元素到最后一个元素</span>
-<span class="token punctuation">(</span><span class="token car">butlast</span> list n<span class="token punctuation">)</span> <span class="token comment">;; 获取除最后 n 个元素的元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>前置连接 list(prepend to list)</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">cons</span> x list<span class="token punctuation">)</span>     <span class="token comment">;; 将 x 加到 list 前面，返回一个新 list</span>
-
-<span class="token punctuation">(</span><span class="token keyword">cons</span> <span class="token string">"a"</span> <span class="token punctuation">(</span><span class="token car">list</span> <span class="token string">"c"</span> <span class="token string">"d"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; ("a" "c" "d")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>连接 list</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">append</span> sequence1 sequence2 ...<span class="token punctuation">)</span> <span class="token comment">;; 连接任何类型 sequence，返回 list</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>修改元素</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">push</span> list<span class="token punctuation">)</span>       <span class="token comment">;; 在变量前加一个元素，返回新 list</span>
-<span class="token punctuation">(</span><span class="token car">pop</span> list<span class="token punctuation">)</span>        <span class="token comment">;; 移除变量第一个元素，返回移除元素</span>
-<span class="token punctuation">(</span><span class="token car">nbutlast</span> list n<span class="token punctuation">)</span> <span class="token comment">;; 移除变量最后 n 个元素，返回变量新值</span>
-<span class="token punctuation">(</span><span class="token car">setcar</span> list x<span class="token punctuation">)</span>   <span class="token comment">;; 用 x 替换 list 的第一个元素，返回 x</span>
-<span class="token punctuation">(</span><span class="token car">setcdr</span> list x<span class="token punctuation">)</span>   <span class="token comment">;; 用 x 替换 list 除第一个元素外剩余元素，返回 x</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>list 转换为 string</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">mapconcat</span> <span class="token quoted-symbol variable symbol">'number-to-string</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">","</span><span class="token punctuation">)</span> <span class="token comment">;; "1,2,3"</span>
-
-<span class="token punctuation">(</span><span class="token car">format</span> <span class="token string">"%s"</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token string">"two"</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; "(1 two 3)</span>
-
-<span class="token punctuation">(</span><span class="token car">substring</span> <span class="token punctuation">(</span><span class="token car">format</span> <span class="token string">"%s"</span> <span class="token punctuation">'(</span><span class="token number">1</span> <span class="token string">"two"</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token number">1</span> <span class="token number">-1</span><span class="token punctuation">)</span> <span class="token comment">;; "1 two 3"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h1>指令定义</h1>
-<ul>
-<li>
-<p>指令就是一个函数，用户可以通过调用 execute-extended-command（即 M-x) 执行。</p>
-</li>
-<li>
-<p>若一个函数是一个指令，我们说这个函数可用于交互（interactive）。</p>
-</li>
-<li>
-<p>若使一个函数可交互，在函数的 doc string 后面增加代码 (interactive)。</p>
- <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">yay</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span>
-  <span class="token string">"Insert “Yay!” at cursor position."</span>
-  <span class="token punctuation">(</span><span class="token interactive keyword">interactive</span><span class="token punctuation">)</span>
-  <span class="token punctuation">(</span><span class="token car">insert</span> <span class="token string">"yay!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行以上代码，然后可以使用&quot;M-x yay&quot;调用该函数。</p>
-</li>
-</ul>
+<p>任何 mode 可以通过交互方式或 Emacs Lisp 代码使用命令激活或停止。</p>
 <h1>参考</h1>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://learnxinyminutes.com/docs/elisp/">https://learnxinyminutes.com/docs/elisp/</a></li>
 <li><a target="_blank" rel="noopener" href="http://ergoemacs.org/emacs/elisp_basics.html">http://ergoemacs.org/emacs/elisp_basics.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://systemcrafters.cc/learning-emacs-lisp">https://systemcrafters.cc/learning-emacs-lisp</a></li>
 </ol>
 
                 
@@ -1961,7 +2136,7 @@ nil<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">60k</span>
+                        class="white-color">73.2k</span>
             
             
             

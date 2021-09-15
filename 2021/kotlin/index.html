@@ -1,0 +1,1743 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Kotlin, coco-hkk">
+    <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Kotlin | 点点滴滴</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">点点滴滴</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">点点滴滴</div>
+        <div class="logo-desc">
+            
+            无情道中道，有情天外天，逍遥存一念，他处仙非仙
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/coco-hkk/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/coco-hkk/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Kotlin</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Kotlin/" class="post-category">
+                                Kotlin
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-10
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    21 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1>变量</h1>
+<ul>
+<li>创建变量必须要有 <strong>变量名、变量类型、是否可被重新赋值</strong></li>
+<li>若不显式声明变量类型，则变量类型由编译器推断</li>
+<li>变量存储的内容是一个指向 object 对象的 <strong>引用</strong>，在 kotlin 中任何类型变量都是一个 object 对象</li>
+<li>val 定义的变量不能再次赋值，变量存储的引用在生命周期内永不改变</li>
+<li>var 定义的变量可以重新赋值，即可以改变此变量所引用的 object</li>
+<li>kotlin 基本类型 <code>Byte, Short, Int, Long, Float, Double, Boolean, Char and String</code></li>
+</ul>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 变量创建及赋值，编译器推断 num 为 Int 类型</span>
+<span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">5</span>
+
+<span class="token comment">// 显式定义 name 变量，类型为 String</span>
+<span class="token keyword">var</span> name<span class="token operator">:</span> String
+
+<span class="token comment">// 错误，类型不匹配</span>
+<span class="token keyword">var</span> number<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">5.5</span>
+
+<span class="token comment">// 溢出截断</span>
+<span class="token keyword">var</span> numLong<span class="token operator">:</span> Long <span class="token operator">=</span> <span class="token number">12345678900</span>
+<span class="token comment">// numInt 值为 3755744308</span>
+<span class="token keyword">var</span> numInt<span class="token operator">:</span> Int <span class="token operator">=</span> numLong<span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 数组定义，编译器推断类型为 Int</span>
+<span class="token keyword">var</span> myArray <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token comment">// 数组元素访问，值为 2</span>
+myArray<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token comment">// 数组大小</span>
+myArray<span class="token punctuation">.</span>size
+<span class="token comment">//显式声明数组,类型为 Long</span>
+<span class="token keyword">var</span> myArray<span class="token operator">:</span> Array<span class="token operator">&lt;</span>Long<span class="token operator">></span> <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 错误，val 定义的变量不管是啥都不能重新指定</span>
+<span class="token keyword">val</span> valArray <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token string">"ab"</span><span class="token punctuation">,</span> <span class="token string">"cd"</span><span class="token punctuation">)</span>
+    valArray <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token string">"cd"</span><span class="token punctuation">,</span> <span class="token string">"ef"</span><span class="token punctuation">)</span>
+<span class="token comment">// 虽然 valArray 不能重新指定，但它的元素 valArray[0] 可以被修改</span>
+valArray<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"gh"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>给显式声明的变量赋值，类型必须匹配</li>
+<li>不能直接给类型不匹配的变量赋值，但可以使用 object 方法，如 toInt()。数字类型都支持这些方法：<code>toByte(), toShort(), toInt(), toLong(), toFloat() and toDouble()</code></li>
+<li>在不同类型之间转换时注意类型所表示的范围，防止溢出被截断。</li>
+<li>创建数组使用 arryOf()，编译器会推断类型，显式定义类型使用 Array&lt;类型&gt;</li>
+<li>使用 val 和 var 定义的数组变量，和普通变量意义一样，对于 val 来说，虽然不能重新指定数组，但数组的元素可以更新</li>
+</ol>
+<h1>函数</h1>
+<ol>
+<li>函数使用 <code>return</code> 语句返回时必须明确函数返回值类型。编译器不会去 infer</li>
+<li>函数若没有返回值则可以忽略返回值类型，或定义为 <code>Unit</code></li>
+<li>函数入参默认限定 <code>local val</code>，所以不能在函数体中直接修改</li>
+<li>函数返回值只能返回一个值，若要返回多个值可以使用 Array 数组</li>
+<li>如果定义的函数只由一个表达式组成，则可以移除花括号和 <code>return</code> 返回值</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 函数体由一个表达式组成</span>
+<span class="token keyword">fun</span> <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token operator">:</span> Int<span class="token punctuation">,</span> b<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">&#123;</span>
+  <span class="token keyword">val</span> max <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span> a <span class="token keyword">else</span> b
+  <span class="token keyword">return</span> max
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 等价于，if 作为表达式时必须要有 else 分支</span>
+<span class="token keyword">fun</span> <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token operator">:</span> Int<span class="token punctuation">,</span> b<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span> a <span class="token keyword">else</span> b
+
+<span class="token comment">// 形参不能直接修改，默认是 local val</span>
+<span class="token keyword">fun</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">&#123;</span>
+  x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span>     <span class="token comment">// 错误</span>
+  <span class="token keyword">return</span> x
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="for-循环">for 循环</h2>
+<ol>
+<li><code>..</code> 用于指定范围，如，<code>1..10</code>，指的是 1 到 10 范围</li>
+<li><code>until</code> 用于指定范围，但不包括右侧数值，如，<code>1 until 100</code>，指定的是 1 到 99 而不包括 100</li>
+<li><code>downTo</code> 用于逆序指定范围，如，<code>15 downTo 1</code>，指的是 15 到 1 逆序</li>
+<li><code>step</code> 用于遍历范围时，一次步进，<code>.., until, downTo</code> 默认是 1，<code>1..100 step 2</code> 设定步进为 2</li>
+<li>如果 for 循环只有一个语句，可以忽略花括号</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">// in 表示遍历 范围 1..10，每次步进为 1， x 值为 1,2,3...,10</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">in</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">10</span> step <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">//步进 2</span>
+
+<span class="token comment">// 遍历数组</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>item <span class="token keyword">in</span> myArray<span class="token punctuation">)</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"<span class="token interpolation variable">$item</span> is an item in the array"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> item<span class="token punctuation">)</span> <span class="token keyword">in</span> myArray<span class="token punctuation">.</span><span class="token function">withIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"index <span class="token interpolation variable">$index</span> has item <span class="token interpolation variable">$item</span>"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="其它">其它</h2>
+<ol>
+<li><code>readLine</code> 从终端读取用户输入，若输入为空则返回 <code>null</code></li>
+<li>kotlin 有转换字符串大小写函数，toLowerCase， toUpperCase 和 capitalize。<code>mystring.capitalize()</code></li>
+<li>随机数产生函数 Math.random()</li>
+</ol>
+<h1>类</h1>
+<h2 id="class">class</h2>
+<p>kotlin 允许我们定义自己的类（定义我们自己的数据类型），它是 object 的模板。一个类可以创建任意多个 objects。</p>
+<ol>
+<li>由关键字 <code>class</code> 定义一个类</li>
+<li>类包含属性和方法，属性变量是类的局部变量</li>
+<li>使用 <code>.</code> 操作符访问对象的属性和方法</li>
+<li>当初始化一个 object 时，首先执行构造函数初始化该对象。初始化方式非常灵活，既可以在构造函数参数中使用 <code>val</code> 和 <code>var</code> 定义属性，也可以在构造函数外类体中定义属性。当构造函数初始化完成后，继续按顺序初始化构造函数外类体中的属性和 <code>init &#123;&#125;</code> 代码块。</li>
+<li>属性必须在使用前<strong>初始化</strong></li>
+<li>可使用 <code>getters</code> 和 <code>setters</code> 访问和设置属性，若没有显式设置，编译器会为每个属性设置默认的 <code>getter</code> 和 <code>setter</code></li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 构造函数参数中定义属性</span>
+<span class="token keyword">class</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">var</span> weight_param<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 构造函数外类体中定义属性</span>
+<span class="token keyword">class</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> weight_param<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">var</span> weight <span class="token operator">=</span> weight_param     <span class="token comment">// 属性，此类有两个属性，name 和 weight</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// init 代码初始化</span>
+<span class="token keyword">class</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> weight_param<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// 先初始化构造函数，属性 name 被初始化</span>
+  <span class="token keyword">var</span> weight <span class="token operator">=</span> weight_param                         <span class="token comment">// 按顺序初始化属性 weight</span>
+
+  <span class="token keyword">init</span> <span class="token punctuation">&#123;</span>                                            <span class="token comment">// 按顺序初始化 init 代码块</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Dog <span class="token interpolation variable">$name</span> has been created, weight is <span class="token interpolation variable">$weight</span>"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// getter 和 setter</span>
+<span class="token keyword">var</span> weight <span class="token operator">=</span> weight_param
+    <span class="token keyword">set</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>              <span class="token comment">// set 参数一般就是 value</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> field <span class="token operator">=</span> value    <span class="token comment">// field 是 set 的一个字段，不要修改</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 注意 weightInKgs 是 val， 它由 weight 改变</span>
+<span class="token keyword">val</span> weightInKgs<span class="token operator">:</span> Double
+    <span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> weight <span class="token operator">/</span> <span class="token number">2.2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="superclass-subclass">superclass &amp; subclass</h2>
+<ol>
+<li>类默认是不能继承的 <code>final</code>，需要显式声明 <code>open</code>。若要属性和方法可被重写，也需要显式声明 <code>open</code></li>
+<li>在初始化 subclass 时，先会初始化 superclass，执行 superclass 的构造函数。若构造函数中属性使用 val 定义，若要在子类中修改必须使用 override 方式；若使用 var 定义，则须在子类的 init {} 代码块中修改即可。</li>
+<li>除了在初始化时 override 属性，还可以通过 override 一个属性的 getter 和 setter 方法；在 superclass 中以 val 定义的属性，可以在 subclass  中以 var 方式 override，反之在超类中以 var 定义的属性则不行；当在 subclass 中 override 一个 superclass 的属性时，必须类型匹配，或是超类的 subtype。</li>
+<li>override 方法时，必须保证和 superclass 中的方法参数类型匹配，返回值类型必须兼容：返回相同类型或 subclass type</li>
+<li>override 的属性和方法，都保持 open，可以声明 final 禁止 override</li>
+<li>subclass 可以定义 superclass 中没有的属性和方法</li>
+<li>只要能够使用 superclass 的地方，就能够使用其 subclass</li>
+<li>多态(polymorphism) 允许不同子类对同一个方法有不同的实现</li>
+<li>继承保证了所有子类都具有超类中定义的属性和方法</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 声明一个超级类，其构造函数定义了两个属性</span>
+<span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">Car</span><span class="token punctuation">(</span><span class="token keyword">val</span> make<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> model<span class="token operator">:</span>String<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 继承，subclass 的构造函数必须定义两个参数，用于初始化 superclass Car 的属性</span>
+<span class="token keyword">class</span> <span class="token function">ConvertibleCar</span><span class="token punctuation">(</span>make_param<span class="token operator">:</span> String<span class="token punctuation">,</span> model_param<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">Car</span><span class="token punctuation">(</span>make_param<span class="token punctuation">,</span> model_param<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 初始化时重写属性和方法</span>
+<span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">Car</span><span class="token punctuation">(</span>make_param<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> model<span class="token operator">:</span>String<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">open</span> <span class="token keyword">val</span> make <span class="token operator">=</span> make_param
+
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token function">ConvertibleCar</span><span class="token punctuation">(</span>make_param<span class="token operator">:</span> String<span class="token punctuation">,</span> model_param<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">Car</span><span class="token punctuation">(</span>make_param<span class="token punctuation">,</span> model_param<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">override</span> <span class="token keyword">val</span> make <span class="token operator">=</span> <span class="token string">"A"</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 初始化时子类修改超类属性</span>
+<span class="token keyword">open</span> <span class="token keyword">class</span> <span class="token function">Car</span><span class="token punctuation">(</span>make_param<span class="token operator">:</span> String<span class="token punctuation">,</span> model_param<span class="token operator">:</span>String<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">open</span> <span class="token keyword">val</span> make <span class="token operator">=</span> make_param
+  <span class="token keyword">var</span> model <span class="token operator">=</span> model_param
+
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token function">ConvertibleCar</span><span class="token punctuation">(</span>make_param<span class="token operator">:</span> String<span class="token punctuation">,</span> model_param<span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">Car</span><span class="token punctuation">(</span>make_param<span class="token punctuation">,</span> model_param<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">override</span> <span class="token keyword">val</span> make <span class="token operator">=</span> <span class="token string">"A"</span>    <span class="token comment">// override 修改 val 定义属性</span>
+  <span class="token keyword">init</span> <span class="token punctuation">&#123;</span>
+    model <span class="token operator">=</span> <span class="token string">"a"</span>             <span class="token comment">// 在 init 代码块中修改 superclass model</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 只要能够使用 superclass 的地方，就能够使用其 subclass</span>
+<span class="token keyword">val</span> car<span class="token operator">:</span> Car <span class="token operator">=</span> <span class="token function">ConventibleCar</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// car 虽然是 Car 类型，但编译器知道它底层是 ConventibleCar，所以 car.model 是 ConventibleCar 重写的值</span>
+<span class="token keyword">val</span> model <span class="token operator">=</span> car<span class="token punctuation">.</span>model<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>可使用 IS-A 测试一个类是否是超类的子类，例如，X 是 Y 的子类，X 是 Y 必须有意义。</li>
+<li>IS-A 是一个单向测试</li>
+</ol>
+<h2 id="Abstract-Interface">Abstract &amp; Interface</h2>
+<p>类可以分为三种，concrete, abstract 和 interface，具体区分就是 concrete 完完整整实现所有属性和方法，abstract 只实现部分属性和方法，interface 可能实现部分方法，但不会实现属性。前二者具有 state，interface 则无 state</p>
+<ol>
+<li>抽象类<strong>不能被实例化</strong>，它可以有抽象和非抽象的属性和方法</li>
+<li>任何类，只要包含抽象属性和方法，那么它必须被声明为抽象类</li>
+<li>通过 override 实现抽象类的 abstract 属性和方法重写</li>
+<li>所有的 abstract 属性和方法，必须在 concrete subclass 重新 override 实现</li>
+<li>interface 可以有抽象和非抽象方法</li>
+<li>interface 没有构造函数，它可以有 abstract 属性，或者属性可以有 getters 和 setters，但是 abstract 属性不能被初始化，意味着 setters 不能访问默认 field 字段</li>
+<li>一个类可以实现多个 interface，但只能继承一个 class</li>
+<li>子类访问超类或接口（假设为 A）的函数 <code>super&lt;A&gt;.function</code></li>
+<li>可以使用 <code>is</code> 操作符判断一个存储对象的变量存储的类型</li>
+<li>当编译器可以保证底层对象在类型检查和使用之间不会改变时， <code>is</code> 运算符会执行智能转换。</li>
+<li><code>as</code> 操作符可以显式转换类型</li>
+</ol>
+<h1>data class</h1>
+<ol>
+<li>kotlin 中所有的类都直接或间接继承 Any，Any 类实现了三个方法 <code>equals</code>, <code>hashCode</code>, <code>toString</code>，所有的类都是 Any 的子类，三个方法可被 override。</li>
+<li>比较操作符 <code>==</code> 是由函数 <code>equals</code> 实现，默认情况，如果两个底层对象一致一致，它返回 <code>true</code>，若是不同的底层对象，返回 <code>false</code></li>
+<li>比较操作符 <code>===</code> 允许你检查两个变量是否指向相同的底层对象，而忽略底层对象类型</li>
+</ol>
+<hr>
+<ol>
+<li>data 类允许你创建一个主要用于存储数据的对象。编译器会重写 data 类的 <code>eauqls</code>, <code>hashCode</code>, <code>toString</code> 方法，并且新增 <code>copy</code> 和 <code>componetN</code> 方法</li>
+<li>data 类的 <code>equals</code> 方法检查两个 data 对象的构造函数中定义的属性是否一致，若一致则返回 true</li>
+<li><code>copy</code> 允许你创建一个 data 对象的新拷贝，主要用于改变一些属性（属性定义使用 val），源对象保持不变</li>
+<li><code>componentN</code> 允许你解构 data 对象的属性，component1 表示按照在构造函数定义属性的顺序，依次类推 component2</li>
+<li>编译器只识别在 data 对象构造函数中定义的属性，类体中定义的属性会被忽略</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 定义一个 data 类，它有两个属性，属性必须定义为 val</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Recipe</span><span class="token punctuation">(</span><span class="token keyword">val</span> title<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> isVegetarian<span class="token operator">:</span> Boolean<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 如果没有类体，则可以忽略花括号</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 创建 data class 对象</span>
+<span class="token keyword">val</span> r<span class="token operator">=</span> <span class="token function">Recipe</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token comment">// 使用 componentN 解构属性, component1 是 title, component2 是 isVegetarian</span>
+<span class="token keyword">val</span> <span class="token punctuation">(</span>title<span class="token punctuation">,</span> isVegetarian<span class="token punctuation">)</span> <span class="token operator">=</span> r<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<ol>
+<li>构造函数和函数允许参数带有默认值，传参时可以把形参名字带上</li>
+<li>类可以有次构造函数</li>
+<li>函数重载，若函数名称一样，一个重载函数必须有不同的参数（参数类型或数量不同），但或许有不同的返回值</li>
+</ol>
+<h2 id="data-class-规则">data class 规则</h2>
+<ol>
+<li>必须有主构造函数</li>
+<li>主构造函数必须定义一个或多个参数</li>
+<li>每个参数必须是加 val 或 var</li>
+<li>data class 不能 open 或 abstract</li>
+</ol>
+<h1>nullable 和 exceptions</h1>
+<h2 id="nullable">nullable</h2>
+<ol>
+<li>若将 null 赋值给一个变量，那么那个变量将不会引用任何对象，即变量虽然存在，但不会指向任何</li>
+<li>除了基本（base）类型外，可空（nullable）类型可保持一个 null 值。定义可空变量时只需在定义变量时在它的类型后面加 <code>?</code>，之间不能有空格</li>
+<li>若要访问可空类型变量的属性或方法，必须先检查变量是否为空</li>
+<li>若编译器不能保证在检查变量是否为空到使用变量之间变量的值不会改变，你必须使用 safe call 操作符 <code>?.</code> 来访问属性和方法</li>
+<li>可以串联使用 <code>?.</code></li>
+<li>若变量不为空，则可以使用 <code>?.let &#123;&#125;</code> 操作执行变量不为空时语句，在 let 代码块内，可使用 <code>it</code> 替换变量</li>
+<li>若变量为空，可使用 Elvis operator <code>?:</code> 或 <code>?:let &#123;&#125;</code> 执行变量为空时的语句，在 let 代码块内，可使用 <code>it</code> 替换变量</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// 定义一个可空类型变量，串联使用 ?.</span>
+<span class="token keyword">class</span> MyWolf <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> w<span class="token operator">:</span> Wolf<span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">Wolf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//可空属性 w，假设 Wolf() 有 hunger 属性</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">var</span> myWolf<span class="token operator">:</span> MyWolf<span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">MyWolf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// 可空变量 myWolf</span>
+myWolf<span class="token operator">?</span><span class="token punctuation">.</span>w<span class="token operator">?</span><span class="token punctuation">.</span>hunger   <span class="token comment">// 串联使用 ?. 访问 hunger 属性</span>
+
+<span class="token comment">// 可空类型版的 if-else</span>
+myWolf<span class="token operator">?</span><span class="token punctuation">.</span>w<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">let</span> <span class="token punctuation">&#123;</span> <span class="token comment">// if w != null true</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hunger is <span class="token interpolation variable">$hunger</span>"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span> <span class="token operator">?:</span>let <span class="token punctuation">&#123;</span>   <span class="token comment">// if w != null false</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"w is null"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="exceptions">exceptions</h2>
+<p>try … catch 主要目的是把本来程序指针跳转到出问题的地方转移到自定义的 catch 语句块中。</p>
+<ol>
+<li>当一些可预期出错发生，系统会抛出异常。异常类型为 <code>Exception</code></li>
+<li>若断言对象是 null 时，可使用 not-null 断言操作符 <code>!!</code> 抛出异常 <code>NullPointerException</code></li>
+<li>可以使用 throw 抛出一个异常</li>
+<li>使用 <code>try/catch/finally</code> 捕捉异常。若 try 语句块执行失败，则抛出异常，然后执行 catch 语句块，最后执行 finally。finally 总会被执行，可以吧 try 和 catch 共同执行的代码放在其中。即使在 try 或 catch 中执行了 return 语句，也会在返回前执行 finally。</li>
+<li><code>try</code> 和 <code>throw</code> 是表达式</li>
+<li>可以使用 safe cast <code>as?</code> 避免异常 <code>ClassCastException</code></li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// try/catch/finally</span>
+<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// Do risky thing</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token operator">:</span> Exception<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>       <span class="token comment">// 此函数打印出问题原因堆栈</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 可以是一些 try/catch 共同会执行的代码</span>
+  <span class="token comment">// 可以是善后工作</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 自定义异常</span>
+<span class="token keyword">class</span> AnimalException <span class="token operator">:</span> <span class="token function">Exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 作为表达式的 try/catch</span>
+<span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token keyword">try</span> <span class="token punctuation">&#123;</span> str<span class="token punctuation">.</span><span class="token function">toInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token operator">:</span> Exception<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token keyword">null</span> <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 作为表达式的 catch</span>
+<span class="token keyword">val</span> h <span class="token operator">=</span> w<span class="token operator">?</span><span class="token punctuation">.</span>hunger <span class="token operator">?:</span> <span class="token keyword">throw</span> <span class="token function">AnimalException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>lambda</h1>
+<p>lambda 函数一般精简和匿名的(short &amp; anonymous)，可以赋值给一个变量也可以作为函数的参数和返回值。</p>
+<h2 id="lambda-定义和变量">lambda 定义和变量</h2>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">/**
+  * lambda 函数定义
+  */</span>
+<span class="token comment">// 一个入参 x</span>
+<span class="token punctuation">&#123;</span>x<span class="token operator">:</span> Int <span class="token operator">-></span> x <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 两个入参 x, y</span>
+<span class="token punctuation">&#123;</span>x<span class="token operator">:</span> Int<span class="token punctuation">,</span> y<span class="token operator">:</span> Int <span class="token operator">-></span> x <span class="token operator">+</span> y<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 无参数</span>
+<span class="token punctuation">&#123;</span><span class="token string">"lambda"</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+  * lambda 赋值给一个变量
+  */</span>
+<span class="token keyword">var</span> addX <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> Int <span class="token operator">-></span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+  * 调用 lambda 函数
+  */</span>
+<span class="token keyword">var</span> result <span class="token operator">=</span> addX<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">addX</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment">/**
+  * lambda 类型
+  */</span>
+<span class="token comment">// msg 的类型为 (Int) -> String</span>
+<span class="token keyword">val</span> msg <span class="token operator">=</span> <span class="token punctuation">&#123;</span>x<span class="token operator">:</span> Int <span class="token operator">-></span> <span class="token string">"x is <span class="token interpolation variable">$x</span>"</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 显式声明类型</span>
+<span class="token keyword">val</span> add<span class="token operator">:</span> <span class="token punctuation">(</span>Int<span class="token punctuation">,</span> Int<span class="token punctuation">)</span> <span class="token operator">-></span> Int
+add <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> Int<span class="token punctuation">,</span> y<span class="token operator">:</span> Int <span class="token operator">-></span> x <span class="token operator">+</span> y <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 如果 lambda 只有一个入参，则可以使用 it 代替</span>
+<span class="token keyword">val</span> add<span class="token operator">:</span> <span class="token punctuation">(</span>Int<span class="token punctuation">)</span> <span class="token operator">-></span> Int <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> Int <span class="token operator">-></span> x <span class="token operator">+</span> <span class="token number">5</span> <span class="token punctuation">&#125;</span>
+<span class="token comment">// 可替换为</span>
+<span class="token keyword">val</span> add<span class="token operator">:</span> <span class="token punctuation">(</span>Int<span class="token punctuation">)</span> <span class="token operator">-></span> Int <span class="token operator">=</span> <span class="token punctuation">&#123;</span>it <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">&#125;</span>
+<span class="token comment">// 不能替换为如下，没有显式声明入参类型，编译器无法推断 it 类型</span>
+<span class="token keyword">val</span> add <span class="token operator">=</span> <span class="token punctuation">&#123;</span>it <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 如果 lambda 不需要返回值可使用 Unit 声明返回值类型</span>
+<span class="token keyword">val</span> myLambda<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hi!"</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>lambda 也是一种 object，它也有类型和值，只不过值是函数，类型是 <code>(入参类型) -&gt; 返回值类型</code></li>
+<li>当 lambda 赋值给一个变量时，编译器会自动推断变量类型</li>
+<li>若没有显式声明 lambda 参数类型，编译器也会自动推断</li>
+<li>当将 lambda 赋值给变量 x 时，并非将 lambda 函数执行结果赋值给变量 x，只在 lambda 执行时才会赋值。（惰性求值）</li>
+<li>若 lambda 函数有多行，则返回值默认为最后一行的值</li>
+<li>确保 lambda 入参类型和显式声明一致</li>
+</ol>
+<h2 id="lambda-和函数">lambda 和函数</h2>
+<ol>
+<li>lambda 作为参数</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token operator">/</span> 入参 coverter 是 lambda，将 coverter 需要的参数和 coverter 一同作为入参
+<span class="token keyword">fun</span> <span class="token function">covert</span><span class="token punctuation">(</span>x<span class="token operator">:</span> Double<span class="token punctuation">,</span> coverter<span class="token operator">:</span> <span class="token punctuation">(</span>Double<span class="token punctuation">)</span> <span class="token operator">-></span> Double<span class="token punctuation">)</span><span class="token operator">:</span> Double <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 函数体内调用 lambda</span>
+  <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token function">coverter</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 调用定义的函数 covert</span>
+<span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token function">covert</span><span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>x<span class="token operator">:</span> Double <span class="token operator">-></span> <span class="token number">2</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">2.2</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 如果函数最后一个参数是 lambda，则可以把 lambda 放在右括号外</span>
+<span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token function">covert</span><span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>x<span class="token operator">:</span> Double <span class="token operator">-></span> <span class="token number">2</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">2.2</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 如果函数只有一个入参，且它是 lambda，则可以彻底忽略括号</span>
+<span class="token keyword">fun</span> <span class="token function">convert</span><span class="token punctuation">(</span>converter<span class="token operator">:</span> <span class="token punctuation">(</span>Int<span class="token punctuation">)</span> <span class="token operator">-></span> Double<span class="token punctuation">)</span> <span class="token operator">:</span> Double <span class="token punctuation">&#123;</span>
+   <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token function">converter</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+   <span class="token keyword">return</span> result
+<span class="token punctuation">&#125;</span>
+convertFive <span class="token punctuation">&#123;</span>it <span class="token operator">*</span> <span class="token number">1.0</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>lambda 作为返回值</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// combine function 所有的入参及返回值都是 lambda 类型</span>
+<span class="token keyword">fun</span> <span class="token function">combine</span><span class="token punctuation">(</span>lambda1<span class="token operator">:</span> <span class="token punctuation">(</span>Double<span class="token punctuation">)</span> <span class="token operator">-></span> Double<span class="token punctuation">,</span> lambda2<span class="token operator">:</span> <span class="token punctuation">(</span>Double<span class="token punctuation">)</span> <span class="token operator">-></span> Double<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>Double<span class="token punctuation">)</span> <span class="token operator">-></span> Double <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> Double <span class="token operator">-></span> <span class="token function">lambda2</span><span class="token punctuation">(</span><span class="token function">lambda1</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 定义 lambda1</span>
+<span class="token keyword">val</span> kgsToPounds <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> Double <span class="token operator">-></span> x <span class="token operator">*</span> <span class="token number">2.204623</span> <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 定义 lambda2</span>
+<span class="token keyword">val</span> poundsToUSTons <span class="token operator">=</span> <span class="token punctuation">&#123;</span> x<span class="token operator">:</span> Double <span class="token operator">-></span> x <span class="token operator">/</span> <span class="token number">2000.0</span> <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 调用函数 combine，可知 kgsToUSTons 也是 lambda</span>
+<span class="token keyword">val</span> kgsToUSTons <span class="token operator">=</span> <span class="token function">combine</span><span class="token punctuation">(</span>kgsToPounds<span class="token punctuation">,</span> poundsToUSTons<span class="token punctuation">)</span>
+
+<span class="token comment">// 这里传入参数，得到最终值</span>
+<span class="token keyword">val</span> usTons <span class="token operator">=</span> <span class="token function">kgsToUSTons</span><span class="token punctuation">(</span><span class="token number">1000.0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>lambda 编程是函数式思维，前面所有的过程都是函数式的推演（参与运算的都是函数），最后求值。惰性求值。</li>
+</ol>
+<h2 id="注意">注意</h2>
+<ol>
+<li>若想要忽略掉 lambda 入参，可以使用 “_” 替代</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">val</span> lambda<span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> String<span class="token punctuation">)</span> <span class="token operator">-></span> Unit <span class="token operator">=</span> <span class="token punctuation">&#123;</span> _<span class="token punctuation">,</span> thingToGreet <span class="token operator">-></span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello <span class="token interpolation variable">$thingToGreet</span>"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h1>collections</h1>
+<p>参考 <a target="_blank" rel="noopener" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/">kotlin stdlib collections</a></p>
+<p>Array, List, Set, Map</p>
+<h2 id="Array">Array</h2>
+<ol>
+<li>创建初始值为 null 的数组，使用 <code>arrayOfNulls</code> 函数</li>
+<li>array 有用的函数有：<code>sort</code>, <code>reverse</code>, <code>contains</code>, <code>min</code>, <code>max</code>, <code>sum</code>, <code>average</code></li>
+</ol>
+<h2 id="List">List</h2>
+<ol>
+<li>list 是有序列表，可以包含重复的值</li>
+<li>List 元素不可增删修改，但 MutableList 可以</li>
+<li><code>listOf</code> 创建 List，<code>mutableListOf</code> 创建 MutableList</li>
+</ol>
+<h2 id="Set">Set</h2>
+<ol>
+<li>Set 中不允许有重复元素，它是无序的</li>
+<li>Set 元素不可增删修改，但 MutableSet 可以</li>
+<li>Set 如何确定两个元素相同？首先通过判断 hash 值，其次通过 <code>===</code> 判断底层对象，通过 <code>==</code> 判断对象，若以上三者都判断不相等则表示两个元素不同。</li>
+<li><code>setOf</code> 创建 Set，<code>mutableSetOf</code> 创建 MutableSet</li>
+<li>可以使用 <code>==</code> 比较两个 set 是否相同</li>
+</ol>
+<h2 id="Map">Map</h2>
+<p>键值对，键必须唯一，一般键是字符串</p>
+<ol>
+<li><code>mapOf</code> 创建 Map，<code>mutableMapOf</code> 创建 MutableMap</li>
+<li>Map 不可增删修改，但 MutableMap 可以</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token comment">// map 一般形式 Map&lt;key_type, value_type>，创建 map</span>
+<span class="token keyword">val</span> recipeMap<span class="token operator">:</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Recipe<span class="token operator">></span>
+recipeMap <span class="token operator">=</span> <span class="token function">mapOf</span><span class="token punctuation">(</span><span class="token string">"Recipe1"</span> <span class="token keyword">to</span> r1<span class="token punctuation">,</span> <span class="token string">"Recipe2"</span> <span class="token keyword">to</span> r2<span class="token punctuation">)</span>
+
+<span class="token comment">// 判断 recipeMap 是否有键是 Recipe1，containsValue 判断是否有值</span>
+recipeMap<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span><span class="token string">"Recipe1"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 获取键 Recipe1 的 value</span>
+<span class="token keyword">val</span> recipe <span class="token operator">=</span> recipeMap<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"Recipe1"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 遍历</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token keyword">in</span> recipeMap<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Key is <span class="token interpolation variable">$key</span>, value is <span class="token interpolation variable">$value</span>"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>List, Set, Map 都可以调用 <code>toList()</code>, <code>toSet()</code>, <code>toMap()</code>, <code>toMutableList()</code>, <code>toMutableSet()</code>, <code>toMutableMap()</code> 转换</p>
+<h1>high_order functions</h1>
+<ol>
+<li>使用 <code>minBy</code> 和 <code>maxBy</code> 在 collection 中查找最小和最大值。它们接收一个 lambda 参数，在 lambda 中可指定查找最大最小值得依据，返回值类型和 collection 一致</li>
+<li>使用 <code>sumBy</code> 或 <code>sumByDouble</code> 返回 collection 所有项的和，入参只有一个 lambda，可在 lambda 中指定你想求和的项</li>
+<li>使用 <code>filter</code> 搜索或过滤 collection，入参只有一个 lambda，可在 lambda 中指定搜索或过滤的条件，lambda 函数体必须返回一个布尔值。<code>filter</code> 通常返回一个 List，若用于 Map，则它返回一个 Map</li>
+<li><code>map</code> 入参只有一个 lambda，用于转换 collection 中满足 lambda 指定条件的 items。返回一个 List</li>
+<li><code>forEach</code> 像 for 循环，允许你为 collection 中每个 item 执行一条或多条操作</li>
+<li>使用 <code>groupBy</code> 将 collection 分成不同组，分组依据它的入参 lambda 指定。此函数返回一个 Map，key 是 lambda 分组时的依据，value 是分组内容，是一个 List</li>
+<li><code>fold</code> 接收两个参数，第一个参数是初始值，第二参数是 lambda，指定在 collection 的每个 item 上执行一些操作。</li>
+</ol>
+<pre class="line-numbers language-kotlin" data-language="kotlin"><code class="language-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Grocery</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> category<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> unit<span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token keyword">val</span> unitPrice<span class="token operator">:</span> Double<span class="token punctuation">,</span> <span class="token keyword">val</span> quantity<span class="token operator">:</span> Int<span class="token punctuation">)</span>
+
+<span class="token keyword">val</span> groceries <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token function">Grocery</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"Vegetable"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                       <span class="token operator">..</span><span class="token punctuation">.</span>
+                       <span class="token punctuation">)</span>
+
+<span class="token comment">// sumBy 接收一个 lambda 参数，在 lambda 函数体内可使用 it 替代 groceries</span>
+<span class="token comment">// sumBy 按照 lambda 给出的标准将所有的 groceries 列表所有元素的 quantity 数量相加返回给变量 sumQuantity</span>
+<span class="token keyword">val</span> sumQuantity <span class="token operator">=</span> groceries<span class="token punctuation">.</span><span class="token function">sumBy</span> <span class="token punctuation">&#123;</span> it<span class="token punctuation">.</span>quantity <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 返回 groceries 列表中元素的 unitPrice 最小值</span>
+<span class="token keyword">val</span> groceries<span class="token punctuation">.</span><span class="token function">maxBy</span> <span class="token punctuation">&#123;</span> it<span class="token punctuation">.</span>unitPrice <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 使用 filter 搜索或过滤，lambda 必须返回一个 Boolean，默认返回 List，若操作 Map，返回就是 Map</span>
+<span class="token comment">// 将 groceris 中所有 Vegetable 组成一个新 List，由新变量 vegetables 引用</span>
+<span class="token keyword">val</span> vegetables <span class="token operator">=</span> groceries<span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">&#123;</span> it<span class="token punctuation">.</span>category <span class="token operator">==</span> <span class="token string">"Vegetable"</span> <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 价格大于 3.0 的组成新列表返回</span>
+<span class="token keyword">val</span> unitPriceOver3 <span class="token operator">=</span> groceries<span class="token punctuation">.</span><span class="token function">filter</span> <span class="token punctuation">&#123;</span> it<span class="token punctuation">.</span>unitPrice <span class="token operator">></span> <span class="token number">3.0</span> <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 创建一个新 List，将 groceries 中每个 item 的 name 放在新 List 中返回</span>
+<span class="token keyword">val</span> groceryNames <span class="token operator">=</span> groceries<span class="token punctuation">.</span><span class="token function">map</span> <span class="token punctuation">&#123;</span> it<span class="token punctuation">.</span>name <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 使用了闭包 closure，在 lambda 函数体内访问了作用域外的自由变量 itemnames</span>
+<span class="token keyword">var</span> itemNames <span class="token operator">=</span> <span class="token string">""</span>
+groceries<span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">&#123;</span> itemNames <span class="token operator">+=</span> <span class="token string">"<span class="token interpolation"><span class="token delimiter variable">$&#123;</span>it<span class="token punctuation">.</span>name<span class="token delimiter variable">&#125;</span></span> "</span> <span class="token punctuation">&#125;</span>
+<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"itemNames: <span class="token interpolation variable">$itemNames</span>"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// groupBy 返回一个 Map，Map 的 key 是 it.category，value 是 categroy 相同的 items 组成的 List</span>
+groceries<span class="token punctuation">.</span><span class="token function">groupBy</span> <span class="token punctuation">&#123;</span> it<span class="token punctuation">.</span>category <span class="token punctuation">&#125;</span><span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 50.0 是初始值，lambda 参数 change = 50.0，参数 item 是指 groceries 中的每个 item</span>
+groceries<span class="token punctuation">.</span><span class="token function">fold</span><span class="token punctuation">(</span><span class="token number">50.0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> change<span class="token punctuation">,</span> item <span class="token operator">-></span>
+                       change <span class="token operator">-</span> item<span class="token punctuation">.</span>unitPrice <span class="token operator">*</span> item<span class="token punctuation">.</span>quantity <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>generics</h1>
+<ol>
+<li>泛型定义在尖括号内 <code>class Contest&lt;T&gt;</code></li>
+<li>可以限定泛型，指定具体超类类型 <code>class Contest&lt;T: Pet&gt;</code></li>
+<li>使用泛型实例化需要在尖括号内指定具体的存在的类型 <code>Contest&lt;Cat&gt;</code></li>
+<li>如有可能，编译器会推断泛型类型</li>
+<li>在类外也可以定义函数的泛型，或使用不同的泛型 <code>fun &lt;T&gt; listPet(): List&lt;T&gt; &#123;&#125;</code></li>
+<li>泛型不可改变(invariant)指的是泛型只接受指定类型，默认泛型是不可改变的</li>
+<li>泛型协变(covariant)指的是泛型可以使用子类型代替超类型，使用关键字 <code>out</code>，此时泛型只能用于返回值或 val 定义的变量</li>
+<li>泛型逆变(contravariant)指的是泛型可以使用超类型代替子类型，使用关键字 <code>in</code>，此时泛型只能用于函数参数</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">coco-hkk</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://coco-hkk.github.io/2021/kotlin/">https://coco-hkk.github.io/2021/kotlin/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">coco-hkk</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/mathjax/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/7.jpg" class="responsive-img" alt="MathJax">
+                        
+                        <span class="card-title">MathJax</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hexo/" class="post-category">
+                                    Hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mathjax/">
+                        <span class="chip bg-color">mathjax</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/gong-ju-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="工具集合">
+                        
+                        <span class="card-title">工具集合</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Others/" class="post-category">
+                                    Others
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2187117960"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.5'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            -
+            <span id="year">2021</span>
+            &nbsp;by
+            <a href="/about" target="_blank">coco-hkk</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">73.2k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "1";
+                        var startDate = "10";
+                        var startHour = "22";
+                        var startMinute = "50";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/coco-hkk" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:hkkdlut@sina.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=157550226" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 157550226" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/js/matery.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/js/dynamictitle.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
