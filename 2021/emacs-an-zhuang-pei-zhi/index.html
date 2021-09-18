@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    554
+                    761
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -461,165 +461,140 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>WIN10 Emacs 安装配置。</p>
-<h1>Emacs 安装</h1>
-<ol>
+                <h1>安装</h1>
+<h2 id="WIN10">WIN10</h2>
+<ul>
 <li>
-<p>官网 <a target="_blank" rel="noopener" href="http://www.gnu.org/software/emacs/">下载</a>。</p>
+<p>官网 <code>https://www.gnu.org/software/emacs/download.html#nonfree</code></p>
 </li>
 <li>
-<p>国内 <a target="_blank" rel="noopener" href="http://mirrors.nju.edu.cn/gnu/emacs/windows">镜像</a>。</p>
+<p>国内镜像 <code>http://mirrors.nju.edu.cn/gnu/emacs/windows</code></p>
 </li>
 <li>
-<p>安装包</p>
-<pre class="line-numbers language-none"><code class="language-none">emacs-27.2-x86_64.zip
-或
-emacs-27.2-x86_64-installer.exe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>安装文件 <code>emacs-27.2-x86_64.zip</code> 或 <code>emacs-27.2-x86_64-installer.exe</code></p>
 </li>
 <li>
 <p>安装</p>
-<p>解压并重命名 <code>emacs-27.2-x86_64.zip</code> 到所需安装位置，如 <code>D:\emacs-27.2</code>，后面
-均以此位置为例。也可以直接运行 <code>emacs-27.2-x86_64-installer.exe</code>。</p>
+<p>解压 <code>emacs-27.2-x86_64.zip</code> 到安装位置 <code>D:\emacs-27.2</code>。或运行
+<code>emacs-27.2-x86_64-installer.exe</code> 安装。</p>
 </li>
 <li>
 <p>配置 HOME 目录</p>
-</li>
-</ol>
-<ul>
-<li>
-<p>在注册表中添加 <code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\GNU\Emacs</code> 项。</p>
-</li>
-<li>
-<p>为 Emacs 项添加字符串值。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">数据</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">HOME</td>
-<td style="text-align:center">D:\emacs-27.2</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p><s>增加环境变量 <code>D:\emacs-27.2</code></s></p>
-</li>
-</ul>
-<h1>配置文件</h1>
-<p>懒得自己配置，直接使用 purcell 的配置 <code>https://github.com/purcell/emacs.d</code>。需要自定义可在 <code>init-local.el</code> 配置。</p>
-<p>配置文件目录 <code>.emacs.d</code> 位置 <code>D:\emacs-27.2\.emacs.d</code></p>
 <ol>
-<li>
-<p>可参考 <a target="_blank" rel="noopener" href="https://github.com/purcell/emacs.d">purcell</a> 的配置。</p>
-</li>
-<li>
-<p>配置文件目录结构</p>
-<pre class="line-numbers language-none"><code class="language-none">.eamcs.d&#x2F;
-        ├─lisp&#x2F;          ;; 存放配置文件，用户若有自定义需要，自己创建 init-local.el 配置文件
-        ├─site-lisp&#x2F;     ;; 存放第三方配置文件
-        └─init.el        ;; 初始化配置文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>目录详解</p>
-</li>
+<li>注册表添加 <code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\GNU\Emacs</code> 项。</li>
+<li><code>Emacs</code> 项添加字符串值。名称：<code>HOME</code>；数据：<code>D:\emacs-27.2</code>。</li>
+<li><s>增加环境变量 <code>D:\emacs-27.2</code></s></li>
 </ol>
-<ul>
-<li>
-<p>lisp/</p>
-<p>插件配置文件目录，配置文件命名格式为 <code>init-xxx.el</code></p>
-</li>
-<li>
-<p>site-lisp/</p>
-<p>放置无法从 elpa 或其它仓库获取的第三方插件，本目录及其子目录须在启动时添加到 load-path</p>
-</li>
-<li>
-<p>init.el</p>
-<p>初始化 load-path，初始化 elpa，加载各插件配置文件等</p>
 </li>
 </ul>
-<h1>elpa 仓库</h1>
-<ol>
-<li>
-<p>仓库镜像源</p>
+<h1>.emacs.d</h1>
+<p>可使用 purcell 的配置 <code>https://github.com/purcell/emacs.d</code>。在文件
+<code>lisp/init-local.el</code> 增加自己的配置。</p>
+<p><code>.emacs.d</code> 配置文件目录在 <code>D:\emacs-27.2</code>，需要自己创建。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 配置文件目录结构</span>
+.eamcs.d/
+		├─lisp/          <span class="token comment">;; 配置文件，命名格式为 init-xxx.el</span>
+		├─site-lisp/     <span class="token comment">;; 不在 elpa, melpa 或其它仓库的第三方配置文件。注意添加到 load-path。</span>
+		├─early-init.el  <span class="token comment">;; 预初始化配置文件，在 package-initialize 之前执行</span>
+		└─init.el        <span class="token comment">;; 初始化配置文件，初始化 load-path, package-archives, 加载 lisp 配置文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>仓库</h1>
+<p>melpa 仓库镜像源</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="http://melpa.org/packages/">melpa</a></li>
-<li><a target="_blank" rel="noopener" href="http://elpa.emacs-china.org/melpa/">emacs-china</a></li>
-<li><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/">清华镜像</a></li>
+<li>melpa <code>http://melpa.org/packages/</code></li>
+<li>清华源 <code>https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/</code></li>
+<li>emacs-china <code>http://elpa.emacs-china.org/melpa/</code></li>
 </ul>
-</li>
-<li>
-<p>配置文件 <code>init-elpa.el</code></p>
-<ul>
-<li>
-<p>添加仓库</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'package-archives</span> <span class="token punctuation">'(</span><span class="token string">"melpa"</span> <span class="token punctuation">.</span> <span class="token string">"http://melpa.org/packages/"</span><span class="token punctuation">)</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>初始化 package</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">package-initialize</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<h1>主题配色</h1>
-<ol>
-<li>
-<p>solarized-theme</p>
-<ul>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/sellout/emacs-color-theme-solarized">主题</a></p>
-</li>
-<li>
-<p>配置文件 <code>init-mytheme.el</code>。</p>
- <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'custom-theme-load-path</span> <span class="token string">"your path"</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">load-theme</span> <span class="token quoted-symbol variable symbol">'solarized</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p>molokai</p>
-<ul>
-<li>
-<p><a target="_blank" rel="noopener" href="https://github.com/hbin/molokai-theme">主题</a></p>
-</li>
-<li>
-<p>配置文件 <code>init-mytheme.el</code>。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">setq</span> molokai-theme-kit <span class="token boolean">t</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'custom-theme-load-path</span> <span class="token string">"your path"</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">load-theme</span> <span class="token quoted-symbol variable symbol">'molokai</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<h1>字体配置（解决中文卡顿，27.2 无此问题）</h1>
+<p>melpa 配置</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 添加仓库镜像源</span>
+<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'package-archives</span> <span class="token punctuation">'(</span><span class="token string">"melpa"</span> <span class="token punctuation">.</span> <span class="token string">"http://melpa.org/packages/"</span><span class="token punctuation">)</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+<span class="token comment">;; 或</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> package-archives <span class="token punctuation">'(</span><span class="token punctuation">(</span><span class="token string">"melpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://melpa.org/packages/"</span><span class="token punctuation">)</span>
+						 <span class="token punctuation">(</span><span class="token string">"org"</span> <span class="token punctuation">.</span> <span class="token string">"https://orgmode.org/elpa/"</span><span class="token punctuation">)</span>
+						 <span class="token punctuation">(</span><span class="token string">"elpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://elpa.gnu.org/packages/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 初始化 package</span>
+<span class="token punctuation">(</span><span class="token car">package-initialize</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>字体</h1>
+<p>可解决中文卡顿问题（27.2 无此问题）。</p>
 <ol>
 <li>
 <p><a target="_blank" rel="noopener" href="https://dejavu-fonts.github.io/Download.html">dejavu-fonts</a> 字体</p>
 </li>
 <li>
 <p>编码设置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">set-language-environment</span> <span class="token quoted-symbol variable symbol">'UTF-8</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token car">set-language-environment</span> <span class="token quoted-symbol variable symbol">'UTF-8</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token car">set-locale-environment</span> <span class="token string">"UTF-8"</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token car">set-default-coding-systems</span> <span class="token quoted-symbol variable symbol">'utf-8</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>中英文等宽设置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">set-font</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">english</span> <span class="token argument variable">chinese</span> <span class="token argument variable">english-size</span> <span class="token argument variable">chinese-size</span></span><span class="token punctuation">)</span></span>
-   <span class="token punctuation">(</span><span class="token car">set-face-attribute</span> <span class="token quoted-symbol variable symbol">'default</span> <span class="token boolean">nil</span> <span class="token lisp-property property">:font</span>
-                       <span class="token punctuation">(</span><span class="token car">format</span>   <span class="token string">"%s:pixelsize=%d"</span>  english english-size<span class="token punctuation">)</span><span class="token punctuation">)</span>
-   <span class="token punctuation">(</span><span class="token car">dolist</span> <span class="token punctuation">(</span><span class="token car">charset</span> <span class="token punctuation">'(</span><span class="token car">kana</span> han symbol cjk-misc bopomofo<span class="token punctuation">)</span><span class="token punctuation">)</span>
-     <span class="token punctuation">(</span><span class="token car">set-fontset-font</span> <span class="token punctuation">(</span><span class="token car">frame-parameter</span> <span class="token boolean">nil</span> <span class="token quoted-symbol variable symbol">'font</span><span class="token punctuation">)</span> charset
-                       <span class="token punctuation">(</span><span class="token car">font-spec</span> <span class="token lisp-property property">:family</span> chinese <span class="token lisp-property property">:size</span> chinese-size<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"> <span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">set-font</span> <span class="token punctuation">(</span><span class="token arguments"><span class="token argument variable">english</span> <span class="token argument variable">chinese</span> <span class="token argument variable">english-size</span> <span class="token argument variable">chinese-size</span></span><span class="token punctuation">)</span></span>
+ <span class="token punctuation">(</span><span class="token car">set-face-attribute</span> <span class="token quoted-symbol variable symbol">'default</span> <span class="token boolean">nil</span> <span class="token lisp-property property">:font</span>
+				  <span class="token punctuation">(</span><span class="token car">format</span>   <span class="token string">"%s:pixelsize=%d"</span>  english english-size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ <span class="token punctuation">(</span><span class="token car">dolist</span> <span class="token punctuation">(</span><span class="token car">charset</span> <span class="token punctuation">'(</span><span class="token car">kana</span> han symbol cjk-misc bopomofo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">set-fontset-font</span> <span class="token punctuation">(</span><span class="token car">frame-parameter</span> <span class="token boolean">nil</span> <span class="token quoted-symbol variable symbol">'font</span><span class="token punctuation">)</span> charset
+				  <span class="token punctuation">(</span><span class="token car">font-spec</span> <span class="token lisp-property property">:family</span> chinese <span class="token lisp-property property">:size</span> chinese-size<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment">;; 英文字体比中文字体小两号才会中英文等宽设置</span>
-<span class="token punctuation">(</span><span class="token car">set-font</span>   <span class="token string">"Dejavu Sans Mono"</span> <span class="token string">"WenQuanYi Zen Hei Mono"</span> <span class="token number">14</span> <span class="token number">16</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+ <span class="token comment">;; 英文字体比中文字体小两号才会中英文等宽设置</span>
+ <span class="token punctuation">(</span><span class="token car">set-font</span>   <span class="token string">"Dejavu Sans Mono"</span> <span class="token string">"WenQuanYi Zen Hei Mono"</span> <span class="token number">14</span> <span class="token number">16</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ol>
+<h1>配置</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 禁止启动画面</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> inhibit-startup-message <span class="token boolean">t</span><span class="token punctuation">)</span>
 
+<span class="token comment">;; 禁止滚动条</span>
+<span class="token punctuation">(</span><span class="token car">scroll-bar-mode</span> <span class="token number">-1</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 禁止工具栏</span>
+<span class="token punctuation">(</span><span class="token car">tool-bar-mode</span> <span class="token number">-1</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 禁止小窗提示</span>
+<span class="token punctuation">(</span><span class="token car">tooltip-mode</span> <span class="token number">-1</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 禁止菜单栏</span>
+<span class="token punctuation">(</span><span class="token car">menu-bar-mode</span> <span class="token number">-1</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 设置侧边空白大小</span>
+<span class="token punctuation">(</span><span class="token car">set-fringe-mode</span> <span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 关闭出错时蜂鸣提示</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> visible-bell <span class="token boolean">t</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 不需要备份文件</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> make-backup-files <span class="token boolean">nil</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 初始化 package 源</span>
+<span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'package</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token keyword">setq</span> package-archives <span class="token punctuation">'(</span><span class="token punctuation">(</span><span class="token string">"melpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://melpa.org/packages/"</span><span class="token punctuation">)</span>
+                         <span class="token punctuation">(</span><span class="token string">"org"</span> <span class="token punctuation">.</span> <span class="token string">"https://orgmode.org/elpa/"</span><span class="token punctuation">)</span>
+                         <span class="token punctuation">(</span><span class="token string">"elpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://elpa.gnu.org/packages/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">package-initialize</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">unless</span> package-archive-contents
+  <span class="token punctuation">(</span><span class="token car">package-refresh-contents</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 显示行号</span>
+<span class="token punctuation">(</span><span class="token car">column-number-mode</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">global-display-line-numbers-mode</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 一些 mode 不需要显示行号</span>
+<span class="token punctuation">(</span><span class="token car">dolist</span> <span class="token punctuation">(</span><span class="token car">mode</span> <span class="token punctuation">'(</span><span class="token car">org-mode-hook</span>
+                term-mode-hook
+				shell-mode-hook
+                eshell-mode-hook<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">add-hook</span> mode <span class="token punctuation">(</span><span class="token lambda"><span class="token keyword">lambda</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span> <span class="token punctuation">(</span><span class="token car">display-line-numbers-mode</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>问题</h1>
+<ul>
+<li>gpg 路径错误，导致 <code>no public key</code>。</li>
+</ul>
+<p>执行 <code>package-refresh-package</code> 时报错 <code>gpg: keyblock resource '/d/emacs-27.2/d:/emacs-27.2/.emacs.d/elpa/gnupg/pubring.kbx': No such file or directory</code></p>
+<p>可观察到 pubring.kbx 路径有错。是由 gpg 和 package.el 路径解析不统一造
+成。公钥路径由变量 <code>package-gnupghome-dir</code> 决定，路径由 d:/ 开始，而
+gpg 只识别以 /d/ 开始的路径，额外在公钥路径前面添加了 /d/，导致公钥路
+径错误。手动指定路径。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token keyword">setq</span> package-gnupghome-dir <span class="token string">"/d/emacs-27.2/.emacs.d/elpa/gnupg"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1153,7 +1128,7 @@ emacs-27.2-x86_64-installer.exe<span aria-hidden="true" class="line-numbers-rows
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">73.2k</span>
+                        class="white-color">77.7k</span>
             
             
             
