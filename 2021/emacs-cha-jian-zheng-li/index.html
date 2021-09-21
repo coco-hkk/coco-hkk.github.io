@@ -541,7 +541,7 @@ swiper 三个 packages。是 minibuffer 补全工具。</p>
   <span class="token lisp-property property">:init</span> <span class="token punctuation">(</span><span class="token car">doom-modeline-mode</span> <span class="token number">1</span><span class="token punctuation">)</span>
   <span class="token lisp-property property">:custom</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token car">doom-modeline-height</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>doom-themes</h1>
-<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/hlissner/emacs-doom-themes </span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/hlissner/emacs-doom-themes</span>
 <span class="token comment">;; 提供丰富的 themes</span>
 <span class="token punctuation">(</span><span class="token keyword">use-package</span> doom-themes
   <span class="token lisp-property property">:init</span> <span class="token punctuation">(</span><span class="token car">load-theme</span> <span class="token quoted-symbol variable symbol">'doom-solarized-light</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -569,127 +569,135 @@ swiper 三个 packages。是 minibuffer 补全工具。</p>
   <span class="token punctuation">(</span><span class="token punctuation">[</span>remap describe-command<span class="token punctuation">]</span> <span class="token punctuation">.</span> helpful-command<span class="token punctuation">)</span>
   <span class="token punctuation">(</span><span class="token punctuation">[</span>remap describe-variable<span class="token punctuation">]</span> <span class="token punctuation">.</span> counsel-describe-variable<span class="token punctuation">)</span>
   <span class="token punctuation">(</span><span class="token punctuation">[</span>remap describe-key<span class="token punctuation">]</span> <span class="token punctuation">.</span> helpful-key<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>magit</h1>
-<p>magit 可在 emacs 中实现版本控制，思路和 git 一样，操作方式不同。</p>
-<ol>
-<li>
-<p>安装</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x package-install magit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">maybe-require-package</span> <span class="token quoted-symbol variable symbol">'magit</span><span class="token punctuation">)</span> <span class="token comment">;; 使 emacs 找到 magit 插件位置</span>
-<span class="token punctuation">(</span><span class="token keyword">provide</span> <span class="token quoted-symbol variable symbol">'init-magit</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>在 init.el 中添加配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'init-magit</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>操作</p>
-<ul>
-<li>
-<p>克隆远程仓库</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x magit-clone<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>查看 untracked 文件</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x magit-status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>暂存 untracked 文件</p>
-<ul>
-<li>在 magit-status 窗口下，输入指令 s 跟踪当前文件，指令 S 跟踪所有文件。</li>
-<li>输入 <code>?</code> 查看帮助</li>
-</ul>
-</li>
-<li>
-<p>commit 暂存文件</p>
-<ul>
-<li>执行 <code>M-x magit-commit</code>，然后根据需要选择参数，最后 c</li>
-<li>在 magit-status 窗口下，c c 即可</li>
-<li>以上两种方式在写完 commit 信息之后，<code>C-c C-c</code> 提交 commit</li>
-</ul>
-</li>
-<li>
-<p>push 到远程仓库</p>
-<ul>
-<li>执行 magit-push，选择参数，然后 p</li>
-<li>可在 magit-status 窗口执行 P，选择参数，然后 p</li>
-<li>可在 magit-stauts 窗口执行 $ 命令，打开 magit-process 查看进度</li>
-</ul>
-</li>
-<li>
-<p>pull 更新</p>
-<ul>
-<li>执行 magit-pull, 选择参数，然后 p</li>
-<li>可在 magit-status 窗口执行 F，选择参数，然后 p</li>
-</ul>
-</li>
-<li>
-<p>log 查看</p>
-<ul>
-<li>执行 <code>M-x magit-log-all</code> 可查看所有分支 log</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>所有操作可以在 magit-status 窗口中使用 <code>?</code> 指令查看和使用。</p>
-<h1>evil</h1>
-<p>模拟 vi 操作体验的 emacs 插件。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; https://github.com/emacs-evil/evil</span>
+<h1>general</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; general 用于批量绑定按键</span>
+<span class="token comment">;; 相当于批量的 define-key 和 global-set-key</span>
+<span class="token comment">;; 定义一个函数，可在函数里面批量绑定按键</span>
 
-<span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'evil</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">evil-mode</span> <span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">指令</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">C-z</td>
-<td style="text-align:center">emacs 模式和 evil 模式切换</td>
-</tr>
-</tbody>
-</table>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> general
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">general-create-definer</span> rune/leader-keys
+    <span class="token lisp-property property">:keymaps</span> <span class="token punctuation">'(</span><span class="token car">normal</span> insert visual emacs<span class="token punctuation">)</span>
+    <span class="token lisp-property property">:prefix</span> <span class="token string">"SPC"</span>
+    <span class="token lisp-property property">:global-prefix</span> <span class="token string">"C-SPC"</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">(</span><span class="token car">rune/leader-keys</span>
+    <span class="token string">"t"</span>  <span class="token punctuation">'(</span><span class="token lisp-property property">:ignore</span> <span class="token boolean">t</span> <span class="token lisp-property property">:which-key</span> <span class="token string">"toggles"</span><span class="token punctuation">)</span>
+    <span class="token string">"tt"</span> <span class="token punctuation">'(</span><span class="token car">counsel-load-theme</span> <span class="token lisp-property property">:which-key</span> <span class="token string">"choose theme"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>hydra</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 将命令绑定到一系列具有公共前缀的短绑定。和 general 结合使用，这两个是神器。</span>
+<span class="token comment">;; https://github.com/abo-abo/hydra</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> hydra<span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">defhydra</span> hydra-text-scale <span class="token punctuation">(</span><span class="token lisp-property property">:timeout</span> <span class="token number">4</span><span class="token punctuation">)</span>
+  <span class="token string">"scale text"</span>
+  <span class="token punctuation">(</span><span class="token string">"j"</span> text-scale-increase <span class="token string">"in"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token string">"k"</span> text-scale-decrease <span class="token string">"out"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token string">"f"</span> <span class="token boolean">nil</span> <span class="token string">"finished"</span> <span class="token lisp-property property">:exit</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token car">rune/leader-keys</span>
+  <span class="token string">"ts"</span> <span class="token punctuation">'(</span><span class="token car">hydra-text-scale/body</span> <span class="token lisp-property property">:which-key</span> <span class="token string">"scale text"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>magit</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token keyword">use-package</span> magit
+  <span class="token lisp-property property">:custom</span>
+  <span class="token punctuation">(</span><span class="token car">magit-display-buffer-function</span> <span class="token quoted-symbol variable symbol">#'magit-display-buffer-same-window-except-diff-v1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>用法</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 所有操作可在 magit-status 窗口中使用 ? 指令查看。</span>
+
+<span class="token comment">;; 克隆</span>
+M-x magit-clone
+
+<span class="token comment">;; 查看 status</span>
+M-x magit-status
+
+<span class="token comment">;; 进入 magit-status 窗口</span>
+s    <span class="token comment">;; 跟踪当前文件</span>
+S    <span class="token comment">;; 跟踪所有文件。</span>
+
+<span class="token comment">;; commit 暂存文件</span>
+M-x magit-commit    <span class="token comment">;; 选择参数</span>
+c
+
+<span class="token comment">;; 或在 magit-status 窗口</span>
+c c
+
+<span class="token comment">;; 提交 commit</span>
+C-c C-c
+
+<span class="token comment">;; push 到远程仓库</span>
+M-x magit-push    <span class="token comment">;; 选择参数</span>
+p
+
+<span class="token comment">;; 或在 magit-status 窗口</span>
+P    <span class="token comment">;; 选择参数，然后 p</span>
+p
+
+<span class="token comment">;; 查看进度，进入 magit-status 窗口</span>
+$    <span class="token comment">;; 打开 magit-process 查看进度</span>
+
+<span class="token comment">;; pull 更新</span>
+M-x magit-pull    <span class="token comment">;; 选择参数</span>
+p
+
+<span class="token comment">;; 或在 magit-status 窗口</span>
+F    <span class="token comment">;; 选择参数</span>
+p
+
+<span class="token comment">;; log 查看</span>
+M-x magit-log-all    <span class="token comment">;; 可查看所有分支 log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>forge</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 在 magit 环境使用，用于显示 github, gitlab 的 Issues, pr 等。</span>
+
+<span class="token comment">;; NOTE: Make sure to configure a GitHub token before using this package!</span>
+<span class="token comment">;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation</span>
+<span class="token comment">;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> forge<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>evil</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 必备。C-z 在 emacs 和 vim 模式切换</span>
+<span class="token comment">;; https://github.com/emacs-evil/evil</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> evil
+  <span class="token lisp-property property">:init</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> evil-want-integration <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> evil-want-keybinding <span class="token boolean">nil</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> evil-want-C-u-scroll <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> evil-want-C-i-jump <span class="token boolean">nil</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">evil-mode</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">define-key</span> evil-insert-state-map <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"C-g"</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'evil-normal-state</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">define-key</span> evil-insert-state-map <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"C-h"</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'evil-delete-backward-char-and-join</span><span class="token punctuation">)</span>
+
+  <span class="token comment">;; Use visual line motions even outside of visual-line-mode buffers</span>
+  <span class="token punctuation">(</span><span class="token car">evil-global-set-key</span> <span class="token quoted-symbol variable symbol">'motion</span> <span class="token string">"j"</span> <span class="token quoted-symbol variable symbol">'evil-next-visual-line</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">evil-global-set-key</span> <span class="token quoted-symbol variable symbol">'motion</span> <span class="token string">"k"</span> <span class="token quoted-symbol variable symbol">'evil-previous-visual-line</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">(</span><span class="token car">evil-set-initial-state</span> <span class="token quoted-symbol variable symbol">'messages-buffer-mode</span> <span class="token quoted-symbol variable symbol">'normal</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">evil-set-initial-state</span> <span class="token quoted-symbol variable symbol">'dashboard-mode</span> <span class="token quoted-symbol variable symbol">'normal</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>evil-surround</h1>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; https://github.com/emacs-evil/evil-surround</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/emacs-evil/evil-surround</span>
 
 <span class="token punctuation">(</span><span class="token keyword">use-package</span> evil-surround
   <span class="token lisp-property property">:ensure</span> <span class="token boolean">t</span>
   <span class="token lisp-property property">:config</span>
   <span class="token punctuation">(</span><span class="token car">global-evil-surround-mode</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>evil-lion</h1>
-<p>根据空格或其它符号进行对齐操作。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; http://github.com/edkolev/evil-lion</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; http://github.com/edkolev/evil-lion</span>
+<span class="token comment">;; 根据空格或其它符号进行对齐操作。左对齐: gl MOTION CHAR 右对齐: gL MOTION CHAR</span>
 
 <span class="token punctuation">(</span><span class="token keyword">use-package</span> evil-lion
- <span class="token lisp-property property">:ensure</span> <span class="token boolean">t</span>
- <span class="token lisp-property property">:config</span>
- <span class="token punctuation">(</span><span class="token car">evil-lion-mode</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">指令</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">gl MOTION CHAR</td>
-<td style="text-align:center">左对齐</td>
-</tr>
-<tr>
-<td style="text-align:center">gL MOTION CHAR</td>
-<td style="text-align:center">右对齐</td>
-</tr>
-</tbody>
-</table>
+  <span class="token lisp-property property">:ensure</span> <span class="token boolean">t</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">evil-lion-mode</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>evil-nerd-commenter</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/redguardtoo/evil-nerd-commenter</span>
+<span class="token comment">;; 注释</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> evil-nerd-commenter
+  <span class="token lisp-property property">:bind</span> <span class="token punctuation">(</span><span class="token string">"M-/"</span> <span class="token punctuation">.</span> evilnc-comment-or-uncomment-lines<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>sis</h1>
-<p>为 evil 插件提供中英文自动切换功能。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; https://github.com/laishulu/emacs-smart-input-source</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; evil 不同模式中英文自动切换。</span>
+<span class="token comment">;; https://github.com/laishulu/emacs-smart-input-source</span>
 
 <span class="token punctuation">(</span><span class="token keyword">use-package</span> sis
 <span class="token comment">;; :hook</span>
@@ -710,234 +718,23 @@ swiper 三个 packages。是 minibuffer 补全工具。</p>
 <span class="token punctuation">(</span><span class="token car">sis-global-context-mode</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
 <span class="token comment">;; enable the /inline english/ mode for all buffers</span>
 <span class="token punctuation">(</span><span class="token car">sis-global-inline-mode</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>markdown</h1>
-<p>markdown-mode 支持 emacs markdown 编辑，效果预览需要 pandoc 工具支持。插件
-markdown-toc 用于自动生成目录。</p>
-<h2 id="markdown-mode">markdown-mode</h2>
-<ol>
-<li>
-<p>下载</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/jrblevin/markdown-mode">Markdown-mode</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/jgm/pandoc/releases">pandoc</a></li>
-</ul>
-</li>
-<li>
-<p>配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">autoload</span> <span class="token quoted-symbol variable symbol">'markdown-mode</span> <span class="token string">"markdown-mode"</span>
-<span class="token string">"Major mode for editing Markdown files"</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'auto-mode-alist</span> <span class="token punctuation">'(</span><span class="token string">"\\.text\\'"</span> <span class="token punctuation">.</span> markdown-mode<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'auto-mode-alist</span> <span class="token punctuation">'(</span><span class="token string">"\\.markdown\\'"</span> <span class="token punctuation">.</span> markdown-mode<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'auto-mode-alist</span> <span class="token punctuation">'(</span><span class="token string">"\\.md\\'"</span> <span class="token punctuation">.</span> markdown-mode<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token punctuation">(</span><span class="token car">autoload</span> <span class="token quoted-symbol variable symbol">'gfm-mode</span> <span class="token string">"markdown-mode"</span>
-  <span class="token string">"Major mode for editing GitHub Flavored Markdown files"</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'auto-mode-alist</span> <span class="token punctuation">'(</span><span class="token string">"README\\.md\\'"</span> <span class="token punctuation">.</span> gfm-mode<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment">;; 需安装 pandoc</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> markdown-command <span class="token string">"D:/Program/Pandoc/pandoc.exe"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>快捷指令</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">指令</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">C-c C-s b</td>
-<td style="text-align:center">加粗</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-s i</td>
-<td style="text-align:center">倾斜</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-s c©</td>
-<td style="text-align:center">code</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-s 1~6（或 h)</td>
-<td style="text-align:center">标题</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-s f</td>
-<td style="text-align:center">脚注</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-l</td>
-<td style="text-align:center">插入链接</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-i</td>
-<td style="text-align:center">插入图片</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-s C-h</td>
-<td style="text-align:center">查询帮助</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-s t</td>
-<td style="text-align:center">插入表格</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">指令（with pandoc）</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">C-c C-c m</td>
-<td style="text-align:center">显示对应 html 代码</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-c p</td>
-<td style="text-align:center">preview</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-c e</td>
-<td style="text-align:center">export</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-c v</td>
-<td style="text-align:center">export &amp; preview</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-c o</td>
-<td style="text-align:center">open</td>
-</tr>
-<tr>
-<td style="text-align:center">C-c C-c C-h</td>
-<td style="text-align:center">help</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-<h2 id="markdown-toc">markdown-toc</h2>
-<ol>
-<li>
-<p>下载 <a target="_blank" rel="noopener" href="https://github.com/ardumont/markdown-toc">markdown-toc</a></p>
-</li>
-<li>
-<p>问题</p>
-<ul>
-<li>标题不能以数字开头（包括中文“〇”）命名。否则，生成的目录链接无法跳转。</li>
-<li>标题必须从 h1-h6 按序开始，不能直接从其它级别开始。否则，无法正确生成目录树
-。</li>
-</ul>
-</li>
-<li>
-<p>快捷指令</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x markdown-toc-generate-toc <span class="token comment">;; 生成目录树</span>
-M-x markdown-toc-refresh-toc  <span class="token comment">;; 更新目录树</span>
-M-x markdown-toc-delete-toc   <span class="token comment">;; 删除目录树</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="org-导出-md">org 导出 md</h2>
-<ol>
-<li>
-<p>org-mode 支持 markdown 格式导出，而且不需要 pandoc 和 markdown-toc。从操作性
-上来说org-mode 要好一些，功能更加强大。</p>
-</li>
-<li>
-<p>配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">eval-after-load</span> <span class="token string">"org"</span> <span class="token punctuation">'(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'ox-md</span> <span class="token boolean">nil</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>导出 md</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">C-c C-e m<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="notepad-预览-md">notepad++ 预览 md</h2>
-<ol>
-<li>notepad++ v7.6.1 可支持 markdown 预览。</li>
-<li>插件 -&gt; Plugins Admin…-&gt; MarkdownViewer++</li>
-</ol>
-<h1>atuo-complete</h1>
-<p>自动补全工具。</p>
-<ol>
-<li>
-<p>配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"> <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'auto-complete</span><span class="token punctuation">)</span>
- <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'auto-complete-config</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token car">global-auto-complete-mode</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
-
- <span class="token comment">;; 文本模式下启动补全功能</span>
- <span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'ac-modes</span> <span class="token quoted-symbol variable symbol">'text-mode</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token car">ac-config-default</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token keyword">setq</span> ac-auto-start <span class="token number">4</span><span class="token punctuation">)</span>
-
- <span class="token comment">;; pos-tip 帮助闪烁</span>
- <span class="token comment">;;(require 'pos-tip)</span>
- <span class="token comment">;;(setq ac-quick-help-prefer-pos-tip t)</span>
-
- <span class="token comment">;; quick-help</span>
- <span class="token punctuation">(</span><span class="token keyword">setq</span> ac-use-quick-help <span class="token boolean">t</span><span class="token punctuation">)</span>
- <span class="token punctuation">(</span><span class="token keyword">setq</span> ac-quick-help-delay <span class="token number">1.0</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token keyword">setq</span> ac-dwim <span class="token boolean">t</span><span class="token punctuation">)</span>
- <span class="token punctuation">(</span><span class="token keyword">setq</span> ac-trigger-commands
-<span class="token punctuation">(</span><span class="token keyword">cons</span> <span class="token quoted-symbol variable symbol">'backward-delete-char-untabify</span> ac-trigger-commands<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
- <span class="token comment">;; fuzzy</span>
- <span class="token punctuation">(</span><span class="token keyword">setq</span> ac-fuzzy-enable <span class="token boolean">t</span><span class="token punctuation">)</span>
-
- <span class="token comment">;; menu</span>
- <span class="token comment">;;(setq ac-menu-height 12)</span>
- <span class="token comment">;;(set-face-background 'ac-candidate-face "lightgray")</span>
- <span class="token comment">;;(set-face-underline 'ac-candidate-face "darkgray")</span>
- <span class="token comment">;;(set-face-background 'ac-selection-face "steelblue")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>问题</p>
-<ul>
-<li>
-<p>pos-tip 在这个环境下效果很差，显示的帮助内容闪烁。</p>
-</li>
-<li>
-<p>auto-complete 插件和 company 插件冲突，在弹出菜单时可能造成显示混乱。</p>
-</li>
-<li>
-<p>模糊匹配 fuzzy 插件。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">setq</span> ac-fuzzy-enable <span class="token boolean">t</span><span class="token punctuation">)</span> <span class="token comment">;; 不起作用</span>
-M-x ac-fuzzy-complete    <span class="token comment">;; 可以起作用，但没用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ol>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/jrblevin/markdown-mode</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> markdown-mode
+  <span class="token lisp-property property">:ensure</span> <span class="token boolean">t</span>
+  <span class="token lisp-property property">:mode</span> <span class="token punctuation">(</span><span class="token string">"README\\.md\\'"</span> <span class="token punctuation">.</span> gfm-mode<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:init</span> <span class="token punctuation">(</span><span class="token keyword">setq</span> markdown-command <span class="token string">"multimarkdown"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>yasnippet</h1>
-<p>为 C、C++、C#、Perl、Python 等语言设置代码片段。</p>
-<ol>
-<li>
-<p>配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"> <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'yasnippet</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 为编程语言提供代码片段，或为其他提供模板。</span>
 
- <span class="token comment">;; 使用 Ctrl-c k 作为唯一的触发快捷键</span>
- <span class="token punctuation">(</span><span class="token car">define-key</span> yas-minor-mode-map <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"&lt;tab>"</span><span class="token punctuation">)</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
- <span class="token punctuation">(</span><span class="token car">define-key</span> yas-minor-mode-map <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"TAB"</span><span class="token punctuation">)</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
- <span class="token punctuation">(</span><span class="token car">define-key</span> yas-minor-mode-map <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"C-c k"</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'yas-expand</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token keyword">setq</span> yas-snippet-dirs
-<span class="token punctuation">'(</span><span class="token string">"~/.emacs.d/Mysnippets"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
- <span class="token punctuation">(</span><span class="token car">yas-global-mode</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
-
- <span class="token comment">;; 关闭 yas 缩进</span>
- <span class="token punctuation">(</span><span class="token keyword">setq</span> yas-indent-line <span class="token punctuation">(</span><span class="token car">quote</span> none<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> yasnippet
+  <span class="token lisp-property property">:ensure</span> <span class="token boolean">t</span>
+  <span class="token lisp-property property">:init</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> yas-snippet-dirs <span class="token punctuation">'(</span><span class="token string">"~/mySnippets"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> yas-indent-line <span class="token punctuation">(</span><span class="token car">quote</span> none<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">yas-global-mode</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="snippet">snippet</h2>
 <ol>
 <li>
@@ -1071,41 +868,121 @@ $<span class="token number">0</span><span class="token punctuation">;</span>
 <p>注：若光标被导航到了 <code>$0</code>，无法使用 <code>S-TAB</code> 向后导航了。</p>
 </li>
 </ol>
-<h1>semx/ido</h1>
-<p>Ido 是 emacs 内置插件；semx 一款构建在 Ido 基础上，用于增强 M-x 功能的插件。</p>
-<ol>
-<li>
-<p>ido 配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">ido-mode</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> ido-separator <span class="token string">"\n"</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> ido-enable-flex-matching <span class="token boolean">t</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>semx 配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'smex</span><span class="token punctuation">)</span>
+<h1>projectile</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/bbatsov/projectile</span>
+<span class="token comment">;; 用于管理 project</span>
 
-<span class="token punctuation">(</span><span class="token car">smex-initialize</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> projectile
+  <span class="token lisp-property property">:diminish</span> projectile-mode
+  <span class="token lisp-property property">:config</span> <span class="token punctuation">(</span><span class="token car">projectile-mode</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:custom</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token car">projectile-completion-system</span> <span class="token quoted-symbol variable symbol">'ivy</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:bind-keymap</span>
+  <span class="token punctuation">(</span><span class="token string">"C-c p"</span> <span class="token punctuation">.</span> projectile-command-map<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:init</span>
+  <span class="token comment">;; NOTE: Set this to the folder where you keep your Git repos!</span>
+  <span class="token punctuation">(</span><span class="token keyword">when</span> <span class="token punctuation">(</span><span class="token car">file-directory-p</span> <span class="token string">"f:/github"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">(</span><span class="token keyword">setq</span> projectile-project-search-path <span class="token punctuation">'(</span><span class="token string">"f:/github"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> projectile-switch-project-action <span class="token quoted-symbol variable symbol">#'projectile-dired</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>counsel-projectile</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/ericdanan/counsel-projectile</span>
+<span class="token comment">;; projectile 可使用 ivy 作为补全，counsel-projectile 用于增强 ivy</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> counsel-projectile
+  <span class="token lisp-property property">:after</span> projectile
+  <span class="token lisp-property property">:config</span> <span class="token punctuation">(</span><span class="token car">counsel-projectile-mode</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>org-bullets</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 美化标题 stars</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> org-bullets
+  <span class="token lisp-property property">:after</span> org
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">org-mode</span> <span class="token punctuation">.</span> org-bullets-mode<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:custom</span>
+  <span class="token punctuation">(</span><span class="token car">org-bullets-bullet-list</span> <span class="token punctuation">'(</span><span class="token string">"◉"</span> <span class="token string">"○"</span> <span class="token string">"●"</span> <span class="token string">"○"</span> <span class="token string">"●"</span> <span class="token string">"○"</span> <span class="token string">"●"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>visual-fill-column</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 使用 org 文件内容在 buffer 居中显示，就像编辑一篇文档一样</span>
+<span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">efs/org-mode-visual-fill</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> visual-fill-column-width <span class="token number">100</span>
+        visual-fill-column-center-text <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">visual-fill-column-mode</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token punctuation">(</span><span class="token car">global-set-key</span> <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"M-x"</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'smex</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token car">global-set-key</span> <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"M-X"</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'smex-major-mode-commands</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> visual-fill-column
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">org-mode</span> <span class="token punctuation">.</span> efs/org-mode-visual-fill<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>org-tempo</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 快速插入代码块。在 &lt; 后面添加模板，按 &lt;TAB> 展开模板内容</span>
+<span class="token comment">;; This is needed as of Org 9.2</span>
+<span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'org-tempo</span><span class="token punctuation">)</span>
 
-<span class="token comment">;; This is your old M-x.</span>
-<span class="token punctuation">(</span><span class="token car">global-set-key</span> <span class="token punctuation">(</span><span class="token car">kbd</span> <span class="token string">"C-c C-c M-x"</span><span class="token punctuation">)</span> <span class="token quoted-symbol variable symbol">'execute-extended-command</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>操作</p>
-<ul>
-<li>左右方向键选择待选项</li>
-<li>使用 TAB 键补全</li>
-</ul>
-</li>
-</ol>
-<h1>window-numbering</h1>
-<p>快速在 window 间切换。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-number<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>fci-mode</h1>
-<p>80 列提示线。</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x fci-mode<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'org-structure-template-alist</span> <span class="token punctuation">'(</span><span class="token string">"sh"</span> <span class="token punctuation">.</span> <span class="token string">"src shell"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'org-structure-template-alist</span> <span class="token punctuation">'(</span><span class="token string">"el"</span> <span class="token punctuation">.</span> <span class="token string">"src emacs-lisp"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'org-structure-template-alist</span> <span class="token punctuation">'(</span><span class="token string">"py"</span> <span class="token punctuation">.</span> <span class="token string">"src python"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>lsp-mode</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://emacs-lsp.github.io/lsp-mode/</span>
+<span class="token comment">;; Language Server Protocol 用于集成 emacs packages 提供 IDE 体验。</span>
+
+<span class="token punctuation">(</span><span class="token defun"><span class="token keyword">defun</span> <span class="token function">efs/lsp-mode-setup</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> lsp-headerline-breadcrumb-segments <span class="token punctuation">'(</span><span class="token car">path-up-to-project</span> file symbols<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">lsp-headerline-breadcrumb-mode</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> lsp-mode
+  <span class="token lisp-property property">:commands</span> <span class="token punctuation">(</span><span class="token car">lsp</span> lsp-deferred<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">lsp-mode</span> <span class="token punctuation">.</span> efs/lsp-mode-setup<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:init</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> lsp-keymap-prefix <span class="token string">"C-c l"</span><span class="token punctuation">)</span>  <span class="token comment">;; Or 'C-l', 's-l'</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">lsp-enable-which-key-integration</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>lsp-treemacs</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; M-x treemacs，提供项目目录树</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> lsp-treemacs
+  <span class="token lisp-property property">:after</span> lsp<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>company/company-box</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 在 buffer 中提供美化的补全界面</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> company
+  <span class="token lisp-property property">:after</span> lsp-mode
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">lsp-mode</span> <span class="token punctuation">.</span> company-mode<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:bind</span> <span class="token punctuation">(</span><span class="token lisp-property property">:map</span> company-active-map
+         <span class="token punctuation">(</span><span class="token string">"&lt;tab>"</span> <span class="token punctuation">.</span> company-complete-selection<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">(</span><span class="token lisp-property property">:map</span> lsp-mode-map
+         <span class="token punctuation">(</span><span class="token string">"&lt;tab>"</span> <span class="token punctuation">.</span> company-indent-or-complete-common<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:custom</span>
+  <span class="token punctuation">(</span><span class="token car">company-minimum-prefix-length</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">company-idle-delay</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 进一步美化 company 补全</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> company-box
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">company-mode</span> <span class="token punctuation">.</span> company-box-mode<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>auto-package-update</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 自动更新 package，或可用 M-x auto-package-update-now 立刻更新</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> auto-package-update
+  <span class="token lisp-property property">:custom</span>
+  <span class="token punctuation">(</span><span class="token car">auto-package-update-interval</span> <span class="token number">7</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">auto-package-update-prompt-before-update</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">auto-package-update-hide-results</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">auto-package-update-maybe</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">auto-package-update-at-time</span> <span class="token string">"09:00"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>super-save</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 自动保存</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> super-save
+  <span class="token lisp-property property">:defer</span> <span class="token number">1</span>
+  <span class="token lisp-property property">:diminish</span> super-save-mode
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">super-save-mode</span> <span class="token number">+1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> super-save-auto-save-when-idle <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>ws-butler</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 自动清除 whitespace</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> ws-butler
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token car">text-mode</span> <span class="token punctuation">.</span> ws-butler-mode<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token car">prog-mode</span> <span class="token punctuation">.</span> ws-butler-mode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>ace-window</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; window 之间快速切换</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> ace-window
+  <span class="token lisp-property property">:bind</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"C-x o"</span> <span class="token punctuation">.</span> ace-window<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:custom</span>
+  <span class="token punctuation">(</span><span class="token car">aw-scope</span> <span class="token quoted-symbol variable symbol">'frame</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">aw-keys</span> <span class="token punctuation">'(</span>?a ?s ?d ?f ?g ?h ?j ?k ?l<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">aw-minibuffer-flag</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">ace-window-display-mode</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>erc</h1>
 <h2 id="登陆-emacs-ERC">登陆 emacs ERC</h2>
 <p>emacs 自带 IRC 客户端，启动指令 <code>M-x erc</code>。</p>
@@ -1262,10 +1139,9 @@ C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 </ol>
 <h1>参考</h1>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/education/aix/emacs1/index.html">emacs 编辑环境</a></li>
-<li><a target="_blank" rel="noopener" href="http://ergoemacs.org/emacs/elisp.html">elisp</a></li>
-<li><a target="_blank" rel="noopener" href="http://freenode.net/kb/all">freenode</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/org2blog/org2blog/wiki/Usage">org2blog</a></li>
+<li><a target="_blank" rel="noopener" href="http://freenode.net/kb/all">http://freenode.net/kb/all</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/org2blog/org2blog/wiki/Usage">https://github.com/org2blog/org2blog/wiki/Usage</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/daviwil/emacs-from-scratch">https://github.com/daviwil/emacs-from-scratch</a></li>
 </ol>
 
                 
@@ -1781,7 +1657,7 @@ C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">77.7k</span>
+                        class="white-color">78.1k</span>
             
             
             

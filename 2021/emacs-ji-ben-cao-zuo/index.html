@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    12 分
                 </div>
                 
 
@@ -533,40 +533,62 @@ C-x <span class="token number">5</span> <span class="token number">0</span>    <
 C-x <span class="token number">5</span> f    <span class="token comment">;; 在新 frame 中打开或创建文件</span>
 C-x <span class="token number">5</span> b    <span class="token comment">;; 在新 frame 中打开或创建 buffer</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>Dired 管理</h1>
-<p>打开文件管理 <code>C-x d</code> 或 <code>M-x dired</code></p>
-<ol>
-<li><code>Enter</code> 打开目录或文件</li>
+<p>打开文件管理 <code>C-x d</code> 或 <code>M-x dired-jump</code> 或 <code>C-x C-f</code>。</p>
+<p>导航</p>
+<ul>
+<li><code>RET</code> 打开目录或文件</li>
+<li><code>S-RET</code> 在另外一个 window 中打开文件</li>
+<li><code>M-RET</code> 在另外一个 window 中预览文件</li>
+<li><code>g o</code> 以预览方式打开一个文件，<code>q</code> 关闭</li>
+<li><code>n</code> 下一项</li>
+<li><code>p</code> 上一项</li>
+<li><code>j</code> 在 buffer 中跳转文件</li>
 <li><code>^</code> 返回父级目录</li>
 <li><code>q</code> 退出 Dired buffer</li>
-<li><code>p</code> 上一项</li>
-<li><code>n</code> 下一项</li>
-</ol>
-<hr>
-<ol start="6">
-<li><code>g</code> 刷新，重新加载已修改文件</li>
-<li><code>+</code> 创建新目录</li>
-<li><code>C</code> 复制文件</li>
-<li><code>R</code> 重命名文件</li>
-<li><code>D</code> 删除文件</li>
-</ol>
-<hr>
-<ol start="11">
-<li><code>O</code> 变更文件 owner</li>
-<li><code>G</code> 变更文件所属组</li>
-<li><code>M</code> 变更文件权限</li>
-</ol>
-<hr>
-<ol start="14">
+</ul>
+<p>标记文件</p>
+<ul>
 <li><code>m</code> 标记光标指定文件</li>
 <li><code>u</code> 取消标记的文件</li>
 <li><code>U</code> 取消所有标记的文件</li>
-</ol>
-<hr>
-<ol start="17">
+<li><code>* t</code> 反选 buffer 中未标记文件</li>
+<li><code>*</code> 其它自动标记函数</li>
+<li><code>% m</code> 使用正则表达式标记文件</li>
+<li><code>k</code> 删除所有 mark 标记，需使用 <code>g</code> 刷新</li>
+</ul>
+<p>复制和重命名文件</p>
+<ul>
+<li><code>C</code> 复制文件</li>
+<li><code>R</code> 重命名文件</li>
+<li><code>% R</code> 使用正则表达式重命名</li>
+</ul>
+<p>删除文件</p>
+<ul>
+<li><code>D</code> 删除文件</li>
+<li><code>d</code> 标记待删除文件</li>
 <li><code>x</code> 确认并执行删除已标识删除的文件</li>
+</ul>
+<p>压缩和解压文件</p>
+<ul>
+<li><code>Z</code> 压缩或解压格式为 .tar.gz 的文件或目录</li>
+<li><code>c</code> 选择压缩指定文件</li>
+</ul>
+<p>属性和权限</p>
+<ul>
+<li><code>O</code> 变更文件 owner</li>
+<li><code>G</code> 变更文件所属组</li>
+<li><code>M</code> 变更文件权限</li>
+</ul>
+<p>其它</p>
+<ul>
+<li><code>g</code> 刷新，重新加载已修改文件</li>
+<li><code>T</code> 修改时间戳</li>
+<li><code>+</code> 创建新目录</li>
+<li><code>S</code> 创建符号链接文件</li>
+<li><code>L</code> 加载 emacs lisp 文件到 emacs</li>
 <li><code>~</code> 给所有的 <code>backup</code> 文件设置标识</li>
 <li><code>=</code> 比较文件</li>
-</ol>
+</ul>
 <h1>剪切复制粘贴</h1>
 <ol>
 <li>
@@ -1390,7 +1412,7 @@ win10 输入法热键。但是试了多种方法，没有好的解决方法。�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">77.7k</span>
+                        class="white-color">78.1k</span>
             
             
             

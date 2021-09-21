@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Org-mode 基本操作, coco-hkk">
+    <meta name="keywords" content="Org mode, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Org-mode 基本操作 | 点点滴滴</title>
+    <title>Org mode | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Org-mode 基本操作</h1>
+                    <h1 class="description center-align post-title">Org mode</h1>
                 </div>
             </div>
         </div>
@@ -401,10 +401,6 @@
                                 <span class="chip bg-color">emacs</span>
                             </a>
                         
-                            <a href="/tags/org-mode/">
-                                <span class="chip bg-color">org-mode</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -426,7 +422,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-22
+                    2021-09-19
                 </div>
                 
 
@@ -435,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    177
+                    155
                 </div>
                 
 
@@ -465,67 +461,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>源代码块快捷操作</h1>
-<pre class="line-numbers language-none"><code class="language-none">&lt;s + &lt;TAB&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">-n</th>
-<th style="text-align:center">-t</th>
-<th style="text-align:center">-h</th>
-<th style="text-align:center">-w</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">显示行号</td>
-<td style="text-align:center">清除格式</td>
-<td style="text-align:center">设置高度</td>
-<td style="text-align:center">设置宽度</td>
-</tr>
-</tbody>
-</table>
-<pre class="line-numbers language-none"><code class="language-none">一些类似的操作
-s    #+begin_src ... #+end_src 
-e    #+begin_example ... #+end_example  : 单行的例子以冒号开头
-q    #+begin_quote ... #+end_quote      通常用于引用，与默认格式相比左右都会留出缩进
-v    #+begin_verse ... #+end_verse      默认内容不换行，需要留出空行才能换行
-c    #+begin_center ... #+end_center 
-l    #+begin_latex ... #+end_latex 
-L    #+latex: 
-h    #+begin_html ... #+end_html 
-H    #+html: 
-a    #+begin_ascii ... #+end_ascii 
-A    #+ascii: 
-i    #+index: line 
-I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>#+OPTIONS:</h1>
-<ol>
-<li>
-<p>^:nil</p>
-<p>禁用下划线转义。</p>
-</li>
-<li>
-<p>zh-CN</p>
-<p>“Table of Contents&quot;显示为&quot;目录”。</p>
-</li>
-<li>
-<p>toc:t</p>
-<p>显示目录。</p>
-</li>
-<li>
-<p>num:t</p>
-<p>目录层次显示不同编号。</p>
-</li>
-</ol>
-<h1>修订记录</h1>
-<ul>
-<li>
-<p>2021-01-22</p>
-<p>从其它网站迁移。</p>
-</li>
-</ul>
+                <h1>基础</h1>
+<h1>进价</h1>
+<h1>Babel</h1>
+<p>org babel 用于运行 org 文档中插入的源代码，命令 <code>C-c C-c</code>。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp">#+begin_src python <span class="token lisp-property property">:results</span> output
+  def hello<span class="token punctuation">(</span><span class="token punctuation">)</span>:
+    return <span class="token string">"hello, world!"</span>
 
+  print <span class="token punctuation">(</span><span class="token car">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+#+end_src<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>其它</h1>
+<ul>
+<li>源代码块快捷操作</li>
+</ul>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 需要在配置文件中配置 (require 'org-tempo)</span>
+
+&lt;s + &lt;TAB>    <span class="token comment">;; 插入 #+begin_src ... #+end_src</span>
+
+<span class="token comment">;; 类似选项</span>
+e    <span class="token comment">; #+begin_example ... #+end_example  : 单行的例子以冒号开头</span>
+q    <span class="token comment">; #+begin_quote ... #+end_quote      通常用于引用，与默认格式相比左右都会留出缩进</span>
+v    <span class="token comment">; #+begin_verse ... #+end_verse      默认内容不换行，需要留出空行才能换行</span>
+c    <span class="token comment">; #+begin_center ... #+end_center</span>
+l    <span class="token comment">; #+begin_latex ... #+end_latex</span>
+L    <span class="token comment">; #+latex:</span>
+h    <span class="token comment">; #+begin_html ... #+end_html</span>
+H    <span class="token comment">; #+html:</span>
+a    <span class="token comment">; #+begin_ascii ... #+end_ascii</span>
+A    <span class="token comment">; #+ascii:</span>
+i    <span class="token comment">; #+index: line</span>
+I    <span class="token comment">; #+include: line</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -551,7 +517,7 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.github.io/2021/org-mode-ji-ben-cao-zuo/">https://coco-hkk.github.io/2021/org-mode-ji-ben-cao-zuo/</a>
+                    <a href="https://coco-hkk.github.io/2021/org-mode/">https://coco-hkk.github.io/2021/org-mode/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,10 +557,6 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
                             
                                 <a href="/tags/emacs/">
                                     <span class="chip bg-color">emacs</span>
-                                </a>
-                            
-                                <a href="/tags/org-mode/">
-                                    <span class="chip bg-color">org-mode</span>
                                 </a>
                             
                         </div>
@@ -766,70 +728,18 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/virtualbox-an-zhuang-arch/">
+                <a href="/2021/org-mode/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="VirtualBox 安装 Arch(UFEI 和 LVM)">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="Org mode">
                         
-                        <span class="card-title">VirtualBox 安装 Arch(UFEI 和 LVM)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/VirtualBox/" class="post-category">
-                                    VirtualBox
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/vbox/">
-                        <span class="chip bg-color">vbox</span>
-                    </a>
-                    
-                    <a href="/tags/archlinux/">
-                        <span class="chip bg-color">archlinux</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/emacs-an-zhuang-pei-zhi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="Emacs 安装配置">
-                        
-                        <span class="card-title">Emacs 安装配置</span>
+                        <span class="card-title">Org mode</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -840,7 +750,7 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-19
                             </span>
                         <span class="publish-author">
                             
@@ -854,6 +764,7 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -861,6 +772,47 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
                         <span class="chip bg-color">emacs</span>
                     </a>
                     
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/emacs-shi-yong-cao-zuo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/8.jpg" class="responsive-img" alt="Emacs 实用操作">
+                        
+                        <span class="card-title">Emacs 实用操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Emacs/" class="post-category">
+                                    Emacs
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>
@@ -1063,7 +1015,7 @@ I    #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">77.7k</span>
+                        class="white-color">78.1k</span>
             
             
             
