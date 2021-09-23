@@ -427,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    222
+                    349
                 </div>
                 
 
@@ -473,7 +473,29 @@
 <li><code>v</code>，绑定函数 <code>eww-view-source</code>，查看页面源代码。</li>
 <li><code>C</code>，绑定函数 <code>eww-cookie-list</code>，列示 Cookie。</li>
 </ul>
+<h1>emms</h1>
+<p>Emacs 内置音频播放器，命令 <code>M-x emms</code>。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 解决 emms 不识别中文路径和包含中文信息的歌曲名</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> default-process-coding-system <span class="token punctuation">'(</span><span class="token car">utf-8-unix</span> <span class="token punctuation">.</span> chinese-gbk-dos<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
+<span class="token comment">;; 使用 mplayer 作为后端播放器</span>
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> emms
+  <span class="token lisp-property property">:commands</span> emms
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'emms-setup</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'emms-player-mplayer</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">emms-all</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> emms-player-list <span class="token punctuation">'(</span><span class="token car">emms-player-mplayer</span><span class="token punctuation">)</span>
+        emms-repeat-playlist <span class="token boolean">nil</span>
+        emms-playlist-buffer-name <span class="token string">"*Emms*"</span>
+        emms-source-file-default-directory <span class="token string">"F:\音乐"</span><span class="token punctuation">)</span>
+
+
+  <span class="token comment">;; 使用 general 按键绑定</span>
+  <span class="token punctuation">(</span><span class="token car">es/leader-key-def</span>
+    <span class="token string">"m"</span>  <span class="token punctuation">'(</span><span class="token lisp-property property">:ignore</span> <span class="token boolean">t</span> <span class="token lisp-property property">:which-key</span> <span class="token string">"media"</span><span class="token punctuation">)</span>
+    <span class="token string">"mp"</span> <span class="token punctuation">'(</span><span class="token car">emms-pause</span> <span class="token lisp-property property">:which-key</span> <span class="token string">"play / pause"</span><span class="token punctuation">)</span>
+    <span class="token string">"mf"</span> <span class="token punctuation">'(</span><span class="token car">emms-play-file</span> <span class="token lisp-property property">:which-key</span> <span class="token string">"play file"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -991,7 +1013,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">78.1k</span>
+                        class="white-color">78.3k</span>
             
             
             
