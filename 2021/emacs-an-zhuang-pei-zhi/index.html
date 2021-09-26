@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    796
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -497,33 +497,54 @@
 		├─site-lisp/     <span class="token comment">;; 不在 elpa, melpa 或其它仓库的第三方配置文件。注意添加到 load-path。</span>
 		├─early-init.el  <span class="token comment">;; 预初始化配置文件，在 package-initialize 之前执行</span>
 		└─init.el        <span class="token comment">;; 初始化配置文件，初始化 load-path, package-archives, 加载 lisp 配置文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>仓库</h1>
-<p>melpa 仓库</p>
-<ul>
-<li>melpa <code>http://melpa.org/packages/</code></li>
-<li>清华源 <code>https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/</code></li>
-<li>emacs-china <code>http://elpa.emacs-china.org/melpa/</code></li>
-</ul>
-<p>org 仓库</p>
-<ul>
-<li>org <code>https://orgmode.org/elpa/</code></li>
-<li>清华源 <code>http://mirrors.tuna.tsinghua.edu.cn/elpa/org/</code></li>
-</ul>
-<p>gnu 仓库</p>
-<ul>
-<li>gnu <code>https://elpa.gnu.org/packages/</code></li>
-<li>清华源 <code>http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/</code></li>
-</ul>
-<p>配置</p>
-<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token comment">;; 添加仓库镜像源</span>
-<span class="token punctuation">(</span><span class="token car">add-to-list</span> <span class="token quoted-symbol variable symbol">'package-archives</span> <span class="token punctuation">'(</span><span class="token string">"melpa"</span> <span class="token punctuation">.</span> <span class="token string">"http://melpa.org/packages/"</span><span class="token punctuation">)</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
-<span class="token comment">;; 或</span>
+<h1>依赖包管理</h1>
+<h2 id="设置仓库源">设置仓库源</h2>
+<p>Emacs 默认仓库源是 <code>https://elpa.gnu.org/</code> 和 <code>https://melpa.org</code>。由于 FW 导致
+访问经常超时，所以使用国内仓库源。</p>
+<pre class="line-numbers language-none"><code class="language-none">国内仓库源
+- https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;elpa&#x2F;melpa&#x2F;
+- http:&#x2F;&#x2F;elpa.emacs-china.org&#x2F;melpa&#x2F;
+- http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;elpa&#x2F;org&#x2F;
+- http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;elpa&#x2F;gnu&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Emacs 提供了一个 <code>package-archives</code> 变量来设置仓库源，它可以解决仓库源和网络问题。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 配置仓库源</span>
 <span class="token punctuation">(</span><span class="token keyword">setq</span> package-archives <span class="token punctuation">'(</span><span class="token punctuation">(</span><span class="token string">"melpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://melpa.org/packages/"</span><span class="token punctuation">)</span>
+                         <span class="token punctuation">(</span><span class="token string">"melpa-stable"</span> <span class="token punctuation">.</span> <span class="token string">"https://stable.melpa.org/packages/"</span><span class="token punctuation">)</span>
 						 <span class="token punctuation">(</span><span class="token string">"org"</span> <span class="token punctuation">.</span> <span class="token string">"https://orgmode.org/elpa/"</span><span class="token punctuation">)</span>
-						 <span class="token punctuation">(</span><span class="token string">"elpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://elpa.gnu.org/packages/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+						 <span class="token punctuation">(</span><span class="token string">"elpa"</span> <span class="token punctuation">.</span> <span class="token string">"https://elpa.gnu.org/packages/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="软件包列表">软件包列表</h2>
+<p>Emacs 默认使用 list-packages 浏览官方的仓库列表，可使用的包比较少，主要是因为
+LICENSE 不是 GPL 自由软件授权，都不会加入该仓库。</p>
+<p>使用 <code>M-x list-packages RET</code>，会打开一个 <code>*Packages*</code> 的 buffer 显示软件包列表。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 快捷键管理 *Packages*</span>
 
-<span class="token comment">;; 初始化 package</span>
-<span class="token punctuation">(</span><span class="token car">package-initialize</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+i     <span class="token comment">; 标记需要安装的包</span>
+d     <span class="token comment">; 标记需要删除的包</span>
+u     <span class="token comment">; 取消标记的安装包</span>
+x     <span class="token comment">; 安装已标记的安装包</span>
+U     <span class="token comment">; 更新安装包</span>
+g     <span class="token comment">; 刷新列表</span>
+n     <span class="token comment">; 下一个包</span>
+p     <span class="token comment">; 上一个包</span>
+H     <span class="token comment">; 正则过滤包并隐藏</span>
+/     <span class="token comment">; 过滤</span>
+    / <span class="token comment">; 清除过滤</span>
+    k <span class="token comment">; 基于关键字过滤</span>
+    n <span class="token comment">; 基于名字过滤</span>
+h     <span class="token comment">; 帮助文档</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="安装软件包">安装软件包</h2>
+<p>命令 <code>M-x package-install RET &lt;package_name&gt;</code> 可直接输入包名进行安装。下载的包会
+存放在 <code>~/.emacs.d/elpa/</code> 目录下。可以通过设置 <code>package-user-dir</code> 变量，指定软件
+包安装位置。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 指定软件包安装位置</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> package-user-dir <span class="token string">"your package dir"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="其它软件包命令">其它软件包命令</h2>
+<ul>
+<li>重新安装软件包 <code>M-x package-reinstall RET &lt;package_name&gt;</code>。</li>
+<li>更新软件包 <code>M-x upgrade-package RET</code>。</li>
+<li>删除软件包 <code>M-x package-delete RET &lt;package_name&gt;</code>。</li>
+<li>刷新软件包列表 <code>M-x package-refresh-contents</code>。</li>
+</ul>
 <h1>字体</h1>
 <p>可解决中文卡顿问题（27.2 无此问题）。</p>
 <ol>
@@ -595,7 +616,7 @@
 				shell-mode-hook
                 eshell-mode-hook<span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">(</span><span class="token car">add-hook</span> mode <span class="token punctuation">(</span><span class="token lambda"><span class="token keyword">lambda</span> <span class="token punctuation">(</span><span class="token arguments"></span><span class="token punctuation">)</span></span> <span class="token punctuation">(</span><span class="token car">display-line-numbers-mode</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>问题</h1>
+<h1>FAQ</h1>
 <ul>
 <li>gpg 路径错误，导致 <code>no public key</code>。</li>
 </ul>
@@ -1138,7 +1159,7 @@ gpg 只识别以 /d/ 开始的路径，额外在公钥路径前面添加了 /d/�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">78.3k</span>
+                        class="white-color">79.3k</span>
             
             
             

@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    19 分
                 </div>
                 
 
@@ -463,28 +463,87 @@
             <div id="articleContent">
                 <p>日常使用 Emacs 插件整理。插件安装命令 <code>M-x package-install RET xxx RET</code>。</p>
 <h1>use-package</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/jwiegley/use-package">use-package</a> 不是包管理工具，
-主要目的是配置和加载 package。方便隔离不同 package 的配置，使配置更简
-洁，提高 emacs 性能。</p>
-<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 安装、声明 use-package</span>
+<p><a target="_blank" rel="noopener" href="https://github.com/jwiegley/use-package">use-package</a> 不是包管理工具，默认是
+emacs 内建的 package.el。主要目的是使 package 配置更加独立，既不影响性能又优雅整
+洁。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; install use-package</span>
 <span class="token punctuation">(</span><span class="token keyword">unless</span> <span class="token punctuation">(</span><span class="token car">package-installed-p</span> <span class="token quoted-symbol variable symbol">'use-package</span><span class="token punctuation">)</span>
    <span class="token punctuation">(</span><span class="token car">package-install</span> <span class="token quoted-symbol variable symbol">'use-package</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'use-package</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token keyword">setq</span> use-package-always-ensure <span class="token boolean">t</span><span class="token punctuation">)</span>    <span class="token comment">;; 所有未安装的 package 都必须安装</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> use-package-always-ensure <span class="token boolean">t</span><span class="token punctuation">)</span>    <span class="token comment">; ':ensure t' can be ignored when configuring the package</span>
 
 <span class="token comment">;; :init 在 package 加载之前执行</span>
 <span class="token comment">;; :config 在 package 加载之后配置</span>
 <span class="token comment">;; :bind 按键绑定</span>
 <span class="token comment">;; :custom 可自定义 package custom variables</span>
 <span class="token comment">;; :hook 为 package hooks 添加函数</span>
-<span class="token comment">;; :ensure t 若未安装package，则必须安装</span>
+<span class="token comment">;; :ensure t 若未安装 package，则自动安装</span>
 <span class="token comment">;; :diminish 不在 mode-line 显示 minor-mode</span>
+<span class="token comment">;; :demand 覆盖包的延迟加载，强制立即加载</span>
+<span class="token comment">;; :disabled 禁用模块</span>
+<span class="token comment">;; :map 局部键绑定，只有 package 加载后生效</span>
+<span class="token comment">;; :defer 延迟加载（:commands,:bind, :bind*, :mode 都有延迟加载效果)</span>
+<span class="token comment">;; :commands 创建自动加载，参数为 symbol 或 symbol 列表</span>
 <span class="token punctuation">(</span><span class="token keyword">use-package</span> which-key
   <span class="token lisp-property property">:init</span> <span class="token punctuation">(</span><span class="token car">which-key-mode</span><span class="token punctuation">)</span>
   <span class="token lisp-property property">:diminish</span> which-key-mode
   <span class="token lisp-property property">:config</span>
-  <span class="token punctuation">(</span><span class="token keyword">setq</span> which-key-idle-delay <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> which-key-idle-delay <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>straight.el</h1>
+<p>emacs 自带包管理 package.el 的可替代包管理工具，可配合 use-package。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/raxod502/straight.el</span>
+<span class="token comment">;; 不能设置默认的仓库源，只能一个一个指定。</span>
+<span class="token comment">;; 不使用 emacs 内建 package.el。</span>
+
+<span class="token comment">;; Bootstrap straight.el</span>
+<span class="token punctuation">(</span><span class="token defvar"><span class="token keyword">defvar</span> <span class="token variable">bootstrap-version</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">let</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token car">bootstrap-file</span>
+      <span class="token punctuation">(</span><span class="token car">expand-file-name</span> <span class="token string">"straight/repos/straight.el/bootstrap.el"</span> user-emacs-directory<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">(</span><span class="token car">bootstrap-version</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token keyword">unless</span> <span class="token punctuation">(</span><span class="token car">file-exists-p</span> bootstrap-file<span class="token punctuation">)</span>
+    <span class="token punctuation">(</span><span class="token car">with-current-buffer</span>
+        <span class="token punctuation">(</span><span class="token car">url-retrieve-synchronously</span>
+        <span class="token string">"https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"</span>
+        <span class="token quoted-symbol variable symbol">'silent</span> <span class="token quoted-symbol variable symbol">'inhibit-cookies</span><span class="token punctuation">)</span>
+      <span class="token punctuation">(</span><span class="token car">goto-char</span> <span class="token punctuation">(</span><span class="token car">point-max</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">(</span><span class="token car">eval-print-last-sexp</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">load</span> bootstrap-file <span class="token boolean">nil</span> <span class="token quoted-symbol variable symbol">'nomessage</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">(</span><span class="token keyword">setq</span> straight-use-package-by-default <span class="token boolean">t</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; Use straight.el for use-package expressions</span>
+<span class="token punctuation">(</span><span class="token car">straight-use-package</span> <span class="token quoted-symbol variable symbol">'use-package</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>org-roam</h1>
+<p>以网状结构来关联笔记、并以 backlink 的形式来展现笔记上下文的工具。</p>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/org-roam/org-roam</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> org-roam
+  <span class="token lisp-property property">:init</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> org-roam-v2-ack <span class="token boolean">t</span><span class="token punctuation">)</span>    <span class="token comment">; 必须在 :init 中设置，否则警告版本问题</span>
+  <span class="token lisp-property property">:custom</span>
+  <span class="token punctuation">(</span><span class="token car">org-roam-directory</span> <span class="token string">"F:/Notes/org-notes"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">org-dilies-directory</span> <span class="token string">"f:/Notes/org-notes/daily"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">org-roam-graph-executable</span> <span class="token string">"D:/Graphviz/bin/dot.exe"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token car">org-roam-completion-everywhere</span> <span class="token boolean">t</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token car">org-roam-db-autosync-mode</span><span class="token punctuation">)</span>
+
+  <span class="token comment">;; If using org-roam-protocol</span>
+  <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'org-roam-protocol</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>org-roam-ui</h1>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 需要 org-roam v2</span>
+<span class="token comment">;; https://github.com/org-roam/org-roam-ui</span>
+
+<span class="token punctuation">(</span><span class="token keyword">use-package</span> org-roam-ui
+  <span class="token lisp-property property">:straight</span>
+  <span class="token punctuation">(</span><span class="token lisp-property property">:host</span> github <span class="token lisp-property property">:repo</span> <span class="token string">"org-roam/org-roam-ui"</span> <span class="token lisp-property property">:branch</span> <span class="token string">"main"</span> <span class="token lisp-property property">:files</span> <span class="token punctuation">(</span><span class="token string">"*.el"</span> <span class="token string">"out"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:after</span> org-roam
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> org-roam-ui-sync-theme <span class="token boolean">t</span>
+        org-roam-ui-follow <span class="token boolean">t</span>
+        org-roam-ui-update-on-save <span class="token boolean">t</span>
+        org-roam-ui-open-on-start <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>command-log-mode</h1>
 <p>显示部分或所有 buffer 的事件或命令历史。</p>
 <ul>
@@ -494,42 +553,35 @@
 </ul>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token keyword">use-package</span> command-log-mode<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h1>ivy/counsel/swiper</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/abo-abo/swiper">swiper</a> 这个仓库包含 ivy, counsel,
-swiper 三个 packages。是 minibuffer 补全工具。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/abo-abo/swiper">swiper</a> 这个仓库包含 ivy, counsel, swiper 三
+个 packages。是 minibuffer 补全工具。</p>
 <ul>
 <li><code>Ivy</code> emacs 通用补全机制。</li>
 <li><code>Counsel</code> emacs 常用命令集合的 Ivy 增强版。</li>
 <li><code>Swiper</code> 是 Isearch 的替代品，它使用 Ivy 来显示所有匹配项的预览。</li>
 </ul>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token keyword">use-package</span> ivy
-  <span class="token lisp-property property">:diminish</span>
-  <span class="token lisp-property property">:bind</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"C-s"</span> <span class="token punctuation">.</span> swiper<span class="token punctuation">)</span>
-		 <span class="token lisp-property property">:map</span> ivy-minibuffer-map
-		 <span class="token punctuation">(</span><span class="token string">"TAB"</span> <span class="token punctuation">.</span> ivy-alt-done<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-l"</span> <span class="token punctuation">.</span> ivy-alt-done<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-j"</span> <span class="token punctuation">.</span> ivy-next-line<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-k"</span> <span class="token punctuation">.</span> ivy-previous-line<span class="token punctuation">)</span>
-		 <span class="token lisp-property property">:map</span> ivy-switch-buffer-map
-		 <span class="token punctuation">(</span><span class="token string">"C-k"</span> <span class="token punctuation">.</span> ivy-previous-line<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-l"</span> <span class="token punctuation">.</span> ivy-done<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-d"</span> <span class="token punctuation">.</span> ivy-switch-buffer-kill<span class="token punctuation">)</span>
-		 <span class="token lisp-property property">:map</span> ivy-reverse-i-search-map
-		 <span class="token punctuation">(</span><span class="token string">"C-k"</span> <span class="token punctuation">.</span> ivy-previous-line<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-d"</span> <span class="token punctuation">.</span> ivy-reverse-i-search-kill<span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token lisp-property property">:config</span>
-  <span class="token punctuation">(</span><span class="token car">ivy-mode</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:diminish</span> ivy-mode
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">after-init</span> <span class="token punctuation">.</span> ivy-mode<span class="token punctuation">)</span>
+  <span class="token lisp-property property">:bind</span> <span class="token punctuation">(</span>
+         <span class="token punctuation">(</span><span class="token string">"C-s"</span> <span class="token punctuation">.</span> swiper-isearch<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"M-x"</span> <span class="token punctuation">.</span> counsel-M-x<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"C-x C-f"</span> <span class="token punctuation">.</span> counsel-find-file<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"C-x b"</span> <span class="token punctuation">.</span> ivy-switch-buffer<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"M-y"</span> <span class="token punctuation">.</span> counsel-yank-pop<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"C-x l"</span> <span class="token punctuation">.</span> counsel-locate<span class="token punctuation">)</span>
 
-<span class="token punctuation">(</span><span class="token keyword">use-package</span> counsel
-  <span class="token lisp-property property">:bind</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"M-x"</span> <span class="token punctuation">.</span> counsel-M-x<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-x b"</span> <span class="token punctuation">.</span> counsel-ibuffer<span class="token punctuation">)</span>
-		 <span class="token punctuation">(</span><span class="token string">"C-x C-f"</span> <span class="token punctuation">.</span> counsel-find-file<span class="token punctuation">)</span>
-		 <span class="token lisp-property property">:map</span> minibuffer-local-map
-		 <span class="token punctuation">(</span><span class="token string">"C-r"</span> <span class="token punctuation">.</span> <span class="token quoted-symbol variable symbol">'counsel-minibuffer-history</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+         <span class="token lisp-property property">:map</span> ivy-minibuffer-map
+         <span class="token punctuation">(</span><span class="token string">"TAB"</span> <span class="token punctuation">.</span> ivy-alt-done<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"C-j"</span> <span class="token punctuation">.</span> ivy-next-line<span class="token punctuation">)</span>
+         <span class="token punctuation">(</span><span class="token string">"C-k"</span> <span class="token punctuation">.</span> ivy-previous-line<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token lisp-property property">:config</span>
+  <span class="token punctuation">(</span><span class="token keyword">setq</span> ivy-initial-inputs-alist <span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">;; Don't start searches with ^</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>ivy-rich</h1>
-<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 优化 ivy 显示，显示更多内容</span>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; ivy 显示更丰富的内容</span>
 <span class="token punctuation">(</span><span class="token keyword">use-package</span> ivy-rich
-  <span class="token lisp-property property">:init</span>
-  <span class="token punctuation">(</span><span class="token car">ivy-rich-mode</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token lisp-property property">:hook</span> <span class="token punctuation">(</span><span class="token car">ivy-mode</span> <span class="token punctuation">.</span> ivy-rich-mode<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h1>doom-modeline</h1>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 先安装 all-the-icons 包</span>
 <span class="token comment">;; 执行 M-x all-the-icons-install-fonts 安装字体。windows 需要手动安装。</span>
@@ -601,7 +653,10 @@ swiper 三个 packages。是 minibuffer 补全工具。</p>
 <h1>magit</h1>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token keyword">use-package</span> magit
   <span class="token lisp-property property">:custom</span>
-  <span class="token punctuation">(</span><span class="token car">magit-display-buffer-function</span> <span class="token quoted-symbol variable symbol">#'magit-display-buffer-same-window-except-diff-v1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">(</span><span class="token car">magit-display-buffer-function</span> <span class="token quoted-symbol variable symbol">#'magit-display-buffer-same-window-except-diff-v1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">;; 屏蔽找不到 magit-version 错误</span>
+<span class="token punctuation">(</span><span class="token car">advice-add</span> <span class="token quoted-symbol variable symbol">#'magit-version</span> <span class="token lisp-property property">:override</span> <span class="token quoted-symbol variable symbol">#'ignore</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>用法</p>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 所有操作可在 magit-status 窗口中使用 ? 指令查看。</span>
 
@@ -932,6 +987,16 @@ $<span class="token number">0</span><span class="token punctuation">;</span>
   <span class="token punctuation">(</span><span class="token keyword">setq</span> lsp-keymap-prefix <span class="token string">"C-c l"</span><span class="token punctuation">)</span>  <span class="token comment">;; Or 'C-l', 's-l'</span>
   <span class="token lisp-property property">:config</span>
   <span class="token punctuation">(</span><span class="token car">lsp-enable-which-key-integration</span> <span class="token boolean">t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>lsp-ui</h1>
+<pre class="line-numbers language-emacs-lsp" data-language="emacs-lsp"><code class="language-emacs-lsp">;; 提供弹出窗口以显示光标所在相关内容
+(use-package lsp-ui
+  :after lsp    ; 必须，否则报错：The connected server(s) does not support method textDocument&#x2F;hover
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-doc-position &#39;bottom)
+  (lsp-ui-doc-show))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>lsp-treemacs</h1>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; M-x treemacs，提供项目目录树</span>
 
@@ -1661,7 +1726,7 @@ C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">78.3k</span>
+                        class="white-color">79.3k</span>
             
             
             
