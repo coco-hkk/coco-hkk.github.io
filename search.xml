@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="2022/emacs-shi-yong-shou-ce/"/>
+      <url>2022/emacs-shi-yong-shou-ce/</url>
+      
+        <content type="html"><![CDATA[<h1>变量</h1><h2 id="查看-emacs-编译选项">查看 emacs 编译选项</h2><p>变量 system-configuration-options</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Org mode</title>
       <link href="2021/org-mode/"/>
       <url>2021/org-mode/</url>
