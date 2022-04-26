@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    15 分
                 </div>
                 
 
@@ -751,6 +751,73 @@ systemctl status xray<span aria-hidden="true" class="line-numbers-rows"><span></
 所以需要修改 xray 权限为 root。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl edit --full xray.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>修改 <code>User=root</code>。</p>
+<h2 id="服务器优化：开启-BBR">服务器优化：开启 BBR</h2>
+<p>BBR = Bottleneck Bandwidth and Round-trip propagation time，是一种 TCP 的拥塞控制算法。</p>
+<ol>
+<li>
+<p>添加官方 backports 源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>把下面内容加在最后，保存退出</p>
+<pre class="line-numbers language-none"><code class="language-none">deb http:&#x2F;&#x2F;deb.debian.org&#x2F;debian bullseye-backports main<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>刷新软件库并查询 Debian 官方的最新版内核并安装。请务必安装你的 VPS 对应的版本。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt</span> -t bullseye-backports <span class="token function">install</span> linux-image-amd64<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可能报错：The following signatures couldn’t be verified because the public key is not available: NO_PUBKEY XXXX</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">apt-key adv --recv-keys --keyserver keyserver.ubuntu.com XXXXXX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>修改 kernel 参数配置文件 sysctl.conf 并指定开启 BBR</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> /etc/sysctl.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>把下面内容添加进去</p>
+<pre class="line-numbers language-none"><code class="language-none">net.core.default_qdisc&#x3D;fq
+net.ipv4.tcp_congestion_control&#x3D;bbr<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>重启系统。</p>
+</li>
+<li>
+<p>确认 BBR 开启</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 返回 tcp_bbr</span>
+lsmod <span class="token operator">|</span> <span class="token function">grep</span> bbr
+
+<span class="token comment"># 返回 sch_fq</span>
+lsmod <span class="token operator">|</span> <span class="token function">grep</span> fq<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="服务器优化：开启-HTTP-自动跳转-HTTPS">服务器优化：开启 HTTP 自动跳转 HTTPS</h2>
+<ol>
+<li>
+<p>之前我们已经搭建了 80 端口的 http 网页，并以此申请了 TLS 证书。</p>
+<p>但如果你尝试过用浏览器访问我们的这个界面，就会发现 http 访问并不会像大多数网
+站一样自动升级为 https 访问。换言之，我们现在的设置下，http(80) 和 https(443)
+之间完全是独立的。如果要解决这个问题，就需要做一些修改。</p>
+</li>
+<li>
+<p>编辑 nginx 配置文件 <code>nginx.conf</code>，在我们设置过的 80 端口 Server 中加入下面的语
+句，并保存退出（可同时删除 root 和 index 两行）</p>
+<pre class="line-numbers language-none"><code class="language-none">return 301 https:&#x2F;&#x2F;$http_host$request_uri;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>在与 80 端口同级的位置增加一个本地端口监听来提供网页展示。本文以 8080 端口做
+演示。（可以是任意端口）</p>
+<pre class="line-numbers language-none"><code class="language-none">server &#123;
+   listen 127.0.0.1:8080;
+   root &#x2F;home&#x2F;vpsadmin&#x2F;www&#x2F;webpage;
+   index index.html;
+   add_header Strict-Transport-Security &quot;max-age&#x3D;63072000&quot; always;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重启 nginx。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl restart nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>修改 Xray 的回落设置，将回落从 80 端口改为 8080 端口（找到 “dest”: 80, 并改成
+“dest”: 8080）。重启 xray 服务。</p>
+</li>
+</ol>
+<p>当你输入 <a target="_blank" rel="noopener" href="http://vpn.yourdomain.com">http://vpn.yourdomain.com</a> 的时候，它应该已经会自动跳转 <code>https</code> 了。</p>
 <h1>客户端配置</h1>
 <ul>
 <li>服务器【地址】: <a target="_blank" rel="noopener" href="http://a-name.yourdomain.com">a-name.yourdomain.com</a></li>
@@ -1440,7 +1507,7 @@ systemctl status xray<span aria-hidden="true" class="line-numbers-rows"><span></
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">82.7k</span>
+                        class="white-color">83.7k</span>
             
             
             
