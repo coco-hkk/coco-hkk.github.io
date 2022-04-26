@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Org mode, coco-hkk">
+    <meta name="keywords" content="coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Org mode | 点点滴滴</title>
+    <title>点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Org mode</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -395,25 +395,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/emacs/">
-                                <span class="chip bg-color">emacs</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Emacs/" class="post-category">
-                                Emacs
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -422,7 +409,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-19
+                    2022-04-26
                 </div>
                 
 
@@ -431,7 +418,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    193
+                    0
                 </div>
                 
 
@@ -461,44 +448,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://orgmode.org/">Org</a> 基于 Outline 模式，用层次结构来组织文档。</p>
-<h1>基础</h1>
-<h2 id="标题">标题</h2>
-<pre class="line-numbers language-none"><code class="language-none">*     一级标题
-**    二级标题
-***   三级标题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="视图循环">视图循环</h2>
-<p>大纲模式</p>
-<h1>进价</h1>
-<h1>Babel</h1>
-<p>org babel 用于运行 org 文档中插入的源代码，命令 <code>C-c C-c</code>。</p>
-<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp">#+begin_src python <span class="token lisp-property property">:results</span> output
-  def hello<span class="token punctuation">(</span><span class="token punctuation">)</span>:
-    return <span class="token string">"hello, world!"</span>
-
-  print <span class="token punctuation">(</span><span class="token car">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-#+end_src<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>其它</h1>
-<ul>
-<li>源代码块快捷操作</li>
-</ul>
-<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; 需要在配置文件中配置 (require 'org-tempo)</span>
-
-&lt;s + &lt;TAB>    <span class="token comment">;; 插入 #+begin_src ... #+end_src</span>
-
-<span class="token comment">;; 类似选项</span>
-e    <span class="token comment">; #+begin_example ... #+end_example  : 单行的例子以冒号开头</span>
-q    <span class="token comment">; #+begin_quote ... #+end_quote      通常用于引用，与默认格式相比左右都会留出缩进</span>
-v    <span class="token comment">; #+begin_verse ... #+end_verse      默认内容不换行，需要留出空行才能换行</span>
-c    <span class="token comment">; #+begin_center ... #+end_center</span>
-l    <span class="token comment">; #+begin_latex ... #+end_latex</span>
-L    <span class="token comment">; #+latex:</span>
-h    <span class="token comment">; #+begin_html ... #+end_html</span>
-H    <span class="token comment">; #+html:</span>
-a    <span class="token comment">; #+begin_ascii ... #+end_ascii</span>
-A    <span class="token comment">; #+ascii:</span>
-i    <span class="token comment">; #+index: line</span>
-I    <span class="token comment">; #+include: line</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
                 
             </div>
             <hr/>
@@ -524,7 +474,7 @@ I    <span class="token comment">; #+include: line</span><span aria-hidden="true
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.github.io/2021/org-mode/">https://coco-hkk.github.io/2021/org-mode/</a>
+                    <a href="https://coco-hkk.github.io/2022/org-mode/">https://coco-hkk.github.io/2022/org-mode/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -561,11 +511,7 @@ I    <span class="token comment">; #+include: line</span><span aria-hidden="true
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/emacs/">
-                                    <span class="chip bg-color">emacs</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -739,13 +685,13 @@ I    <span class="token comment">; #+include: line</span><span aria-hidden="true
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/emacs-shi-yong-shou-ce/">
+                <a href="/2022/vps-zhu-ji-gou-mai/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="VPS 主机购买">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">VPS 主机购买</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -756,15 +702,27 @@ I    <span class="token comment">; #+include: line</span><span aria-hidden="true
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-26
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            coco-hkk
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/VPN/" class="post-category">
+                                    VPN
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/VPS/">
+                        <span class="chip bg-color">VPS</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1008,7 +966,7 @@ I    <span class="token comment">; #+include: line</span><span aria-hidden="true
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">79.5k</span>
+                        class="white-color">82.5k</span>
             
             
             

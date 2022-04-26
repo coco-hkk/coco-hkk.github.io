@@ -397,10 +397,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vpn/">
-                                <span class="chip bg-color">vpn</span>
-                            </a>
-                        
                             <a href="/tags/v2fly/">
                                 <span class="chip bg-color">v2fly</span>
                             </a>
@@ -435,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    650
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 
@@ -466,53 +462,6 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>采用 <em>v2ray/v2fly</em> 工具搭建 VPN 服务器。</p>
-<h1>VPS 主机购买</h1>
-<p>逢年过节各大 VPS 供应商会有各种优惠活动，可参考 <a target="_blank" rel="noopener" href="https://www.zhujiceping.com/">国外主机测评
-</a> 了解详细信息。</p>
-<p>购买主机选择 OS 时，至少选择 <strong>Ubuntu 16.04 64 位</strong> 操作系统。（<font color="red">v2ray 运行在 init 系统为 <em>systemd</em> 的操作系统上</font>）。</p>
-<h2 id="virmach">virmach</h2>
-<ol>
-<li>
-<p>注册 <a target="_blank" rel="noopener" href="https://virmach.com/">virmach</a> 账号。</p>
-</li>
-<li>
-<p>在 <em>Order New Services</em> 中选择适合主机，网上查找优惠码，使用支付宝支付。</p>
-</li>
-<li>
-<p>付款成功后会收到一封邮件，包括主机 IP、OS 登录账户和密码。</p>
-</li>
-<li>
-<p>可使用 putty 远程 ssh 登录。也可使用 virmach 控制面板 <em>VNC/Desktop</em> 工具登录
-。</p>
-</li>
-<li>
-<p>修改 Ubuntu 登录密码</p>
-<ul>
-<li>
-<p>按照官方说明，首先尝试在 <em>control panel</em> 中修改 <em>root/Admin</em> Password。若
-不成功则关闭主机重新修改，若还不成只能求助技术支持了。</p>
-</li>
-<li>
-<p>若无法在 <em>control panel</em> 修改密码，可以在 VNC 中使用指令 <em>passwd</em> 修改
-root 密码。此时虽然 root 密码已被修改，但是控制面板显示的密码并没有改变。</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="racknerd">racknerd</h2>
-<p>和 virmach 流程基本一样。</p>
-<ol>
-<li>
-<p>注册 <a target="_blank" rel="noopener" href="https://www.racknerd.com/">racknerd</a> 账号。</p>
-</li>
-<li>
-<p>购机后会收到一封邮件，包括主机 IP、OS 登录账号和密码、<em>control panel</em> 账号和
-密码。</p>
-</li>
-<li>
-<p>可以所使用的 putty 远程 ssh 登录，使用 <em>passwd</em> 指令直接修改 <em>root</em> 登录密码。</p>
-</li>
-</ol>
 <h1>v2ray 安装及配置</h1>
 <h2 id="服务端">服务端</h2>
 <ol>
@@ -738,81 +687,6 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
 <p>跳过证书验证 <strong>true</strong></p>
 </li>
 </ul>
-<h1>chrome 代理</h1>
-<p>Chrome 推荐代理插件
-<a target="_blank" rel="noopener" href="https://github.com/FelisCatus/SwitchyOmega/releases">SwitchyOmega</a>。</p>
-<ul>
-<li>
-<p>插件网 <em><a target="_blank" rel="noopener" href="http://www.cnplugins.com/">http://www.cnplugins.com/</a></em> 上面把代理相关的全禁了，真闲的蛋疼。</p>
-</li>
-<li>
-<p>新版 Chrome 不能直接安装 crx 文件，把 crx 尾缀修改为 zip 拖到 Chrome 的拓展程
-序即可。此离线安装方法重启 Chrome 后失效，需要重新操作一遍。</p>
-</li>
-<li>
-<p>最好的方法是通过 Chrome 商店安装，但需要翻墙（开启 v2ray 的 HTTP 代理全局模式）。</p>
-</li>
-</ul>
-<h2 id="SwitchOmega-设置">SwitchOmega 设置</h2>
-<p>在左侧的情景模式中，默认有 <em>proxy</em>、<em>auto switch</em> 和 <em>新建情景模式…</em>。可以通过
-<em>新建情景模式…</em> 来创建新的 <em>代理服务器</em> 和 <em>自动切换模式</em>。使用默认的两种模式
-已经满足需求了。</p>
-<ol>
-<li><em>代理服务器 proxy</em></li>
-</ol>
-<p>proxy 配置需要和 v2ray 客户端 inbounds 参数保持一致。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">网址协议</th>
-<th style="text-align:center">代理协议</th>
-<th style="text-align:center">代理服务器</th>
-<th style="text-align:center">代理端口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">（默认）</td>
-<td style="text-align:center">SOCKS5</td>
-<td style="text-align:center">127.0.0.1</td>
-<td style="text-align:center">2080</td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li><em>自动切换模式 auto switch</em></li>
-</ol>
-<p>主要作用是将特定情景模式（代理）应用到具有某种模式的网址，实现自动根据网站适配不
-同代理。</p>
-<ul>
-<li>
-<p>切换规则</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">条件类型</th>
-<th style="text-align:center">条件设置</th>
-<th style="text-align:center">情景模式</th>
-<th style="text-align:center">操作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">域名通配符</td>
-<td style="text-align:center">*<a target="_blank" rel="noopener" href="http://youtube.com">youtube.com</a>*</td>
-<td style="text-align:center">proxy</td>
-<td style="text-align:center">-</td>
-</tr>
-</tbody>
-</table>
-<p>当我浏览 YouTube 时，自动会切换到 proxy 代理。</p>
-</li>
-<li>
-<p>规则列表设置</p>
-<p>规则列表网址：<em><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</a></em></p>
-<p>点击 <em>立即更新情景模式</em>。</p>
-</li>
-</ul>
 <h1>问题</h1>
 <ol>
 <li>
@@ -825,29 +699,8 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
    mtu 9000
    #保存后，重启网络生效
    # &#x2F;etc&#x2F;init.d&#x2F;networking restart
-3. 服务器和本地时间不同步，同步二者时间。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+3. 服务器和本地时间不同步，同步二者时间。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h1>修改记录</h1>
-<ul>
-<li>
-<p>2020-09-19</p>
-<p>virmach VPN 搭建。</p>
-</li>
-<li>
-<p>2021-01-01</p>
-<p>增加 racknerd 部分；修改服务端配置文件语法错误；增加 v2ray 各个平台下载地址；
-增加 SwitchyOmega 规则列表设置；增加问题模块。</p>
-</li>
-<li>
-<p>2021-01-02</p>
-<p>SwitchOmega Chrome 重启失效修复。</p>
-</li>
-<li>
-<p>2021-01-10</p>
-<p>从旧网站迁移。</p>
-</li>
-</ul>
 
                 
             </div>
@@ -911,10 +764,6 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/vpn/">
-                                    <span class="chip bg-color">vpn</span>
-                                </a>
                             
                                 <a href="/tags/v2fly/">
                                     <span class="chip bg-color">v2fly</span>
@@ -1097,9 +946,9 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="websocket + tls + web + cdn VPN 搭建">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="websocket 配 CDN 的 VPN 搭建">
                         
-                        <span class="card-title">websocket + tls + web + cdn VPN 搭建</span>
+                        <span class="card-title">websocket 配 CDN 的 VPN 搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1394,7 +1243,7 @@ systemctl start v2ray<span aria-hidden="true" class="line-numbers-rows"><span></
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">79.5k</span>
+                        class="white-color">82.5k</span>
             
             
             

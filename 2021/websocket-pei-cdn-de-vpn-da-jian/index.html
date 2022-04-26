@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="websocket + tls + web + cdn VPN 搭建, coco-hkk">
+    <meta name="keywords" content="websocket 配 CDN 的 VPN 搭建, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>websocket + tls + web + cdn VPN 搭建 | 点点滴滴</title>
+    <title>websocket 配 CDN 的 VPN 搭建 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">websocket + tls + web + cdn VPN 搭建</h1>
+                    <h1 class="description center-align post-title">websocket 配 CDN 的 VPN 搭建</h1>
                 </div>
             </div>
         </div>
@@ -443,14 +443,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    686
+                    596
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 
@@ -474,11 +474,6 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>为进一步增强安全性，VPN 采用 websocket + tls + web + cdn 的策略。</p>
-<h1>域名</h1>
-<p>登录 <a target="_blank" rel="noopener" href="http://www.freenom.com/zh/index.html">freenom</a> 网站申请一个免费域名。</p>
-<p>若没账号可先申请域名，会要求邮箱验证，验证后会要求注册，就是先上车后补票。</p>
-<p>在 <em>view cart</em> 中完成购买（我重复了好多次，每次购买完成就自动退出账号，购买失败
-。最后在手机上重复了 N 次终于成功）。</p>
 <h1>安装 caddy v2</h1>
 <p>登录服务器，运行命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"deb [trusted=yes] https://apt.fury.io/caddy/ /"</span> <span class="token punctuation">\</span>
@@ -516,6 +511,7 @@
 定义 nameserver 完成。</p>
 <p>稍等片刻新申请的域名即可使用，在 <em>SSL/TLS</em> 将模式设置为 <em>完全</em>。</p>
 <h2 id="freenom-域名配置">freenom 域名配置</h2>
+<p>登录 <a target="_blank" rel="noopener" href="http://www.freenom.com/zh/index.html">freenom</a> 网站。</p>
 <p><em>gServices</em> -&gt; <em>My Domains</em> -&gt; <em>Manage Domain</em> -&gt; <em>Management Tools</em> -&gt; <em>Nameservers</em></p>
 <p>选择 <em>Use custom nameservers (enter below)</em>。</p>
 <p>添加从 cloudflare 新申请的域名获取的名称服务器（在 <em>DNS</em> 选项）。</p>
@@ -672,7 +668,7 @@ your.domain &#123;
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>配置并重启 caddy 和 v2fly，登录 cloudflare，配置新域名 DNS 记录，将代理状态由 *
-仅限DNS* 切换为 <em>已代理</em>。</p>
+仅限 DNS* 切换为 <em>已代理</em>。</p>
 <h1>修订记录</h1>
 <ul>
 <li>
@@ -1016,10 +1012,6 @@ your.domain &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/vpn/">
-                        <span class="chip bg-color">vpn</span>
-                    </a>
-                    
                     <a href="/tags/v2fly/">
                         <span class="chip bg-color">v2fly</span>
                     </a>
@@ -1226,7 +1218,7 @@ your.domain &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">79.5k</span>
+                        class="white-color">82.5k</span>
             
             
             
