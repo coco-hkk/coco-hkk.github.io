@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>Org-mode 实用指南</title>
+      <link href="2022/org-mode-shi-yong-zhi-nan/"/>
+      <url>2022/org-mode-shi-yong-zhi-nan/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://orgmode.org/">Org</a> 基于 Outline 模式，用层次结构来组织文档。</p><h1>基础</h1><h2 id="标题">标题</h2><pre class="line-numbers language-none"><code class="language-none">*     一级标题**    二级标题***   三级标题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="视图循环">视图循环</h2><p>大纲模式</p><h1>进价</h1><h1>Babel</h1><p>org babel 用于运行 org 文档中插入的源代码，命令 <code>C-c C-c</code>。</p><pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">#+begin_src python <span class="token lisp-property property">:results</span> output  def hello<span class="token punctuation">(</span><span class="token punctuation">)</span>:    return <span class="token string">"hello, world!"</span>  print <span class="token punctuation">(</span><span class="token car">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>#+end_src<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1>其它</h1><ul><li>源代码块快速补全</li></ul><pre class="line-numbers language-none"><code class="language-none">;; 需要在配置文件中配置 (require &#39;org-tempo)&lt;s + &lt;TAB&gt;    ;; 插入 #+begin_src ... #+end_src;; 类似选项e    ; #+begin_example ... #+end_example  : 单行的例子以冒号开头q    ; #+begin_quote ... #+end_quote      通常用于引用，与默认格式相比左右都会留出缩进v    ; #+begin_verse ... #+end_verse      默认内容不换行，需要留出空行才能换行c    ; #+begin_center ... #+end_centerl    ; #+begin_latex ... #+end_latexL    ; #+latex:h    ; #+begin_html ... #+end_htmlH    ; #+html:a    ; #+begin_ascii ... #+end_asciiA    ; #+ascii:i    ; #+index: lineI    ; #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><code>#+</code> 快速补全</li></ul><pre class="line-numbers language-none"><code class="language-none">C-M i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>增加时间</li></ul><pre class="line-numbers language-none"><code class="language-none">C-c .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Emacs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> org </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>XRAY 搭配 VLESS 搭建 VPN</title>
       <link href="2022/xray-da-pei-vless-da-jian-vpn/"/>
       <url>2022/xray-da-pei-vless-da-jian-vpn/</url>
@@ -123,19 +148,6 @@
             <tag> VPS </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="2022/org-mode/"/>
-      <url>2022/org-mode/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
