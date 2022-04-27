@@ -1585,31 +1585,6 @@
     
     
     <entry>
-      <title>vim win10 源码安装</title>
-      <link href="2021/vim-yuan-ma-an-zhuang/"/>
-      <url>2021/vim-yuan-ma-an-zhuang/</url>
-      
-        <content type="html"><![CDATA[<p>win10 msys2 vim 源码安装。</p><p><a href="https://github.com/yianwillis/vimcdoc/releases">参考手册</a>。</p><h1>MSYS2</h1><ol><li><p>在 <a href="https://www.msys2.org/">官网</a> 下载 MSYS2 并安装安装到合适位置。</p></li><li><p>添加 mingw64/bin 到环境变量。</p></li><li><p>修改软件源。</p><p>软件源文件 <code>/etc/pacman.d/mirrorlist.mingw32</code></p><p>注释掉所有源，添加</p><p><code>Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686</code></p><p>软件源文件 <code>/etc/pacman.d/mirrorlist.mingw64</code></p><p>注释掉所有源，添加</p><p><code>Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64</code></p><p>软件源文件 <code>/etc/pacman.d/mirrorlist.msys</code></p><p>注释掉所有源，添加</p><p><code>Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch</code></p></li><li><p>更新软件源</p></li></ol><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -Syu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="5"><li>安装编译环境</li></ol><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-make <span class="token function">git</span> diffutils<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="6"><li>验证安装</li></ol><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1>Python 2.7</h1><p>下载 Python 并安装到合适位置，添加环境变量。</p><h1>编译 vim</h1><ol><li>下载 vim 源码到合适位置</li></ol><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/vim/vim.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="2"><li>修改编译配置 <code>custom.mak</code></li></ol><p>跳转至 vim 源码 src 目录。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> Make_cyg_ming.mak custom.mak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-make" data-language="make"><code class="language-make">GUI&#x3D;yes         #vim 带图形界面ARCH&#x3D;x86-64     #指定为 64 位系统编译<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>找到 Python 选项，本次编译使用 27 版本。</p><ol start="3"><li>编译安装</li></ol><p>在 src 目录下编译。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mingw32-make.exe -f custom.mak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>若编译失败，想重新编译，可先 <code>clean</code> 重新执行以上命令。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mingw32-make.exe -f custom.mak clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="4"><li>编译成功后打包</li></ol><p>在 <code>src</code> 父目录创建打包文件 <code>pkg.sh</code> 内容为：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> -p vim-x64/vim81<span class="token function">cp</span> -a runtime/* vim-x64/vim81<span class="token function">cp</span> -a src/*.exe vim-x64/vim81<span class="token function">cp</span> -a src/GvimExt/gvimext.dll vim-x64/vim81<span class="token function">cp</span> -a src/xxd/xxd.exe vim-x64/vim81<span class="token function">cp</span> -a vimtutor.bat vim-x64/vim81<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ol start="5"><li>vim-x64/vim81 即为编译好的 vim 版本</li></ol><p>将 vim81 移到合适的位置，以管理员的权限执行 <code>install.exe</code> 文件。</p><p>根据提示选择编号，选择 d 进行安装。</p><h1>添加右键 <code>用 vim 打开</code></h1><ol><li>打开注册表：计算机 <code>\HKEY_CLASSES_ROOT\*\shell\</code>。</li><li>新建项，命名为 <code>用 VIM 编辑</code>。</li><li>在该项右键新建字符串值 <code>Icon</code>，内容为 <code>&quot;/path/to/gvim.exe,0&quot;</code>。</li><li>继续在该项右键新建项 <code>Command</code>，修改默认值为 <code>/path/to/gvim.exe -p --remote-tab-silent &quot;%1&quot;</code>。</li></ol><h1>修订记录</h1><ul><li><p>2021-01-11</p><p>从其它网站迁移。</p></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> vim </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> vim </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>websocket 配 CDN 的 VPN 搭建</title>
       <link href="2021/websocket-pei-cdn-de-vpn-da-jian/"/>
       <url>2021/websocket-pei-cdn-de-vpn-da-jian/</url>
