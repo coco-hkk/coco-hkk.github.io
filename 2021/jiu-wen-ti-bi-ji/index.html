@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="制作 U 盘启动盘, coco-hkk">
+    <meta name="keywords" content="windows 遇到的问题（旧笔记）, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>制作 U 盘启动盘 | 点点滴滴</title>
+    <title>windows 遇到的问题（旧笔记） | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">制作 U 盘启动盘</h1>
+                    <h1 class="description center-align post-title">windows 遇到的问题（旧笔记）</h1>
                 </div>
             </div>
         </div>
@@ -395,13 +395,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/U-%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/">
-                                <span class="chip bg-color">U 盘启动盘</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -422,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-22
+                    2021-01-18
                 </div>
                 
 
@@ -431,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    667
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    8 分
                 </div>
                 
 
@@ -461,101 +457,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>以制作 win10 U 盘启动盘为例。</p>
-<ol>
-<li>获取 win10 镜像
+                <p>主要是 2015 年之前遇到的一些问题解决办法的笔记。</p>
+<h1>SD 卡容量缩水</h1>
+<p>本来是 8G 的 sd 卡，因为装 Linux 系统导致 sd 卡变为 90M。</p>
+<p>打开 windows 磁盘管理工具，查看 sd 卡情况。如果发现很多空间都是闲置的，说明卡本
+身没有问题，否则说明该卡为扩容卡。</p>
+<p>若没有问题，则使用分区工具将该卡重新格式化就行。</p>
+<p>—— 2014.9.6</p>
+<h1>笔记本睡眠后关机</h1>
+<p>电源设置问题。</p>
+<p><code>更改计算机睡眠时间 -&gt;更改高级电源设置 -&gt;睡眠 -&gt;在此时间后休眠</code>中修改合适的参数。</p>
+<p>—— 2014.9.2</p>
+<h1>WIN8.1 CPU 使用率高</h1>
 <ul>
-<li>从 <a target="_blank" rel="noopener" href="http://www.msdn1.cn/index.html">MSDN 我告诉你</a> 使用 ed2k 下载 ISO 镜像。</li>
-<li>从 <a target="_blank" rel="noopener" href="https://msdn.sjjzm.com/">这里</a> 使用百度网盘下载 ISO 镜像。</li>
+<li>关闭应用程序，使 cpu 在 0% 左右。在桌面上随意快速晃动鼠标，cpu 很快就达到了 100%。</li>
+<li>除新毒霸外，系统中不运行其它安装的软件，任务管理器中 CPU 的占有率特别高。有时
+候高达 100%，一般情况就是 50% 左右。</li>
 </ul>
-</li>
-<li>在 Windows 中可以使用工具软碟通 <code>Ultraiso</code>、<code>rufus</code> 等制作 U 盘启动盘。</li>
-<li>在 Linux 中可以使用 dd 指令制作 U 盘启动盘。</li>
+<ol>
+<li>退出家庭组（没试过）。</li>
+<li>资源管理器中，随意选一个盘，如 C 盘，<code>属性 -&gt;工具 -&gt;优化</code> 关闭自动优化功能。
+（已关，但是问题未解决）。</li>
+<li>利用 cpuz 可以观察到此时 cpu 的利用情况是一核双线程，而我的电脑是双核四线程的
+。因此电脑很卡。打开 windows 系统配置（MSConfig），<code>引导 - 高级选项 - 处理器</code>
+更改处理器的配置。</li>
 </ol>
-<h1>Windows 制作 U 盘启动盘</h1>
-<p>网上多以 <code>Ultraiso</code> 为制作启动盘工具。比较烦的一点就是要下载 <code>Ultraiso</code>，用完后
-就长期吃灰了，且软碟通不是开源工具。</p>
-<p>网上资料很多，不赘述。</p>
-<h1>Linux 制作 U 盘启动盘</h1>
-<p>使用 Linux 指令 <code>dd</code> 实现。</p>
-<h2 id="镜像是-Linux">镜像是 Linux</h2>
-<p>基本流程是：确定 U 盘设备号、umount U 盘、格式化 U 盘、使用 <code>dd</code> 指令烧录。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1. 确定 U 盘的设备号，假设为 sdc</span>
-<span class="token function">sudo</span> <span class="token function">fdisk</span> -l
-
-<span class="token comment"># 2. 若 U 盘被自动挂载，则先 umount</span>
-<span class="token function">sudo</span> <span class="token function">umount</span> /dev/sdc*
-
-<span class="token comment"># 3. 格式化 U 盘</span>
-<span class="token function">sudo</span> mkfs.vfat /dev/sdc
-
-<span class="token comment"># 4. 准备好 Linux ISO 文件</span>
-<span class="token comment">#    if= 后面要跟刻录到 U 盘的 ISO 文件路径</span>
-<span class="token comment">#    of= 后面是 U 盘设备号（不需要带分区号，直接用 sdc）</span>
-<span class="token comment">#    写入过程是没有任何显示</span>
-<span class="token function">sudo</span> <span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>~/fedora.iso <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/sdc <span class="token assign-left variable">bs</span><span class="token operator">=</span>4M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>dd 命令直接将 iso 文件数据写入 U 盘，所以 U 盘不包含一个标准的分区表，导致系统无
-法正常的识别其大小，也无法正常使用。</p>
-<h2 id="镜像是-Windows">镜像是 Windows</h2>
-<p>Linux 命令 <code>dd</code> 可直接将 Linux 的 iso 写入 U 盘就能开机引导，是因为 Linux 的 iso
-自带了引导文件。但 Windows 的 iso 不行，<code>dd</code> 指令失效。</p>
-<p>制作一个 grub 多功能启动 U 盘，Widows 和 Linux 流程基本差不多。
-到 Grub2 官网下载 <a href="ftp://ftp.gnu.org/gnu/grub/">grub-2.xx-for-windows</a>。</p>
-<p>可以将 U 盘分为两个分区，一个装 grub，一个装 ISO。本文不分区，且以 BIOS 方式为旧
-主板安装。</p>
-<p>参考 <a target="_blank" rel="noopener" href="https://www.aioboot.com/en/install-grub2-from-windows/">这里</a> 和
-<a target="_blank" rel="noopener" href="http://www.jinbuguo.com/linux/grub.cfg.html">这里</a>。</p>
+<p>—— 2014.8.7</p>
+<h1>WIN8.1 磁盘占有率高</h1>
 <ol>
 <li>
-<p>以管理员权限查看磁盘情况</p>
-<ul>
-<li>windows<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">wmic diskdrive list brief<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>linux<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">fdisk</span> -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ul>
+<p>服务主机</p>
+<p>本地系统（网络受限）硬盘占用高是因为 superfetch 服务造成的，win8 对这个超级预
+缓存（原理是让一部分内存作为硬盘常驻用户的常用数据）服务做了进一步优化，关闭
+影响电脑速度。</p>
 </li>
 <li>
-<p>安装 grub2</p>
-<ul>
-<li>
-<p>windows</p>
-<pre class="line-numbers language-cmd" data-language="cmd"><code class="language-cmd">cd F:\grub-2.xx-for-windows
-grub-install.exe --target&#x3D;i386-pc --boot-directory&#x3D;G: --recheck \\.\PHYSICALDRIVE2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul>
-<li><code>G:</code> U 盘盘符。</li>
-<li><code>\\.\PHYSICALDRIVE2</code> U 盘 DeviceID。</li>
-<li><code>target</code> 有许多选项：
-<ul>
-<li><code>i386-pc</code> 用于传统 BIOS 启动 grub2。</li>
-<li><code>x86_64-efi</code> 用于 UEFI 启动。</li>
-<li><code>i386-efi</code> 用于 UEFI 32 位启动。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>linux</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mount</span> /dev/sdc /mnt
-grub-install --target<span class="token operator">=</span>i386-pc --boot-directory<span class="token operator">=</span>/mnt --recheck /dev/sdc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ul>
+<p>system 服务</p>
+<p>硬盘占用高是因为虚拟内存，家庭组和 win8 快速开机功能三项造成，关闭即可。</p>
 </li>
 </ol>
-<h1>安装操作系统</h1>
+<h1>WIN8.1 分辨率</h1>
+<p>屏幕分辨率不够高也不能调节，而且桌面亮度不能够调节。</p>
+<p>是显卡驱动问题。</p>
 <ol>
-<li>开机进入 BIOS 中（一般是 F2），设置以 U 盘启动。</li>
-<li>按步骤安装操作系统。注意选择合适的硬盘作为系统盘，确保系统盘空间要大，且无重
-要数据。win10 的 boot 区至少保留 600M。</li>
-<li>重启电脑，恢复硬盘启动。</li>
+<li>利用驱动精灵一键解决。但在安装 intel 集显驱动时，电脑不断自动重启，导致无法进
+入桌面或进入桌面后黑屏。</li>
+<li>在安全模式中完全卸载掉 win8.1 自带的显卡驱动，安装从官网下载的驱动。</li>
+<li>电脑不断自动重启是因为集成显卡和独立显卡不兼容导致。在安全模式下安装好显卡驱
+动，禁掉独立显卡驱动。</li>
 </ol>
-<h1>修订记录</h1>
+<p>—— 2014.08.04</p>
+<h1>集显与独显驱动冲突</h1>
+<p>当独立安装集显驱动或独显驱动时，屏幕可以正常显示。但将两个显卡驱动一起安装，立刻
+或偶尔会正常一会儿，然后黑屏。</p>
+<p>禁掉一个显卡驱动，如独显驱动。</p>
+<h1>Windows 安装破解</h1>
+<p>正版 Windows 系统可以从 <a target="_blank" rel="noopener" href="https://msdn.itellyou.cn/">MSDN</a> 下载。</p>
+<ol>
+<li>推荐使用 USB 方式烧录 OS 镜像安装。</li>
+<li>系统安装后，第一件事情是安装网卡驱动（若不能联网）。</li>
+<li>联网后可以通过激活工具或淘宝购买激活码，若先安装好软件发现不能正常激活就白忙
+了。</li>
+<li>通过官网或驱动软件安装其它驱动。</li>
+</ol>
+<h1>双系统手动删除 XP 系统</h1>
+<p>win8.1 和 XP 双系统共存，win8.1 在 C 盘，XP 在 D 盘。手工删除 XP 系统文件后（同
+时，利用工具把一些隐藏文件删除了），win8.1 无法进入 D 盘。点击 D 盘，提示 D 盘未
+格式化，此时 D 盘格式为 RAW 格式。</p>
+<p>估计是在利用工具删除隐藏文件时引入的。该分区的引导文件被删除，系统不能识别该分区
+。RAW 指未格式化的磁盘，磁盘和一些 U 盘中毒之后或者一些误操作，也可能是系统出了
+故障，都会使其文件系统变为 RAW。</p>
+<p>运行 cmd ，输入命令 <code>chkdsk D: /f</code>。CHKDSK 可以扫描扇区，检查并修复受损扇区。</p>
+<p>—— 2014.08.16</p>
+<h1>WIN7 影响 Ubuntu 启动</h1>
+<p>在有 Ubuntu 系统的前提下，安装 win7 双系统。启动后直接进入 win7 系统，没有
+Ubuntu 系统的启动项。</p>
+<p>如果 Ubuntu 系统的 grub2 安装到了 MBR，那么安装 win7 时会重写 MBR，不会提供启动
+项选择界面。</p>
+<p>装双系统时，一定要先安装 windows 然后是 Linux 系统。</p>
+<h1>Ubuntu 影响 WIN7 启动</h1>
+<p>安装双系统时，先 win7，后 Ubuntu。win7 系统不能加载，一直黑屏。</p>
+<p>在装 Ubuntu 系统时，NTFS 分区的引导扇区被 grub 写坏，需要重新恢复扇区引导。</p>
+<pre class="line-numbers language-none"><code class="language-none">前提：grub 覆盖 NTFS 分区引导扇区后，没更改它的数据，否则恢复可能失败。
+
+在 Ubuntu 终端，输入命令：
+
+sudo fdisk -lu
+sudo grub-install &#x2F;dev&#x2F;sda
+sudo update-grub
+sudo dd if&#x3D;&#x2F;dev&#x2F;sda of&#x3D;&#x2F;dev&#x2F;sda bs&#x3D;512 count&#x3D;1 seek&#x3D;2048 skip&#x3D;206847
+
+seek 表示 win7 系统的系统盘的起始地址，skip 表示结束地址。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
-<p>2021-01-22</p>
-<p>从其它网站迁移。</p>
+<p>NTFS 分区引导到扇区恢复原理</p>
+<p>NTFS 分区的引导扇区是有备份的，按照微软的说明，NTFS 3.5x 在分区中间存有备份，
+而 NTFS 4.0 则把备份数据存在分区的末尾。</p>
+<p>grub 安装时只覆盖了引导扇区的内容，故只要用 NTFS 分区引导扇区的备份恢复当前分
+区即可。</p>
 </li>
 </ul>
+<h1>Ubuntu 无法进入桌面</h1>
+<p>在登录界面输入账号密码，屏幕变黑，然后又回到登录界面。无法进入桌面。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 切换到终端</span>
+<span class="token builtin class-name">cd</span> ~
+<span class="token function">sudo</span> <span class="token function">chown</span> 用户名：用户名 .Xauthority
+<span class="token function">ls</span> .Xauthority -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>—— 2014.08.05</p>
+<h1>grub rescue</h1>
+<p>开机显示：</p>
+<pre class="line-numbers language-none"><code class="language-none">GRUB loading
+error:unknow filesystem
+grub rescue&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>造成这个问题的原因</strong></p>
+<p>在 windows 下直接彻底删除并格式化 Ubuntu 所在分区。并用磁盘工具将这块分区分成几
+块新分区，然后把 Linux 安装到了新分区。之前 Ubuntu 所在分区已经格式化，没有安装
+grub2。用 Ubuntu 备份工具 / 衍生版制造工具，把分区恢复成 8.x 的老版本，结果老版
+本的 grub 是 grub1，于是把 grub2 破坏掉了。</p>
+<p>grub2 分为两部分，一部分（一般情况下）写在了 MBR 上，另一部分写在了某个分区的
+/boot/grub 目录（如果 /boot 单独分区，则直接写在对应分区的 /grub 目录）里面。</p>
+<p>总之，之前的操作，破坏了 /boot/grub 的内容。</p>
+<p><strong>通过重新安装、修复 grub2</strong></p>
+<ol>
+<li>找到 Ubuntu 在哪个分区。</li>
+</ol>
+<p>在 grub rescue&gt; 下输入以下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 会罗列所有的磁盘分区信息，如：(hd0,1),(hd0,2),(hd0,3),(hd0,4)</span>
+<span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>依次调用如下命令，X 表示各个分区号码。</li>
+</ol>
+<pre class="line-numbers language-grub" data-language="grub"><code class="language-grub"># &#x2F;boot 没有单独分区，则
+ls (hd0,X)&#x2F;boot&#x2F;grub
+
+# &#x2F;boot 单独分区，则
+ls (hd0,X)&#x2F;grub
+
+# 假设找到（hd0,5）时，显示了文件夹中的文件，则表示 Linux 安装在这个分区。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>若找到了 grub 目录，则临时性将 grub 的两部分关联起来。</li>
+</ol>
+<pre class="line-numbers language-grub" data-language="grub"><code class="language-grub"># &#x2F;boot 没有单独分区的命令
+grub rescue &gt; set root&#x3D;(hd0,5)
+grub rescue &gt; set prefix&#x3D;(hd0,5)&#x2F;boot&#x2F;grub
+grub rescue &gt; insmod &#x2F;boot&#x2F;grub&#x2F;normal.mod
+
+# &#x2F;boot 单独分区的命令
+grub rescue&gt;set root&#x3D;(hd0,5)
+grub rescue &gt; set prefix&#x3D;(hd0,5)&#x2F;grub
+grub rescue &gt; insmod
+
+# 然后调用如下命令，可显示出丢失的 grub 菜单。
+grub rescue &gt;normal<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>进入 Ubuntu 系统后，对 grub 进行修复。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">update-grub</span>
+<span class="token function">sudo</span> grub-install /dev/sda<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="5">
+<li>如果找不到正确的 /grub 目录，则尝试寻找是否有 linux 核心文件。X 表示各个分区
+号码，在 grub rescue&gt; 下输入：</li>
+</ol>
+<pre class="line-numbers language-grub" data-language="grub"><code class="language-grub"># &#x2F;boot 没有单独分区
+ls (hd0,X)&#x2F;boot
+
+# &#x2F;boot 单独分区
+ls （hd0,X)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>找类似 <code>vmlinuz-3.0.0-12-generic</code> 的 Linux 核心文件，找到后记下 (hd0,X) 中的 X
+值。</p>
+<p>以 live cd 或者 live usb 启动，在终端中输入以下指令，假设找到 (hd0,5)。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># /boot 没有单独分区</span>
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda5 /mnt
+<span class="token function">sudo</span> grub-install --boot-directory<span class="token operator">=</span>/mnt/boot /dev/sda
+
+<span class="token comment"># /boot 单独分区</span>
+<span class="token function">sudo</span> <span class="token function">mount</span> /dev/sda5 /mnt
+<span class="token function">sudo</span> grub-install --boot-directory<span class="token operator">=</span>/mnt /dev/sda<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重启即可。</p>
+<p>以上两句命令也可以解决 grub 安装位置不对，没有将 grub 安装到 /dev/sda，造成启动
+时不出现 ubuntu 启动项直接进入 windows 的问题。</p>
+<ol start="6">
+<li>如果没有 Linux 核心文件，只能彻底重新安装。</li>
+</ol>
 
                 
             </div>
@@ -582,7 +663,7 @@ grub-install --target<span class="token operator">=</span>i386-pc --boot-directo
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.github.io/2021/zhi-zuo-u-pan-qi-dong-pan/">https://coco-hkk.github.io/2021/zhi-zuo-u-pan-qi-dong-pan/</a>
+                    <a href="https://coco-hkk.github.io/2021/jiu-wen-ti-bi-ji/">https://coco-hkk.github.io/2021/jiu-wen-ti-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -619,11 +700,7 @@ grub-install --target<span class="token operator">=</span>i386-pc --boot-directo
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/U-%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/">
-                                    <span class="chip bg-color">U 盘启动盘</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -797,44 +874,36 @@ grub-install --target<span class="token operator">=</span>i386-pc --boot-directo
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/freebsd-an-zhuang-pei-zhi/">
+                <a href="/2021/cuo-wu-ji-jin/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="FreeBSD 安装配置">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="问题集锦">
                         
-                        <span class="card-title">FreeBSD 安装配置</span>
+                        <span class="card-title">问题集锦</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            各种问题搜集和解决。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-18
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/FreeBSD/" class="post-category">
-                                    FreeBSD
+                            <a href="/categories/Others/" class="post-category">
+                                    Others
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/FreeBSD/">
-                        <span class="chip bg-color">FreeBSD</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -846,13 +915,13 @@ grub-install --target<span class="token operator">=</span>i386-pc --boot-directo
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/hexo-shi-yong-cao-zuo/">
+                <a href="/2021/spacevim-an-zhuang-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="hexo 实用操作">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="SpaceVim 安装配置">
                         
-                        <span class="card-title">hexo 实用操作</span>
+                        <span class="card-title">SpaceVim 安装配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -863,19 +932,35 @@ grub-install --target<span class="token operator">=</span>i386-pc --boot-directo
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/vim/" class="post-category">
+                                    vim
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpaceVim/">
+                        <span class="chip bg-color">SpaceVim</span>
+                    </a>
+                    
+                    <a href="/tags/neovim/">
+                        <span class="chip bg-color">neovim</span>
+                    </a>
+                    
+                    <a href="/tags/vim/">
+                        <span class="chip bg-color">vim</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1078,7 +1163,7 @@ grub-install --target<span class="token operator">=</span>i386-pc --boot-directo
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">85k</span>
+                        class="white-color">87.1k</span>
             
             
             
