@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    9 分
                 </div>
                 
 
@@ -624,7 +624,151 @@ create database joomla_db;<span aria-hidden="true" class="line-numbers-rows"><sp
 即可。</p>
 </li>
 </ol>
+<h1>Win10 XAMPP 搭建</h1>
+<p>XAMPP（Apache MySQL PHP PERL）是一个功能强大的建站集成软件包，支持 Windows、
+Linux 和 MacOS。官网 <a target="_blank" rel="noopener" href="https://www.apachefriends.org/index.html">https://www.apachefriends.org/index.html</a> 下载 Windows 版本。</p>
+<ol>
+<li>下载并安装 <code>XAMPP 8.1.5</code>。</li>
+<li>打开 XAMPP Control Panel 启动 Apache 和 MySQL 模块。</li>
+<li>删除 <code>xampp/htdocs</code> 内容。</li>
+<li>下载 <a target="_blank" rel="noopener" href="https://downloads.joomla.org/">joomla4 4.1.3</a> 并解压到 <code>xampp/htdocs</code> 中。</li>
+<li>打开浏览器输入<code>localhost</code>，即可打开 joomla 安装界面。</li>
+</ol>
+<p>安装 joomla：</p>
+<ol>
+<li>进入安装界面，依次选择安装语言、设置网站名称、设置登录数据。</li>
+<li>设置数据库连接：
+<ul>
+<li>打开网址 <code>localhost/phpmyadmin</code> 进入 phpMyAdmin 数据库管理界面。无需输入密
+码即可登录。</li>
+<li>创建数据库 <code>joomla_db</code> 和 joomla 设置的数据库名一致。</li>
+<li>数据库用户名为 <code>root</code>，密码为空。</li>
+</ul>
+</li>
+<li>安装完成。</li>
+</ol>
+<p>与系统兼容的 PHP 设置：</p>
+<ol>
+<li>打开 Apache 模块的 config 配置选择 php.ini。</li>
+<li>关闭（注释）<code>output_buffering=4096</code>。</li>
+<li>打开（关闭注释）<code>extension=gd</code> 和 <code>extension=intl</code>。</li>
+</ol>
+<p>手动删除 joomla 目录中 installation 目录。</p>
+<h1>Ubuntu XAMPP + Nginx 搭建</h1>
+<h2 id="安装-XAMPP">安装 XAMPP</h2>
+<p>在官网 <a target="_blank" rel="noopener" href="https://www.apachefriends.org/download.html">https://www.apachefriends.org/download.html</a> 获取 Linux 版本地址，使用
+wget 下载。</p>
+<ol>
+<li>
+<p>下载 <code>xampp-linux-x64-8.1.5-0-installer.run</code>。</p>
+</li>
+<li>
+<p>由于服务器没有图形界面，所以命令行安装。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://www.apachefriends.org/xampp-files/8.1.5/xampp-linux-x64-8.1.5-0-installer.run
+<span class="token function">sudo</span> <span class="token function">chmod</span> a+x xampp-linux-x64-8.1.5-0-installer
+<span class="token function">sudo</span> ./xampp-linux-x64-8.1.5-0-installer
 
+<span class="token comment"># 直接 Y 或回车，默认安装位置是 /opt/lampp</span>
+<span class="token comment"># 重启 xampp</span>
+<span class="token function">sudo</span> /opt/lampp/lampp restart
+
+<span class="token comment"># 查看 xampp 状态</span>
+<span class="token function">sudo</span> /opt/lampp/lampp status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>xampp 配置文档</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">Apache   文档根目录：&#x2F;opt&#x2F;lampp&#x2F;htdocs&#x2F;
+Apache     配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;httpd.conf
+MySQL      配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;my.cnf
+PHP        配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;php.ini
+ProFTPD    配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;proftpd.conf
+PHPMyadmin 配置文件：&#x2F;opt&#x2F;lampp&#x2F;phpmyadmin&#x2F;config.inc.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>xampp 命令</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">启动&#x2F;停止&#x2F;重启 Apache：&#x2F;opt&#x2F;lampp&#x2F;lampp start&#x2F;stop&#x2F;restart(包括启动&#x2F;停止&#x2F;重启了 mysql,proftpd)
+安全设置：&#x2F;opt&#x2F;lampp&#x2F;lampp  security
+使用 php 版本&#x2F;查看版本：&#x2F;opt&#x2F;lampp&#x2F;lampp php4(5)&#x2F;phpstatus
+只启动和停止 Apache：&#x2F;opt&#x2F;lampp&#x2F;lampp startapache&#x2F;stopapache
+只启动和停止 MySQL：&#x2F;opt&#x2F;lampp&#x2F;lampp startmysql&#x2F;stopmysql
+只启动和停止 ProFTPD 服务器：&#x2F;opt&#x2F;lampp&#x2F;lampp startftp&#x2F;stopftp
+启动和停止 Apache 的 SSL 支持：&#x2F;opt&#x2F;lampp&#x2F;lampp startssl&#x2F;stopssl
+卸载 XAMPP：rm –rf &#x2F;opt&#x2F;lampp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="配置-XAMPP">配置 XAMPP</h2>
+<ol>
+<li>
+<p>由于服务器之前已经安装 Nginx 服务器，且将 80 端口和 443 端口占用，所以启动
+Apache 服务失败，报错： <code>Another web server is already running.</code>。</p>
+<ul>
+<li>查看端口占用情况 <code>netstat -tulpn | grep --color :80</code></li>
+<li>经过分析是由于 lampp 启动脚本内部将 80 和 443 端口号写死导致，分别修改（任意）
+为 81 和 1443。</li>
+<li>配置 <code>lampp/etc/httpd.conf</code>，将监听端口号修改为 81 和上面保持一致。</li>
+<li>配置 <code>lampp/etc/extra/httpd-ssl.conf</code>，将 SSL 监听端口号修改为 1443。</li>
+<li>重启服务。打开浏览器输入 ip:81 即可打开 XAMPP 欢迎页面。</li>
+</ul>
+</li>
+<li>
+<p>在网页打开 phpmyadmin 提示权限不足，在 <code>/opt/lampp/etc/extra/httpd-xampp.conf</code> 重
+新配置。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;Directory &quot;&#x2F;opt&#x2F;lampp&#x2F;phpmyadmin&quot;&gt;
+    AllowOverride AuthConfig Limit
+    Allow from all
+    Require local
+    Require all granted
+    ErrorDocument 403 &#x2F;error&#x2F;XAMPP_FORBIDDEN.html.var
+&lt;&#x2F;Directory&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重启 xampp。打开 phpmyadmin 发现任何人都可以登录，需要继续配置。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 默认 yes 即可</span>
+<span class="token function">sudo</span> /opt/lampp/lampp security
+
+<span class="token comment"># 使 phpmyadmin 可读</span>
+<span class="token function">sudo</span> <span class="token function">chmod</span> <span class="token number">775</span> /opt/lampp/phpmyadmin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>配置 <code>/opt/lampp/phpmyadmin/config.inc.php</code>，修改 <code>$cfgServers[$i]['auth_type']</code> 为 <code>'cookie'</code>。</p>
+</li>
+<li>
+<p>xampp 开机自启</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">ln</span> -s /opt/lampp/lampp /etc/init.d/lampp
+<span class="token function">sudo</span> update-rc.d -f lampp defaults<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="安装-Joomla">安装 Joomla</h2>
+<ol>
+<li>
+<p>删除 htdocs 目录内容，将官网 Joomla 安装文件上传到 htdocs 目录并解压。在网页
+中打开按步骤安装 Joomla。</p>
+</li>
+<li>
+<p>没有足够的权限创建 configuration.php。</p>
+<p>安装 XAMPP 用 root 权限，下载拷贝 Joomla 用普通用户权限，设置 httpd 的 User
+和 Group 为普通用户权限。
+参考<a target="_blank" rel="noopener" href="https://community.apachefriends.org/f/viewtopic.php?p=267586&amp;sid=11767b2314a62f932fef5533fd125dce">这里</a>。</p>
+</li>
+</ol>
+<h2 id="Nginx-与-Apache-代理配置">Nginx 与 Apache 代理配置</h2>
+<p>Nginx 和 Apache 搭配，Nginx 负责代理，Apache 负责 Joomla 站点。</p>
+<pre class="line-numbers language-none"><code class="language-none"># Nginx
+server &#123;
+    listen 80;
+
+    location &#x2F; &#123;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http:&#x2F;&#x2F;127.0.0.1:800;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none"># Apache
+Listen 127.0.0.1:800
+
+DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
+&lt;Directory &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;&gt;
+    Options Indexes FollowSymLinks ExecCGI Includes
+    AllowOverride All
+    Require all granted
+&lt;&#x2F;Directory&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -865,13 +1009,13 @@ create database joomla_db;<span aria-hidden="true" class="line-numbers-rows"><sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/joomla-wang-zhan-da-jian-zhi-nan/">
+                <a href="/2022/joomla-wang-zhan-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="Joomla 网站搭建指南">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="Joomla 网站配置">
                         
-                        <span class="card-title">Joomla 网站搭建指南</span>
+                        <span class="card-title">Joomla 网站配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1154,7 +1298,7 @@ create database joomla_db;<span aria-hidden="true" class="line-numbers-rows"><sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">87.1k</span>
+                        class="white-color">89.2k</span>
             
             
             

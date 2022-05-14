@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Joomla 网站搭建指南, coco-hkk">
+    <meta name="keywords" content="Joomla 网站配置, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Joomla 网站搭建指南 | 点点滴滴</title>
+    <title>Joomla 网站配置 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Joomla 网站搭建指南</h1>
+                    <h1 class="description center-align post-title">Joomla 网站配置</h1>
                 </div>
             </div>
         </div>
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    159
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -461,19 +461,107 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>查看模板布局
-ip/?tp=1</p>
-<p>模板、菜单、模块、组件</p>
-<h1>组件</h1>
-<p>网页主要内容生产者，如文章管理组件、分类管理组件等。</p>
-<h1>菜单</h1>
-<h2 id="菜单">菜单</h2>
-<h2 id="菜单项">菜单项</h2>
-<h2 id="菜单项类型">菜单项类型</h2>
-<p>用户访问网站是通过点击导航栏上的菜单项实现。若想呈现各种各样的页面，菜单项必须和
-组件联系起来，这个过程的实现，专业术语称为 <code>菜单项类型</code>。</p>
+                <p>Joomla 是一个开源内容管理系统（CMS），用于构建网站和在线应用程序。 它是免费且可扩
+展的，分为前端模板和后端模板（管理员）。 Joomla 是使用 PHP，面向对象编程，软件设计
+模式和 MySQL（用于存储数据）开发的。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.wenjiangs.com/doc/ky08ybdn">https://www.wenjiangs.com/doc/ky08ybdn</a></p>
+<h1>基础</h1>
+<p>依据我的理解，Joomla 搭建网站有几个重要的部分，分别是模板、菜单、文章、模块、组
+件。</p>
+<ul>
+<li>模板：可以决定网站的风格，如页面布局、呈现方式等。改变模板时，需要重新配置。</li>
+<li>菜单：页面中导航标签由菜单实现。</li>
+<li>文章：页面具体内容由文章展示。</li>
+<li>模块：由多个菜单项组合成一个模块。有的组件也可以当做模块。</li>
+<li>组件：功能性的模块，网页主要内容生产者，可由它组合而成。文章管理、分类管理、菜
+单管理也是组件。</li>
+</ul>
+<h2 id="文章管理-分类管理">文章管理 &amp; 分类管理</h2>
+<p>文章管理主要负责具体的内容生产。</p>
+<p>创建文章可使用系统自带的编辑器编辑，和写 Word 文档一样。文章支持各种内容形式，如文
+本、图片、视频、链接等。</p>
+<p>分类管理主要负责将写好的文章分类管理。</p>
+<p>总的来说：</p>
+<ol>
+<li>文章可以理解为一篇 Word 文档，可支持各种内容形式。分类管理可将文章分组管理，
+一篇文章只能分到一个组中。即：
+<code>一篇或多篇文章 &lt;--&gt; 一个分组</code>。</li>
+</ol>
+<h2 id="菜单项-菜单管理">菜单项 &amp; 菜单管理</h2>
+<p>用户访问网站是通过点击导航栏上的菜单项实现。</p>
+<p>若想呈现各种各样的页面，菜单项必须和组件联系起来，这个过程的实现，专业术语称为
+<code>菜单项类型</code>。</p>
 <p>菜单项类型有如，嵌入页面、文章管理、新闻源、智能搜索、标签管理等等各种组件，每一
 项又有许多子项组件。</p>
+<p>菜单管理即是将各种菜单项分组管理，并且可将菜单链接到指定一个或多个模块。</p>
+<p>总的来说：</p>
+<ol>
+<li>菜单项联系了最基本的页面内容，由菜单项类型实现。它既可以是文章、图片、视频、
+搜索等，又可以是整个或部分页面。</li>
+<li>菜单是一组菜单项的集合，一个菜单项必然只属于某个菜单。而一个菜单可以链接一个
+或多个模块，但一个模块只能绑定一个菜单。即：
+<code>一个或多个菜单项 &lt;---&gt; 一个菜单 &lt;---&gt; 一个或多个模块</code>。</li>
+</ol>
+<h2 id="模块">模块</h2>
+<p>模块有许多类型，如内嵌页面、在线用户、广告展示、文章管理相关、新闻相关等，以及菜
+单显示和自定义。</p>
+<p>模块作为页面布局的基本单位，用于展示内容，根据不同模板的布局指定不同位置。</p>
+<h2 id="模板">模板</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.joomshaper.com/joomla-templates/helixultimate">helixultimate</a>教程
+在<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5xagpzEP0To&amp;t=518s">这里</a>。</li>
+</ul>
+<h2 id="组件">组件</h2>
+<p>组件也是一种 joomla 插件/扩展。</p>
+<h1>配置</h1>
+<h2 id="隐藏-index-php-重写-url">隐藏 index.php 重写 url</h2>
+<p>在后台打开系统全局配置，在站点 SEO 配置。</p>
+<ul>
+<li>开启 <code>Search Engine Friendly </code>。SEF 是 Search Engine Friendly 的缩写，即「搜寻
+引擎友善」，用于优化 HTML 便于爬虫抓取。</li>
+<li>开启 <code>Use URL Rewriting</code>。选择服务器，重写 URL 以满足特定条件。。Apache 服务器只
+需将 joomla 根目录的<code>htaccess.txt</code> 改为 <code>.htaccess</code>。</li>
+<li>打开 <code>Add Suffix to URL</code>。根据文档类型添加 URL 的后缀。</li>
+<li>打开 <code>Unicode Aliases</code>。它在音译和 Unicode 别名之间进行选择。</li>
+</ul>
+<h2 id="隐藏后台登录地址">隐藏后台登录地址</h2>
+<h1>扩展</h1>
+<p>扩展即使插件或组件，可在系统配置扩展中安装。joomla 给我们提供了四种安装扩展方式，
+既可以在线安装，也可以从本地上传安装。</p>
+<h2 id="Akeeba-Backup-or-Joolma">Akeeba Backup or Joolma!</h2>
+<p>这个组件用于备份网站数据。</p>
+<p>恢复网站数据则需要工具 <a target="_blank" rel="noopener" href="https://www.akeeba.com/latest-kickstart-core.zip">kickstart</a> 实现。
+恢复数据时特别慢。</p>
+<h2 id="captcha">captcha</h2>
+<p>这个插件用于机器人检测。可在插件 plugin 中激活。需要在 Google api 中注册获取秘钥。</p>
+<h2 id="Slideshow-CK">Slideshow CK</h2>
+<p>用于展示滑动的图片。使用说明参考<a target="_blank" rel="noopener" href="https://hunyadi.info.hu/sigplus/sigplus-basic-usage">这里</a>。</p>
+<h1>技巧</h1>
+<ol>
+<li>
+<p>查看模板布局</p>
+<p><a target="_blank" rel="noopener" href="http://your-server-ip/?tp=1">http://your-server-ip/?tp=1</a></p>
+</li>
+</ol>
+<h1>问题</h1>
+<ul>
+<li>忘记管理员密码，参考<a target="_blank" rel="noopener" href="https://docs.joomla.org/How_do_you_recover_or_reset_your_admin_password%3F">这里</a>。</li>
+</ul>
+<ol>
+<li>
+<p>登录 phpMyAdmin，找到 prefix_users 数据表，删除 password 字段内容。</p>
+</li>
+<li>
+<p>若第一步失败，则可执行</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">INSERT INTO &#96;prefix_users&#96;
+(&#96;name&#96;, &#96;username&#96;, &#96;password&#96;, &#96;params&#96;, &#96;registerDate&#96;, &#96;lastvisitDate&#96;, &#96;lastResetTime&#96;)
+VALUES (&#39;Administrator2&#39;, &#39;admin2&#39;,
+    &#39;d2064d358136996bd22421584a7cb33e:trd7TvKHx6dMeoMmBVxYmg0vuXEA4199&#39;, &#39;&#39;, NOW(), NOW(), NOW());
+INSERT INTO &#96;prefix_user_usergroup_map&#96; (&#96;user_id&#96;,&#96;group_id&#96;)
+VALUES (LAST_INSERT_ID(),&#39;8&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述代码将增加超级用户 admin2，密码为 secret。登录网站后记得修改。</p>
+</li>
+</ol>
 
                 
             </div>
@@ -500,7 +588,7 @@ ip/?tp=1</p>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.github.io/2022/joomla-wang-zhan-da-jian-zhi-nan/">https://coco-hkk.github.io/2022/joomla-wang-zhan-da-jian-zhi-nan/</a>
+                    <a href="https://coco-hkk.github.io/2022/joomla-wang-zhan-pei-zhi/">https://coco-hkk.github.io/2022/joomla-wang-zhan-pei-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1004,7 +1092,7 @@ ip/?tp=1</p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">87.1k</span>
+                        class="white-color">89.2k</span>
             
             
             
