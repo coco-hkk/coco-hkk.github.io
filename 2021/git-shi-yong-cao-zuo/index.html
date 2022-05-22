@@ -431,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -462,7 +462,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Git 仓库分为工作区、暂存区 / 缓存区、本地仓库和远程仓库组成。</p>
-<p><img src="/2021/git-shi-yong-cao-zuo/git-cmd.png" alt="git 操作图"></p>
+<p>![git 操作图](Git 实用操作/git-cmd.png)</p>
 <h1>基础操作</h1>
 <ol>
 <li>创建仓库</li>
@@ -529,7 +529,7 @@
 </li>
 <li>
 <p>清空工作区和缓存区</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 对已跟踪（被 add 操作过）文件，修改后没有被 add 到缓存区 index有作用。对未</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 对已跟踪（被 add 操作过）文件，修改后没有被 add 到缓存区 index 有作用。对未</span>
 <span class="token comment"># 跟踪文件无效。</span>
 <span class="token function">git</span> checkout <span class="token builtin class-name">.</span>
 
@@ -617,7 +617,27 @@
 <li>删除目录 <code>.git/module/</code> 下的相应的子项目目录，每个子项目对应一个目录。</li>
 <li>最后执行 <code>git rm --cached '子项目名称'</code>，完成后提交到仓库。</li>
 </ul>
+<h1>高级操作</h1>
+<h2 id="代理设置">代理设置</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 设置代理</span>
+<span class="token function">git</span> config --global https.proxy http://127.0.0.1:10800
+<span class="token function">git</span> config --global https.proxy https://127.0.0.1:10800
 
+<span class="token comment"># 取消代理</span>
+<span class="token function">git</span> config --global --unset http.proxy
+<span class="token function">git</span> config --global --unset https.proxy
+
+<span class="token comment"># 开启 ssl 校验，关闭改为 false</span>
+<span class="token function">git</span> config --global http.sslVerify <span class="token boolean">true</span>
+<span class="token function">git</span> config --global https.sslVerify <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-.gitconfig" data-language=".gitconfig"><code class="language-.gitconfig">[http]
+	proxy &#x3D; socks5:&#x2F;&#x2F;127.0.0.1:10800
+[https]
+	proxy &#x3D; socks5:&#x2F;&#x2F;127.0.0.1:10800
+[http]
+	sslVerify &#x3D; true
+[https]
+    sslVerify &#x3D; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1171,7 +1191,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">89.3k</span>
+                        class="white-color">90.9k</span>
             
             
             

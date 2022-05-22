@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Joomla 环境搭建, coco-hkk">
+    <meta name="keywords" content="Joomla4 网站配置, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Joomla 环境搭建 | 点点滴滴</title>
+    <title>Joomla4 网站配置 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Joomla 环境搭建</h1>
+                    <h1 class="description center-align post-title">Joomla4 网站配置</h1>
                 </div>
             </div>
         </div>
@@ -422,7 +422,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-27
+                    2022-04-28
                 </div>
                 
 
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    8 分
                 </div>
                 
 
@@ -461,314 +461,220 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://www.joomla.org/">joomla!</a> 是一套开源的内容管理系统（简称 CMS）。可以把它
-理解为一套免费、好用的建站系统。和它同样知名的还有 <code>Drupal</code> 以及 <code>WordPress</code>系统。</p>
-<p>Joomla 核心优势就在于各种类型的内容发布管理，包括文字、图片、音频视频、文件等。
-无论是企业、政府、教育、金融等各行业的官网制作，或是电商网站、个人博客或是内部资
-讯平台 Joomla 都能胜任。</p>
-<p>joomla 运行环境参考<a target="_blank" rel="noopener" href="https://downloads.joomla.org/technical-requirements">这里</a>。</p>
+                <p>网站相关配置。</p>
+<h1>Joomla4 配置</h1>
+<p>Joomla 是一个开源内容管理系统（CMS），用于构建网站和在线应用程序。 它是免费且可扩
+展的，分为前端模板和后端模板（管理员）。 Joomla 是使用 PHP，面向对象编程，软件设计
+模式和 MySQL（用于存储数据）开发的。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.wenjiangs.com/doc/ky08ybdn">https://www.wenjiangs.com/doc/ky08ybdn</a></p>
+<h2 id="基础">基础</h2>
+<p>依据我的理解，Joomla 搭建网站有几个重要的部分，分别是模板、菜单、文章、模块、组
+件。</p>
 <ul>
-<li>VirtualBox 6.1.34</li>
-<li>Ubuntu Server 22.04</li>
-<li>Apache 2.4+</li>
-<li>PHP 8.0</li>
-<li>MySQL 5.6+</li>
+<li>模板：可以决定网站的风格，如页面布局、呈现方式等。改变模板时，需要重新配置。</li>
+<li>菜单：页面中导航标签由菜单实现。</li>
+<li>文章：页面具体内容由文章展示。</li>
+<li>模块：由多个菜单项组合成一个模块。有的组件也可以当做模块。</li>
+<li>组件：功能性的模块，网页主要内容生产者，可由它组合而成。文章管理、分类管理、菜
+单管理也是组件。</li>
 </ul>
-<h1>Ubuntu Server</h1>
-<p>获取 <a target="_blank" rel="noopener" href="https://ubuntu.com/download/server">Ubuntu Server</a> ，在 VirtualBox 中按步骤安装。</p>
+<h3 id="文章管理-分类管理">文章管理 &amp; 分类管理</h3>
+<p>文章管理主要负责具体的内容生产。</p>
+<p>创建文章可使用系统自带的编辑器编辑，和写 Word 文档一样。文章支持各种内容形式，如文
+本、图片、视频、链接等。</p>
+<p>分类管理主要负责将写好的文章分类管理。</p>
+<p>总的来说：</p>
 <ol>
-<li>替换默认官网源为清华镜像源 <code>https://mirrors.tuna.tsinghua.edu.cn/ubuntu/</code>。</li>
-<li>勾选 <code>openssh-server</code> 安装 ssh 服务。</li>
+<li>文章可以理解为一篇 Word 文档，可支持各种内容形式。分类管理可将文章分组管理，
+一篇文章只能分到一个组中。即：
+<code>一篇或多篇文章 &lt;--&gt; 一个分组</code>。</li>
 </ol>
-<p>完成安装后登录，使用命令<code>ifconfig</code>查看 IP，结果发现是 <code>10.0.2.15</code> 在本地无法
-ping 通。打开本地 cmd 输入指令 <code>ipconfig</code> 得到 <code>以太网适配器 VirtualBox Host-Only Network</code> 的 IP 为 <code>192.168.56.1</code>，且可以 ping 通。</p>
-<p>使用 <code>putty</code> 远程登录 <code>192.168.56.1</code> 报错 <code>Network error: connection refused</code>。
-主要原因是 Virtualbox 网络配置网卡连接方式为 <code>网络地址转换(NAT)</code>，需要在
-<code>端口转发规则</code> 中设置，如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">协议</th>
-<th style="text-align:right">主机 IP</th>
-<th style="text-align:right">主机端口</th>
-<th style="text-align:right">子系统 IP</th>
-<th style="text-align:right">子系统端口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">ssh</td>
-<td style="text-align:center">TCP</td>
-<td style="text-align:right">192.168.56.1</td>
-<td style="text-align:right">22</td>
-<td style="text-align:right">10.0.2.15</td>
-<td style="text-align:right">22</td>
-</tr>
-</tbody>
-</table>
-<p>现在，可以在本地通过 putty 访问 Ubuntu Server 了。</p>
-<h1>Apache</h1>
-<p>Apache 相关信息在<a target="_blank" rel="noopener" href="https://www.apache.org/">这里</a>查看。</p>
+<h3 id="菜单项-菜单管理">菜单项 &amp; 菜单管理</h3>
+<p>用户访问网站是通过点击导航栏上的菜单项实现。</p>
+<p>若想呈现各种各样的页面，菜单项必须和组件联系起来，这个过程的实现，专业术语称为
+<code>菜单项类型</code>。</p>
+<p>菜单项类型有如，嵌入页面、文章管理、新闻源、智能搜索、标签管理等等各种组件，每一
+项又有许多子项组件。</p>
+<p>菜单管理即是将各种菜单项分组管理，并且可将菜单链接到指定一个或多个模块。</p>
+<p>总的来说：</p>
 <ol>
-<li>
-<p>Ubuntu 安装 Apache2</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装</span>
-<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> apache2 -y
-
-<span class="token comment"># 如果有 UFW 防火墙运行，需要允许 Apache</span>
-<span class="token function">sudo</span> ufw allow <span class="token string">'Apache'</span>
-
-<span class="token comment"># 查看运行状态</span>
-<span class="token function">sudo</span> systemctl status apache2
-
-<span class="token comment"># 若没运行</span>
-<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> apache2
-<span class="token function">sudo</span> systemctl start apache2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>查看 Apache2 版本</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 版本为 2.4.52</span>
-apache2 -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>修改默认网站根目录</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 创建新根目录 /home/www</span>
-<span class="token function">sudo</span> <span class="token function">mkdir</span> /home/www
-
-<span class="token comment"># 由于 apache2 属于用户和用户组都为 www-data 启动，所以要修改权限</span>
-<span class="token comment"># 或直接为用户 www-data 创建一个 home 目录</span>
-<span class="token function">sudo</span> <span class="token function">chown</span> www-data:www-data /home/www
-
-<span class="token comment"># 修改 apache2.conf 配置文件</span>
-<span class="token comment"># 找到 /var/www/ 更改为自定义新根目录 /home/www</span>
-<span class="token function">sudo</span> <span class="token function">vi</span> /etc/apache2/apache2.conf
-
-<span class="token comment"># 修改 000-default.conf 配置文件</span>
-<span class="token comment">#找到 DocumentRoot 后面的 /var/www/html 更改为/home/www</span>
-<span class="token function">sudo</span> <span class="token function">vi</span> /etc/apache2/sites-available/000-default.conf
-
-<span class="token comment">#重启 apache2 服务，重启完后</span>
-<span class="token function">sudo</span> systemctl restart apache2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>在 VirtualBox 网络设置 <code>端口转发规则</code> 增加 80 端口和 443 端口，这样就可以在本
-地浏览器输入 <code>192.168.56.1</code> 访问服务器了。</p>
-</li>
+<li>菜单项联系了最基本的页面内容，由菜单项类型实现。它既可以是文章、图片、视频、
+搜索等，又可以是整个或部分页面。</li>
+<li>菜单是一组菜单项的集合，一个菜单项必然只属于某个菜单。而一个菜单可以链接一个
+或多个模块，但一个模块只能绑定一个菜单。即：
+<code>一个或多个菜单项 &lt;---&gt; 一个菜单 &lt;---&gt; 一个或多个模块</code>。</li>
 </ol>
-<h1>PHP</h1>
-<p>PHP 相关信息在<a target="_blank" rel="noopener" href="https://www.php.net/">这里</a>查看。</p>
-<ol>
-<li>
-<p>配置独立最新软件源</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> software-properties-common
-<span class="token function">sudo</span> add-apt-repository ppa:ondrej/php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>安装 PHP8.1</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 为 Apache 安装 PHP8.1 和相应模块</span>
-<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> php8.1 libapache2-mod-php8.1 libapache2-mod-fcgid
-
-<span class="token comment"># 启动模块，可在/etc/apache2/mods-enabled 中查看</span>
-<span class="token function">sudo</span> a2enmod php8.1 fcgid
-
-<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> php8.1-<span class="token punctuation">&#123;</span>curl,mysql,xml,fpm<span class="token punctuation">&#125;</span>
-<span class="token comment"># 开启配置，可在/etc/apache2/conf-enabled 中查看</span>
-<span class="token function">sudo</span> a2enconf php8.1-fpm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>重启 apache</p>
-</li>
-<li>
-<p>在 <code>/home/www</code> 根目录下创建 <code>index.php</code>，内容为</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>若显示 PHP 详细信息则表示成功。</p>
-</li>
-</ol>
-<h1>MySQL</h1>
-<p>MySQL 相关信息在<a target="_blank" rel="noopener" href="https://www.mysql.com/">这里</a>查看。</p>
-<ol>
-<li>
-<p>安装 MySQL</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> mysql-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>登录超级用户</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 超级用户账号密码在配置文件 /etc/mysql/debian.cnf 中保存</span>
-mysql -u debian-sys-maint -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>创建新用户并授予整个数据库所有权限</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">create user &#39;naruto&#39;@&#39;localhost&#39; identified by &#39;123456&#39;;
-
-grant all privileges on *.* to &#39;naruto&#39;@&#39;localhost&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h1>安装 joomla</h1>
-<p>下载<a target="_blank" rel="noopener" href="https://downloads.joomla.org/">joomla ZIP</a> 压缩包，本文中使用 <code>4.1.2</code>。</p>
-<p>使用 <code>PSFTP</code> 工具上传到服务器，使用 <code>7zip</code> 解压到 <code>/home/www</code> 目录中并修改所有者
-和组为 <code>www-data</code>。</p>
-<p>在网页中打开服务器地址 <code>192.168.56.1</code> 即可看到 joomla 安装页面。按照步骤完成。</p>
-<ol>
-<li>
-<p>在数据库配置这部分，需要和 MySQL 小节中保持一致。数据库按照默认给出的创建，则
-无法连接数据库。</p>
-<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 以 hkk 用户身份登录创建 joomla_db 数据库
-create database joomla_db;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>为了更好的确保系统兼容，需要对 PHP 进行深入设置。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> php8.1-gd php8.1-zip php8.1-intl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>关闭输出缓冲，在文件 <code>/etc/php/8.1/fpm/php.ini</code> 中注释掉 <code>output_buffering</code>
-即可。</p>
-</li>
-</ol>
-<h1>Win10 XAMPP 搭建</h1>
-<p>XAMPP（Apache MySQL PHP PERL）是一个功能强大的建站集成软件包，支持 Windows、
-Linux 和 MacOS。官网 <a target="_blank" rel="noopener" href="https://www.apachefriends.org/index.html">https://www.apachefriends.org/index.html</a> 下载 Windows 版本。</p>
-<ol>
-<li>下载并安装 <code>XAMPP 8.1.5</code>。</li>
-<li>打开 XAMPP Control Panel 启动 Apache 和 MySQL 模块。</li>
-<li>删除 <code>xampp/htdocs</code> 内容。</li>
-<li>下载 <a target="_blank" rel="noopener" href="https://downloads.joomla.org/">joomla4 4.1.3</a> 并解压到 <code>xampp/htdocs</code> 中。</li>
-<li>打开浏览器输入<code>localhost</code>，即可打开 joomla 安装界面。</li>
-</ol>
-<p>安装 joomla：</p>
-<ol>
-<li>进入安装界面，依次选择安装语言、设置网站名称、设置登录数据。</li>
-<li>设置数据库连接：
+<h3 id="模块">模块</h3>
+<p>模块有许多类型，如内嵌页面、在线用户、广告展示、文章管理相关、新闻相关等，以及菜
+单显示和自定义。</p>
+<p>模块作为页面布局的基本单位，用于展示内容，根据不同模板的布局指定不同位置。</p>
+<h3 id="模板">模板</h3>
 <ul>
-<li>打开网址 <code>localhost/phpmyadmin</code> 进入 phpMyAdmin 数据库管理界面。无需输入密
-码即可登录。</li>
-<li>创建数据库 <code>joomla_db</code> 和 joomla 设置的数据库名一致。</li>
-<li>数据库用户名为 <code>root</code>，密码为空。</li>
+<li><a target="_blank" rel="noopener" href="https://www.joomshaper.com/joomla-templates/helixultimate">helixultimate</a>教程
+在<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5xagpzEP0To&amp;t=518s">这里</a>。</li>
 </ul>
-</li>
-<li>安装完成。</li>
-</ol>
-<p>与系统兼容的 PHP 设置：</p>
-<ol>
-<li>打开 Apache 模块的 config 配置选择 php.ini。</li>
-<li>关闭（注释）<code>output_buffering=4096</code>。</li>
-<li>打开（关闭注释）<code>extension=gd</code> 和 <code>extension=intl</code>。</li>
-</ol>
-<p>手动删除 joomla 目录中 installation 目录。</p>
-<h1>Ubuntu XAMPP + Nginx 搭建</h1>
-<h2 id="安装-XAMPP">安装 XAMPP</h2>
-<p>在官网 <a target="_blank" rel="noopener" href="https://www.apachefriends.org/download.html">https://www.apachefriends.org/download.html</a> 获取 Linux 版本地址，使用
-wget 下载。</p>
-<ol>
-<li>
-<p>下载 <code>xampp-linux-x64-8.1.5-0-installer.run</code>。</p>
-</li>
-<li>
-<p>由于服务器没有图形界面，所以命令行安装。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://www.apachefriends.org/xampp-files/8.1.5/xampp-linux-x64-8.1.5-0-installer.run
-<span class="token function">sudo</span> <span class="token function">chmod</span> a+x xampp-linux-x64-8.1.5-0-installer
-<span class="token function">sudo</span> ./xampp-linux-x64-8.1.5-0-installer
-
-<span class="token comment"># 直接 Y 或回车，默认安装位置是 /opt/lampp</span>
-<span class="token comment"># 重启 xampp</span>
-<span class="token function">sudo</span> /opt/lampp/lampp restart
-
-<span class="token comment"># 查看 xampp 状态</span>
-<span class="token function">sudo</span> /opt/lampp/lampp status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>xampp 配置文档</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">Apache   文档根目录：&#x2F;opt&#x2F;lampp&#x2F;htdocs&#x2F;
-Apache     配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;httpd.conf
-MySQL      配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;my.cnf
-PHP        配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;php.ini
-ProFTPD    配置文件：&#x2F;opt&#x2F;lampp&#x2F;etc&#x2F;proftpd.conf
-PHPMyadmin 配置文件：&#x2F;opt&#x2F;lampp&#x2F;phpmyadmin&#x2F;config.inc.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>xampp 命令</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">启动&#x2F;停止&#x2F;重启 Apache：&#x2F;opt&#x2F;lampp&#x2F;lampp start&#x2F;stop&#x2F;restart(包括启动&#x2F;停止&#x2F;重启了 mysql,proftpd)
-安全设置：&#x2F;opt&#x2F;lampp&#x2F;lampp  security
-使用 php 版本&#x2F;查看版本：&#x2F;opt&#x2F;lampp&#x2F;lampp php4(5)&#x2F;phpstatus
-只启动和停止 Apache：&#x2F;opt&#x2F;lampp&#x2F;lampp startapache&#x2F;stopapache
-只启动和停止 MySQL：&#x2F;opt&#x2F;lampp&#x2F;lampp startmysql&#x2F;stopmysql
-只启动和停止 ProFTPD 服务器：&#x2F;opt&#x2F;lampp&#x2F;lampp startftp&#x2F;stopftp
-启动和停止 Apache 的 SSL 支持：&#x2F;opt&#x2F;lampp&#x2F;lampp startssl&#x2F;stopssl
-卸载 XAMPP：rm –rf &#x2F;opt&#x2F;lampp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="配置-XAMPP">配置 XAMPP</h2>
-<ol>
-<li>
-<p>由于服务器之前已经安装 Nginx 服务器，且将 80 端口和 443 端口占用，所以启动
-Apache 服务失败，报错： <code>Another web server is already running.</code>。</p>
+<h3 id="组件">组件</h3>
+<p>组件也是一种 joomla 插件/扩展。</p>
+<h2 id="配置">配置</h2>
+<h3 id="查看模板">查看模板</h3>
+<p><a target="_blank" rel="noopener" href="http://your-server-ip/?tp=1">http://your-server-ip/?tp=1</a></p>
+<h3 id="隐藏-index-php-重写-url">隐藏 index.php 重写 url</h3>
+<p>在后台打开系统全局配置，在站点 SEO 配置。</p>
 <ul>
-<li>查看端口占用情况 <code>netstat -tulpn | grep --color :80</code></li>
-<li>经过分析是由于 lampp 启动脚本内部将 80 和 443 端口号写死导致，分别修改（任意）
-为 81 和 1443。</li>
-<li>配置 <code>lampp/etc/httpd.conf</code>，将监听端口号修改为 81 和上面保持一致。</li>
-<li>配置 <code>lampp/etc/extra/httpd-ssl.conf</code>，将 SSL 监听端口号修改为 1443。</li>
-<li>重启服务。打开浏览器输入 ip:81 即可打开 XAMPP 欢迎页面。</li>
+<li>开启 <code>Search Engine Friendly </code>。SEF 是 Search Engine Friendly 的缩写，即「搜寻
+引擎友善」，用于优化 HTML 便于爬虫抓取。</li>
+<li>开启 <code>Use URL Rewriting</code>。选择服务器，重写 URL 以满足特定条件。。Apache 服务器只
+需将 joomla 根目录的<code>htaccess.txt</code> 改为 <code>.htaccess</code>。</li>
+<li>打开 <code>Add Suffix to URL</code>。根据文档类型添加 URL 的后缀。</li>
+<li>打开 <code>Unicode Aliases</code>。它在音译和 Unicode 别名之间进行选择。</li>
 </ul>
-</li>
-<li>
-<p>在网页打开 phpmyadmin 提示权限不足，在 <code>/opt/lampp/etc/extra/httpd-xampp.conf</code> 重
-新配置。</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;Directory &quot;&#x2F;opt&#x2F;lampp&#x2F;phpmyadmin&quot;&gt;
-    AllowOverride AuthConfig Limit
-    Allow from all
-    Require local
-    Require all granted
-    ErrorDocument 403 &#x2F;error&#x2F;XAMPP_FORBIDDEN.html.var
-&lt;&#x2F;Directory&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重启 xampp。打开 phpmyadmin 发现任何人都可以登录，需要继续配置。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 默认 yes 即可</span>
-<span class="token function">sudo</span> /opt/lampp/lampp security
-
-<span class="token comment"># 使 phpmyadmin 可读</span>
-<span class="token function">sudo</span> <span class="token function">chmod</span> <span class="token number">775</span> /opt/lampp/phpmyadmin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>配置 <code>/opt/lampp/phpmyadmin/config.inc.php</code>，修改 <code>$cfgServers[$i]['auth_type']</code> 为 <code>'cookie'</code>。</p>
-</li>
-<li>
-<p>xampp 开机自启</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">ln</span> -s /opt/lampp/lampp /etc/init.d/lampp
-<span class="token function">sudo</span> update-rc.d -f lampp defaults<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+<h3 id="Joomla-API-Token">Joomla API Token</h3>
+<p>代开扩展管理，Enable 插件 <code>API Authentication - Web Services Joomla Token</code> 和
+<code>User - Joomla API Token</code>。</p>
+<p>打开用户管理，可从用户配置中查找 <code>Joomla API Token</code>，激活<code>Token</code> 即可。可使用
+postman 测试 api。</p>
+<h2 id="扩展">扩展</h2>
+<p>扩展即使插件或组件，可在系统配置扩展中安装。joomla 给我们提供了四种安装扩展方式，
+既可以在线安装，也可以从本地上传安装。</p>
+<h3 id="Akeeba-Backup-or-Joolma">Akeeba Backup or Joolma!</h3>
+<p>这个组件用于备份网站数据。</p>
+<p>恢复网站数据则需要工具 <a target="_blank" rel="noopener" href="https://www.akeeba.com/latest-kickstart-core.zip">kickstart</a> 实现。</p>
+<ol>
+<li>将备份文件和 kickstart 压缩文件放在网站根目录中，解压 kickstart 获取<code>kickstart.php</code>。</li>
+<li>在浏览器中打开 kickstart.php，按照要求恢复备份文件。</li>
+<li>恢复过程中需要网站超级管理员账号和密码，需要数据库账号和密码。</li>
 </ol>
-<h2 id="安装-Joomla">安装 Joomla</h2>
+<p>恢复数据时特别慢。</p>
+<h3 id="Admin-Tools">Admin Tools</h3>
+<p>Akeeba 管理 Joomla 安全。</p>
+<h3 id="captcha">captcha</h3>
+<p>这个插件用于机器人检测。可在插件 plugin 中激活。需要在 Google api 中注册获取秘钥。</p>
+<h3 id="Slideshow-CK">Slideshow CK</h3>
+<p>用于展示滑动的图片。使用说明参考<a target="_blank" rel="noopener" href="https://hunyadi.info.hu/sigplus/sigplus-basic-usage">这里</a>。</p>
+<h3 id="SP-page-builder">SP page builder</h3>
+<p>可通过拖拽设计网页。免费版本功能少。</p>
+<h3 id="Page-Builder-CK">Page Builder CK</h3>
+<p>网页设计插件。</p>
+<h2 id="问题">问题</h2>
+<h3 id="忘记管理员密码，参考这里。">忘记管理员密码，参考<a target="_blank" rel="noopener" href="https://docs.joomla.org/How_do_you_recover_or_reset_your_admin_password%3F">这里</a>。</h3>
 <ol>
 <li>
-<p>删除 htdocs 目录内容，将官网 Joomla 安装文件上传到 htdocs 目录并解压。在网页
-中打开按步骤安装 Joomla。</p>
+<p>登录 phpMyAdmin，找到 prefix_users 数据表，删除 password 字段内容。</p>
 </li>
 <li>
-<p>没有足够的权限创建 configuration.php。</p>
-<p>安装 XAMPP 用 root 权限，下载拷贝 Joomla 用普通用户权限，设置 httpd 的 User
-和 Group 为普通用户权限。
-参考<a target="_blank" rel="noopener" href="https://community.apachefriends.org/f/viewtopic.php?p=267586&amp;sid=11767b2314a62f932fef5533fd125dce">这里</a>。</p>
+<p>若第一步失败，则可执行</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">INSERT INTO &#96;prefix_users&#96;
+(&#96;name&#96;, &#96;username&#96;, &#96;password&#96;, &#96;params&#96;, &#96;registerDate&#96;, &#96;lastvisitDate&#96;, &#96;lastResetTime&#96;)
+VALUES (&#39;Administrator2&#39;, &#39;admin2&#39;,
+    &#39;d2064d358136996bd22421584a7cb33e:trd7TvKHx6dMeoMmBVxYmg0vuXEA4199&#39;, &#39;&#39;, NOW(), NOW(), NOW());
+INSERT INTO &#96;prefix_user_usergroup_map&#96; (&#96;user_id&#96;,&#96;group_id&#96;)
+VALUES (LAST_INSERT_ID(),&#39;8&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述代码将增加超级用户 admin2，密码为 secret。登录网站后记得修改。</p>
 </li>
 </ol>
-<h2 id="Nginx-与-Apache-代理配置">Nginx 与 Apache 代理配置</h2>
-<p>Nginx 和 Apache 搭配，Nginx 负责代理，Apache 负责 Joomla 站点。</p>
-<pre class="line-numbers language-none"><code class="language-none"># Nginx
-server &#123;
-    listen 80;
+<h1>robots.txt</h1>
+<p>robots.txt 是一个纯文本文件，可声明网站中不想被搜索引擎访问的部分，或只收录指定
+的内容。</p>
+<p>当搜索引擎访问一个站点时，它会先检查站点根目录下的 robots.txt，若存在就按照文件
+中的内容来确定访问的范围；若不存在，那么搜索机器人就沿着链接抓取。</p>
+<h2 id="robots-txt-作用">robots.txt 作用</h2>
+<ol>
+<li>引导搜索引擎、蜘蛛抓取指定栏目或内容</li>
+<li>网站改版或者 URL 重写优化时候屏蔽对搜索引擎不友好的链接</li>
+<li>屏蔽死链接、404 错误页面</li>
+<li>屏蔽无内容、无价值页面</li>
+<li>屏蔽重复页面，如评论页、搜索结果页</li>
+<li>屏蔽任何不想被收录的页面</li>
+<li>引导蜘蛛抓取网站地图</li>
+</ol>
+<h2 id="robots-txt-语法">robots.txt 语法</h2>
+<p>三个语法和两个通配符。</p>
+<ol>
+<li>
+<p><code>User-agent:</code>，语法，定义搜索引擎</p>
+<p><code>User-agent: *</code>，定义所有搜索引擎
+<code>User-agent: Googlebot</code>，定义谷歌，只允许谷歌蜘蛛爬取</p>
+<p>不同的搜索引擎的搜索机器人有不同的名称，<code>谷歌:Googlebot</code>、<code>百度:Baiduspider</code>、
+<code>MSN:MSNbot</code>、<code>Yahoo:Slurp</code>。</p>
+</li>
+<li>
+<p><code>Disallow:</code>，语法，用来定义禁止蜘蛛爬取的页面或目录</p>
+<p><code>Disallow: /</code>，禁止蜘蛛爬取网站的所有目录 “/” 表示根目录下
+<code>Disallow: /admin</code>，禁止蜘蛛爬取 admin 目录
+<code>Disallow: /abc.html</code>，禁止蜘蛛爬去 abc.html 页面</p>
+</li>
+<li>
+<p><code>Allow:</code>，语法，用来定义允许蜘蛛爬取的页面或子目录</p>
+<p><code>Allow: /admin/test/</code>，允许蜘蛛爬取 admin 下的 test 目录
+<code>Allow: /admin/abc.html</code>，允许蜘蛛爬去 admin 目录中的 abc.html 页面</p>
+</li>
+<li>
+<p><code>$</code>，通配符，匹配 URL 结尾的字符</p>
+</li>
+<li>
+<p><code>*</code>，通配符，匹配 0 个或多个任意字符</p>
+</li>
+</ol>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li>
+<p>robots.txt 文件必须放在网站的根目录。</p>
+</li>
+<li>
+<p>robots.txt 文件名命名必须小写，记得在 robot 面加<code>s</code>。</p>
+</li>
+<li>
+<p>User-agent、Allow、Disallow 的 <code>:</code> 后面有一个字符的空格。</p>
+</li>
+<li>
+<p>路径后面加斜杠 / 和不加斜杠的是有区别的</p>
+<p>Disallow: /help
+禁止蜘蛛访问 /help.html、/helpabc.html、/help/index.html</p>
+<p>Disallow: /help/　
+禁止蜘蛛访问 /help/index.html。 但允许访问 /help.html、/helpabc.html</p>
+</li>
+<li>
+<p>Disallow 与 Allow 行的顺序是有意义的</p>
+<p>允许蜘蛛访问 /admin/ 目录下的 seo 文件夹</p>
+<p>User-agent: *
+Allow: /admin/seo/
+Disallow: /admin/</p>
+<p>如果 Allow 和 Disallow 的顺序调换一下</p>
+<p>User-agent: *
+Disallow: /admin/
+Allow: /admin/seo/</p>
+<p>蜘蛛就无法访问到 /admin/ 目录下的 seo 文件夹，因为第一个 Disallow: /admin/ 已匹配成功。</p>
+</li>
+</ol>
+<h2 id="robots-meta">robots meta</h2>
+<p>robots.txt 主要限制整个站点或者目录的搜索引擎访问情况，而 Robots Meta 标签则主要
+针对具体页面。和其他的 META 标签（如使用的语言、页面的描述、关键词等）一样，
+Robots Meta 标签也是放在页面中，专门用来告诉搜索引擎 ROBOTS 如何抓取该页的内容。</p>
+<p>Robots Meta 标签中没有大小写之分，<code>name=&quot;Robots&quot;</code> 表示所有的搜索引擎，可以针对某
+个具体搜索引擎（如 google）写为 <code>name=&quot;Googlebot&quot;</code>，content 部分有四个指令选项：
+index、noindex、follow、nofollow，指令间以 “,” 分隔。</p>
+<ol>
+<li><code>Index</code>，告诉搜索机器人抓取该页面</li>
+<li><code>NoIndex</code>，告诉搜索引擎不允许抓取这个页面</li>
+<li><code>Follow</code>，搜索机器人可以沿着该页面上的链接继续抓取下去</li>
+<li><code>NoFollow</code>，告诉搜索引擎不允许从此页找到链接、拒绝其继续访问</li>
+</ol>
+<p>指令的四种组合。</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- 可以抓取本页，而且可以顺着本页继续索引别的链接，缺省值 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>index,follow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!-- 等价于 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>all<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 
-    location &#x2F; &#123;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass http:&#x2F;&#x2F;127.0.0.1:800;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none"># Apache
-Listen 127.0.0.1:800
+<span class="token comment">&lt;!-- 不许抓取本页，但是可以顺着本页抓取索引别的链接 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>noindex,follow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 
-DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
-&lt;Directory &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;&gt;
-    Options Indexes FollowSymLinks ExecCGI Includes
-    AllowOverride All
-    Require all granted
-&lt;&#x2F;Directory&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">&lt;!-- 可以抓取本页，但是不许顺着本页抓取索引别的链接 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>neta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>index,nofollow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- 不许抓取本页，也不许顺着本页抓取索引别的链接 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>noindex,nofollow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!-- 等价于 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>robots<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>none<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -794,7 +700,7 @@ DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.github.io/2022/joomla-huan-jing-da-jian/">https://coco-hkk.github.io/2022/joomla-huan-jing-da-jian/</a>
+                    <a href="https://coco-hkk.github.io/2022/joomla4-wang-zhan-pei-zhi/">https://coco-hkk.github.io/2022/joomla4-wang-zhan-pei-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1009,13 +915,13 @@ DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/joomla-wang-zhan-pei-zhi/">
+                <a href="/2022/json-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="Joomla 网站配置">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/8.jpg" class="responsive-img" alt="JSON 对象">
                         
-                        <span class="card-title">Joomla 网站配置</span>
+                        <span class="card-title">JSON 对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1026,8 +932,57 @@ DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-29
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/json/">
+                        <span class="chip bg-color">json</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/joomla4-huan-jing-pei-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/13.jpg" class="responsive-img" alt="Joomla4 环境搭建">
+                        
+                        <span class="card-title">Joomla4 环境搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1045,55 +1000,6 @@ DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
                     
                     <a href="/tags/joomla/">
                         <span class="chip bg-color">joomla</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/emacs-shi-yong-shou-ce/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="Emacs 实用手册">
-                        
-                        <span class="card-title">Emacs 实用手册</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-26
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Emacs/" class="post-category">
-                                    Emacs
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/emacs/">
-                        <span class="chip bg-color">emacs</span>
                     </a>
                     
                 </div>
@@ -1298,7 +1204,7 @@ DocumentRoot &quot;&#x2F;opt&#x2F;lampp&#x2F;htdocs&quot;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">89.3k</span>
+                        class="white-color">90.9k</span>
             
             
             
