@@ -431,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    14
+                    75
                 </div>
                 
 
@@ -462,9 +462,21 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1>变量</h1>
-<h2 id="查看-emacs-编译选项">查看 emacs 编译选项</h2>
-<p>变量 system-configuration-options</p>
-
+<ol>
+<li><code>emacs-version</code> 查看 emacs 版本</li>
+<li><code>system-configuration-options</code> 查看 emacs 编译选项</li>
+</ol>
+<h1>函数</h1>
+<ol>
+<li><code>version&lt;</code> 版本 1 小于版本 2 则返回 t</li>
+</ol>
+<h1>代码</h1>
+<ol>
+<li>对操作系统进行判断</li>
+</ol>
+<pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token punctuation">(</span><span class="token defvar"><span class="token keyword">defconst</span> <span class="token variable">*is-mac*</span></span> <span class="token punctuation">(</span><span class="token car">eq</span> system-type <span class="token quoted-symbol variable symbol">'darwin</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token defvar"><span class="token keyword">defconst</span> <span class="token variable">*is-linux*</span></span> <span class="token punctuation">(</span><span class="token car">eq</span> system-type <span class="token quoted-symbol variable symbol">'gnu/linux</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token defvar"><span class="token keyword">defconst</span> <span class="token variable">*is-windows*</span></span> <span class="token punctuation">(</span><span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token car">eq</span> system-type <span class="token quoted-symbol variable symbol">'ms-dos</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token car">eq</span> system-type <span class="token quoted-symbol variable symbol">'windows-nt</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
