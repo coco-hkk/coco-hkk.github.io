@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.9k
+                    7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    31 分
+                    32 分
                 </div>
                 
 
@@ -463,11 +463,15 @@
             <div id="articleContent">
                 <p>以下内容均在 emacs <em>scratch</em>中测试。</p>
 <h1>运行 emacs lisp</h1>
-<ol>
-<li>运行表达式。光标（点位）置于表达式闭括号，执行 <code>M-x eval-last-sexp</code>（或 <code>C-x C-e</code>）。</li>
+<ol start="0">
+<li>切换到缓冲区 <em>scratch</em>，若当前模式不是 lisp-interaction-mode，用 M-x
+lisp-interaction-mode 切换。在表达式行尾右括号后，按 C-j 键。</li>
+<li>运行表达式。光标（点位）置于表达式闭括号，执行 <code>M-x eval-last-sexp</code>（或 <code>C-x C-e</code>）。<code>C-x C-e</code> 是一个全局按键绑定，几乎可以在所有地方都能用，它会将运行返
+回值显示在 Minibuffer 里。</li>
 <li>运行代码块。选择代码块，执行 <code>M-x eval-region</code>。</li>
-<li>运行光标所指函数。执行 <code>M-x eval-defun</code>（只对由 <code>defvar</code> 和 <code>defcustom</code> 定义的函数生效）。</li>
-<li>在 minibuffer 中运行代码。执行 <code>M-x eval-expression</code>。</li>
+<li>运行光标所指函数。执行 <code>M-x eval-defun</code>（只对由 <code>defvar</code> 和 <code>defcustom</code> 定义
+的函数生效）。</li>
+<li>在 minibuffer 中运行代码。执行 <code>M-x eval-expression</code>（或 <code>M-:</code>）。</li>
 <li>运行 buffer 代码。执行 <code>M-x eval-buffer</code>。</li>
 <li>加载并运行整个文件。执行 <code>M-x load-file</code>。</li>
 </ol>
@@ -2136,7 +2140,7 @@ packages 加载前设置这些变量，不用担心 packages 加载后覆盖掉�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">92k</span>
+                        class="white-color">92.2k</span>
             
             
             

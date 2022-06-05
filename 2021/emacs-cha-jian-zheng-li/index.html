@@ -1044,6 +1044,9 @@ p
 
 <span class="token comment">;; log 查看</span>
 M-x magit-log-all    <span class="token comment">;; 可查看所有分支 log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>内建插件</h1>
+<h2 id="artist-mode">artist-mode</h2>
+<p>text 画图，通过鼠标左键或方向键画图（C-h m 查看帮助）。</p>
 <h1>org</h1>
 <h2 id="org-tempo">org-tempo</h2>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; Org > 9.2，快速插入代码块。&lt;sh + &lt;TAB> 展开模板</span>
@@ -1338,39 +1341,24 @@ M-x magit-log-all    <span class="token comment">;; 可查看所有分支 log</s
 <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'eaf-browser</span><span class="token punctuation">)</span>
 ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>erc</h1>
-<h2 id="登陆-emacs-ERC">登陆 emacs ERC</h2>
+<p><strong>登陆 emacs ERC</strong></p>
 <p>emacs 自带 IRC 客户端，启动指令 <code>M-x erc</code>。</p>
-<p>minibuffer 会提示操作步骤：</p>
-<ol>
-<li>IRC server : <a target="_blank" rel="noopener" href="http://irc.freenode.net">irc.freenode.net</a></li>
-<li>IRC port :   6667</li>
-<li>Nickname :   “your name”</li>
-<li>Password :   “your passwd”</li>
-</ol>
-<p>注：步骤 1-2 可按默认配置，步骤 3-4 需自定义。</p>
-<h2 id="注册账号">注册账号</h2>
-<ol>
-<li>确认 Nickname</li>
-</ol>
-<p>可使用指令 <code>/nick</code> 修改 Nickname 至满意为止，尽量避免使用社区、商标名。</p>
-<ol start="2">
-<li>
-<p>注册 nick</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;msg NickServ REGISTER password youremail@example.com （注意大小写）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ol>
-<p>freenode 会向注册邮箱发送确认注册的信息的邮件，按操作执行即可。</p>
-<h2 id="登陆账号">登陆账号</h2>
-<ol>
-<li>
-<p>账号</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;nick &quot;your name&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>密码</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;msg NickServ identify &quot;your passwd&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-</ol>
+<pre class="line-numbers language-none"><code class="language-none">1. IRC server : irc.freenode.net
+2. IRC port :   6667
+3. Nickname :   &quot;your name&quot;
+4. Password :   &quot;your passwd&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注册账号</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">;; 确认 Nickname
+可使用指令 &#96;&#x2F;nick&#96; 修改 Nickname 至满意为止，尽量避免使用社区、商标名。
+
+;; 注册 nick
+&#x2F;msg NickServ REGISTER password youremail@example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>登陆账号</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">;; 账号
+&#x2F;nick &quot;your name&quot;
+
+;; 密码
+&#x2F;msg NickServ identify &quot;your passwd&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>org2blog</h1>
 <p>org2blog 插件可将 emacs 中写的 org 博客推送到网站，发布博客。</p>
 <ol>
@@ -1380,8 +1368,6 @@ M-x magit-log-all    <span class="token comment">;; 可查看所有分支 log</s
 </li>
 <li>
 <p>org2blog 配置</p>
-</li>
-</ol>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token car">maybe-require-package</span> <span class="token quoted-symbol variable symbol">'org2blog</span><span class="token punctuation">)</span> <span class="token comment">;; 寻找 org2blog 插件的位置，若不存在则安装</span>
 <span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'org2blog-autoloads</span><span class="token punctuation">)</span>
 
@@ -1440,55 +1426,43 @@ M-x magit-log-all    <span class="token comment">;; 可查看所有分支 log</s
    <span class="token punctuation">(</span><span class="token keyword">setq</span> org2blog/wp-buffer-format-function <span class="token quoted-symbol variable symbol">'o2b-format-function</span><span class="token punctuation">)</span>
 
    <span class="token punctuation">(</span><span class="token keyword">provide</span> <span class="token quoted-symbol variable symbol">'init-org2blog</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="3">
-<li>init.el 配置<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'init-org2blog</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>.netrc 自动登录配置文件</li>
-</ol>
-<ul>
-<li>
-<p>位置： emacs 家目录下，即~/.netrc。</p>
 </li>
 <li>
-<p>文件内容：</p>
-   <pre class="line-numbers language-none"><code class="language-none">machine myblog
+<p>init.el 配置</p>
+<pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp"><span class="token punctuation">(</span><span class="token keyword">require</span> <span class="token quoted-symbol variable symbol">'init-org2blog</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>.netrc 自动登录配置文件</p>
+<pre class="line-numbers language-none"><code class="language-none">;; emacs 家目录，即~&#x2F;.netrc。
+machine myblog
 login yourname
-password yourpassword<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+password yourpassword<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-</ul>
-<ol start="5">
-<li>操作</li>
+<li>
+<p>操作</p>
+<pre class="line-numbers language-none"><code class="language-none">;; 登录 blog
+M-x org2blog&#x2F;wp-login
+
+;; 创建 blog
+M-x org2blog&#x2F;wp-new-entry
+
+;; 登出 blog
+M-x org2blog&#x2F;logout
+
+;; 切换 org2blog 模式
+M-x org2blog&#x2F;wp-mode
+
+;; 存为网站草稿
+M-x org2blog&#x2F;wp-post-buffer
+或
+C-c M-p d
+
+;; 发布文章
+M-x org2blog&#x2F;wp-post-buffer-and-publish
+或
+C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ol>
-<ul>
-<li>
-<p>登录 blog</p>
-   <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x org2blog/wp-login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>创建 blog</p>
-   <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x org2blog/wp-new-entry<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>登出 blog</p>
-   <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x org2blog/logout<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>切换 org2blog 模式</p>
-   <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x org2blog/wp-mode<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>存为网站草稿</p>
-   <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x org2blog/wp-post-buffer
-或
-C-c M-p d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>发布文章</p>
-   <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">M-x org2blog/wp-post-buffer-and-publish
-或
-C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
 <h1>参考</h1>
 <ol>
 <li><a target="_blank" rel="noopener" href="http://freenode.net/kb/all">http://freenode.net/kb/all</a></li>
@@ -2009,7 +1983,7 @@ C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">92k</span>
+                        class="white-color">92.2k</span>
             
             
             

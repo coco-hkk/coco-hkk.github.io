@@ -431,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    213
                 </div>
                 
 
@@ -464,11 +464,24 @@
                 <h1>变量</h1>
 <ol>
 <li><code>emacs-version</code> 查看 emacs 版本</li>
+</ol>
+<p>操作系统环境</p>
+<ol>
 <li><code>system-configuration-options</code> 查看 emacs 编译选项</li>
+<li><code>system-configuration</code> 系统硬件/软件配置的标准 GNU 配置名称</li>
+<li><code>system-type</code> 操作系统的类型</li>
+<li><code>system-name</code> 运行 emacs 的电脑名称</li>
+<li><code>initial-environment</code> 保存 Emacs 启动时从其父进程继承的环境变量列表</li>
+<li><code>path-separator</code> 环境变量路径中的分隔字符</li>
 </ol>
 <h1>函数</h1>
 <ol>
 <li><code>version&lt;</code> 版本 1 小于版本 2 则返回 t</li>
+</ol>
+<p>环境变量及其值的列表保存在变量 <code>process-environment</code> 中，由 <code>getenv</code> 和 <code>setenv</code> 设置。</p>
+<ol>
+<li><code>(getenv &quot;USER&quot;)</code> 获取环境变量</li>
+<li><code>(setenv &quot;USER&quot; &quot;foo&quot;)</code> 设置环境变量，若设置为 <code>nil</code> 则删除环境变量</li>
 </ol>
 <h1>代码</h1>
 <ol>
@@ -1006,7 +1019,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">92k</span>
+                        class="white-color">92.2k</span>
             
             
             
