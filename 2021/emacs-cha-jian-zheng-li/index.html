@@ -529,8 +529,11 @@ package.el 的可替代包管理工具，可结合 use-package 使用。</p>
 
 <span class="token punctuation">(</span><span class="token keyword">setq</span> straight-use-package-by-default <span class="token boolean">t</span><span class="token punctuation">)</span>
 
+<span class="token comment">;; straight.el 下载的包太大，设置 depth 为 1</span>
+<span class="token punctuation">(</span><span class="token keyword">setq</span> straight-vc-git-default-clone-depth <span class="token number">1</span><span class="token punctuation">)</span>
+
 <span class="token comment">;; Use straight.el for use-package expressions</span>
-<span class="token punctuation">(</span><span class="token car">straight-use-package</span> <span class="token quoted-symbol variable symbol">'use-package</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">(</span><span class="token car">straight-use-package</span> <span class="token quoted-symbol variable symbol">'use-package</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>主题</h1>
 <h2 id="all-the-icons">all-the-icons</h2>
 <pre class="line-numbers language-emacs-lisp" data-language="emacs-lisp"><code class="language-emacs-lisp"><span class="token comment">;; https://github.com/domtronn/all-the-icons.el</span>
@@ -1983,7 +1986,7 @@ C-c M-p p<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">94.2k</span>
+                        class="white-color">94.5k</span>
             
             
             
