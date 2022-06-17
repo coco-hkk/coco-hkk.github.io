@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Org-mode 实用指南, coco-hkk">
+    <meta name="keywords" content="Org mode, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Org-mode 实用指南 | 点点滴滴</title>
+    <title>Org mode | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Org-mode 实用指南</h1>
+                    <h1 class="description center-align post-title">Org mode</h1>
                 </div>
             </div>
         </div>
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    208
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -464,12 +464,381 @@
                 <p><a target="_blank" rel="noopener" href="https://orgmode.org/">Org</a> 基于 Outline 模式，用层次结构来组织文档。</p>
 <h1>基础</h1>
 <h2 id="标题">标题</h2>
-<pre class="line-numbers language-none"><code class="language-none">*     一级标题
+<p>标题最多 10 级。</p>
+<pre class="line-numbers language-org-mode" data-language="org-mode"><code class="language-org-mode">*     一级标题
 **    二级标题
-***   三级标题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="视图循环">视图循环</h2>
-<p>大纲模式</p>
-<h1>进价</h1>
+***   三级标题
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>标题快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TAB</td>
+<td>折叠/打开当前标题</td>
+</tr>
+<tr>
+<td>Shift-TAB</td>
+<td>折叠/打开当前文档的标题</td>
+</tr>
+<tr>
+<td>C-u TAB</td>
+<td>控制整个 buffer 的折叠状态。折叠成标题–折叠成目录–不折叠</td>
+</tr>
+<tr>
+<td>M-UP/DOWN</td>
+<td>调整标题在文档中的位置。可连同子标题一起调整位置</td>
+</tr>
+<tr>
+<td>M-LEFT/RIGHT</td>
+<td>快速提升或降低标题级别。该标题下的相关正文同步调整缩进</td>
+</tr>
+<tr>
+<td>C-c C-t</td>
+<td>切换当前标题的状态（TODO 等）</td>
+</tr>
+<tr>
+<td>C-c C-n</td>
+<td>移动光标到下一标题</td>
+</tr>
+<tr>
+<td>C-c C-p</td>
+<td>移动光标到上一标题</td>
+</tr>
+<tr>
+<td>C-c C-f</td>
+<td>移动光标到和当前标题同等级的下一个标题</td>
+</tr>
+<tr>
+<td>C-c C-b</td>
+<td>移动光标到和当前标题同等级的上一个标题</td>
+</tr>
+<tr>
+<td>C-u C-u M-RET</td>
+<td>在当前标题内容的最后，另起一行创建一个同级标题</td>
+</tr>
+</tbody>
+</table>
+<h2 id="列表">列表</h2>
+<p>如果在本级列表内换行，就需要在新行前面加个空格。</p>
+<ol>
+<li>
+<p>无序列表</p>
+<p>以 <code>-</code>、<code>*</code>、<code>+</code> 字符开头</p>
+</li>
+<li>
+<p>有序列表</p>
+<p>以 <code>1.</code>、<code>1)</code> 字符开头</p>
+</li>
+<li>
+<p>描述列表用 <code>::</code> 将项和描述分开。</p>
+</li>
+</ol>
+<p>同一列表中的项的第一行必须缩进相同程度。当下一行的缩进与列表项的的开头的符号或者
+数字相同或者更小时，这一项就结束了。当所有的项都关上时，或者后面有两个空行时，列
+表就结束了。</p>
+<table>
+<thead>
+<tr>
+<th>列表快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-c -</td>
+<td>循环改变当前列表项的标志符号</td>
+</tr>
+<tr>
+<td>C-c C-c</td>
+<td>如果项中有复先框，就触发改变其状态。并且自动保持本项的符号与缩进在列表中的一致性</td>
+</tr>
+<tr>
+<td>M-UP/DOWN</td>
+<td>上下调整列表位置</td>
+</tr>
+<tr>
+<td>M-LEFT/RIGHT</td>
+<td>左右提升或降低列表级别</td>
+</tr>
+<tr>
+<td>M-RET</td>
+<td>在当前级别插入一个项，有前缀时是强制新建一个标题</td>
+</tr>
+<tr>
+<td>M-S-RET</td>
+<td>插入一个带有复先框的项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="表格">表格</h2>
+<p>任何以 <code>|</code> 为首个非空字符的行都会被认为是表格的一部分，<code>|</code> 也是列分隔符。以 <code>|-</code>
+开头的一行会作为一个水平分隔行，当它下次调整排列时会将 <code>-</code> 扩展至填充整行。</p>
+<h3 id="创建表格">创建表格</h3>
+<p><code>C-c |</code> 将活动区域（选中区域）转换成一个表。</p>
+<ul>
+<li>如果第一行至少有一个 TAB 字符，就用 TAB 划分内容。</li>
+<li>如果第一行都有逗号，就分逗号划分内容。</li>
+<li>否则就用空白符来划分区域。</li>
+<li>如果当前没有活动区域就会建立一个空的 Org 表格。</li>
+</ul>
+<h3 id="调整表格">调整表格</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-c C-c</td>
+<td>调整表格，不移动光标</td>
+</tr>
+<tr>
+<td>TAB</td>
+<td>调整表格，将光标移到下一个区域，必要时新建一行</td>
+</tr>
+<tr>
+<td>S-TAB</td>
+<td>调整表格，将光标移到上一个区域</td>
+</tr>
+<tr>
+<td>RET</td>
+<td>调整表格，将光标移到下一行，必要时会新建一行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编辑表格">编辑表格</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-LEFT/RIGHT</td>
+<td>左/右移当前列</td>
+</tr>
+<tr>
+<td>M-S-RIGHT</td>
+<td>在光标位置左边添加一列</td>
+</tr>
+<tr>
+<td>M-UP/DOWN</td>
+<td>上/下移当前行</td>
+</tr>
+<tr>
+<td>M-S-DOWN</td>
+<td>在当前行上面添加一行。如果有前缀，则在下面添加一行</td>
+</tr>
+<tr>
+<td>C-c -</td>
+<td>在当前行下面添加一个水平线。如果带前缀，则在上面添加一行水平线</td>
+</tr>
+<tr>
+<td>C-c RET</td>
+<td>在当前行下面添加一个水平线。并将光标移动到下一行</td>
+</tr>
+<tr>
+<td>C-c ^</td>
+<td>将表排序。当前位置所在的列作为排序的依据。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="脚注">脚注</h2>
+<table>
+<thead>
+<tr>
+<th>脚注快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-c C-x f</td>
+<td>在当前光标位置自动添加一个脚注，并跳转光标到文档末尾的脚注描述位置</td>
+</tr>
+<tr>
+<td>C-c C-c</td>
+<td>在定义和引用之间跳转</td>
+</tr>
+</tbody>
+</table>
+<h2 id="添加-org-注释">添加 org 注释</h2>
+<ol>
+<li>
+<p>注释一段内容：注释中的内容不会被导出</p>
+<pre class="line-numbers language-org-mode" data-language="org-mode"><code class="language-org-mode">#+BEGIN_COMMENT
+
+#+END_COMMENT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>注释整章内容。在一个章节上使用快捷键 <code>C-c ;</code> ，可在一个章节名上触发添加
+COMMENT 关键字，该章节就会被注释不会被导出。</p>
+</li>
+</ol>
+<h2 id="超链接">超链接</h2>
+<h3 id="超链接-2">超链接</h3>
+<p>连接格式：</p>
+<pre class="line-numbers language-none"><code class="language-none">[[文档内部锚点、外部连接][对连接的描述，可选]]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>超链接快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-c l</td>
+<td>存储当前位置的链接。这是一个全局命令</td>
+</tr>
+<tr>
+<td>C-c C-l</td>
+<td>编辑/插入一个超链接</td>
+</tr>
+<tr>
+<td>C-u C-c C-l</td>
+<td>插入一个文件超链接（如果有中文，使用该快捷键会有时跳转不了。这时需要手动输入中文）</td>
+</tr>
+<tr>
+<td>C-c C-o</td>
+<td>用浏览器或 emacs 等打开这个超链接</td>
+</tr>
+<tr>
+<td>C-c C-x C-n</td>
+<td>下一个链接</td>
+</tr>
+<tr>
+<td>C-c C-x C-p</td>
+<td>上一个链接</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内部连接">内部连接</h3>
+<ol>
+<li>
+<p>跳转到被 <code>&lt;&lt;&gt;&gt;</code> 定义的地方。用法如下例：</p>
+<pre class="line-numbers language-org-mode" data-language="org-mode"><code class="language-org-mode">&lt;&lt;test&gt;&gt;
+[[test][跳转到 test]]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>如果 1) 不存在, 会跳转到 <code>#+NAME</code> 命名和链接相同的地方。</p>
+</li>
+<li>
+<p>前两步都失败, 会尝试寻找精确匹配的标题。</p>
+</li>
+</ol>
+<h3 id="跳转到-CUSTOM-ID">跳转到 <code>CUSTOM_ID</code></h3>
+<p>CUSTOM_ID 定义方法：</p>
+<pre class="line-numbers language-org-mode" data-language="org-mode"><code class="language-org-mode">* 这是章节名
+ :PROPERTIES:
+ :CUSTOM_ID: 这是章节名
+ :END:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>跳转到指定 <code>CUSTOM_ID</code>。当导出到 html 时，CUSTOM_ID 会转换成锚点，会替换原先自动
+生成的章节锚点。</p>
+<h2 id="快捷键-快捷码-TAB">快捷键 &lt; + 快捷码 + TAB</h2>
+<p>需要 org-tempo。</p>
+<table>
+<thead>
+<tr>
+<th>快捷码</th>
+<th>补全内容</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s</td>
+<td>#+BEGIN_SRC\n\n#+END_SRC</td>
+<td>插入代码块</td>
+</tr>
+<tr>
+<td>e</td>
+<td>#+BEGIN_EXAMPLE\n\n#+END_EXAMPLE</td>
+<td>插入例子</td>
+</tr>
+<tr>
+<td>q</td>
+<td>#+BEGIN_QUOTE\n\n#+END_QUOTE</td>
+<td>插入引用</td>
+</tr>
+<tr>
+<td>v</td>
+<td>#+BEGIN_VERSE\n\n#+END_VERSE</td>
+<td>默认内容不换行，需要留出空行才能换行</td>
+</tr>
+<tr>
+<td>c</td>
+<td>#+BEGIN_CENTER\n\n#+END_CENTER</td>
+<td>内容居中</td>
+</tr>
+<tr>
+<td>l</td>
+<td>#+BEGIN_EXPORT latex\n\n#+END_EXPORT</td>
+<td>直接导出 latex</td>
+</tr>
+<tr>
+<td>L</td>
+<td>#+LaTeX:</td>
+<td></td>
+</tr>
+<tr>
+<td>h</td>
+<td>#+BEGIN_EXPORT html\n\n#+END_EXPORT</td>
+<td>直接导出 html</td>
+</tr>
+<tr>
+<td>H</td>
+<td>#+HTML:</td>
+<td></td>
+</tr>
+<tr>
+<td>a</td>
+<td>#+BEGIN_EXPORT ascii\n\n#+END_EXPORT</td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td>#+ASCII:</td>
+<td></td>
+</tr>
+<tr>
+<td>i</td>
+<td>#+INDEX:	包含文件到 org 中</td>
+<td></td>
+</tr>
+<tr>
+<td>I</td>
+<td>状态栏下面弹出一个 buffer，选择包含的文件</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="行间代码">行间代码</h2>
+<ol>
+<li>
+<p>插入行间代码，<code>~code~</code> 或者是 <code>=verbatim=</code>。</p>
+</li>
+<li>
+<p>inline code</p>
+<pre class="line-numbers language-org-mode" data-language="org-mode"><code class="language-org-mode">src_&lt;language&gt;&#123;&lt;body&gt;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或者是</p>
+<pre class="line-numbers language-org-mode" data-language="org-mode"><code class="language-org-mode">src_&lt;language&gt;[&lt;header arguments&gt;]&#123;&lt;body&gt;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="插入-latex-公式">插入 latex 公式</h2>
+<ul>
+<li>使用 <code>$ $</code> 在行内插入。例如 <code>$\displaystyle \min_&#123;x_1,\dots x_T&#125;$</code>.</li>
+<li>使用 <code>$$ $$</code> 在行间插入。例如 <code>$$\displaystyle \min_&#123;x_1,\dots x_T&#125;$$</code>.</li>
+</ul>
 <h1>Babel</h1>
 <p>org babel 用于运行 org 文档中插入的源代码，命令 <code>C-c C-c</code>。</p>
 <pre class="line-numbers language-lisp" data-language="lisp"><code class="language-lisp">#+begin_src python <span class="token lisp-property property">:results</span> output
@@ -480,33 +849,18 @@
 #+end_src<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>其它</h1>
 <ul>
-<li>源代码块快速补全</li>
+<li>
+<p><code>#+</code> 快速补全 <code>C-M i</code></p>
+</li>
+<li>
+<p>插入时间 <code>C-c .</code></p>
+</li>
+<li>
+<p>输入控制字符</p>
+<p>使用快捷键 <code>C-q</code>。例如输入 TAB，需要先按 C-q 再按 TAB 键。</p>
+</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">;; 需要在配置文件中配置 (require &#39;org-tempo)
 
-&lt;s + &lt;TAB&gt;    ;; 插入 #+begin_src ... #+end_src
-
-;; 类似选项
-e    ; #+begin_example ... #+end_example  : 单行的例子以冒号开头
-q    ; #+begin_quote ... #+end_quote      通常用于引用，与默认格式相比左右都会留出缩进
-v    ; #+begin_verse ... #+end_verse      默认内容不换行，需要留出空行才能换行
-c    ; #+begin_center ... #+end_center
-l    ; #+begin_latex ... #+end_latex
-L    ; #+latex:
-h    ; #+begin_html ... #+end_html
-H    ; #+html:
-a    ; #+begin_ascii ... #+end_ascii
-A    ; #+ascii:
-i    ; #+index: line
-I    ; #+include: line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li><code>#+</code> 快速补全</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">C-M i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>增加时间</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">C-c .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1036,7 +1390,7 @@ I    ; #+include: line<span aria-hidden="true" class="line-numbers-rows"><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">95k</span>
+                        class="white-color">97.2k</span>
             
             
             

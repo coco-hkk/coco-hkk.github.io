@@ -431,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    545
+                    578
                 </div>
                 
 
@@ -476,10 +476,13 @@
 <ol start="2">
 <li>修改默认安装路径</li>
 </ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>m site <span class="token operator">-</span>h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>m site <span class="token operator">-</span>h
+python <span class="token operator">-</span>m site <span class="token operator">-</span>h <span class="token operator">-</span><span class="token operator">-</span>user<span class="token operator">-</span>site
+python <span class="token operator">-</span>m site <span class="token operator">-</span>h <span class="token operator">-</span><span class="token operator">-</span>user<span class="token operator">-</span>base<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可查看用户自定义路径的配置在 Python 安装路径下的 lib\<a target="_blank" rel="noopener" href="http://site.py">site.py</a>。修改文件中的内容：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">USER_SITE <span class="token operator">=</span> <span class="token string">"D:\Python310\Lib\site-packages"</span>
-USER_BASE <span class="token operator">=</span> <span class="token string">"D:\Python310\Scripts"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">USER_SITE <span class="token operator">=</span> <span class="token string">"E:\Environment\Python\lib\site-packages"</span>
+USER_BASE <span class="token operator">=</span> <span class="token string">"E:\Environment\Python\Scripts"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>USER_BASE</code> 可由环境变量 <code>PYTHONUSERBASE</code> 配置而无需修改 <a target="_blank" rel="noopener" href="http://site.py">site.py</a> 文件。</p>
 <h1>pip</h1>
 <p>从 Python 3.4 开始，pip 默认包含在 Python 二进制安装程序中，安装在
 <code>Lib/site-packages</code> 目录中。</p>
@@ -1093,7 +1096,7 @@ python -m pip uninstall pip<span aria-hidden="true" class="line-numbers-rows"><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">95k</span>
+                        class="white-color">97.2k</span>
             
             
             

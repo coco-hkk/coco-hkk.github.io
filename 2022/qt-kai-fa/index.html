@@ -427,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    252
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -473,6 +473,135 @@
 <p>在 Qt 安装路径下找到 libstdc+±6.dll，替换打包文件中的 libstdc+±6.dll。</p>
 </li>
 </ul>
+<h1>QT6.24 LTS</h1>
+<h2 id="pro-文件">.pro 文件</h2>
+<p>qmake 配置文件。</p>
+<ol>
+<li>
+<p><code>#</code> 行注释。</p>
+</li>
+<li>
+<p><code>QT +=</code> 添加 QT 项目需要模块。<code>QT -=</code> 排除模块。</p>
+</li>
+<li>
+<p><code>TEMPLATE =</code> 确定 qmake 为这个应用程序生成哪种 makefile.</p>
+<ul>
+<li><code>app</code> 创建应用程序的 makefile，默认值。</li>
+<li><code>lib</code> 创建库的 makefile.</li>
+<li><code>vcapp</code> 创建应用程序的 VisualStudio 项目文件。</li>
+<li><code>vclib</code> 创建库的 VisualStudio 项目文件。</li>
+<li><code>subdirs</code> 特殊模板，创建一个目录并为一个项目文件生成 makefile，此 makfile 可以调用 make。</li>
+</ul>
+</li>
+<li>
+<p><code>TARGET =</code> 指定最后生成的目标应用程序的名称。</p>
+</li>
+<li>
+<p><code>CONFIG +=</code> 应用程序的配置信息。</p>
+<p>编译器类型：</p>
+<ul>
+<li><code>release</code> 以 release 模式连编。如果 debug 被指定，它将被忽略。</li>
+<li><code>debug</code> 以 debug 模式连编。</li>
+<li><code>debug_and_release</code> 以两种模式构建。</li>
+<li><code>ordered</code> 使用 subdirs 模板时，此选项指定应该按照目录列表的顺序处理它们。</li>
+<li><code>warn_on</code> 编译器尽可能多得输出警告信息，如果 warn_off 被指定，它将被忽略。</li>
+<li><code>warn_off</code> 编译器尽可能少得输出警告信息。</li>
+</ul>
+<p>应用程序类型：</p>
+<ul>
+<li><code>qt</code> 应用程序是 qt 程序，连接 QT 库。</li>
+<li><code>thread</code> 应用程序是多线程应用程序。</li>
+<li><code>x11</code> 应用程序是 x11 应用程序。</li>
+<li><code>windows</code> 只用于 app 模板，应用程序是一个 windows 的窗口应用程序。</li>
+<li><code>console</code> 只用于 app 模板，应用程序是一个 windows 的控制台应用程序。</li>
+<li><code>dll</code> 只用于 lib 模板，库是一个共享库。</li>
+<li><code>staticlib</code> 只用于 lib 模板，库是一个静态库。</li>
+<li><code>plugin</code> 只用于 lib 模板，库是一个插件，这会使 dll 选项生效。</li>
+</ul>
+</li>
+<li>
+<p><code>UIC_DIR +=</code> 用来指定 uic 命令，将.ui 文件转化为 ui_*.h 文件存放的目录。</p>
+</li>
+<li>
+<p><code>RCC_DIR +=</code> 用来指定 rcc 命令，将.qrc 文件转换成 qrc_*.h 文件存放的目录。</p>
+</li>
+<li>
+<p><code>MOC_DIR +=</code> 用来指定 moc 命令，将含有 Q_OBJECT 的头文件转换成标准.h 文件存放的目录。</p>
+</li>
+<li>
+<p><code>OBJECTS_DIR +=</code> 用来指定目标文件 obj 的存放目录。</p>
+</li>
+<li>
+<p><code>DEPENDPATH +=</code> 用来指定工程的依赖路径。</p>
+</li>
+<li>
+<p><code>INCLUDEPATH +=</code> 用来指定工程所需要的头文件路径。</p>
+</li>
+<li>
+<p><code>CODECFORSRC +=</code> 用来指定源文件的编码格式。</p>
+</li>
+<li>
+<p><code>FORMS +=</code> 指定工程中的 ui 文件。</p>
+</li>
+<li>
+<p><code>HEADERS +=</code> 指定工程中所包含的头文件。</p>
+</li>
+<li>
+<p><code>SOURCES +=</code> 指定工程中包含的源文件。</p>
+</li>
+<li>
+<p><code>RESOURCES +=</code> 指定工程中所包含的资源文件。</p>
+</li>
+<li>
+<p><code>LIBS +=</code> 用来指定引入的 lib 文件的路径，一般会在前面加下参数 <code>-L</code>.</p>
+ <pre class="line-numbers language-none"><code class="language-none">Release: LIBS +&#x3D; -L folder Path     &#x2F;&#x2F;release 版本引入的 lib 文件
+Debug: LIBS +&#x3D; -L folder Path       &#x2F;&#x2F;debug 版本引入的 lib 文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><code>DEFINES +=</code> 定义编译选项，指定预定义预处理器符号， qmake 添加该字段指定的全局宏定义。</p>
+</li>
+<li>
+<p><code>DESTDIR +=</code> 指定目标的生成路径。</p>
+</li>
+<li>
+<p><code>DLLDESTDIR =</code> 指定目标库文件放置的目录。</p>
+</li>
+<li>
+<p><code>RC_ICONS =</code> 添加应用程序图标。</p>
+</li>
+<li>
+<p><code>TRANSLATIONS +=</code> 加载要用到的语言翻译 *.ts 文件。</p>
+</li>
+<li>
+<p>跨平台</p>
+<pre class="line-numbers language-none"><code class="language-none">win32 &#123;
+&#125;
+unix &#123;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><code>$$PWD</code> 是 pro 所在目录，是相对目录。</p>
+</li>
+</ol>
+<h2 id="pri-文件">.pri 文件</h2>
+<p>把 .pro 文件内的一部分单独放到一个 .pri 文件内，然后包含进来。</p>
+<ol>
+<li>
+<p>将源文件的设置独立出来，放到 project.pri 文件内。</p>
+ <pre class="line-numbers language-none"><code class="language-none">SOURCES +&#x3D; main.cpp&#x2F;
+           widget.cpp
+HEADERS  +&#x3D; widget.h
+FORMS    +&#x3D; widget.ui<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="http://project.pro">project.pro</a> 文件就可以简化</p>
+ <pre class="line-numbers language-none"><code class="language-none">TEMPLATE &#x3D; app
+CONFIG +&#x3D; QT
+QT +&#x3D; core gui
+
+TARGET &#x3D; propriprfprl
+include(project.pri)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
 
                 
             </div>
@@ -985,7 +1114,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">95k</span>
+                        class="white-color">97.2k</span>
             
             
             
