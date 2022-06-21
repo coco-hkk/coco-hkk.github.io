@@ -427,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -584,23 +584,108 @@ unix &#123;
 </li>
 </ol>
 <h2 id="pri-文件">.pri 文件</h2>
-<p>把 .pro 文件内的一部分单独放到一个 .pri 文件内，然后包含进来。</p>
+<p>将 .pro 文件中某个模块相关配置独立出来，放在 .pri 文件。</p>
+<p>假设项目目录树为：</p>
+<pre class="line-numbers language-none"><code class="language-none">Manager
+|-- Image
+|   |-- Network.qml
+|   |-- Viewer.qml
+|   |-- Local.qml
+|   |-- icons
+|   |   |-- ic_find.png
+|   |   |-- ic_forward.png
+|   |   |-- ic_search.png
+|   |   |-- ic_zoomin.png
+|   |   &#96;-- ic_zoomout.png
+|   |-- network.h
+|   |-- viewer.cpp
+|   |-- image.pri
+|   |-- image.qrc
+|   |-- image_zh_CN.ts
+|   |-- network.cpp
+|   |-- viewer.h
+|   |-- local.h
+|   &#96;-- local.cpp
+|-- Manager.pro
+|-- Manager.pro.user
+|-- README.md
+|-- main.cpp
+&#96;-- main.qml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol>
 <li>
-<p>将源文件的设置独立出来，放到 project.pri 文件内。</p>
- <pre class="line-numbers language-none"><code class="language-none">SOURCES +&#x3D; main.cpp&#x2F;
-           widget.cpp
-HEADERS  +&#x3D; widget.h
-FORMS    +&#x3D; widget.ui<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将 image 模块的设置独立出来，放到 image.pri 文件内。</p>
+ <pre class="line-numbers language-none"><code class="language-none"># 一定要添加 $$PWD，在 image.pro 中展开才能准确定位子目录文件。
+SOURCES +&#x3D; \
+           $$PWD&#x2F;image.cpp \
+           $$PWD&#x2F;local.cpp \
+           $$PWD&#x2F;network.cpp
+
+HEADERS  +&#x3D; \
+           $$PWD&#x2F;image.h \
+           $$PWD&#x2F;local.h \
+           $$PWD&#x2F;network.h
+
+RESOURCES +&#x3D; image.qrc
+
+TRANSLATIONS +&#x3D; $$PWD&#x2F;image_zh_CN.ts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p><a target="_blank" rel="noopener" href="http://project.pro">project.pro</a> 文件就可以简化</p>
+<p><a target="_blank" rel="noopener" href="http://Manager.pro">Manager.pro</a> 配置</p>
  <pre class="line-numbers language-none"><code class="language-none">TEMPLATE &#x3D; app
-CONFIG +&#x3D; QT
-QT +&#x3D; core gui
+QT +&#x3D; quick
 
-TARGET &#x3D; propriprfprl
-include(project.pri)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+SOURCES +&#x3D; \
+           main.cpp
+
+resources.files &#x3D; main.qml
+resources.prefix &#x3D; &#x2F;$$&#123;TARGET&#125;
+RESOURCES +&#x3D; resources
+
+include($$PWD&#x2F;Image&#x2F;image.pri)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>qrc 资源定位，使用 qrc 定位时参考 Qt Creator 项目的 Resources qrc 文件路径。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;RCC&gt;
+ &lt;qresource prefix&#x3D;&quot;&#x2F;&quot;&gt;
+     &lt;file&gt;Network.qml&lt;&#x2F;file&gt;
+     &lt;file&gt;Image.qml&lt;&#x2F;file&gt;
+     &lt;file&gt;Local.qml&lt;&#x2F;file&gt;
+     &lt;file&gt;icons&#x2F;ic_find.png&lt;&#x2F;file&gt;
+     &lt;file&gt;icons&#x2F;ic_search.png&lt;&#x2F;file&gt;
+     &lt;file&gt;icons&#x2F;ic_forward.png&lt;&#x2F;file&gt;
+     &lt;file&gt;icons&#x2F;ic_zoomin.png&lt;&#x2F;file&gt;
+     &lt;file&gt;icons&#x2F;ic_zoomout.png&lt;&#x2F;file&gt;
+     &lt;file&gt;imageviewer_zh_CN.qm&lt;&#x2F;file&gt;
+ &lt;&#x2F;qresource&gt;
+&lt;&#x2F;RCC&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="本地化">本地化</h2>
+<ol>
+<li>
+<p>在 .pro 或 .pri 文件中添加 ts 本地化文件。</p>
+<pre class="line-numbers language-none"><code class="language-none">TRANSLATIONS +&#x3D; $$PWD&#x2F;image_zh_CN.ts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>使用 <code>lupdate</code> 和 <code>lrelease</code> 指令更新并发布翻译，生成相应的 <code>.qm</code> 文件。</p>
+</li>
+<li>
+<p>将 qm 文件添加到 qrc 文件中。</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;RCC&gt;
+ &lt;qresource prefix&#x3D;&quot;&#x2F;&quot;&gt;
+     &lt;file&gt;imageviewer_zh_CN.qm&lt;&#x2F;file&gt;
+ &lt;&#x2F;qresource&gt;
+&lt;&#x2F;RCC&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>在 main.cpp 中增加本地化代码。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QTranslator></span></span>
+
+QTranslator translator<span class="token punctuation">;</span>
+
+<span class="token comment">// 文件路径和 qrc 的 prefix 路径保持一致。</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>translator<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">":/imageviewer_zh_CN.qm"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span><span class="token function">installTranslator</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>translator<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
                 
@@ -1114,7 +1199,7 @@ include(project.pri)<span aria-hidden="true" class="line-numbers-rows"><span></s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">97.2k</span>
+                        class="white-color">97.8k</span>
             
             
             

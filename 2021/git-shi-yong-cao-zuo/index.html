@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -464,9 +464,10 @@
                 <p>Git 仓库分为工作区、暂存区 / 缓存区、本地仓库和远程仓库组成。</p>
 <p>![git 操作图](Git 实用操作/git-cmd.png)</p>
 <h1>基础操作</h1>
+<h2 id="版本管理">版本管理</h2>
 <ol>
-<li>创建仓库</li>
-</ol>
+<li>
+<p>创建仓库</p>
 <ul>
 <li>
 <p>克隆仓库</p>
@@ -493,7 +494,7 @@
 <span class="token function">git</span> push -u origin main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<ol start="2">
+</li>
 <li>
 <p>查看本地仓库当前状态</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看工作区、缓存区的文件变更情况</span>
@@ -527,6 +528,9 @@
 <span class="token comment"># 若本地分支名和远程分支名相同，则省略冒号及后面内容</span>
 <span class="token function">git</span> push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
+</ol>
+<h2 id="本地管理">本地管理</h2>
+<ol>
 <li>
 <p>清空工作区和缓存区</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 对已跟踪（被 add 操作过）文件，修改后没有被 add 到缓存区 index 有作用。对未</span>
@@ -573,6 +577,19 @@
 <span class="token function">git</span> commit -m <span class="token string">'提交日志'</span>
 <span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
+</ol>
+<h2 id="标签管理">标签管理</h2>
+<ol>
+<li>查找所有标签 <code>git tag</code>.这个命令以字母顺序列出标签，但是它们显示的顺序并不重要。</li>
+<li>查找特定标签 <code>git tag -l &quot;v1.0&quot;</code>.</li>
+<li>创建标签 <code>git tag -a v1.0</code>.</li>
+<li>添加附录 <code>git tag -a v1.0 -m &quot;version 1.0&quot;</code>.</li>
+<li>查看标签信息和与之对应的提交信息 <code>git show v1.0</code>.</li>
+<li>轻量标签 <code>git tag v1.0-lw</code>.不需要使用 -a、-s 或 -m 选项，只需要提供标签名字。</li>
+<li>后期打标签 <code>git tag -a v1.0 abc123</code>.需要在命令的末尾指定提交的校验和（或部分校验和）。</li>
+<li>删除标签 <code>git tag -d &lt;tagname&gt;</code>.</li>
+<li>提交 tag 远程仓库 <code>git push --tags</code></li>
+<li>删除远程 tag <code>git push origin :refs/tags/v0</code></li>
 </ol>
 <h1>子项目操作</h1>
 <ol>
@@ -1191,7 +1208,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">97.2k</span>
+                        class="white-color">97.8k</span>
             
             
             
