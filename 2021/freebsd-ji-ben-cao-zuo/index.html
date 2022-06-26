@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    513
+                    311
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -461,15 +461,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>挂载</h1>
-<ol>
-<li>挂载</li>
-</ol>
+                <h1>用户管理</h1>
+<pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 添加用户
+adduser
+
+# 删除用户
+rmuser &quot;用户名&quot;
+
+# 查看用户，使用 vi 操作方式
+vipw<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>文件操作</h1>
-<ol>
-<li>文件属性修改</li>
-</ol>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># 修改文件所有者
+<pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 修改文件所有者
 chown owner file
 
 # 修改文件所有者组
@@ -511,62 +513,6 @@ LC_ALL&#x3D;zh_CN.UTF-8<span aria-hidden="true" class="line-numbers-rows"><span>
 <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">freebsd-update -r 12.0-RELEASE upgrade
 freebsd-update install
 freebsd-version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h1>安装软件</h1>
-<p>两种安装方式分别为 FreeBSD Ports 套件（源码安装）和 packages（二进制安装）。</p>
-<h2 id="ports-安装">ports 安装</h2>
-<ol>
-<li>
-<p>更新 ports</p>
- <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 自动查找 mirrors，下载并解压 ports 包到 &#x2F;usr&#x2F;ports
-portsnap fetch extract
-
-# 后续更新 ports tree，无需 extract
-portsnap fetch update<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>寻找程序包</p>
-<ul>
-<li>
-<p>若知道 port 的准确名字，但需要知道在哪个类别找到，使用指令 <code>whereis</code>。</p>
-<pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">whereis git   # &#x2F;usr&#x2F;ports&#x2F;devel&#x2F;git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>使用 <code>ports collection</code> 内嵌搜索机制。首先到 <code>/usr/ports</code>，运行
-<code>make search name=program-name</code>。</p>
-<pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 寻找 lsof 程序
-cd &#x2F;usr&#x2F;ports
-make search name&#x3D;lsof<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-<li>
-<p>安装</p>
- <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 假设安装 vim
-cd &#x2F;usr&#x2F;ports&#x2F;editors&#x2F;vim
-make install clean<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h2 id="packages-安装">packages 安装</h2>
-<ol>
-<li>
-<p>安装 pkg</p>
-<p>在 shell 中执行 <code>pkg</code>，然后选择 <code>y</code> 即可。</p>
-</li>
-<li>
-<p>软件安装</p>
- <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh"># 假设安装 vim
-pkg install vim<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>软件卸载</p>
- <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">pkg delete vim<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>软件更新</p>
- <pre class="line-numbers language-csh" data-language="csh"><code class="language-csh">pkg update
-pkg upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ol>
 <h1>问题解决</h1>
 <ol>
 <li>
@@ -580,13 +526,6 @@ pkg upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 </ul>
 </li>
 </ol>
-<h1>修订记录</h1>
-<ul>
-<li>
-<p>2021-01-15</p>
-<p>从其它网站迁移。</p>
-</li>
-</ul>
 
                 
             </div>
@@ -1109,7 +1048,7 @@ pkg upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">97.8k</span>
+                        class="white-color">98k</span>
             
             
             
