@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -634,8 +634,9 @@
 <li>删除目录 <code>.git/module/</code> 下的相应的子项目目录，每个子项目对应一个目录。</li>
 <li>最后执行 <code>git rm --cached '子项目名称'</code>，完成后提交到仓库。</li>
 </ul>
-<h1>高级操作</h1>
+<h1>应用场景</h1>
 <h2 id="代理设置">代理设置</h2>
+<p>github 网速很差，使用 VPN 通过 .gitconfig 配置代理。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 设置代理</span>
 <span class="token function">git</span> config --global https.proxy http://127.0.0.1:10800
 <span class="token function">git</span> config --global https.proxy https://127.0.0.1:10800
@@ -647,14 +648,48 @@
 <span class="token comment"># 开启 ssl 校验，关闭改为 false</span>
 <span class="token function">git</span> config --global http.sslVerify <span class="token boolean">true</span>
 <span class="token function">git</span> config --global https.sslVerify <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-.gitconfig" data-language=".gitconfig"><code class="language-.gitconfig">[http]
-	proxy &#x3D; socks5:&#x2F;&#x2F;127.0.0.1:10800
-[https]
-	proxy &#x3D; socks5:&#x2F;&#x2F;127.0.0.1:10800
-[http]
-	sslVerify &#x3D; true
-[https]
-    sslVerify &#x3D; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token comment">;; .gitconfig</span>
+<span class="token selector">[http]</span>
+<span class="token constant">    proxy</span> <span class="token attr-value"><span class="token punctuation">=</span> socks5://127.0.0.1:10800</span>
+<span class="token selector">[https]</span>
+<span class="token constant">    proxy</span> <span class="token attr-value"><span class="token punctuation">=</span> socks5://127.0.0.1:10800</span>
+<span class="token selector">[http]</span>
+<span class="token constant">    sslVerify</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">[https]</span>
+<span class="token constant">    sslVerify</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="解决本地与远程代码冲突">解决本地与远程代码冲突</h2>
+<ol>
+<li>假设新功能尚未开发完成，且提交代码会导致程序运行失败，此时上一个版本出现bug需要紧急修复。相当于，在本地仓库未提交之前，可以将远程最新代码更新到本地仓库，修改并提交本地代码到远程。</li>
+</ol>
+<p>解决方案：将当前新功能开发代码保存起来，即让当前工作空间回到上个提交状态，然后修复 bug 并提交到远程仓库后，
+再将保存的代码还原到当前工作空间并继续新功能的开发。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看当前状态，查看未跟踪和提交的文件</span>
+<span class="token function">git</span> status
+<span class="token comment"># 暂存这些代码，让当前代码仓回到之前提交的状态</span>
+<span class="token function">git</span> stash
+<span class="token comment"># 查看当前状态，可以发现当前代码仓已经没有修改状态的代码了，处于上次提交状态。</span>
+<span class="token function">git</span> status
+<span class="token comment"># 更新远程代码，修复 bug，提交到远程仓库</span>
+<span class="token function">git</span> pull
+<span class="token function">git</span> <span class="token function">add</span> -A
+<span class="token function">git</span> commit -m <span class="token string">"xxx"</span>
+<span class="token function">git</span> push origin xxx_branch
+<span class="token comment"># 将保存的新功能代码恢复，可能需要解决冲突</span>
+<span class="token function">git</span> stash pop
+<span class="token comment"># 继续进行新功能代码开发</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="git-stash">git stash</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#将当前工作区所有修改多的内容存储到某个位置，将工作区还原到上个提交状态</span>
+<span class="token function">git</span> stash
+<span class="token comment">#查看之前使用的git stash命令的记录</span>
+<span class="token function">git</span> stash list
+<span class="token comment">#将之前使用git stash存储起来的修改全部清空</span>
+<span class="token function">git</span> stash <span class="token function">clear</span>
+<span class="token comment">#将上次使用git stash暂存起来的修改代码捞回来到工作区</span>
+<span class="token function">git</span> stash pop
+<span class="token comment">#通过指定git stash历史记录的id将之前某一次使用git stash保存起来的修改的代码捞回来到工作区</span>
+<span class="token function">git</span> stash apply xxx 
+<span class="token comment">#通过指定git stash历史记录的id将之前某一次使用git stash保存起来的修改彻底丢弃掉</span>
+<span class="token function">git</span> stash drop xxx <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1208,7 +1243,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">98.2k</span>
+                        class="white-color">98.6k</span>
             
             
             
