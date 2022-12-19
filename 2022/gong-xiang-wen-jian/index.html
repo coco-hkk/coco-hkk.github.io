@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="TodoList, coco-hkk">
+    <meta name="keywords" content="共享文件, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>TodoList | 点点滴滴</title>
+    <title>共享文件 | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">TodoList</h1>
+                    <h1 class="description center-align post-title">共享文件</h1>
                 </div>
             </div>
         </div>
@@ -418,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-12
+                    2022-12-14
                 </div>
                 
 
@@ -427,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    656
+                    402
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -457,36 +457,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>介绍下 ToDoList 管理工具，可以当作 GTD 工具，也可以用于待办事项或项目进度管理。可以通过搭建简单的 ftp 服务器，实现任务列表共享。</p>
-<h1>安装</h1>
-<p>可以在 <code>http://www.abstractspoon.com/</code> 下载 ToDoList 软件，它只支持 windows，界面风格停留在 XP 时代。</p>
-<p>安装时既可以将安装信息写入注册表，也可以选择写到安装目录下的 <code>ToDoList.ini</code> 文件中（推荐，方便共享）。</p>
-<h1>功能</h1>
-<p>它有很多种视图可供分析任务进度，提供多种筛选方式，可对每个任务配置不同属性。</p>
-<ul>
-<li>视图有任务树、列表视图、图、日历、周计划、甘特图、看板、思维导图、词云、工作负荷。</li>
-<li>筛选方式有任务状态、标题或评论、到期日期、优先级、分配到的执行者、状态、类别、标签等。</li>
-<li>任务属性有优先级、完成百分比、估算时间、消耗时间、到期日期、重复模式、颜色、分配到的人、状态、类别、标签、依赖性、文件连接等。</li>
-</ul>
-<p>它可将视图保存为图片格式，也可通过邮件发送任务。</p>
-<h1>ftp</h1>
-<p>它可以使用 ftp 远程存储任务列表，实现共享任务列表。</p>
-<h2 id="filezilla">filezilla</h2>
-<p>下载 <a target="_blank" rel="noopener" href="https://filezilla-project.org/download.php?type=server"><code>filezilla server</code></a> 版本，直接按照默认安装。</p>
-<p><code>安装问题</code>：安装完成后，filezilla server 已经正常运行，但是 Administration interface 无法连接 server，查看
-log（在安装目录下的 Logs 目录中）显示密码不正确，但我确信密码没问题，研究了很久无奈只能重启电脑。重启后，
-打开 Administration interface 提示是否接受 server 的数字签名，接受以后就好了。</p>
-<p>打开 Administration interface:</p>
+                <p>共享文件方法总结。</p>
+<h1>Win10 文件夹共享</h1>
+<p>局域网内 win10 文件夹共享方法。</p>
+<h2 id="共享文件夹">共享文件夹</h2>
 <ol>
-<li>在配置 configure 的权限管理中添加用户，并设置用户密码以及可访问的 server 服务端目录及其权限。</li>
-<li>在网络配置中，设置 passive mode （被动模式） 端口自定为 1 ~ 65535。添加外部网络访问 FTP 的 IP 地址（本机 IP 地址）。</li>
-<li>在防火墙中添加进站规则，开放 21 端口。在 <code>允许应用通过防火墙</code> 将 filezilla-server 可执行程序添加进去。重启防火墙。</li>
+<li>选择要共享的文件夹，在 <code>属性-&gt;共享</code> 选项卡中设置高级共享。</li>
+<li>勾选 <code>共享此文件夹</code>，可设置共享用户数量，修改权限。</li>
+<li>可在 <code>共享权限</code> 添加共享的用户，以及设置用户能够拥有的权限。</li>
 </ol>
-<p>然后使用 ToDoList 的 easyftp 登陆 ftp server，修改或保存任务列表。</p>
+<h2 id="找到共享文件夹">找到共享文件夹</h2>
+<ol>
+<li><code>Win + R</code> 打开 win10 运行，输入 <code>\\共享文件的 IP 地址</code>。</li>
+<li><code>Win + E</code> 打开 win10 资源管理器，在左侧找到 <code>网络</code>，通过电脑名找到共享文件夹。</li>
+</ol>
+<h1>win10 IIS</h1>
+<p>使用 IIS 管理器创建 FTP 服务 或 WEB 站点，不够灵活。</p>
+<ol>
+<li><code>Win + R</code> 打开运行，执行 <code>optionalfeatures</code> 打开“启用或关闭 windows 功能”。</li>
+<li>勾选 <code>Internet Information Services</code> 即可开启 IIS。</li>
+<li>搜索 IIS 管理器，也可在 <code>控制面板-&gt;系统和安全-&gt;管理工具</code> 找到 IIS 管理器，运行以管理 FTP 服务或 WEB 站点。</li>
+</ol>
+<h1>win10 Filezilla Server</h1>
+<p>使用 <a target="_blank" rel="noopener" href="https://filezilla-project.org/">Filezilla Server</a> 创建 FTP 服务，配置灵活。</p>
+<ol>
+<li>下载后按照默认安装。</li>
+<li>接受签名，若无此步骤，重启电脑，然后接受。</li>
+<li>打开 Administration interface 配置 FTP 站点，可灵活创建用户并指定可操作的目录权限。</li>
+<li>配置防火墙，将 filezilla-server.exe 加入到 <code>允许应用通过防火墙</code>。增加入站规则开放端口 21。</li>
+</ol>
 <p><code>匿名登陆</code>：可以创建一个特殊的用户 <code>anonymous</code>，该账户即为免登录 FTP 任何人均可访问。</p>
-<h2 id="IIS-管理器">IIS 管理器</h2>
-<p>在 <code>启用或关闭 Windows 功能</code> 中打开 IIS 相关功能，然后可以实用 IIS 管理器创建 FTP 服务器。</p>
-<p>虽然简单，但是权限控制不如 filezilla 灵活。</p>
+<p>在资源管理器地址栏中打开 <code>ftp://FTP 服务 IP</code> 即可访问。</p>
 
                 
             </div>
@@ -513,7 +514,7 @@ log（在安装目录下的 Logs 目录中）显示密码不正确，但我确�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://coco-hkk.github.io/2021/todolist/">https://coco-hkk.github.io/2021/todolist/</a>
+                    <a href="https://coco-hkk.github.io/2022/gong-xiang-wen-jian/">https://coco-hkk.github.io/2022/gong-xiang-wen-jian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -724,13 +725,13 @@ log（在安装目录下的 Logs 目录中）显示密码不正确，但我确�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/vps-zhu-ji-gou-mai/">
+                <a href="/2022/chrome-xiang-guan-zhi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="VPS 主机购买">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="Chrome 相关">
                         
-                        <span class="card-title">VPS 主机购买</span>
+                        <span class="card-title">Chrome 相关</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -741,27 +742,19 @@ log（在安装目录下的 Logs 目录中）显示密码不正确，但我确�
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-14
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/VPN/" class="post-category">
-                                    VPN
+                            <a href="/categories/Others/" class="post-category">
+                                    Others
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/VPS/">
-                        <span class="chip bg-color">VPS</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -773,13 +766,13 @@ log（在安装目录下的 Logs 目录中）显示密码不正确，但我确�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/dao-de-jing/">
+                <a href="/2022/todolist/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="道德经">
+                        <img src="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/20.jpg" class="responsive-img" alt="TodoList">
                         
-                        <span class="card-title">道德经</span>
+                        <span class="card-title">TodoList</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -790,14 +783,14 @@ log（在安装目录下的 Logs 目录中）显示密码不正确，但我确�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Culture/" class="post-category">
-                                    Culture
+                            <a href="/categories/Others/" class="post-category">
+                                    Others
                                 </a>
                             
                             
@@ -1005,7 +998,7 @@ log（在安装目录下的 Logs 目录中）显示密码不正确，但我确�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">99.5k</span>
+                        class="white-color">102k</span>
             
             
             
