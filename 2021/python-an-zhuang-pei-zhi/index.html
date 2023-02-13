@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Pyhton 安装配置, coco-hkk">
+    <meta name="keywords" content="Pyhton, coco-hkk">
     <meta name="description" content="无情道中道，有情天外天，逍遥存一念，他处仙非仙">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Pyhton 安装配置 | 点点滴滴</title>
+    <title>Pyhton | 点点滴滴</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/libs/awesome/css/all.css">
@@ -276,12 +276,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/coco-hkk/coco-hkk.github.io/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Pyhton 安装配置</h1>
+                    <h1 class="description center-align post-title">Pyhton</h1>
                 </div>
             </div>
         </div>
@@ -431,14 +431,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    567
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -461,102 +461,188 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Python3.x 安装。</p>
-<h1>Win10 Python3 安装</h1>
-<p>从 <a target="_blank" rel="noopener" href="https://www.python.org/">官网</a> 获取 windows Python3 安装包安装。</p>
-<h2 id="python3-库">python3 库</h2>
+                <p><a target="_blank" rel="noopener" href="https://www.python.org/">python 官网</a></p>
+<h1>Win11 Python3</h1>
+<h2 id="python3-安装包">python3 安装包</h2>
 <ol>
-<li>查看默认安装路径</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>m site<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>
+<p>查看默认安装路径</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">python <span class="token operator">-</span>m site<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><code>USER_BASE</code> 用户安装依赖的配置目录。</li>
 <li><code>USER_SITE</code> 依赖安装包路径。</li>
 </ul>
-<ol start="2">
-<li>修改默认安装路径</li>
-</ol>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">python <span class="token operator">-</span>m site <span class="token operator">-</span>h
-python <span class="token operator">-</span>m site <span class="token operator">-</span>h <span class="token operator">-</span><span class="token operator">-</span>user<span class="token operator">-</span>site
-python <span class="token operator">-</span>m site <span class="token operator">-</span>h <span class="token operator">-</span><span class="token operator">-</span>user<span class="token operator">-</span>base<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>修改默认安装路径</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">python <span class="token operator">-</span>m site <span class="token operator">-</span>h
+python <span class="token operator">-</span>m site <span class="token operator">-</span>h <span class="token operator">--</span>user<span class="token operator">-</span>site
+python <span class="token operator">-</span>m site <span class="token operator">-</span>h <span class="token operator">--</span>user<span class="token operator">-</span>base<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>可查看用户自定义路径的配置在 Python 安装路径下的 lib\<a target="_blank" rel="noopener" href="http://site.py">site.py</a>。修改文件中的内容：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">USER_SITE <span class="token operator">=</span> <span class="token string">"E:\Environment\Python\lib\site-packages"</span>
 USER_BASE <span class="token operator">=</span> <span class="token string">"E:\Environment\Python\Scripts"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>USER_BASE</code> 可由环境变量 <code>PYTHONUSERBASE</code> 配置而无需修改 <a target="_blank" rel="noopener" href="http://site.py">site.py</a> 文件。</p>
-<h1>pip</h1>
-<p>从 Python 3.4 开始，pip 默认包含在 Python 二进制安装程序中，安装在
-<code>Lib/site-packages</code> 目录中。</p>
-<h2 id="国内镜像源">国内镜像源</h2>
-<p>新版 ubuntu 要求使用 https 源。</p>
+</li>
+</ol>
+<h2 id="pip">pip</h2>
+<p>从 Python 3.4 开始，pip 默认包含在 Python 二进制安装程序中，安装在 <code>Lib/site-packages</code> 目录中。</p>
+<h3 id="国内镜像源">国内镜像源</h3>
 <ol>
 <li>清华： <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></li>
 <li>阿里云： <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a></li>
 <li>中国科技大学： <a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></li>
-<li>华中理工大学： <a target="_blank" rel="noopener" href="http://pypi.hustunique.com/">http://pypi.hustunique.com/</a></li>
-<li>山东理工大学： <a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org/</a></li>
 <li>豆瓣： <a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></li>
 </ol>
-<h2 id="升级">升级</h2>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 以管理员权限运行，升级 pip 到最新版本。</span>
-pip <span class="token function">install</span> pip -U<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul>
-<li>
+<h3 id="升级">升级</h3>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 以管理员权限运行，升级 pip 到最新版本。</span>
+pip install pip <span class="token operator">-</span>U<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>若报错：ModuleNotFoundError: No module named ‘pip’</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python -m ensurepip
-python -m pip <span class="token function">install</span> --upgrade pip<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">python <span class="token operator">-</span>m ensurepip
+python <span class="token operator">-</span>m pip install <span class="token operator">--</span>upgrade pip<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="基本操作">基本操作</h3>
+<ul>
+<li>默认镜像源 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 清华镜像</span>
+pip config <span class="token function">set</span> global<span class="token punctuation">.</span>index<span class="token operator">-</span>url https:<span class="token operator">/</span><span class="token operator">/</span>pypi<span class="token punctuation">.</span>tuna<span class="token punctuation">.</span>tsinghua<span class="token punctuation">.</span>edu<span class="token punctuation">.</span>cn<span class="token operator">/</span>simple<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
-</ul>
-<h2 id="基本操作">基本操作</h2>
-<ol>
-<li>
-<p>pip 安装</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token string">'包名'</span>
+<li>pip 安装 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pip install <span class="token string">'包名'</span>
 
 <span class="token comment"># 指定安装源</span>
-pip <span class="token function">install</span> <span class="token string">'包名'</span> -i <span class="token string">'镜像源'</span>
+pip install <span class="token string">'包名'</span> <span class="token operator">-</span>i <span class="token string">'镜像源'</span>
 
 <span class="token comment"># 批量安装。libs_info.txt 获取参考 pip freeze</span>
-pip <span class="token function">install</span> -r libs_info.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+pip install <span class="token operator">-</span>r libs_info<span class="token punctuation">.</span>txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>设置默认镜像源</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 设置默认镜像源为清华镜像</span>
-pip config <span class="token builtin class-name">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>查看</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 获取已安装库及对应版本信息。</span>
+<li>查看 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 获取已安装库及对应版本信息。</span>
 pip list
 
 <span class="token comment"># 可以导出文件。建议在 Pycharm 的终端使用，因为涉及到文件的生成，可以直接在项</span>
 <span class="token comment"># 目目录中找到文件。将库信息存储在 libs_info.txt 中。</span>
-pip freeze <span class="token operator">></span> libs_info.txt
+pip freeze > libs_info<span class="token punctuation">.</span>txt
 
 <span class="token comment"># 查看某个库的基本信息，加入参数 -f 可查看的更加详细</span>
 pip show <span class="token string">'库名'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>更新</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查询有哪些库需要更新，显示需要更新的库的目前版本、最新版本和库的类型。</span>
-pip list --outdated
-pip list -o
+<li>更新 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 查询有哪些库需要更新，显示需要更新的库的目前版本、最新版本和库的类型。</span>
+pip list <span class="token operator">--</span>outdated
+pip list <span class="token operator">-</span>o
 
 <span class="token comment"># 升级某个库</span>
-pip <span class="token function">install</span> -U <span class="token string">'库名'</span>
-pip <span class="token function">install</span> --upgrade <span class="token string">'库名'</span>
-pip <span class="token function">install</span> --upgrdae <span class="token string">'库名'</span><span class="token operator">==</span><span class="token string">'版本号'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+pip install <span class="token operator">-</span>U <span class="token string">'库名'</span>
+pip install <span class="token operator">--</span>upgrade <span class="token string">'库名'</span>
+pip install <span class="token operator">--</span>upgrdae <span class="token string">'库名'</span>==<span class="token string">'版本号'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>
-<p>卸载</p>
-<p>pip 中有些库是自带的，不支持卸载。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 卸载某个第三方库</span>
+<li>卸载 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 卸载某个第三方库</span>
 pip uninstall <span class="token string">'库名'</span>
 
 <span class="token comment"># 通过文件批量卸载库</span>
-pip uninstall -r libs_info.txt
+pip uninstall <span class="token operator">-</span>r libs_info<span class="token punctuation">.</span>txt
 
 <span class="token comment"># 卸载 pip 本身</span>
-python -m pip uninstall pip<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+python <span class="token operator">-</span>m pip uninstall pip<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="虚拟环境">虚拟环境</h2>
+<h3 id="内置-venv">内置 venv</h3>
+<ol>
+<li>创建虚拟环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 创建名为 venv 虚拟环境</span>
+python <span class="token operator">-</span>m venv venv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>激活环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">cd venv
+<span class="token punctuation">(</span>venv<span class="token punctuation">)</span> <span class="token function">PS</span>> Scripts\activate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>安装 packages<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token punctuation">(</span>venv<span class="token punctuation">)</span> <span class="token function">PS</span>> python <span class="token operator">-</span>m pip install &lt;package<span class="token operator">-</span>name><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>退出环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token punctuation">(</span>venv<span class="token punctuation">)</span> <span class="token function">PS</span>> deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="virtualenv">virtualenv</h3>
+<ol>
+<li>创建虚拟环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">virtualenv custom_env
+<span class="token comment"># 指定 python 版本</span>
+virtualenv <span class="token operator">-</span>p D:\python3<span class="token punctuation">.</span>10 python310_env<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>激活环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">cd custom_env
+<span class="token punctuation">(</span>venv<span class="token punctuation">)</span> <span class="token function">PS</span>> Scripts\activate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>退出环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token punctuation">(</span>venv<span class="token punctuation">)</span> <span class="token function">PS</span>> deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="pipenv">pipenv</h3>
+<ul>
+<li>pipenv 集成了 pip, virtualenv 功能。</li>
+<li>pipenv 会在项目目录下创建 <code>Pipfile</code>、<code>Pipfile.lock</code> 文件，管理包之间的依赖关系。</li>
+</ul>
+<ol>
+<li>创建虚拟环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pipenv install
+<span class="token comment"># 指定 python 版本</span>
+pipenv install <span class="token operator">--</span>python 版本号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>激活/退出<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># pipenv install 创建虚拟环境成功时会默认激活</span>
+<span class="token comment"># 目录下存在 Pipfile、Pipfile.lock 文件，已创建过虚拟环境</span>
+pipenv shell
+
+<span class="token comment"># 退出虚拟环境</span>
+<span class="token keyword">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>删除虚拟环境<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pipenv <span class="token operator">--</span><span class="token function">rm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>修改镜像源<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pipenv install &lt;package<span class="token operator">-</span>name> <span class="token operator">-</span>i https:<span class="token operator">/</span><span class="token operator">/</span>pypi<span class="token punctuation">.</span>tuna<span class="token punctuation">.</span>tsinghua<span class="token punctuation">.</span>edu<span class="token punctuation">.</span>cn<span class="token operator">/</span>simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+修改 <code>Pipfile</code> 和 <code>Pipfile.lock</code> 文件的 <code>source</code> 的 <code>url = https://pypi.tuna.tsinghua.edu.cn/simple</code>.</li>
+<li>安装库<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pipenv install &lt;package<span class="token operator">-</span>name><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>更新<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pipenv update  <span class="token comment"># 在项目所在虚拟环境中更新所有包，并在Pipfile.lock文件中更新相应版本信息</span>
+pipenv update <span class="token operator">--</span>outdated   <span class="token comment"># 在项目所在虚拟环境中查看已过期的包的信息</span>
+pipenv lock    <span class="token comment"># 根据项目所在虚拟环境的Pipfile文件生成/更新Pipfile.lock文件中的依赖包信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>查看<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">pipenv <span class="token operator">--</span>where			查看项目位置
+pipenv <span class="token operator">--</span>venv			查看虚拟环境位置
+pipenv <span class="token operator">--</span>py				查看虚拟环境python解释器位置
+pipenv graph			查看依赖包信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>运行 python 代码<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 虚拟环境已激活</span>
+python xxx<span class="token punctuation">.</span>py
+
+<span class="token comment"># 虚拟环境未激活</span>
+pipenv run pyhton xxx<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h1>PyArmor 脚本加密</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://pyarmor.dashingsoft.com/">官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://pyarmor.readthedocs.io/zh/latest/index.html">中文文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dashingsoft/pyarmor">github</a></li>
+</ul>
+<ol>
+<li>
+<p>加密</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 默认情况下，只有和主脚本相同目录的其他 *.py 会被同时加密</span>
+pyarmor obfuscate xxx<span class="token punctuation">.</span>py
+<span class="token comment"># 递归加密子目录下的所有 *.py 文件</span>
+pyarmor obfuscate <span class="token operator">--</span>recursive xxx<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>运行</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 加密后文件在 dist 目录中</span>
+cd dist
+<span class="token punctuation">(</span>dist<span class="token punctuation">)</span> <span class="token function">PS</span>> python xxx<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>许可文件</p>
+<p>运行加密脚本必须有一个许可文件 license.lic 。一般在加密脚本的同时，会自动生成一个缺省的认证文件。
+但是这个缺省的认证文件允许加密脚本运行在任何机器并且永不过期。</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 使用 licenses 为加密脚本生成新的许可文件 license.lic</span>
+<span class="token comment"># 以下命令会在当前目录递归创建目录 licenses/r001，并在目录中生成新的许可文件 license.lic</span>
+<span class="token comment"># 下面命令说明软件在 2022-02-08 之后就无法使用了</span>
+pyarmor licenses <span class="token operator">--</span>expired 2022<span class="token operator">-</span>02<span class="token operator">-</span>08 r001
+
+<span class="token comment"># 上一步生成的许可文件，可以加密文件</span>
+pyarmor obfuscate <span class="token operator">--</span>with<span class="token operator">-</span>license licenses<span class="token operator">/</span>r001<span class="token operator">/</span>license<span class="token punctuation">.</span>lic xxx<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>外部许可文件</p>
+<p>上一小节中，许可证是被嵌入到动态库中，若不想则使用外部 license.lic，这样方便替换许可文件。</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 在加密时指定 --with-license outer</span>
+pyarmor obfuscate <span class="token operator">--</span>with<span class="token operator">-</span>license outer xxx<span class="token punctuation">.</span>py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
 
                 
@@ -1096,7 +1182,7 @@ python -m pip uninstall pip<span aria-hidden="true" class="line-numbers-rows"><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">104.8k</span>
+                        class="white-color">106.3k</span>
             
             
             
